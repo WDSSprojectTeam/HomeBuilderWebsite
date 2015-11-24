@@ -1,4 +1,6 @@
 ﻿Imports Microsoft.VisualBasic
+Imports System.Collections.Generic
+Imports System.Collections
 
 Public Class Feature
 
@@ -55,6 +57,7 @@ Public Class Feature
     End Property
 
     Public Function getfeature(ByVal featureid As Integer)
+        Throw New NotImplementedException
 
         Dim myfeaturelist As List(Of Feature)
         myfeaturelist = Session("FeatureSet")

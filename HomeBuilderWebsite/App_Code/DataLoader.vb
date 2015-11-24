@@ -9,9 +9,15 @@ Imports System.Data
         Private myConnectionStr As String = ConfigurationManager.ConnectionStrings("ConnectionStr10").ToString
         Private myConnection As OleDbConnection
         Private myCommand As OleDbCommand
-        Private myReader As OleDbDataReader
+    Private myReader As OleDbDataReader
 
-        Public Sub LoadRooms()
+    Public Sub GetData()
+        LoadRooms()
+        LoadFeatures()
+        LoadOptions()
+    End Sub
+
+    Public Sub LoadRooms()
             'Dim aOptionList As New List(Of Options)
 
             myConnection = New OleDbConnection(myConnectionStr)
@@ -41,42 +47,39 @@ Imports System.Data
 
 
         Public Sub LoadFeatures()
-        'Dim aOptionList As New List(Of Options)
-        Dim myFeatureList As New List(Of Feature)
         myConnection = New OleDbConnection(myConnectionStr)
-            myCommand = New OleDbCommand("SELECT tblFeatures.FeatureID, tblFeatures.Feature, tblFeatures.RoomID From tblFeatures", myConnection)
+        myCommand = New OleDbCommand("SELECT tblFeatures.FeatureID, tblFeatures.Feature, tblFeatures.RoomID From tblFeatures", myConnection)
+        Dim myFeatureList As New List(Of Feature)
+        Try
+            myConnection.Open()
+            myReader = myCommand.ExecuteReader
 
-            Try
-                myConnection.Open()
-                myReader = myCommand.ExecuteReader
-
-                Do While (myReader.Read)
-                    Dim featureID As Integer = myReader.Item("UpgradeID")
-                    Dim featureName As String = myReader.Item("Feature")
-                    Dim roomID As Integer = myReader.Item("RoomID")
+            Do While (myReader.Read)
+                Dim featureID As Integer = myReader.Item("FeatureID")
+                Dim featureName As String = myReader.Item("Feature")
+                Dim roomID As Integer = myReader.Item("RoomID")
 
                 Dim myFeature As New Feature(featureName, featureID, roomID, New List(Of Options))
-                myFeatureList.add(myFeature)
-                Session("FeatureSet") = myFeatureList
+                myFeatureList.Add(myFeature)
             Loop
         Catch ex As Exception
-                MsgBox(ex.ToString)
-            Finally
-                myReader.Close()
-                myConnection.Close()
+            MsgBox(ex.ToString)
+        Finally
+            myReader.Close()
+            myConnection.Close()
+            Session("FeatureSet") = myFeatureList
 
-            End Try
+        End Try
 
 
-        End Sub
+    End Sub
 
     Public Sub LoadOptions()
-
         Dim aOptionList As New List(Of Options)
 
         myConnection = New OleDbConnection(myConnectionStr)
         myCommand = New OleDbCommand("SELECT tblOptions.FeatureID, tblOptions.UpgradeID, tblOptions.UpgradeName, tblOptions.UpgradePrice, tblOptions.Description
-FROM tblOptions GROUP BY tblOptions.FeatureID, tblOptions.UpgradeID, tblOptions.UpgradeName, tblOptions.UpgradePrice, tblOptions.Description", myConnection)
+        FROM tblOptions GROUP BY tblOptions.FeatureID, tblOptions.UpgradeID, tblOptions.UpgradeName, tblOptions.UpgradePrice, tblOptions.Description", myConnection)
 
         Try
             myConnection.Open()
@@ -89,29 +92,27 @@ FROM tblOptions GROUP BY tblOptions.FeatureID, tblOptions.UpgradeID, tblOptions.
                 Dim OptionDescription As String = myReader.Item("Description")
                 Dim OptionFeature As Integer = myReader.Item("FeatureID")
                 aOptionList.Add(New Options(OptionID, OptionName, OptionPrice, OptionDescription, OptionFeature))
-                Session("OptionSet") = aOptionList
+
             Loop
-
-
         Catch ex As Exception
             MsgBox(ex.ToString)
         Finally
-
-            Dim myRelevantOptionList As New List(Of Options)
+            Session("OptionSet") = aOptionList
             Dim myFeatureList As New List(Of Feature)
             myFeatureList = Session("FeatureSet")
             For Each feat In myFeatureList
                 For Each opt In aOptionList
                     If opt.getoptionfeature = feat.ID Then
-                        myRelevantOptionList.Add(opt)
+                        feat.OptionList.Add(opt)
                     End If
                 Next
-                feat.OptionList = myRelevantOptionList
             Next
+            Session("FeatureSet") = myFeatureList
             myReader.Close()
             myConnection.Close()
 
         End Try
+
 
     End Sub
 

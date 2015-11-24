@@ -1,4 +1,6 @@
 ﻿
+Imports System.Collections.Generic
+
 Partial Class FeatureEvaluation1
     Inherits System.Web.UI.Page
 
