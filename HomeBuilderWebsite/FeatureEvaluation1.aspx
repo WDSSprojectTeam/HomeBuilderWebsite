@@ -1,4 +1,4 @@
-﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="FeatureEvaluation1.aspx.vb" Inherits="FeatureEvaluation1" %>
+﻿<%@ Page MaintainScrollPositionOnPostback="true" Language="VB" AutoEventWireup="false" CodeFile="FeatureEvaluation1.aspx.vb" Inherits="FeatureEvaluation1" %>
 
 <!DOCTYPE html>
 
