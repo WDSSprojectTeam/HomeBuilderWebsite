@@ -28,7 +28,7 @@ Public Class Home
     '    End Sub
 
     Protected Sub btnBuildHome_Click(sender As Object, e As EventArgs) Handles btnBuildHome.Click
-        Response.Redirect("~\ChooseHome.aspx")
+        Response.Redirect("~\ChooseHomeLayout.aspx")
     End Sub
 
 

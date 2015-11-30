@@ -59,11 +59,11 @@ Public Class Feature
     Public Function getfeature(ByVal featureid As Integer)
         Throw New NotImplementedException
 
-        Dim myfeaturelist As List(Of Feature)
-        myfeaturelist = Session("FeatureSet")
-        For Each feature In myfeaturelist
+        'Dim myfeaturelist As List(Of Feature)
+        'myfeaturelist = Session("FeatureSet")
+        'For Each feature In myfeaturelist
 
-        Next
+        'Next
 
     End Function
 

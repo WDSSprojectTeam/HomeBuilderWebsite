@@ -130,13 +130,14 @@ Imports System.Data
     End Function
 
 
-    Public Function GetHomeDetails(ByVal selectedID As Integer) As DataTable
+    Public Function GetHomeDetails(ByVal type As String, ByVal bed As Double, ByVal bath As Double) As DataTable
         Dim myTable As New DataTable
         myConnection = New OleDbConnection(myConnectionStr)
-        myCommand = New OleDbCommand("SELECT tblModelHomes.ModelHomeID, tblModelHomes.[# of Bedrooms], tblModelHomes.[# of Bathrooms], " &
-                                     "tblModelHomes.[Square Footage], tblModelHomes.Description FROM tblModelHomes " &
-                                     "WHERE ModelHomeID=param", myConnection)
-        myCommand.Parameters.AddWithValue("param", selectedID)
+        myCommand = New OleDbCommand("SELECT tblHomeLayouts.Picture, tblHomeLayouts.ID,tblHomeLayouts.HouseName, tblHomeLayouts.Price
+FROM tblHomeLayouts WHERE (((tblHomeLayouts.Style)=param1) AND ((tblHomeLayouts.Bedrooms)=param2) AND ((tblHomeLayouts.Bathrooms)=param3));", myConnection)
+        myCommand.Parameters.AddWithValue("param1", type)
+        myCommand.Parameters.AddWithValue("param1", bed)
+        myCommand.Parameters.AddWithValue("param1", bath)
         myConnection.Open()
         myReader = myCommand.ExecuteReader
         myTable.Load(myReader)
@@ -145,5 +146,32 @@ Imports System.Data
         Return myTable
     End Function
 
+    Public Function GetHomeDetails() As DataTable
+
+        Dim myTable As New DataTable
+        myConnection = New OleDbConnection(myConnectionStr)
+        myCommand = New OleDbCommand("SELECT tblHomeLayouts.Picture, tblHomeLayouts.ID, tblHomeLayouts.HouseName, tblHomeLayouts.Price, tblHomeLayouts.Bathrooms, tblHomeLayouts.Bedrooms, tblHomeLayouts.Style
+FROM tblHomeLayouts;", myConnection)
+        myConnection.Open()
+        myReader = myCommand.ExecuteReader
+        myTable.Load(myReader)
+        myReader.Close()
+        myConnection.Close()
+        Return myTable
+    End Function
+
+    Public Function GetHomePicture(ByVal homeid As Integer) As DataTable
+        Dim myTable As New DataTable
+        myConnection = New OleDbConnection(myConnectionStr)
+        myCommand = New OleDbCommand("SELECT tblHomeLayouts.Details FROM tblHomeLayouts WHERE (((tblHomeLayouts.ID)=param));", myConnection)
+        myCommand.Parameters.AddWithValue("param", homeid)
+
+        myConnection.Open()
+        myReader = myCommand.ExecuteReader
+        myTable.Load(myReader)
+        myReader.Close()
+        myConnection.Close()
+        Return myTable
+    End Function
 
 End Class
