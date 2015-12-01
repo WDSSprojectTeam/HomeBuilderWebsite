@@ -136,8 +136,8 @@ Imports System.Data
         myCommand = New OleDbCommand("SELECT tblHomeLayouts.Picture, tblHomeLayouts.ID,tblHomeLayouts.HouseName, tblHomeLayouts.Price
 FROM tblHomeLayouts WHERE (((tblHomeLayouts.Style)=param1) AND ((tblHomeLayouts.Bedrooms)=param2) AND ((tblHomeLayouts.Bathrooms)=param3));", myConnection)
         myCommand.Parameters.AddWithValue("param1", type)
-        myCommand.Parameters.AddWithValue("param1", bed)
-        myCommand.Parameters.AddWithValue("param1", bath)
+        myCommand.Parameters.AddWithValue("param2", bed)
+        myCommand.Parameters.AddWithValue("param3", bath)
         myConnection.Open()
         myReader = myCommand.ExecuteReader
         myTable.Load(myReader)

@@ -56,7 +56,7 @@ Public Class Feature
         End Set
     End Property
 
-    Public Function getfeature(ByVal featureid As Integer)
+    Public Function getfeature(ByVal featureid As Integer) As Feature
         Throw New NotImplementedException
 
         'Dim myfeaturelist As List(Of Feature)
