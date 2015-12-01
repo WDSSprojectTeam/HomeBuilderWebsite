@@ -11,8 +11,14 @@ Public Class Comparison2Charter
         mydal = datafromdb
     End Sub
 
+    Public Sub New(ByVal passedChart As Chart)
+        mychart = passedChart
+    End Sub
+
+
     Public Sub draw(ByVal scenarios As ArrayList)
         mychart.Titles.Clear()
+        mychart.Series.Clear()
         mychart.Titles.Add("Scenario Comparison")
         setchartsize()
         setborderstyle()
@@ -54,7 +60,7 @@ Public Class Comparison2Charter
     End Sub
 
     Private Sub loadseriesdata(ByVal identity As Integer)
-        mychart.Series.Clear()
+
         Dim xvalues As ArrayList = mydal.getscenarioparts(identity)
         Dim yvalues As ArrayList = mydal.getscenariocosts(identity)
         addseries(xvalues, yvalues, Drawing.Color.Blue)

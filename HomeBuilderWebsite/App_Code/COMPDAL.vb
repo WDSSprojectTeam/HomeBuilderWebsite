@@ -24,55 +24,62 @@ Public Class COMPDAL
         Return mytable
     End Function
 
-    Public Function getscenariocosts(ByVal scenID As Integer) As DataTable
-        Dim mytable As New DataTable
+    Public Function getscenariocosts(ByVal scenID As Integer) As ArrayList
+        Dim mylist As New ArrayList
         myConnection = New OleDbConnection(myConnectionStr)
         'I will add more select topics once the tblscenarios table is completed
-        myCommand = New OleDbCommand("SELECT tblScenarios.floorcost, tblScenarios.appliancescost, tblScenarios.garagecost, tblScenarios.poolcost " &
+        myCommand = New OleDbCommand("SELECT tblScenarios.floorcost, tblScenarios.appliancescost " &
                                      "FROM tblScenarios WHERE ((tblScenarios.ScenarioID)=@param)", myConnection)
         myCommand.Parameters.AddWithValue("@param", scenID)
         myConnection.Open()
         myReader = myCommand.ExecuteReader
-        mytable.Load(myReader)
+
+        Do While (myReader.Read)
+            mylist.Add(myReader.Item("floorcost"))
+            mylist.Add(myReader.Item("appliancescost"))
+
+        Loop
+
         myReader.Close()
         myConnection.Close()
-        Return mytable
+        Return mylist
     End Function
 
-    Friend Function GetScenarioCostsList(identity As Integer) As ArrayList
-        Throw New NotImplementedException()
-    End Function
+    'Friend Function GetScenarioCostsList(identity As Integer) As ArrayList
+    'Throw New NotImplementedException()
+    'End Function
 
-    Public Function GetScenarioPartsList(identity As Integer) As ArrayList
-        Dim myPartsArray As Array
-        myPartsArray.Initialize()
-        Dim myPartsList As New ArrayList
+    ' Public Function GetScenarioPartsList(identity As Integer) As ArrayList
+    'Dim myPartsList As New ArrayList
+    'Dim myPartsDataTable As New DataTable
 
-        Dim myPartsDataTable As New DataTable
+    '   myPartsDataTable = getscenarioparts(identity)
 
-        myPartsDataTable = getscenarioparts(identity)
+    'For i = 0 To myPartsDataTable.Rows.Count - 1
+    '       myPartsList.Add(myPartsDataTable.Rows(i)(1))
+    'Next
 
-        myPartsDataTable.Rows.CopyTo(myPartsArray, 0)
+    ' End Function
 
-        For i = 0 To myPartsArray.Length - 1
-            myPartsList(i) = myPartsArray(i)
-        Next
-
-    End Function
-
-    Public Function getscenarioparts(ByVal scenID As Integer) As DataTable
-        Dim mytable As New DataTable
+    Public Function getscenarioparts(ByVal scenID As Integer) As ArrayList
+        Dim mylist As New ArrayList
         myConnection = New OleDbConnection(myConnectionStr)
         'I will add more select topics once the tblscenarios table is completed
-        myCommand = New OleDbCommand("SELECT tblscenarios.floorstyle, tblscenarios.appliances, tblscenarios.garage, tblscenarios.pool " &
-            "FROM tblScenarios WHERE ((tblScenarios.ScenarioID)=@param)", myConnection)
-        myCommand.Parameters.AddWithValue("@param", scenID)
+        myCommand = New OleDbCommand("SELECT tblscenarios.floorstyle, tblscenarios.appliances " &
+            "FROM tblScenarios WHERE ((tblScenarios.ScenarioID)=param)", myConnection)
+        myCommand.Parameters.AddWithValue("param", scenID)
         myConnection.Open()
         myReader = myCommand.ExecuteReader
-        mytable.Load(myReader)
+
+        Do While (myReader.Read)
+            mylist.Add(myReader.Item("floorstyle"))
+            mylist.Add(myReader.Item("appliances"))
+
+        Loop
         myReader.Close()
         myConnection.Close()
-        Return mytable
+
+        Return mylist
     End Function
 
     Public Function getselectedscenarios(ByVal list As ArrayList) As DataTable
@@ -90,8 +97,8 @@ Public Class COMPDAL
         myConnection.Open()
         myReader = myCommand.ExecuteReader
         Do While (myReader.Read)
-            For Each it In list
-                If Convert.ToInt32((myReader.Item("ScenarioID"))) = list.Item(it) Then
+            For i = 0 To list.Count - 1
+                If Convert.ToInt32((myReader.Item("ScenarioID"))) = list.Item(i) Then
                     myrow = mytable.NewRow
                     myrow(0) = myReader.Item("ScenarioID")
                     myrow(1) = myReader.Item("HomeStyle")

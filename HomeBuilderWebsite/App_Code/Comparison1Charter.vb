@@ -56,8 +56,8 @@ Public Class Comparison1Charter
 
     Private Sub loadseriesdata(ByVal identity As Integer)
         mychart.Series.Clear()
-        Dim xvalues As ArrayList = mydal.GetScenarioPartsList(identity)
-        Dim yvalues As ArrayList = mydal.GetScenarioCostsList(identity)
+        Dim xvalues As ArrayList = mydal.getscenarioparts(identity)
+        Dim yvalues As ArrayList = mydal.getscenariocosts(identity)
         addseries(xvalues, yvalues, Drawing.Color.Red)
 
     End Sub

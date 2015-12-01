@@ -16,7 +16,7 @@ Partial Class HomeBuilderWebsite_master_Comparison
             Dim totcost As Double = DropDownList1.SelectedValue
             fillgridview(totcost)
 
-            Dim indexID As Integer = Convert.ToInt32(GridView1.SelectedRow.Cells.Item(2).Text)
+            Dim indexID As Integer = Convert.ToInt32(GridView1.SelectedRow.Cells.Item(2).text)
             DrawPieChart(indexID)
         End If
     End Sub
@@ -35,7 +35,8 @@ Partial Class HomeBuilderWebsite_master_Comparison
 
 
     Private Sub DrawPieChart(ByVal ind As Integer)
-        Dim mycharter As New comparison1charter(Chart1)
+        Dim mycharter As New Comparison1Charter(Chart1)
+        mycharter.loaddata(mydataAccess)
         mycharter.draw(ind)
     End Sub
 
@@ -44,18 +45,23 @@ Partial Class HomeBuilderWebsite_master_Comparison
         fillgridview(totalcost)
     End Sub
 
-    Public Sub Button1_Click(ByVal sender As Object, ByVal e As EventArgs)
+
+
+
+    Protected Sub Button1_Click1(sender As Object, e As EventArgs) Handles Button1.Click
         Dim gvr As GridViewRow
         Dim i As Integer
         Dim info As New ArrayList
         For Each gvr In GridView1.Rows
-            If (CType(gvr.Cells(2).FindControl("CheckBox"), CheckBox)).Checked = True Then
-                i = Convert.ToInt32(gvr.Cells.Item(2))
+            If (CType(gvr.Cells(1).FindControl("CheckBox"), CheckBox)).Checked = True Then
+                i = Convert.ToInt32(gvr.Cells.Item(2).Text)
                 info.Add(i)
             End If
         Next
         Session("checkedscenarios") = info
+
+
+
+        Response.Redirect("~\Comparison2.aspx")
     End Sub
-
-
 End Class
