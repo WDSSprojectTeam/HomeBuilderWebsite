@@ -1,6 +1,4 @@
 ﻿
-Imports System.Collections.Generic
-
 Partial Class FeatureEvaluation1
     Inherits System.Web.UI.Page
 
@@ -550,6 +548,478 @@ Partial Class FeatureEvaluation1
     End Sub
 
     Protected Sub btnOptimize_Click(sender As Object, e As EventArgs) Handles btnOptimize.Click
+        Dim myFeatureList As New List(Of Feature)
+        myFeatureList = Session("FeatureSet")
+
+        Dim myOptionList As New List(Of Options)
+        myOptionList = Session("OptionSet")
+
+
+
+        'Dim i As Integer = 0
+        'Dim featureName As String
+        'Dim ctlName As String
+        'Dim ctlNameList As New List(Of String)
+        'Dim ctl1 As Control
+        'Dim ctl2 As Control
+        'Dim ctl3 As Control
+
+        'For Each ctl1 In Page.Controls
+        '    For Each ctl2 In ctl1.Controls
+        '        If TypeOf ctl2 Is DropDownList Then
+        '            myFeatureList(i).Rating = CType(ctl2, DropDownList).SelectedValue
+        '        End If
+        '    Next
+        '    For Each childCtl2 In ctl2.Controls
+        '        ctlName = Convert.ToString(ctl2.ID)
+        '        My.Computer.FileSystem.WriteAllText("C:\Users\mvans_000\Desktop\ctlNameList.txt", ctlName & vbCrLf, True)
+
+        '    Next
+        '    featureName = Mid(Convert.ToString(ctl.ID), 4)
+
+        'If TypeOf ctl Is CheckBox Then
+
+
+        'End If
+
+        'i += 1
+        'Next
+
+        'FLOORING
+
+        'For Each aFeature In myFeatureList
+        '    If aFeature.Name = "Floors" Then
+        '        aFeature.Rating = 3 - ddlFloors.SelectedIndex
+        '    End If
+        'Next
+
+        'If cbxCarpet.Checked = True Then
+        '    For Each aOption In myOptionList
+        '        If aOption.getoptionname = "Carpet" Then
+        '            aOption.Need = True
+        '        End If
+        '    Next
+        'Else
+
+        '    For Each aOption In myOptionList
+        '        If aOption.getoptionname = "Carpet" And pnlCarpet.Enabled = True Then
+        '            aOption.Preference = rltCarpet.SelectedValue
+        '        End If
+        '    Next
+        'End If
+
+        'If cbxTile.Checked = True Then
+        '    For Each aOption In myOptionList
+        '        If aOption.getoptionname = "Tile" Then
+        '            aOption.Need = True
+        '        End If
+        '    Next
+        'Else
+        '    For Each aOption In myOptionList
+        '        If aOption.getoptionname = "Tile" And pnlTile.Enabled = True Then
+        '            aOption.Preference = rltTile.SelectedValue
+        '        End If
+        '    Next
+        'End If
+
+        'If cbxHardwood.Checked = True Then
+        '    For Each aOption In myOptionList
+        '        If aOption.getoptionname = "Hardwood" Then
+        '            aOption.Need = True
+        '        End If
+        '    Next
+        'Else
+        '    For Each aOption In myOptionList
+        '        If aOption.getoptionname = "Hardwood" And pnlHardwood.Enabled = True Then
+        '            aOption.Preference = rltHardwood.SelectedValue
+        '        End If
+        '    Next
+        'End If
+
+        'If cbxTileShingle.Checked = True Then
+        '    For Each aOption In myOptionList
+        '        If aOption.getoptionname = "Tile Shingle" Then
+        '            aOption.Need = True
+        '        End If
+        '    Next
+        'Else
+        '    For Each aOption In myOptionList
+        '        If aOption.getoptionname = "Tile Shingle" And pnlTileShingle.Enabled = True Then
+        '        End If
+        '    Next
+        'End If
+
+        ''ROOF Type
+
+        'For Each aFeature In myFeatureList
+        '    If aFeature.Name = "Roof Type" Then
+        '        aFeature.Rating = 3 - ddlRoofType.SelectedIndex
+        '    End If
+        'Next
+
+        'If cbxAsphaltShingle.Checked = True Then
+        '    For Each aOption In myOptionList
+        '        If aOption.getoptionname = "Asphalt Shingle" Then
+        '            aOption.Need = True
+        '        End If
+        '    Next
+        'Else
+        '    For Each aOption In myOptionList
+        '        If aOption.getoptionname = "Asphalt Shingle" And pnlAsphaltShingle.Enabled = True Then
+        '            aOption.Preference = rltAsphaltShingle.SelectedValue
+        '        End If
+        '    Next
+        'End If
+
+        'If cbxMetalShingle.Checked = True Then
+        '    For Each aOption In myOptionList
+        '        If aOption.getoptionname = "Metal Shingle" Then
+        '            aOption.Need = True
+        '        End If
+        '    Next
+        'Else
+        '    For Each aOption In myOptionList
+        '        If aOption.getoptionname = "Metal Shingle" And pnlMetalShingle.Enabled = True Then
+        '            aOption.Preference = rltMetalShingle.SelectedValue
+        '        End If
+        '    Next
+
+        'End If
+
+
+        ''APPLIANCES
+
+        'For Each aFeature In myFeatureList
+        '    If aFeature.Name = "Appliances" Then
+        '        aFeature.Rating = 3 - ddlAppliances.SelectedIndex
+        '    End If
+        'Next
+
+        'If cbxStandardBeige.Checked = True Then
+        '    For Each aOption In myOptionList
+        '        If aOption.getoptionname = "Standard Beige" Then
+        '            aOption.Need = True
+        '        End If
+        '    Next
+        'Else
+        '    For Each aOption In myOptionList
+        '        If aOption.getoptionname = "Standard Beige" And pnlStandardBeige.Enabled = True Then
+        '            aOption.Preference = rltStandardBeige.SelectedValue
+        '        End If
+        '    Next
+        'End If
+
+        'If cbxBlack.Checked = True Then
+        '    For Each aOption In myOptionList
+        '        If aOption.getoptionname = "Black" Then
+        '            aOption.Need = True
+        '        End If
+        '    Next
+        'Else
+        '    For Each aOption In myOptionList
+        '        If aOption.getoptionname = "Black" And pnlBlack.Enabled = True Then
+        '            aOption.Preference = rltBlack.SelectedValue
+        '        End If
+        '    Next
+        'End If
+
+        'If cbxStainlessSteel.Checked = True Then
+        '    For Each aOption In myOptionList
+        '        If aOption.getoptionname = "Stainless Steel" Then
+        '            aOption.Need = True
+        '        End If
+        '    Next
+        'Else
+        '    For Each aOption In myOptionList
+        '        If aOption.getoptionname = "Stainless Steel" And pnlStainlessSteel.Enabled = True Then
+        '            aOption.Preference = rltStainlessSteel.SelectedValue
+        '        End If
+        '    Next
+        'End If
+
+        'If cbxProfessional.Checked = True Then
+        '    For Each aOption In myOptionList
+        '        If aOption.getoptionname = "Professional Grade" Then
+        '            aOption.Need = True
+        '        End If
+        '    Next
+        'Else
+        '    For Each aOption In myOptionList
+        '        If aOption.getoptionname = "Professional Grade" And pnlProfessional.Enabled = True Then
+        '            aOption.Preference = rltProfessional.SelectedValue
+        '        End If
+        '    Next
+        'End If
+
+
+        ''GARAGE
+
+        'For Each aFeature In myFeatureList
+        '    If aFeature.Name = "Garage" Then
+        '        aFeature.Rating = 3 - ddlGarage.SelectedIndex
+        '    End If
+        'Next
+
+        'If cbxOneCar.Checked = True Then
+        '    For Each aOption In myOptionList
+        '        If aOption.getoptionname = "One Car" Then
+        '            aOption.Need = True
+        '        End If
+        '    Next
+        'Else
+        '    For Each aOption In myOptionList
+        '        If aOption.getoptionname = "One Car" And pnlOneCar.Enabled = True Then
+        '            aOption.Preference = rltOneCar.SelectedValue
+        '        End If
+        '    Next
+        'End If
+
+        'If cbxTwoCar.Checked = True Then
+        '    For Each aOption In myOptionList
+        '        If aOption.getoptionname = "Two Car" Then
+        '            aOption.Need = True
+        '        End If
+        '    Next
+        'Else
+        '    For Each aOption In myOptionList
+        '        If aOption.getoptionname = "Two Car" And pnlTwoCar.Enabled = True Then
+        '            aOption.Preference = rltTwoCar.SelectedValue
+        '        End If
+        '    Next
+        'End If
+
+        'If cbxThreeCar.Checked = True Then
+        '    For Each aOption In myOptionList
+        '        If aOption.getoptionname = "Three Car" Then
+        '            aOption.Need = True
+        '        End If
+        '    Next
+        'Else
+        '    For Each aOption In myOptionList
+        '        If aOption.getoptionname = "Three Car" And pnlThreeCar.Enabled = True Then
+        '            aOption.Preference = rltThreeCar.SelectedValue
+        '        End If
+        '    Next
+        'End If
+
+
+        ''COUNTERTOPS
+
+        'For Each aFeature In myFeatureList
+        '    If aFeature.Name = "Countertops" Then
+        '        aFeature.Rating = 3 - ddlCountertops3.SelectedIndex
+        '    End If
+        'Next
+
+        'If cbxQuartz.Checked = True Then
+        '    For Each aOption In myOptionList
+        '        If aOption.getoptionname = "Quartz" Then
+        '            aOption.Need = True
+        '        End If
+        '    Next
+        'Else
+        '    For Each aOption In myOptionList
+        '        If aOption.getoptionname = "Quartz" And pnlQuartz.Enabled = True Then
+        '            aOption.Preference = rltQuartz.SelectedValue
+        '        End If
+        '    Next
+        'End If
+
+        'If cbxGranite.Checked = True Then
+        '    For Each aOption In myOptionList
+        '        If aOption.getoptionname = "Granite" Then
+        '            aOption.Need = True
+        '        End If
+        '    Next
+        'Else
+        '    For Each aOption In myOptionList
+        '        If aOption.getoptionname = "Granite" And PanelGranite.Enabled = True Then
+        '            aOption.Preference = rltGranite.SelectedValue
+        '        End If
+        '    Next
+        'End If
+
+        'If cbxLaminate.Checked = True Then
+        '    For Each aOption In myOptionList
+        '        If aOption.getoptionname = "Laminate" Then
+        '            aOption.Need = True
+        '        End If
+        '    Next
+        'Else
+        '    For Each aOption In myOptionList
+        '        If aOption.getoptionname = "Laminate" And PanelLaminate.Enabled = True Then
+        '            aOption.Preference = rltLaminate.SelectedValue
+        '        End If
+        '    Next
+        'End If
+
+        'If cbxWood.Checked = True Then
+        '    For Each aOption In myOptionList
+        '        If aOption.getoptionname = "Wood" Then
+        '            aOption.Need = True
+        '        End If
+        '    Next
+        'Else
+        '    For Each aOption In myOptionList
+        '        If aOption.getoptionname = "Wood" And PanelWood.Enabled = True Then
+        '            aOption.Preference = rltWood.SelectedValue
+        '        End If
+        '    Next
+        'End If
+
+        'If cbxMarble.Checked = True Then
+        '    For Each aOption In myOptionList
+        '        If aOption.getoptionname = "Marble" Then
+        '            aOption.Need = True
+        '        End If
+        '    Next
+        'Else
+        '    For Each aOption In myOptionList
+        '        If aOption.getoptionname = "Marble" And PanelMarble.Enabled = True Then
+        '            aOption.Preference = rltMarble.SelectedValue
+        '        End If
+        '    Next
+        'End If
+
+
+        ''BATH
+
+        'For Each aFeature In myFeatureList
+        '    If aFeature.Name = "Bath" Then
+        '        aFeature.Rating = 3 - ddlBath.SelectedIndex
+        '    End If
+        'Next
+
+        'If cbxBathShower.Checked = True Then
+        '    For Each aOption In myOptionList
+        '        If aOption.getoptionname = "Bath/Shower Combination" Then
+        '            aOption.Need = True
+        '        End If
+        '    Next
+        'Else
+        '    For Each aOption In myOptionList
+        '        If aOption.getoptionname = "Bath/Shower Combination" And pnlBathShower.Enabled = True Then
+        '            aOption.Preference = rltBathShower.SelectedValue
+        '        End If
+        '    Next
+        'End If
+
+        'If cbxWalkinShower.Checked = True Then
+        '    For Each aOption In myOptionList
+        '        If aOption.getoptionname = "Walk-in-shower" Then
+        '            aOption.Need = True
+        '        End If
+        '    Next
+        'Else
+        '    For Each aOption In myOptionList
+        '        If aOption.getoptionname = "Walk-in-shower" And pnlWalkinShower.Enabled = True Then
+        '            aOption.Preference = rltWalkinShower.SelectedValue
+        '        End If
+        '    Next
+        'End If
+
+        'If cbxRainfall.Checked = True Then
+        '    For Each aOption In myOptionList
+        '        If aOption.getoptionname = "Luxury rainfall shower" Then
+        '            aOption.Need = True
+        '        End If
+        '    Next
+        'Else
+        '    For Each aOption In myOptionList
+        '        If aOption.getoptionname = "Luxury rainfall shower" And pnlRainfall.Enabled = True Then
+        '            aOption.Preference = rltRainfall.SelectedValue
+        '        End If
+        '    Next
+        'End If
+
+
+        ''CLOSET
+
+        'For Each aFeature In myFeatureList
+        '    If aFeature.Name = "Closets" Then
+        '        aFeature.Rating = 3 - ddlClosets.SelectedIndex
+        '    End If
+        'Next
+
+        'If cbxWardrobe.Checked = True Then
+        '    For Each aOption In myOptionList
+        '        If aOption.getoptionname = "Wardrobe Closet" Then
+        '            aOption.Need = True
+        '        End If
+        '    Next
+        'Else
+        '    For Each aOption In myOptionList
+        '        If aOption.getoptionname = "Wardrobe Closer" And pnlWardrobe.Enabled = True Then
+        '            aOption.Preference = rltWardrobe.SelectedValue
+        '        End If
+        '    Next
+        'End If
+
+        'If cbxWalkinCloset.Checked = True Then
+        '    For Each aOption In myOptionList
+        '        If aOption.getoptionname = "Walk-in Closet" Then
+        '            aOption.Need = True
+        '        End If
+        '    Next
+        'Else
+        '    For Each aOption In myOptionList
+        '        If aOption.getoptionname = "Walk-in Closet" And pnlWalkinCloset.Enabled = True Then
+        '            aOption.Preference = rltWalkinCloset.SelectedValue
+        '        End If
+        '    Next
+        'End If
+
+
+        ''FIREPLACE
+
+        'For Each aFeature In myFeatureList
+        '    If aFeature.Name = "Fireplace" Then
+        '        aFeature.Rating = 3 - ddlFireplace.SelectedIndex
+        '    End If
+        'Next
+
+        'If cbxBrick.Checked = True Then
+        '    For Each aOption In myOptionList
+        '        If aOption.getoptionname = "Brick Fireplace" Then
+        '            aOption.Need = True
+        '        End If
+        '    Next
+        'Else
+        '    For Each aOption In myOptionList
+        '        If aOption.getoptionname = "Brick Fireplace" And pnlBrick.Enabled = True Then
+        '            aOption.Preference = rltBrick.SelectedValue
+        '        End If
+        '    Next
+        'End If
+
+        'If cbxManufactured.Checked = True Then
+        '    For Each aOption In myOptionList
+        '        If aOption.getoptionname = "Manufactured Stone Fireplace" Then
+        '            aOption.Need = True
+        '        End If
+        '    Next
+        'Else
+        '    For Each aOption In myOptionList
+        '        If aOption.getoptionname = "Manufactured Stone Fireplace" And pnlManufactured.Enabled = True Then
+        '            aOption.Preference = rltManufactured.SelectedValue
+        '        End If
+        '    Next
+        'End If
+
+        'If cbxNatural.Checked = True Then
+        '    For Each aOption In myOptionList
+        '        If aOption.getoptionname = "Natural Stone Fireplace" Then
+        '            aOption.Need = True
+        '        End If
+        '    Next
+        'Else
+        '    For Each aOption In myOptionList
+        '        If aOption.getoptionname = "Natural Stone Fireplace" And pnlNatural.Enabled = True Then
+        '            aOption.Preference = rltNatural.SelectedValue
+        '        End If
+        '    Next
+        'End If
+
         Session("Results") = Nothing
         For i = 1 To 9
             Dim opt As New Optimization
@@ -557,460 +1027,7 @@ Partial Class FeatureEvaluation1
         Next
         Response.Redirect("~\OptimizationResultsPage.aspx")
     End Sub
-    '    myFeatureList = Session("myFeatures")
 
-    '    Dim i As Integer = 0
-    '    Dim featureName As String
-    '    Dim ctlName As String
-    '    Dim ctlNameList As New List(Of String)
-    '    Dim ctl1 As Control
-    '    Dim ctl2 As Control
-    '    Dim ctl3 As Control
-
-    '    For Each ctl1 In Page.Controls
-    '        For Each ctl2 In ctl1.Controls
-    '            If TypeOf ctl2 Is DropDownList Then
-    '                myFeatureList(i).Rating = CType(ctl2, DropDownList).SelectedValue
-    '            End If
-    '        Next
-    '        For Each childCtl2 In ctl2.Controls
-    '            ctlName = Convert.ToString(ctl2.ID)
-    '            My.Computer.FileSystem.WriteAllText("C:\Users\mvans_000\Desktop\ctlNameList.txt", ctlName & vbCrLf, True)
-
-    '        Next
-    '        'featureName = Mid(Convert.ToString(ctl.ID), 4)
-
-    '        'If TypeOf ctl Is CheckBox Then
-
-
-    '        'End If
-
-    '        'i += 1
-    '    Next
-
-
-
-    'FLOORING
-
-    '    If cbxCarpet.Checked = True Then
-    '    myFeatureList.Name(Carpet).Need = True
-    'Else
-    '    myFeatureList.GetName(Carpet).Preference = rltCarpet.SelectedValue
-    'End If
-
-    'If cbxTile.Checked = True Then
-    '    myFeatureList.GetName(Tile).Need = True
-    'Else
-    '    myFeatureList.GetName(Tile).Preference = rltTile.SelectedValue
-    'End If
-
-    'If cbxHardwood.Checked = True Then
-    '    myFeatureList.GetName(Hardwood).Need = True
-    'Else
-    '    myFeatureList.GetName(Hardwood).Preference = rltHardwood.SelectedValue
-    'End If
-
-    'If cbxTileShingle.Checked = True Then
-    '    myFeatureList.GetName(Tile Shingle).Need = True
-    'Else
-    '    myFeatureList.GetName(Tile Shingle).Preference = rltTileShingle.SelectedValue
-    'End If
-
-
-
-    'ROOF TYPE
-
-    '    If cbxAsphaltShingle.Checked = True Then
-    '        myFeatureList.GetName(Asphalt Shingle).Need = True
-    '    Else
-    '        myFeatureList.GetName(Asphalt Shingle).Preference = rltAsphaltShingle.SelectedValue
-    '    End If
-
-    '    If cbxWoodShingle.Checked = True Then
-    '        myFeatureList.GetName(Wood Shingle).Need = True
-    '    Else
-    '        myFeatureList.GetName(Wood Shingle).Preference = rltWoodShingle.SelectedValue
-    '    End If
-
-    '    If cbxMetalShingle.Checked = True Then
-    '        myFeatureList.GetName(Metal Shingle).Need = True
-    '    Else
-    '        myFeatureList.GetName(Metal Shingle).Preference = rltMetalShingle.SelectedValue
-    '    End If
-
-    '    If cbxSlateShingle.Checked = True Then
-    '        myFeatureList.GetName(Slate Shingle).Need = True
-    '    Else
-    '        myFeatureList.GetName(Slate Shingle).Preference = rltSlateShingle.SelectedValue
-    '    End If
-
-
-    '    'APPLIANCES
-
-    '    If cbxStandardBeige.Checked = True Then
-    '        myFeatureList.GetName(Standard Beige).Need = True
-    '    Else
-    '        myFeatureList.GetName(Standard Beige).Preference = rltStandardBeige.SelectedValue
-    '    End If
-
-    '    If cbxBlack.Checked = True Then
-    '        myFeatureList.GetName(Black).Need = True
-    '    Else
-    '        myFeatureList.GetName(Black).Preference = rltBlack.SelectedValue
-    '    End If
-
-    '    If cbxStainlessSteel.Checked = True Then
-    '        myFeatureList.GetName(Stainless Steel).Need = True
-    '    Else
-    '        myFeatureList.GetName(Stainless Steel).Preference = rltStainlessSteel.SelectedValue
-    '    End If
-
-    '    If cbxProfessional.Checked = True Then
-    '        myFeatureList.GetName(Professional Grade).Need = True
-    '    Else
-    '        myFeatureList.GetName(Professional Grade).Preference = rltProfessional.SelectedValue
-    '    End If
-
-
-    '    'GARAGE
-
-    '    If cbxOneCar.Checked = True Then
-    '        myFeatureList.GetName(One Car).Need = True
-    '    Else
-    '        myFeatureList.GetName(One Car).Preference = rltOneCar.SelectedValue
-    '    End If
-
-    '    If cbxTwoCar.Checked = True Then
-    '        myFeatureList.GetName(Two Car).Need = True
-    '    Else
-    '        myFeatureList.GetName(Two Car).Preference = rltTwoCar.SelectedValue
-    '    End If
-
-    '    If cbxThreeCar.Checked = True Then
-    '        myFeatureList.GetName(Three Car).Need = True
-    '    Else
-    '        myFeatureList.GetName(Three Car).Preference = rltThreeCar.SelectedValue
-    '    End If
-
-
-    '    'COUNTERTOPS
-
-
-    '    If cbxQuartz.Checked = True Then
-    '        myFeatureList.GetName(Quartz).Need = True
-    '    Else
-    '        myFeatureList.GetName(Quartz).Preference = rltQuartz.SelectedValue
-    '    End If
-
-    '    If cbxGranite.Checked = True Then
-    '        myFeatureList.GetName(Granite).Need = True
-    '    Else
-    '        myFeatureList.GetName(Granite).Preference = rltGranite.SelectedValue
-    '    End If
-
-    '    If cbxLaminate.Checked = True Then
-    '        myFeatureList.GetName(Laminate).Need = True
-    '    Else
-    '        myFeatureList.GetName(Laminate).Preference = rltLaminate.SelectedValue
-    '    End If
-
-    '    If cbxWood.Checked = True Then
-    '        myFeatureList.GetName(Wood).Need = True
-    '    Else
-    '        myFeatureList.GetName(Wood).Preference = rltWood.SelectedValue
-    '    End If
-
-    '    If cbxMarble.Checked = True Then
-    '        myFeatureList.GetName(Marble).Need = True
-    '    Else
-    '        myFeatureList.GetName(Marble).Preference = rltMarble.SelectedValue
-    '    End If
-
-
-    '    'BATH
-
-    '    If cbxBathShower.Checked = True Then
-    '        myFeatureList.GetName(Bath/BathShower Combination).Need = True
-    '    Else
-    '        myFeatureList.GetName(Bath/BathShower Combination).Preference = rltBathShower.SelectedValue
-    '    End If
-
-    '    If cbxWalkinShower.Checked = True Then
-    '        myFeatureList.GetName(Walk-in-Shower).Need = True
-    '    Else
-    '        myFeatureList.GetName(Walk-in-Shower).Preference = rltWalkinShower.SelectedValue
-    '    End If
-
-    '    If cbxRainfall.Checked = True Then
-    '        myFeatureList.GetName(Luxury rainfall shower).Need = True
-    '    Else
-    '        myFeatureList.GetName(Luxury rainfall shower).Preference = rltRainfall.SelectedValue
-    '    End If
-
-
-    '    'CLOSET
-
-    '    If cbxWardrobe.Checked = True Then
-    '        myFeatureList.GetName(Wardrobe Closet).Need = True
-    '    Else
-    '        myFeatureList.GetName(Wardrobe Closet).Preference = rltWardrobe.SelectedValue
-    '    End If
-
-    '    If cbxWalkinCloset.Checked = True Then
-    '        myFeatureList.GetName(Walk-in Closet).Need = True
-    '    Else
-    '        myFeatureList.GetName(Walk-in Closet).Preference = rltWalkinCloset.SelectedValue
-    '    End If
-
-
-    '    'FIREPLACE
-
-    '    If cbxBrick.Checked = True Then
-    '        myFeatureList.GetName(Brick Fireplace).Need = True
-    '    Else
-    '        myFeatureList.GetName(Brick Fireplace).Preference = rltBrick.SelectedValue
-    '    End If
-
-    '    If cbxManufactured.Checked = True Then
-    '        myFeatureList.GetName(Manufactured Stone Fireplace).Need = True
-    '    Else
-    '        myFeatureList.GetName(Manufactured Stone Fireplace).Preference = rltManufactured.SelectedValue
-    '    End If
-
-    '    If cbxNatural.Checked = True Then
-    '        myFeatureList.GetName(Natural Stone Fireplace).Need = True
-    '    Else
-    '        myFeatureList.GetName(Natural Stone Fireplace).Preference = rltNatural.SelectedValue
-    '    End If
-
-    'End Sub
-    'Protected Sub btnOptimize_Click(sender As Object, e As EventArgs) Handles btnOptimize.Click
-    '    myFeatureList = Session("myFeatures")
-
-    '    Dim i As Integer = 0
-    '    Dim featureName As String
-    '    Dim ctlName As String
-    '    Dim ctlNameList As New List(Of String)
-    '    Dim ctl1 As Control
-    '    Dim ctl2 As Control
-    '    Dim ctl3 As Control
-
-    '    For Each ctl1 In Page.Controls
-    '        For Each ctl2 In ctl1.Controls
-    '            If TypeOf ctl2 Is DropDownList Then
-    '                myFeatureList(i).Rating = CType(ctl2, DropDownList).SelectedValue
-    '            End If
-    '        Next
-    '        For Each childCtl2 In ctl2.Controls
-    '            ctlName = Convert.ToString(ctl2.ID)
-    '            My.Computer.FileSystem.WriteAllText("C:\Users\mvans_000\Desktop\ctlNameList.txt", ctlName & vbCrLf, True)
-
-    '        Next
-    '        'featureName = Mid(Convert.ToString(ctl.ID), 4)
-
-    '        'If TypeOf ctl Is CheckBox Then
-
-
-    '        'End If
-
-    '        'i += 1
-    '    Next
-
-
-
-    'FLOORING
-
-    '    If cbxCarpet.Checked = True Then
-    '    myFeatureList.Name(Carpet).Need = True
-    'Else
-    '    myFeatureList.GetName(Carpet).Preference = rltCarpet.SelectedValue
-    'End If
-
-    'If cbxTile.Checked = True Then
-    '    myFeatureList.GetName(Tile).Need = True
-    'Else
-    '    myFeatureList.GetName(Tile).Preference = rltTile.SelectedValue
-    'End If
-
-    'If cbxHardwood.Checked = True Then
-    '    myFeatureList.GetName(Hardwood).Need = True
-    'Else
-    '    myFeatureList.GetName(Hardwood).Preference = rltHardwood.SelectedValue
-    'End If
-
-    'If cbxTileShingle.Checked = True Then
-    '    myFeatureList.GetName(Tile Shingle).Need = True
-    'Else
-    '    myFeatureList.GetName(Tile Shingle).Preference = rltTileShingle.SelectedValue
-    'End If
-
-
-
-    'ROOF TYPE
-
-    '    If cbxAsphaltShingle.Checked = True Then
-    '        myFeatureList.GetName(Asphalt Shingle).Need = True
-    '    Else
-    '        myFeatureList.GetName(Asphalt Shingle).Preference = rltAsphaltShingle.SelectedValue
-    '    End If
-
-    '    If cbxWoodShingle.Checked = True Then
-    '        myFeatureList.GetName(Wood Shingle).Need = True
-    '    Else
-    '        myFeatureList.GetName(Wood Shingle).Preference = rltWoodShingle.SelectedValue
-    '    End If
-
-    '    If cbxMetalShingle.Checked = True Then
-    '        myFeatureList.GetName(Metal Shingle).Need = True
-    '    Else
-    '        myFeatureList.GetName(Metal Shingle).Preference = rltMetalShingle.SelectedValue
-    '    End If
-
-    '    If cbxSlateShingle.Checked = True Then
-    '        myFeatureList.GetName(Slate Shingle).Need = True
-    '    Else
-    '        myFeatureList.GetName(Slate Shingle).Preference = rltSlateShingle.SelectedValue
-    '    End If
-
-
-    '    'APPLIANCES
-
-    '    If cbxStandardBeige.Checked = True Then
-    '        myFeatureList.GetName(Standard Beige).Need = True
-    '    Else
-    '        myFeatureList.GetName(Standard Beige).Preference = rltStandardBeige.SelectedValue
-    '    End If
-
-    '    If cbxBlack.Checked = True Then
-    '        myFeatureList.GetName(Black).Need = True
-    '    Else
-    '        myFeatureList.GetName(Black).Preference = rltBlack.SelectedValue
-    '    End If
-
-    '    If cbxStainlessSteel.Checked = True Then
-    '        myFeatureList.GetName(Stainless Steel).Need = True
-    '    Else
-    '        myFeatureList.GetName(Stainless Steel).Preference = rltStainlessSteel.SelectedValue
-    '    End If
-
-    '    If cbxProfessional.Checked = True Then
-    '        myFeatureList.GetName(Professional Grade).Need = True
-    '    Else
-    '        myFeatureList.GetName(Professional Grade).Preference = rltProfessional.SelectedValue
-    '    End If
-
-
-    '    'GARAGE
-
-    '    If cbxOneCar.Checked = True Then
-    '        myFeatureList.GetName(One Car).Need = True
-    '    Else
-    '        myFeatureList.GetName(One Car).Preference = rltOneCar.SelectedValue
-    '    End If
-
-    '    If cbxTwoCar.Checked = True Then
-    '        myFeatureList.GetName(Two Car).Need = True
-    '    Else
-    '        myFeatureList.GetName(Two Car).Preference = rltTwoCar.SelectedValue
-    '    End If
-
-    '    If cbxThreeCar.Checked = True Then
-    '        myFeatureList.GetName(Three Car).Need = True
-    '    Else
-    '        myFeatureList.GetName(Three Car).Preference = rltThreeCar.SelectedValue
-    '    End If
-
-
-    '    'COUNTERTOPS
-
-
-    '    If cbxQuartz.Checked = True Then
-    '        myFeatureList.GetName(Quartz).Need = True
-    '    Else
-    '        myFeatureList.GetName(Quartz).Preference = rltQuartz.SelectedValue
-    '    End If
-
-    '    If cbxGranite.Checked = True Then
-    '        myFeatureList.GetName(Granite).Need = True
-    '    Else
-    '        myFeatureList.GetName(Granite).Preference = rltGranite.SelectedValue
-    '    End If
-
-    '    If cbxLaminate.Checked = True Then
-    '        myFeatureList.GetName(Laminate).Need = True
-    '    Else
-    '        myFeatureList.GetName(Laminate).Preference = rltLaminate.SelectedValue
-    '    End If
-
-    '    If cbxWood.Checked = True Then
-    '        myFeatureList.GetName(Wood).Need = True
-    '    Else
-    '        myFeatureList.GetName(Wood).Preference = rltWood.SelectedValue
-    '    End If
-
-    '    If cbxMarble.Checked = True Then
-    '        myFeatureList.GetName(Marble).Need = True
-    '    Else
-    '        myFeatureList.GetName(Marble).Preference = rltMarble.SelectedValue
-    '    End If
-
-
-    '    'BATH
-
-    '    If cbxBathShower.Checked = True Then
-    '        myFeatureList.GetName(Bath/BathShower Combination).Need = True
-    '    Else
-    '        myFeatureList.GetName(Bath/BathShower Combination).Preference = rltBathShower.SelectedValue
-    '    End If
-
-    '    If cbxWalkinShower.Checked = True Then
-    '        myFeatureList.GetName(Walk-in-Shower).Need = True
-    '    Else
-    '        myFeatureList.GetName(Walk-in-Shower).Preference = rltWalkinShower.SelectedValue
-    '    End If
-
-    '    If cbxRainfall.Checked = True Then
-    '        myFeatureList.GetName(Luxury rainfall shower).Need = True
-    '    Else
-    '        myFeatureList.GetName(Luxury rainfall shower).Preference = rltRainfall.SelectedValue
-    '    End If
-
-
-    '    'CLOSET
-
-    '    If cbxWardrobe.Checked = True Then
-    '        myFeatureList.GetName(Wardrobe Closet).Need = True
-    '    Else
-    '        myFeatureList.GetName(Wardrobe Closet).Preference = rltWardrobe.SelectedValue
-    '    End If
-
-    '    If cbxWalkinCloset.Checked = True Then
-    '        myFeatureList.GetName(Walk-in Closet).Need = True
-    '    Else
-    '        myFeatureList.GetName(Walk-in Closet).Preference = rltWalkinCloset.SelectedValue
-    '    End If
-
-
-    '    'FIREPLACE
-
-    '    If cbxBrick.Checked = True Then
-    '        myFeatureList.GetName(Brick Fireplace).Need = True
-    '    Else
-    '        myFeatureList.GetName(Brick Fireplace).Preference = rltBrick.SelectedValue
-    '    End If
-
-    '    If cbxManufactured.Checked = True Then
-    '        myFeatureList.GetName(Manufactured Stone Fireplace).Need = True
-    '    Else
-    '        myFeatureList.GetName(Manufactured Stone Fireplace).Preference = rltManufactured.SelectedValue
-    '    End If
-
-    '    If cbxNatural.Checked = True Then
-    '        myFeatureList.GetName(Natural Stone Fireplace).Need = True
-    '    Else
-    '        myFeatureList.GetName(Natural Stone Fireplace).Preference = rltNatural.SelectedValue
-    '    End If
-    'End Sub
 End Class
 
 

@@ -53,6 +53,7 @@ Public Class Optimization
         mySolverContext.Solve()   ' or specifically    mySolverContext.Solve(New SimplexDirective)
         Results(Obj)
         mySolverContext.ClearModel()
+
     End Sub
 
     Public Function GetNumOfOptions(ByVal featureIndex As Integer) As Integer
@@ -124,7 +125,7 @@ Public Class Optimization
                 If j + XindexNow > 28 Then
                     Exit For
                 End If
-                If (myFeatureList.Item(i).ID = myOptionList.Item(j).getoptionfeature) Then
+                If (myFeatureList.Item(i).getID = myOptionList.Item(j).getoptionfeature) Then
                     Dim optionInfeature As Decision = myDecisionList.Item(j + XindexNow)
 
                     myChoice += optionInfeature
@@ -143,20 +144,31 @@ Public Class Optimization
 
         ' SumSum(CijXij) <= B
 
-        For i = 0 To myFeatureList.Count - 1
-            Dim myFeatureCost As Term = 0
-            For j = 0 To myOptionList.Count - 1
-                Dim myCost As Double = 0
-                If (myFeatureList.Item(i).ID = myOptionList.Item(j).getoptionfeature) Then
-                    myCost = NormalCost().Item(j + XindexNow)
-                    Dim X As Decision = myDecisionList.Item(j + XindexNow)
-                    myFeatureCost += myCost * X
-                End If
-            Next
-            ' refresh the index of Xij
-            'XindexNow += GetNumOfOptions(i)
-            myModel.AddConstraint("Constraint2" & i & obji, myFeatureCost <= budget * (0.8 + ((obji - 1) * 0.05)))
+        Dim myFeatureCost As Term = 0
+        For i = 0 To myOptionList.Count - 1
+
+            Dim myCost = myOptionList.Item(i).getoptionprice
+            '.CalculateTotalPrice
+            Dim X As Decision = myDecisionList.Item(i)
+            myFeatureCost += myCost * X
         Next
+        myModel.AddConstraint("Constraint2" & i & obji, myFeatureCost <= budget * (0.8 + ((obji - 1) * 0.05)))
+
+        'For i = 0 To myFeatureList.Count - 1
+        '    Dim myFeatureCost As Term = 0
+        '    For j = 0 To myOptionList.Count - 1
+        '        Dim myCost As Double = 0
+        '        If (myFeatureList.Item(i).getID = myOptionList.Item(j).getoptionfeature) Then
+        '            'myCost = NormalCost().Item(j + XindexNow)
+        '            myCost = myOptionList.Item(j).CalculateTotalPrice
+        '            Dim X As Decision = myDecisionList.Item(j + XindexNow)
+        '            myFeatureCost += myCost * X
+        '        End If
+        '    Next
+        '    ' refresh the index of Xij
+        '    'XindexNow += GetNumOfOptions(i)
+        '    myModel.AddConstraint("Constraint2" & i & obji, myFeatureCost <= budget * (0.8 + ((obji - 1) * 0.05)))
+        'Next
 
 
     End Sub
@@ -173,7 +185,7 @@ Public Class Optimization
         For i = 0 To myFeatureList.Count - 1
 
             For j = 0 To myOptionList.Count - 1
-                If (myFeatureList.Item(i).ID = myOptionList.Item(j).getoptionfeature) Then
+                If (myFeatureList.Item(i).getID = myOptionList.Item(j).getFeatureID) Then
                     myObj1 += featureUtility.Item(i) * optionUtility.Item(j) * myDecisionList.Item(j + XindexNow)
                 End If
             Next

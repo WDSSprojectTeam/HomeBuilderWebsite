@@ -73,4 +73,12 @@ Public Class OptimizationResults
         Return List
     End Function
 
+    Public Function getChoices() As ArrayList
+        Dim list As New ArrayList
+        For Each aChoice In myChoiceList
+            list.Add(aChoice.ToDouble)
+        Next
+        Return list
+    End Function
+
 End Class

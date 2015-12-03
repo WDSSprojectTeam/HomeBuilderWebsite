@@ -9,6 +9,8 @@
             </asp:ImageField>
         </Fields>
     </asp:DetailsView>
+
+    <asp:Button ID="btnFeatureEvaluation" runat="server" Text="Select Home and Customize Features" />
     
 
 </asp:Content>

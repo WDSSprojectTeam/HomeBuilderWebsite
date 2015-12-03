@@ -1,15 +1,16 @@
-﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="Comparison.aspx.vb" Inherits="HomeBuilderWebsite_master_Comparison" %>
+﻿<%@ Page Title="" Page Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false" CodeFile="Comparison.aspx.vb" Inherits="Comparison" %>
 
 <%@ Register assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" namespace="System.Web.UI.DataVisualization.Charting" tagprefix="asp" %>
 
-<!DOCTYPE html>
+<%--<!DOCTYPE html>--%>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
+<%--<html xmlns="http://www.w3.org/1999/xhtml">--%>
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
+<%--<head runat="server">
     <title></title>
 </head>
 <body>
-    <form id="form1" runat="server">
+    <form id="form1" runat="server">--%>
     <div>
     
         Welcome To The Comparison Page!<br />
@@ -68,6 +69,10 @@
         <asp:Button ID="Button1" runat="server" Height="43px" Text="Compare" Width="140px" />
     
     </div>
-    </form>
-</body>
-</html>
+      </asp:Content>
+      
+<%--    </form>
+</body>--%>
+<%--</html>--%>
+
+  

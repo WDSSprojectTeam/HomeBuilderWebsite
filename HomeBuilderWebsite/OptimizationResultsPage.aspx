@@ -16,5 +16,11 @@
          </chartareas>
      </asp:Chart>
      
+     <asp:Panel ID="pnlGVW" runat="server" Visible="False">
+         <asp:GridView ID="gvwDetails" runat="server">
+         </asp:GridView>
+     </asp:Panel>
+     <br />
+     
 </asp:Content>
 
