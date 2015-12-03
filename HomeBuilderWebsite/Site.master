@@ -42,17 +42,17 @@
         <asp:Image ID="imghome" runat="server" ImageUrl="~/Images/HomeBanner.jpg" Height="159px" Width="881px" />
        
          <div class="float:right" style="text-align: right; margin-top: 0px; width: 424px; height: 26px; margin-left: 421px;">
-                    <section id ="login">
+                   <%-- <section id ="login">
                         <ul style="list-style-type: none; margin:0px; padding:0px">
                                 <li style= "display:inline";> Login</li>
                                 <li style= "display:inline";> Go Back</li>
                         </ul>
-                    </section>
+                    </section>--%>
                     
                     <nav class="navigation">
                             <ul style="list-style-type: none";>
-                                <li style= "display:inline";><a runat="server" href="~/ChooseHome.aspx">Home</a></li>
-                                <li style= "display:inline";><a runat="server" href="~/FeatureEvaluationPage.aspx">View Options</a></li>
+                                <li style= "display:inline";><a runat="server" href="~/Home.aspx">Home</a></li>
+<%--                                <li style= "display:inline";><a runat="server" href="~/FeatureEvaluationPage.aspx">View Options</a></li>--%>
                                
                             </ul>
                     </nav>

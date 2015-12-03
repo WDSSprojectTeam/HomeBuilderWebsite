@@ -14,7 +14,7 @@
      <section>
                
         <asp:DropDownList ID="ddlScenariosSaved" runat="server"></asp:DropDownList>
-         <asp:Button ID="btnLoadScenario" runat="server" Text="Load Saved Home" />
+         <asp:Button ID="btnLoadScenario" runat="server" Text="Compare Saved Homes" />
       
       <asp:GridView ID="gvwScenarios" runat="server"></asp:GridView>
     <asp:Button ID="btnCompare" runat="server" Text="Compare Selected" /> 

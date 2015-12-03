@@ -1,13 +1,14 @@
-﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="Comparison2.aspx.vb" Inherits="HomeBuilderWebsite_master_Comparison2" %>
+﻿<%@  Page Title="" Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false" CodeFile="Comparison2.aspx.vb" Inherits="HomeBuilderWebsite_master_Comparison2" %>
 
-<!DOCTYPE html>
+<%--<!DOCTYPE html>--%>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<%--<html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
 </head>
 <body>
-    <form id="form1" runat="server">
+    <form id="form1" runat="server">--%>
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
     <div>
     
         <asp:Chart ID="Chart1" runat="server">
@@ -53,6 +54,7 @@
         </asp:DetailsView>
     
     </div>
-    </form>
+    <%--</form>
 </body>
-</html>
+</html>--%>
+    </asp:Content>

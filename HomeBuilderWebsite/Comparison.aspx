@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Page Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false" CodeFile="Comparison.aspx.vb" Inherits="Comparison" %>
+﻿<%@ Page Title="" Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false" CodeFile="Comparison.aspx.vb" Inherits="HomeBuilderWebsite_master_Comparison" %>
 
 <%@ Register assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" namespace="System.Web.UI.DataVisualization.Charting" tagprefix="asp" %>
 
@@ -6,7 +6,7 @@
 
 <%--<html xmlns="http://www.w3.org/1999/xhtml">--%>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
-<%--<head runat="server">
+    <%--<head runat="server">
     <title></title>
 </head>
 <body>
