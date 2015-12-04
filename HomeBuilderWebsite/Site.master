@@ -38,26 +38,22 @@
                 <%--Site Scripts--%>
             </Scripts>
         </asp:ScriptManager>
-        <h1>Home Builder</h1>
-        <asp:Image ID="imghome" runat="server" ImageUrl="~/Images/HomeBanner.jpg" Height="159px" Width="881px" />
+       <div style="text-align:center">
+             <asp:Image ID="imghome" runat="server" ImageUrl="~/Images/banner2.png" Height="159px" Width="881px" />
+
+        <h2 style="font-family: Gabriola; font-size: xx-large; font-style: normal; font-variant: normal; color: #333333; font-weight: bolder; margin-top: 10px;">Your dream home is only a few clicks away...</h2>
        
-         <div class="float:right" style="text-align: right; margin-top: 0px; width: 424px; height: 26px; margin-left: 421px;">
-                   <%-- <section id ="login">
-                        <ul style="list-style-type: none; margin:0px; padding:0px">
-                                <li style= "display:inline";> Login</li>
-                                <li style= "display:inline";> Go Back</li>
-                        </ul>
-                    </section>--%>
+       
+
+        
+       
                     
-                    <nav class="navigation">
-                            <ul style="list-style-type: none";>
-                                <li style= "display:inline";><a runat="server" href="~/Home.aspx">Home</a></li>
-<%--                                <li style= "display:inline";><a runat="server" href="~/FeatureEvaluationPage.aspx">View Options</a></li>--%>
                                
-                            </ul>
-                    </nav>
+        &nbsp;<asp:Button ID="btnAboutUs" runat="server" BackColor="#C09E4E" Font-Bold="False" Font-Names="Gabriola" Font-Size="Medium" ForeColor="Black" Text="About Us" Width="232px" />
                     
-             </div>
+            <asp:Button ID="btnReturn" runat="server" href="~/Home.aspx" BackColor="#C09E4E" Font-Bold="False" Font-Names="Gabriola" Font-Size="Medium" ForeColor="Black" Text="Return To Homepage" Width="232px" />
+            <body style="background-color:#EBFAFA">
+       
 
         <asp:ContentPlaceHolder ID="MainContent" runat="server">
                 
