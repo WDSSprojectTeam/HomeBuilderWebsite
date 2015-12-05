@@ -10,6 +10,8 @@ Partial Class ChooseHomeLayout
 
         If (Not IsPostBack) Then
 
+            firstload()
+
             lblfamily.Visible = False
             lblluxury.Visible = False
             lblstarter.Visible = False
@@ -18,14 +20,31 @@ Partial Class ChooseHomeLayout
             ddlbathroom.SelectedValue = Session("tempbath")
             ddlbedroom.SelectedValue = Session("tempbed")
 
+            If Session("numberofloads") <> 1 Then
+                PopulateGridView()
 
-            PopulateGridView()
+            End If
+
+
             lblnooptions.Visible = False
         End If
 
 
     End Sub
 
+    Protected Sub firstload()
+
+        Session("numberofloads") += 1
+        If Session("numberofloads") = 1 Then
+            Session("temptype") = "Family"
+            Session("tempbath") = 1
+            Session("tempbed") = 1
+            gvwalltypes.DataSource = myDataLoader.GetHomeDetails()
+            gvwalltypes.DataBind()
+            gvwalltypes.Visible = True
+        End If
+
+    End Sub
 
     Protected Sub btnSeeHomeOptions_Click(sender As Object, e As EventArgs) Handles btnSeeHomeOptions.Click
         PopulateGridView()
@@ -47,11 +66,14 @@ Partial Class ChooseHomeLayout
             gvwfiltered.DataSource = homedetails
             gvwfiltered.DataBind()
             gvwfiltered.Visible = True
+            gvwalltypes.Visible = False
             lblnooptions.Visible = False
         Else
             gvwalltypes.Visible = False
+            gvwfiltered.Visible = False
             lblnooptions.Visible = True
         End If
+
 
     End Sub
 
@@ -72,6 +94,7 @@ Partial Class ChooseHomeLayout
             Dim rowindex As Integer = e.CommandArgument
             Dim homeid As Integer = gvwfiltered.Rows.Item(rowindex).Cells.Item(2).Text
             Session("homeid") = homeid
+
         End If
         Response.Redirect("SeeHomeDetails.aspx")
 
@@ -95,6 +118,8 @@ Partial Class ChooseHomeLayout
         End If
 
         gvwalltypes.Visible = False
+        gvwfiltered.Visible = False
+        lblnooptions.Visible = False
 
     End Sub
 
@@ -110,9 +135,15 @@ Partial Class ChooseHomeLayout
 
 
     Protected Sub btnallhome_Click(sender As Object, e As EventArgs) Handles btnallhome.Click
+        Session("numberofloads") = 0
         gvwalltypes.DataSource = myDataLoader.GetHomeDetails()
         gvwalltypes.DataBind()
         gvwalltypes.Visible = True
+
+        lbxhometype.SelectedValue = "Family"
+        ddlbathroom.SelectedValue = 1
+        ddlbedroom.SelectedValue = 1
+
     End Sub
 
 
