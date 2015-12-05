@@ -131,6 +131,8 @@
      
                     <asp:Label ID="lblnooptions" runat="server" Text="We apologize. We do not offer any homes that fit your needs. Please select another home type or number of bed/bath."></asp:Label>
 
+                    <asp:LinkButton ID="lnkchoosehome" runat="server" Font-Size="Larger" ForeColor="#333399">Select Home Upgrades</asp:LinkButton>
+
                 </td>
             
 

@@ -147,4 +147,21 @@ Partial Class ChooseHomeLayout
     End Sub
 
 
+
+
+    'Private Sub lnkchoosehome_Click(sender As Object, e As EventArgs) Handles lnkchoosehome.Click
+    '    Dim selectedcourseID As String
+    '    Dim selectedhome As HomeLayouts
+
+    '    If gvwalltypes.Visible = True Then
+    '        selectedcourseID = gvwalltypes.SelectedRow.Cells.Item(2).Text
+
+    '        Session("SelectedHome") = selectedhome.GetHomeObject(selectedcourseID)
+    '    ElseIf gvwfiltered.Visible = True
+    '        selectedcourseID = gvwfiltered.SelectedRow.Cells.Item(2).Text
+    '        Session("SelectedHome") = selectedcourseID
+    '    End If
+
+    '    Response.Redirect("FEBedroom.aspx")         'this needs to be changed
+    'End Sub
 End Class

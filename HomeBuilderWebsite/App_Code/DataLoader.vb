@@ -174,4 +174,39 @@ FROM tblHomeLayouts;", myConnection)
         Return myTable
     End Function
 
+    Public Sub LoadHomesLayouts()
+        Dim aHomeList As New List(Of HomeLayouts)
+
+        myConnection = New OleDbConnection(myConnectionStr)
+        myCommand = New OleDbCommand("SELECT tblHomeLayouts.ID, tblHomeLayouts.HouseName, tblHomeLayouts.Bedrooms, tblHomeLayouts.Bathrooms, tblHomeLayouts.Price, tblHomeLayouts.SquareFeet, tblHomeLayouts.Style
+FROM tblHomeLayouts;", myConnection)
+
+        Try
+            myConnection.Open()
+            myReader = myCommand.ExecuteReader
+
+            Do While (myReader.Read)
+                Dim ID As Integer = myReader.Item("ID")
+                Dim Name As String = myReader.Item("HouseName")
+                Dim Bedroom As Double = myReader.Item("Bedrooms")
+                Dim Bathroom As Double = myReader.Item("Bathrooms")
+                Dim Price As Double = myReader.Item("Price")
+                Dim Squarefeet As Double = myReader.Item("SquareFeet")
+                Dim Style As String = myReader.Item("Style")
+
+                aHomeList.Add(New HomeLayouts(ID, Name, Bedroom, Bathroom, Price, Squarefeet, Style))
+
+            Loop
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        Finally
+            Session("HomeSet") = aHomeList
+            myReader.Close()
+            myConnection.Close()
+
+        End Try
+
+
+    End Sub
+
 End Class
