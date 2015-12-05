@@ -44,9 +44,9 @@ Partial Class ChooseHomeLayout
         homedetails = myDataLoader.GetHomeDetails(type, bed, bath)
 
         If homedetails.Rows.Count <> 0 Then
-            gvwalltypes.DataSource = homedetails
-            gvwalltypes.DataBind()
-            gvwalltypes.Visible = True
+            gvwfiltered.DataSource = homedetails
+            gvwfiltered.DataBind()
+            gvwfiltered.Visible = True
             lblnooptions.Visible = False
         Else
             gvwalltypes.Visible = False
@@ -59,10 +59,21 @@ Partial Class ChooseHomeLayout
 
         If (e.CommandName = "btnDetails") Then
             Dim rowindex As Integer = e.CommandArgument
-            Dim homeid As Integer = gvwalltypes.Rows.Item(rowindex).Cells.Item(4).Text
+            Dim homeid As Integer = gvwalltypes.Rows.Item(rowindex).Cells.Item(2).Text
             Session("homeid") = homeid
-            Response.Redirect("SeeHomeDetails.aspx")
         End If
+        Response.Redirect("SeeHomeDetails.aspx")
+
+    End Sub
+
+    Private Sub gvwfiltered_RowCommand(sender As Object, e As GridViewCommandEventArgs) Handles gvwfiltered.RowCommand
+
+        If (e.CommandName = "btnDetails") Then
+            Dim rowindex As Integer = e.CommandArgument
+            Dim homeid As Integer = gvwfiltered.Rows.Item(rowindex).Cells.Item(2).Text
+            Session("homeid") = homeid
+        End If
+        Response.Redirect("SeeHomeDetails.aspx")
 
     End Sub
 
@@ -103,4 +114,6 @@ Partial Class ChooseHomeLayout
         gvwalltypes.DataBind()
         gvwalltypes.Visible = True
     End Sub
+
+
 End Class

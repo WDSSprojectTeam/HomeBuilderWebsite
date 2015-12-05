@@ -4,6 +4,6 @@ Partial Class Instructions_BuildNewHome
 
     Protected Sub btnBegin_Click(sender As Object, e As EventArgs) Handles btnBegin.Click
         Session("Budget") = tbxBudget.Text
-        Response.Redirect("~\FEOutdoor.aspx")
+        Response.Redirect("~\ChooseHomeLayout.aspx")
     End Sub
 End Class
