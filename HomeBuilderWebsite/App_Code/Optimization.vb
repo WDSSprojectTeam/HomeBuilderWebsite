@@ -251,7 +251,7 @@ Public Class Optimization
         Dim myDataLoader As New DataLoader
         myDataLoader.LoadHomesLayouts()
         Session("homeid") = 1
-        budget = 300000
+        budget = 100000
         Session("Budget") = budget
 
         myFeatureList.Item(0).Rating = 3
