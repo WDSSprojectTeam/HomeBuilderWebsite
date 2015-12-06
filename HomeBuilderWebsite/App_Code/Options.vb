@@ -1,6 +1,9 @@
 ﻿Imports Microsoft.VisualBasic
+Imports System.Collections.Generic
+Imports System.Web.UI
 
 Public Class Options
+    Inherits Page
     Private ID As Integer
     Private Name As String
     Private Price As Double
@@ -84,6 +87,19 @@ Public Class Options
             myNeed = aneed
         End Set
     End Property
+
+    Public Function getFeatureName() As String
+        Dim name As String = ""
+        Dim myFeatureList As List(Of Feature) = Session("FeatureSet")
+        For Each aFeature In myFeatureList
+            If FeatureID = aFeature.getID Then
+                name = aFeature.Name
+            End If
+        Next
+
+        Return name
+    End Function
+
 
 
 
