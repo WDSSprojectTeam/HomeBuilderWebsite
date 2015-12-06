@@ -55,7 +55,7 @@ Public Class Options
             ElseIf (getoptionID >= 10 And getoptionID <= 12)
                 myPrice *= myHome.Squarefeet
             ElseIf (getoptionID >= 16 And getoptionID <= 20)
-                myPrice *= (myHome.Squarefeet * 1.05)
+                myPrice *= (myHome.SquareFeet * 1.05) / 100
             ElseIf (getoptionID >= 21 And getoptionID <= 23)
                 myPrice *= myHome.NumberOfBathrooms
             ElseIf (getoptionID >= 24 And getoptionID <= 25)
