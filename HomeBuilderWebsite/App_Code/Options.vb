@@ -44,12 +44,7 @@ Public Class Options
 
     Public ReadOnly Property getoptionprice As Double
         Get
-            Dim myPrice As Double = Price
-            Dim myHomeList As New List(Of HomeLayouts)
-
-
-            'If (ID = 21 Or ID = ) Then
-            Return myPrice
+            Return Price
         End Get
     End Property
 

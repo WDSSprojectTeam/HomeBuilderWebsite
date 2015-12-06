@@ -18,7 +18,6 @@ Public Class OptimizationResults
         For i = 0 To myOptionList.Count - 1
             myFeatures.Add(myOptionList.Item(i).getFeatureID)
         Next
-
     End Sub
 
     Public Function featureCost(ByVal featureID As Integer) As Integer
@@ -81,7 +80,5 @@ Public Class OptimizationResults
         Next
         Return list
     End Function
-
-
 
 End Class

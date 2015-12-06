@@ -548,13 +548,11 @@ Partial Class FeatureEvaluation1
     End Sub
 
     Protected Sub btnOptimize_Click(sender As Object, e As EventArgs) Handles btnOptimize.Click
-
         Dim myFeatureList As New List(Of Feature)
         myFeatureList = Session("FeatureSet")
 
         Dim myOptionList As New List(Of Options)
         myOptionList = Session("OptionSet")
-
 
 
 
@@ -1029,8 +1027,6 @@ Partial Class FeatureEvaluation1
         Next
         Response.Redirect("~\OptimizationResultsPage.aspx")
     End Sub
-
-
 
 End Class
 

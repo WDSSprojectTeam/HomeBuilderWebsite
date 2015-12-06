@@ -22,6 +22,8 @@ Public Class Feature
 
     End Sub
 
+
+
     ReadOnly Property Name As String
         Get
             Return FeatureName

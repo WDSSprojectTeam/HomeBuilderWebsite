@@ -27,7 +27,7 @@ Partial Class OptimizationResultsPage
         ElseIf wc = "85% of Budget"
             check = 1
 
-        ElseIf wc = "90% of Budactuallget"
+        ElseIf wc = "90% of Budget"
             check = 2
 
         ElseIf wc = "95% of Budget"

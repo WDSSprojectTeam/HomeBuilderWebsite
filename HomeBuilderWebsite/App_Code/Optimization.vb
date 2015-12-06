@@ -34,7 +34,7 @@ Public Class Optimization
         Next
 
         budget = Session("Budget")
-        'MakeUpRatings()
+
     End Sub
 
     Public Sub Solve(ByVal Obj As Integer)   ' 1 >>> Max utility, 2 >>> Min Cost, 3 >> Max value
@@ -243,48 +243,6 @@ Public Class Optimization
         Session("Results") = myResultList
 
 
-    End Sub
-
-    Public Sub MakeUpRatings()
-        Dim myFeatures As List(Of Feature) = Session("FeatureSet")
-        Dim myOptions As List(Of Options) = Session("OptionSet")
-        myFeatures.Item(0).Rating = 3
-        myFeatures.Item(1).Rating = 2
-        myFeatures.Item(2).Rating = 3
-        myFeatures.Item(3).Rating = 3
-        myFeatures.Item(4).Rating = 2
-        myFeatures.Item(5).Rating = 2
-        myFeatures.Item(6).Rating = 1
-        myFeatures.Item(7).Rating = 1
-
-        myOptions.Item(0).Preference = 1
-        myOptions.Item(1).Preference = 2
-        myOptions.Item(2).Preference = 3
-        myOptions.Item(3).Preference = 5
-        myOptions.Item(4).Preference = 2
-        myOptions.Item(5).Preference = 3
-        myOptions.Item(6).Preference = 4
-        myOptions.Item(7).Preference = 1
-        myOptions.Item(8).Preference = 1
-        myOptions.Item(9).Preference = 2
-        myOptions.Item(10).Preference = 3
-        myOptions.Item(11).Preference = 5
-        myOptions.Item(12).Preference = 1
-        myOptions.Item(13).Preference = 2
-        myOptions.Item(14).Preference = 3
-        myOptions.Item(15).Preference = 1
-        myOptions.Item(16).Preference = 2
-        myOptions.Item(17).Preference = 1
-        myOptions.Item(18).Preference = 4
-        myOptions.Item(19).Preference = 4
-        myOptions.Item(20).Preference = 1
-        myOptions.Item(21).Preference = 2
-        myOptions.Item(22).Preference = 4
-        myOptions.Item(23).Preference = 1
-        myOptions.Item(24).Preference = 3
-        myOptions.Item(25).Preference = 1
-        myOptions.Item(26).Preference = 2
-        myOptions.Item(27).Preference = 2
     End Sub
 
 

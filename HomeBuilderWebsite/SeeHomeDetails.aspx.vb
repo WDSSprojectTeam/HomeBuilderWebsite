@@ -16,7 +16,7 @@ Partial Class SeeHomeDetails
 
 
     Protected Sub btnbacktochoosehome_Click(sender As Object, e As EventArgs) Handles btnbacktochoosehome.Click
-        Response.Redirect("~\ChooseHomeLayout.aspx")
+        Response.Redirect("ChooseHomeLayout.aspx")
     End Sub
 
     Private Sub btnFeatureEvaluation_Click(sender As Object, e As EventArgs) Handles btnFeatureEvaluation.Click
