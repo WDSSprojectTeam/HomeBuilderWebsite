@@ -44,7 +44,24 @@ Public Class Options
 
     Public ReadOnly Property getoptionprice As Double
         Get
-            Return Price
+            Dim myPrice As Double = Price
+            Dim myHome As New HomeLayouts
+            Dim myDataLoader As New DataLoader
+
+            myHome = myDataLoader.GetHomeObject(Session("homeid"))
+
+            If (getoptionID >= 5 And getoptionID <= 9) Then
+                myPrice *= 50
+            ElseIf (getoptionID >= 10 And getoptionID <= 12)
+                myPrice *= myHome.SquareFeet
+            ElseIf (getoptionID >= 16 And getoptionID <= 20)
+                myPrice *= (myHome.SquareFeet * 1.05)
+            ElseIf (getoptionID >= 21 And getoptionID <= 23)
+                myPrice *= myHome.NumberOfBathrooms
+            ElseIf (getoptionID >= 24 And getoptionID <= 25)
+                myPrice *= myHome.NumberOfBedrooms
+            End If
+            Return myPrice
         End Get
     End Property
 
