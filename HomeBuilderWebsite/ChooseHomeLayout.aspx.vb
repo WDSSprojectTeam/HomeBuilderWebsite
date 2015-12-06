@@ -43,7 +43,7 @@ Partial Class ChooseHomeLayout
             gvwalltypes.DataBind()
             gvwalltypes.Visible = True
         End If
-
+        myDataLoader.LoadHomesLayouts()
     End Sub
 
     Protected Sub btnSeeHomeOptions_Click(sender As Object, e As EventArgs) Handles btnSeeHomeOptions.Click
