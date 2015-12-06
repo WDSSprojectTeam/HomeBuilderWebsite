@@ -89,14 +89,14 @@ Partial Class ChooseHomeLayout
     End Sub
 
     Private Sub gvwfiltered_RowCommand(sender As Object, e As GridViewCommandEventArgs) Handles gvwfiltered.RowCommand
+        Dim rowindex As Integer = e.CommandArgument
+        Dim homeid As Integer = gvwfiltered.Rows.Item(rowindex).Cells.Item(2).Text
+        Session("homeid") = homeid
 
         If (e.CommandName = "btnDetails") Then
-            Dim rowindex As Integer = e.CommandArgument
-            Dim homeid As Integer = gvwfiltered.Rows.Item(rowindex).Cells.Item(2).Text
-            Session("homeid") = homeid
-
+            Response.Redirect("SeeHomeDetails.aspx")
         End If
-        Response.Redirect("SeeHomeDetails.aspx")
+
 
     End Sub
 
