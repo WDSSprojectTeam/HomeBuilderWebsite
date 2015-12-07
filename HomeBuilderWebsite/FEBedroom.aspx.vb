@@ -2,73 +2,71 @@
 Partial Class FEBedroom
     Inherits System.Web.UI.Page
 
-    'Private myOptionList As New List(Of Options)
-
     Protected Sub btnNext_Click(sender As Object, e As EventArgs) Handles btnNext.Click
-        'myOptionList = Session("myOptions")
+        Dim myOptionList As New optionSet(Session("OptionSet"))
 
-        '    'BATH
+        'BATH
 
-        '    If cbxBathShower.Checked = True Then
-        '        myOptionList.GetName("Bath/Shower Combination").Need = True
-        '    Else
-        '        myOptionList.GetName("Bath/Shower Combination").Preference = rltBathShower.SelectedValue
-        '    End If
+        If cbxBathShower.Checked = True Then
+            myOptionList.GetName("Bath/Shower Combination").Need = True
+        Else
+            myOptionList.GetName("Bath/Shower Combination").Preference = rltBathShower.SelectedValue
+        End If
 
-        '    If cbxWalkinShower.Checked = True Then
-        '        myOptionList.GetName("Walk-in-Shower").Need = True
-        '    Else
-        '        myOptionList.GetName("Walk-in-Shower").Preference = rltWalkinShower.SelectedValue
-        '    End If
+        If cbxWalkinShower.Checked = True Then
+            myOptionList.GetName("Walk-in-shower").Need = True
+        Else
+            myOptionList.GetName("Walk-in-shower").Preference = rltWalkinShower.SelectedValue
+        End If
 
-        '    If cbxRainfall.Checked = True Then
-        '        myOptionList.GetName("Luxury rainfall shower").Need = True
-        '    Else
-        '        myOptionList.GetName("Luxury rainfall shower").Preference = rltRainfall.SelectedValue
-        '    End If
+        If cbxRainfall.Checked = True Then
+            myOptionList.GetName("Luxury rainfall shower").Need = True
+        Else
+            myOptionList.GetName("Luxury rainfall shower").Preference = rltRainfall.SelectedValue
+        End If
 
-        '    'CLOSET
+        'CLOSET
 
-        '    If cbxWardrobe.Checked = True Then
-        '        myOptionList.GetName("Wardrobe Closet").Need = True
-        '    Else
-        '        myOptionList.GetName("Wardrobe Closet").Preference = rltWardrobe.SelectedValue
-        '    End If
+        If cbxWardrobe.Checked = True Then
+            myOptionList.GetName("Wardrobe Closet").Need = True
+        Else
+            myOptionList.GetName("Wardrobe Closet").Preference = rltWardrobe.SelectedValue
+        End If
 
-        '    If cbxWalkinCloset.Checked = True Then
-        '        myOptionList.GetName("Walk-in Closet").Need = True
-        '    Else
-        '        myOptionList.GetName("Walk-in Closet").Preference = rltWalkinCloset.SelectedValue
-        '    End If
+        If cbxWalkinCloset.Checked = True Then
+            myOptionList.GetName("Walk-in Closet").Need = True
+        Else
+            myOptionList.GetName("Walk-in Closet").Preference = rltWalkinCloset.SelectedValue
+        End If
 
-        ''BATH
-        'Dim bathPrice As Double = myOptionList.GetName("Bath/Shower Combination").getoptionprice
-        'Dim showerPrice As Double = myOptionList.GetName("Walk-in-Shower").getoptionprice
-        'Dim luxryPrice As Double = myOptionList.GetName("Luxury rainfall shower").getoptionprice
+        'BATH
+        Dim bathPrice As Double = myOptionList.GetName("Bath/Shower Combination").getoptionprice
+        Dim showerPrice As Double = myOptionList.GetName("Walk-in-shower").getoptionprice
+        Dim luxryPrice As Double = myOptionList.GetName("Luxury rainfall shower").getoptionprice
 
-        'Dim bathRating As Integer = myOptionList.GetName("Bath/Shower Combination").Preference
-        'Dim showerRating As Integer = myOptionList.GetName("Walk-in-Shower").Preference
-        'Dim luxryRating As Integer = myOptionList.GetName("Luxury rainfall shower").Preference
+        Dim bathRating As Integer = myOptionList.GetName("Bath/Shower Combination").Preference
+        Dim showerRating As Integer = myOptionList.GetName("Walk-in-shower").Preference
+        Dim luxryRating As Integer = myOptionList.GetName("Luxury rainfall shower").Preference
 
-        ''CLOSET
-        'Dim wardrobePrice As Double = myOptionList.GetName("Wardrobe Closet").getoptionprice
-        'Dim walkPrice As Double = myOptionList.GetName("Walk-in Closet").getoptionprice
+        'CLOSET
+        Dim wardrobePrice As Double = myOptionList.GetName("Wardrobe Closet").getoptionprice
+        Dim walkPrice As Double = myOptionList.GetName("Walk-in Closet").getoptionprice
 
-        'Dim wardrobeRating As Integer = myOptionList.GetName("Wardrobe Closet").Preference
-        'Dim walkRating As Integer = myOptionList.GetName("Walk-in Closet").Preference
+        Dim wardrobeRating As Integer = myOptionList.GetName("Wardrobe Closet").Preference
+        Dim walkRating As Integer = myOptionList.GetName("Walk-in Closet").Preference
 
-        'Dim bathavg As Double = AvgPrice(bathPrice, showerPrice, luxryPrice, 0, 0, bathRating, showerRating, luxryRating, 0, 0)
-        'Dim closetavg As Double = AvgPrice(wardrobePrice, walkPrice, 0, 0, 0, wardrobeRating, walkRating, 0, 0, 0)
+        Dim bathavg As Double = AvgPrice(bathPrice, showerPrice, luxryPrice, 0, 0, bathRating, showerRating, luxryRating, 0, 0)
+        Dim closetavg As Double = AvgPrice(wardrobePrice, walkPrice, 0, 0, 0, wardrobeRating, walkRating, 0, 0, 0)
 
-        'Dim remainderbudget As Double = Session("myRemainderBudget")
-        'Session("myRemainderBudget") = remainderbudget - (bathavg + closetavg)
+        Dim remainderbudget As Double = Session("myRemainderBudget")
+        Session("myRemainderBudget") = remainderbudget - (bathavg + closetavg)
         '
 
         Dim myFeatureList As New List(Of Feature)
         myFeatureList = Session("FeatureSet")
 
-        Dim myOptionList As New List(Of Options)
-        myOptionList = Session("OptionSet")
+        Dim OptionList As New List(Of Options)
+        OptionList = Session("OptionSet")
         Session("Results") = Nothing
         For i = 1 To 9
             Dim opt As New Optimization
@@ -76,6 +74,8 @@ Partial Class FEBedroom
         Next
         Response.Redirect("~\OptimizationResultsPage.aspx")
     End Sub
+
+
 
     'BATH
 
@@ -157,7 +157,7 @@ Partial Class FEBedroom
 
     Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
         Dim remainderbudget As Double = Session("myRemainderBudget")
-        Dim budget As Double = Session("myBudget")
+        Dim budget As Double = Session("Budget")
         lblBudget.Text = "$ " & Convert.ToString(remainderbudget) & " left in your budget"
         Dim percentbudgetused As Double = (budget - remainderbudget) / budget
         Math.Round(percentbudgetused)

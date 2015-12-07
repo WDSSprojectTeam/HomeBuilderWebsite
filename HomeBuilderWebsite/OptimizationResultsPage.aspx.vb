@@ -18,7 +18,7 @@ Partial Class OptimizationResultsPage
         C.DrawOptResults()
     End Sub
 
-    Protected Sub chtMaxUtility_Click(sender As Object, e As ImageMapEventArgs) Handles chtCompareBudgets.Click
+    Protected Sub chtCompareBudgets_Click(sender As Object, e As ImageMapEventArgs) Handles chtCompareBudgets.Click
         Dim check As Integer
         Dim wc = e.PostBackValue.Remove(0, 8)
         If wc = "80% of Budget" Then
@@ -58,7 +58,7 @@ Partial Class OptimizationResultsPage
         Dim myOptionsList As List(Of Options) = Session("OptionSet")
         Dim myChosenOptions As New List(Of Integer)
         For Each aChoice In myResults.Item(check).getSelectedOptions()
-            myChosenOptions.add(aChoice.getoptionID)
+            myChosenOptions.Add(aChoice.getoptionID)
         Next
 
         'For i = 0 To myOptionsList.Count - 1
@@ -70,7 +70,7 @@ Partial Class OptimizationResultsPage
 
         Dim myOptionList As List(Of Options) = Session("optionSet")
 
-        displayList.columns.add("Feature")
+        displayList.Columns.Add("Feature")
         displayList.Columns.Add("Name")
         displayList.Columns.Add("Description")
         displayList.Columns.Add("Price")
@@ -81,8 +81,8 @@ Partial Class OptimizationResultsPage
                 If myOptionList.Item(i).getoptionID = myChosenOptions.Item(j) Then
                     Dim list As New ArrayList
                     displayList.Rows.Add()
-                    displayList.Rows(displayList.Rows.Count - 1)("Feature") = myOptionList.item(i).getFeatureName
-                    displayList.Rows(displayList.Rows.Count - 1)("Name") = myOptionList.item(i).getoptionname
+                    displayList.Rows(displayList.Rows.Count - 1)("Feature") = myOptionList.Item(i).getFeatureName
+                    displayList.Rows(displayList.Rows.Count - 1)("Name") = myOptionList.Item(i).getoptionname
                     displayList.Rows(displayList.Rows.Count - 1)("Description") = myOptionList.Item(i).getoptiondescription
                     displayList.Rows(displayList.Rows.Count - 1)("Price") = myOptionList.Item(i).getoptionprice
                     'list.Add(myOptionList.Item(i).getoptionname)

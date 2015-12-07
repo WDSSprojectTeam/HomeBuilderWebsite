@@ -2,76 +2,77 @@
 Partial Class FEInterior
     Inherits System.Web.UI.Page
 
-    'Private myOptionList As New List(Of Options)
+
 
     Protected Sub btnNext_Click(sender As Object, e As EventArgs) Handles btnNext.Click
-        'myFeatureList = Session("myOptions")
+        Dim myOptionList As New optionSet(Session("OptionSet"))
 
         'FLOORING
 
-        '    If cbxCarpet.Checked = True Then
-        '        myOptionList.GetName("Carpet").Need = True
-        '    Else
-        '        myOptionList.GetName("Carpet").Preference = rltCarpet.SelectedValue
-        '    End If
+        If cbxCarpet.Checked = True Then
+            myOptionList.GetName("Carpet").Need = True
+        Else
+            myOptionList.GetName("Carpet").Preference = rltCarpet.SelectedValue
+        End If
 
-        '    If cbxTile.Checked = True Then
-        '        myOptionList.GetName("Tile").Need = True
-        '    Else
-        '        myOptionList.GetName("Tile").Preference = rltTile.SelectedValue
-        '    End If
+        If cbxTile.Checked = True Then
+            myOptionList.GetName("Tile").Need = True
+        Else
+            myOptionList.GetName("Tile").Preference = rltTile.SelectedValue
+        End If
 
-        '    If cbxHardwood.Checked = True Then
-        '        myOptionList.GetName("Hardwood").Need = True
-        '    Else
-        '        myOptionList.GetName("Hardwood").Preference = rltHardwood.SelectedValue
-        '    End If
+        If cbxHardwood.Checked = True Then
+            myOptionList.GetName("Hardwood").Need = True
+        Else
+            myOptionList.GetName("Hardwood").Preference = rltHardwood.SelectedValue
+        End If
 
-        '    'FIREPLACE
+        'FIREPLACE
 
-        '    If cbxBrick.Checked = True Then
-        '        myOptionList.GetName("Brick Fireplace").Need = True
-        '    Else
-        '        myOptionList.GetName("Brick Fireplace").Preference = rltBrick.SelectedValue
-        '    End If
+        If cbxBrick.Checked = True Then
+            myOptionList.GetName("Brick Fireplace").Need = True
+        Else
+            myOptionList.GetName("Brick Fireplace").Preference = rltBrick.SelectedValue
+        End If
 
-        '    If cbxManufactured.Checked = True Then
-        '        myOptionList.GetName("Manufactured Stone Fireplace").Need = True
-        '    Else
-        '        myOptionList.GetName("Manufactured Stone Fireplace").Preference = rltManufactured.SelectedValue
-        '    End If
+        If cbxManufactured.Checked = True Then
+            myOptionList.GetName("Manufactured Stone Fireplace").Need = True
+        Else
+            myOptionList.GetName("Manufactured Stone Fireplace").Preference = rltManufactured.SelectedValue
+        End If
 
-        '    If cbxNatural.Checked = True Then
-        '        myOptionList.GetName("Natural Stone Fireplace").Need = True
-        '    Else
-        '        myOptionList.GetName("Natural Stone Fireplace").Preference = rltNatural.SelectedValue
-        '    End If
+        If cbxNatural.Checked = True Then
+            myOptionList.GetName("Natural Stone Fireplace").Need = True
+        Else
+            myOptionList.GetName("Natural Stone Fireplace").Preference = rltNatural.SelectedValue
+        End If
 
-        'Dim footage As Double = Session("myFootage")
+        'Dim myHome As HomeLayouts = Session("SelectedHome")
 
-        ''FLOOR
-        'Dim carpetPrice As Double = myOptionList.GetName("Carpet").getoptionprice * footage
-        'Dim tilePrice As Double = myOptionList.GetName("Tile").getoptionprice * footage
-        'Dim hardwoodPrice As Double = myOptionList.GetName("Hardwood").getoptionprice * footage
 
-        'Dim carpetRating As Integer = myOptionList.GetName("Carpet").Preference
-        'Dim tileRating As Integer = myOptionList.GetName("Tile").Preference
-        'Dim hardwoodRating As Integer = myOptionList.GetName("Hardwood").Preference
+        'FLOOR
+        Dim carpetPrice As Double = myOptionList.GetName("Carpet").getoptionprice
+        Dim tilePrice As Double = myOptionList.GetName("Tile").getoptionprice
+        Dim hardwoodPrice As Double = myOptionList.GetName("Hardwood").getoptionprice
 
-        ''FIREPLACE
-        'Dim brickPrice As Double = myOptionList.GetName("Brick Fireplace").getoptionprice
-        'Dim manPrice As Double = myOptionList.GetName("Manufactured Stone Fireplace").getoptionprice
-        'Dim natPrice As Double = myOptionList.GetName("Natural Stone Fireplace").getoptionprice
+        Dim carpetRating As Integer = myOptionList.GetName("Carpet").Preference
+        Dim tileRating As Integer = myOptionList.GetName("Tile").Preference
+        Dim hardwoodRating As Integer = myOptionList.GetName("Hardwood").Preference
 
-        'Dim brickRating As Integer = myOptionList.GetName("Brick Fireplace").Preference
-        'Dim manRating As Integer = myOptionList.GetName("Manufactured Stone Fireplace").Preference
-        'Dim natRating As Integer = myOptionList.GetName("Natural Stone Fireplace").Preference
+        'FIREPLACE
+        Dim brickPrice As Double = myOptionList.GetName("Brick Fireplace").getoptionprice
+        Dim manPrice As Double = myOptionList.GetName("Manufactured Stone Fireplace").getoptionprice
+        Dim natPrice As Double = myOptionList.GetName("Natural Stone Fireplace").getoptionprice
 
-        'Dim flooravg As Double = AvgPrice(carpetPrice, tilePrice, hardwoodPrice, 0, 0, carpetRating, tileRating, hardwoodRating, 0, 0)
-        'Dim fireplaceavg As Double = AvgPrice(brickPrice, manPrice, natPrice, 0, 0, brickRating, manRating, natRating, 0, 0)
+        Dim brickRating As Integer = myOptionList.GetName("Brick Fireplace").Preference
+        Dim manRating As Integer = myOptionList.GetName("Manufactured Stone Fireplace").Preference
+        Dim natRating As Integer = myOptionList.GetName("Natural Stone Fireplace").Preference
 
-        'Dim remainderbudget As Double = Session("myRemainderBudget")
-        'Session("myRemainderBudget") = remainderbudget - (flooravg + fireplaceavg)
+        Dim flooravg As Double = AvgPrice(carpetPrice, tilePrice, hardwoodPrice, 0, 0, carpetRating, tileRating, hardwoodRating, 0, 0)
+        Dim fireplaceavg As Double = AvgPrice(brickPrice, manPrice, natPrice, 0, 0, brickRating, manRating, natRating, 0, 0)
+
+        Dim remainderbudget As Double = Session("myRemainderBudget")
+        Session("myRemainderBudget") = remainderbudget - (flooravg + fireplaceavg)
 
         Response.Redirect("FEKitchen.aspx")
     End Sub
@@ -178,7 +179,7 @@ Partial Class FEInterior
 
     Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
         Dim remainderbudget As Double = Session("myRemainderBudget")
-        Dim budget As Double = Session("myBudget")
+        Dim budget As Double = Session("Budget")
         lblBudget.Text = "$ " & Convert.ToString(remainderbudget) & " left in your budget"
         Dim percentbudgetused As Double = (budget - remainderbudget) / budget
         Math.Round(percentbudgetused)

@@ -227,4 +227,13 @@ FROM tblHomeLayouts;", myConnection)
 
     End Function
 
+    'Public Sub InsertSavedScenario(ByVal HS As String, ByVal pool As String, ByVal roof As String, ByVal TC As Double, ByVal DF As String, ByVal FS As String, ByVal FC As Double, ByVal AP As String, ByVal APC As Double, ByVal CT As String, ByVal CTC As Double, ByVal CL As String, ByVal CLC As Double, ByVal F5 As String, ByVal F5C As Double, )
+    '    myConnection = New OleDbConnection(myConnectionStr)   ' no connection yet
+    '    Dim paramStr As String = HS & ",'" & pool & "','" & roof & "'"
+    '    myCommand = New OleDbCommand("INSERT INTO tblScenarios(HomeStyle, Pool, Roof, TotalCost, DefiningFeature, FloorStyle, FloorCost, Appliances, AppliancesCost, Countertops, CountertopsCost, Closets, ClosetsCost, Feature5, Feature5Cost, Option12, Option12Cost, ect, Option121, Option12Cost1, etc) VALUES (" & paramStr & ")", myConnection)
+    '    myConnection.Open()
+    '    myCommand.ExecuteNonQuery()
+    '    myConnection.Close()
+    'End Sub
+
 End Class

@@ -2,92 +2,93 @@
 Partial Class FEOutdoor
     Inherits System.Web.UI.Page
 
-    'Private myOptionList As New List(Of Options)
+
 
     Protected Sub btnNext_Click(sender As Object, e As EventArgs) Handles btnNext.Click
-        'myFeatureList = Session("myOptions")
+        Dim myOptionList As New optionSet(Session("OptionSet"))
 
-        '    'ROOF TYPE
+        'ROOF TYPE
 
-        '    If cbxAsphaltShingle.Checked = True Then
-        '        myOptionList.GetName("Asphalt Shingle").Need = True
-        '    Else
-        '        myOptionList.GetName("Asphalt Shingle").Preference = rltAsphaltShingle.SelectedValue
-        '    End If
+        If cbxAsphaltShingle.Checked = True Then
+            myOptionList.GetName("Asphalt Shingle").Need = True
+        Else
+            myOptionList.GetName("Asphalt Shingle").Preference = rltAsphaltShingle.SelectedValue
+        End If
 
-        '    If cbxWoodShingle.Checked = True Then
-        '        myOptionList.GetName("Wood Shingle").Need = True
-        '    Else
-        '        myOptionList.GetName("Wood Shingle").Preference = rltWoodShingle.SelectedValue
-        '    End If
+        If cbxWoodShingle.Checked = True Then
+            myOptionList.GetName("Wood Shingle").Need = True
+        Else
+            myOptionList.GetName("Wood Shingle").Preference = rltWoodShingle.SelectedValue
+        End If
 
-        '    If cbxMetalShingle.Checked = True Then
-        '        myOptionList.GetName("Metal Shingle").Need = True
-        '    Else
-        '        myOptionList.GetName("Metal Shingle").Preference = rltMetalShingle.SelectedValue
-        '    End If
+        If cbxMetalShingle.Checked = True Then
+            myOptionList.GetName("Metal Shingle").Need = True
+        Else
+            myOptionList.GetName("Metal Shingle").Preference = rltMetalShingle.SelectedValue
+        End If
 
-        '    If cbxSlateShingle.Checked = True Then
-        '        myOptionList.GetName("Slate Shingle").Need = True
-        '    Else
-        '        myOptionList.GetName("Slate Shingle").Preference = rltSlateShingle.SelectedValue
-        '    End If
+        If cbxSlateShingle.Checked = True Then
+            myOptionList.GetName("Slate Shingle").Need = True
+        Else
+            myOptionList.GetName("Slate Shingle").Preference = rltSlateShingle.SelectedValue
+        End If
 
-        '    If cbxTileShingle.Checked = True Then
-        '        myOptionList.GetName("Tile Shingle").Need = True
-        '    Else
-        '        myOptionList.GetName("Tile Shingle").Preference = rltTileShingle.SelectedValue
-        '    End If
+        If cbxTileShingle.Checked = True Then
+            myOptionList.GetName("Tile Shingle").Need = True
+        Else
+            myOptionList.GetName("Tile Shingle").Preference = rltTileShingle.SelectedValue
+        End If
 
-        '    'GARAGE
+        'GARAGE
 
-        '    If cbxOneCar.Checked = True Then
-        '        myOptionList.GetName("One Car").Need = True
-        '    Else
-        '       myOptionList.GetName("One Car").Preference = rltOneCar.SelectedValue
-        '    End If
+        If cbxOneCar.Checked = True Then
+            myOptionList.GetName("One Car").Need = True
+        Else
+            myOptionList.GetName("One Car").Preference = rltOneCar.SelectedValue
+        End If
 
-        '    If cbxTwoCar.Checked = True Then
-        '        myOptionList.GetName("Two Car").Need = True
-        '    Else
-        '        myOptionList.GetName("Two Car").Preference = rltTwoCar.SelectedValue
-        '    End If
+        If cbxTwoCar.Checked = True Then
+            myOptionList.GetName("Two Car").Need = True
+        Else
+            myOptionList.GetName("Two Car").Preference = rltTwoCar.SelectedValue
+        End If
 
-        '    If cbxThreeCar.Checked = True Then
-        '        myOptionList.GetName("Three Car").Need = True
-        '    Else
-        '        myOptionList.GetName("Three Car").Preference = rltThreeCar.SelectedValue
-        '    End If
+        If cbxThreeCar.Checked = True Then
+            myOptionList.GetName("Three Car").Need = True
+        Else
+            myOptionList.GetName("Three Car").Preference = rltThreeCar.SelectedValue
+        End If
 
-        'Dim footage As Double = Session("myFootage")
+        'Dim myHome As HomeLayouts = Session("SelectedHome")
+        'Dim footage As Double = myHome.SquareFeet
 
-        ''ROOF
-        'Dim asphaltshinglePrice As Double = myOptionList.GetName("Asphalt Shingle").getoptionprice * footage
-        'Dim woodshinglePrice As Double = myOptionList.GetName("Woood Shingle").getoptionprice * footage
-        'Dim metalshinglePrice As Double = myOptionList.GetName("Metal Shingle").getoptionprice * footage
-        'Dim slateshinglePrice As Double = myOptionList.GetName("Slate Shingle").getoptionprice * footage
-        'Dim tileshinglePrice As Double = myOptionList.GetName("Tile Shingle").getoptionprice * footage
+        'ROOF
+        Dim asphaltshinglePrice As Double = myOptionList.GetName("Asphalt Shingle").getoptionprice
+        Dim woodshinglePrice As Double = myOptionList.GetName("Wood Shingle").getoptionprice
+        Dim metalshinglePrice As Double = myOptionList.GetName("Metal Shingle").getoptionprice
+        Dim slateshinglePrice As Double = myOptionList.GetName("Slate Shingle").getoptionprice
+        Dim tileshinglePrice As Double = myOptionList.GetName("Tile Shingle").getoptionprice
 
-        'Dim asphaltshingleRating As Integer = myOptionList.GetName("Asphalt Shingle").Preference
-        'Dim woodshingleRating As Integer = myOptionList.GetName("Wood Shingle").Preference
-        'Dim metalshingleRating As Integer = myOptionList.GetName("Metal Shingle").Preference
-        'Dim slateshingleRating As Integer = myOptionList.GetName("Slate Shingle").Preference
-        'Dim tileshingleRating As Integer = myOptionList.GetName("Tile Shingle").Preference
+        Dim asphaltshingleRating As Integer = myOptionList.GetName("Asphalt Shingle").Preference
+        Dim woodshingleRating As Integer = myOptionList.GetName("Wood Shingle").Preference
+        Dim metalshingleRating As Integer = myOptionList.GetName("Metal Shingle").Preference
+        Dim slateshingleRating As Integer = myOptionList.GetName("Slate Shingle").Preference
+        Dim tileshingleRating As Integer = myOptionList.GetName("Tile Shingle").Preference
 
-        ''GARAGE
-        'Dim onecarPrice As Double = myOptionList.GetName("One Car").getoptionprice
-        'Dim twocarPrice As Double = myOptionList.GetName("Two Car").getoptionprice
-        'Dim threecarPrice As Double = myOptionList.GetName("Three Car").getoptionprice
+        'GARAGE
+        Dim onecarPrice As Double = myOptionList.GetName("One Car").getoptionprice
+        Dim twocarPrice As Double = myOptionList.GetName("Two Car").getoptionprice
+        Dim threecarPrice As Double = myOptionList.GetName("Three Car").getoptionprice
 
-        'Dim onecarRating As Integer = myOptionList.GetName("One Car").Preference
-        'Dim twocarRating As Integer = myOptionList.GetName("Two Car").Preference
-        'Dim threecarRating As Integer = myOptionList.GetName("Three Car").Preference
+        Dim onecarRating As Integer = myOptionList.GetName("One Car").Preference
+        Dim twocarRating As Integer = myOptionList.GetName("Two Car").Preference
+        Dim threecarRating As Integer = myOptionList.GetName("Three Car").Preference
 
-        'Dim roofavg As Double = AvgPrice(asphaltshinglePrice, woodshinglePrice, metalshinglePrice, slateshinglePrice, tileshinglePrice, asphaltshingleRating, woodshingleRating, metalshingleRating, slateshingleRating, tileshingleRating)
-        'Dim garageavg As Double = AvgPrice(onecarPrice, twocarPrice, threecarPrice, 0, 0, onecarRating, twocarRating, threecarRating, 0, 0)
+        Dim roofavg As Double = AvgPrice(asphaltshinglePrice, woodshinglePrice, metalshinglePrice, slateshinglePrice, tileshinglePrice, asphaltshingleRating, woodshingleRating, metalshingleRating, slateshingleRating, tileshingleRating)
+        Dim garageavg As Double = AvgPrice(onecarPrice, twocarPrice, threecarPrice, 0, 0, onecarRating, twocarRating, threecarRating, 0, 0)
 
-        'Dim remainderbudget As Double = Session("myRemainderBudget")
-        'Session("myRemainderBudget") = remainderbudget - (roofavg + garageavg)
+        Dim remainderbudget As Double = Session("myRemainderBudget")
+        Session("myRemainderBudget") = remainderbudget - (roofavg + garageavg)
 
         Response.Redirect("FEInterior.aspx")
         
@@ -266,7 +267,7 @@ Partial Class FEOutdoor
 
     Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
         Dim remainderbudget As Double = Session("myRemainderBudget")
-        Dim budget As Double = Session("myBudget")
+        Dim budget As Double = Session("Budget")
         lblBudget.Text = "$ " & Convert.ToString(remainderbudget) & " left in your budget"
         Dim percentbudgetused As Double = (budget - remainderbudget) / budget
         Math.Round(percentbudgetused)

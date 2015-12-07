@@ -167,6 +167,6 @@ Partial Class ChooseHomeLayout
         Next
 
 
-        Response.Redirect("FEBedroom.aspx")         'this needs to be changed
+        Response.Redirect("ChooseFeature.aspx")
     End Sub
 End Class
