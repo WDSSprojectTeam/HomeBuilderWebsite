@@ -39,6 +39,7 @@ Public Class OptimizationResults
                 If myOptionList.Item(i).getFeatureID = aFeature.getID Then
                     featUtility = aFeature.Rating
                 End If
+
             Next
             utility += myChoiceList.Item(i).ToDouble * myOptionList.Item(i).Preference * featUtility
         Next

@@ -1,6 +1,9 @@
 ﻿Imports Microsoft.VisualBasic
+Imports System.Collections.Generic
+Imports System.Web.UI
 
 Public Class Options
+    Inherits Page
     Private ID As Integer
     Private Name As String
     Private Price As Double
@@ -41,7 +44,24 @@ Public Class Options
 
     Public ReadOnly Property getoptionprice As Double
         Get
-            Return Price
+            Dim myPrice As Double = Price
+            Dim myHome As New HomeLayouts
+            Dim myDataLoader As New DataLoader
+
+            myHome = myDataLoader.GetHomeObject(Session("homeid"))
+
+            If (getoptionID >= 5 And getoptionID <= 9) Then
+                myPrice *= 50
+            ElseIf (getoptionID >= 10 And getoptionID <= 12)
+                myPrice *= myHome.Squarefeet
+            ElseIf (getoptionID >= 16 And getoptionID <= 20)
+                myPrice *= (myHome.SquareFeet * 1.05) / 100
+            ElseIf (getoptionID >= 21 And getoptionID <= 23)
+                myPrice *= myHome.NumberOfBathrooms
+            ElseIf (getoptionID >= 24 And getoptionID <= 25)
+                myPrice *= myHome.NumberOfBedrooms
+            End If
+            Return myPrice
         End Get
     End Property
 
@@ -84,6 +104,19 @@ Public Class Options
             myNeed = aneed
         End Set
     End Property
+
+    Public Function getFeatureName() As String
+        Dim name As String = ""
+        Dim myFeatureList As List(Of Feature) = Session("FeatureSet")
+        For Each aFeature In myFeatureList
+            If FeatureID = aFeature.getID Then
+                name = aFeature.Name
+            End If
+        Next
+
+        Return name
+    End Function
+
 
 
 

@@ -209,4 +209,22 @@ FROM tblHomeLayouts;", myConnection)
 
     End Sub
 
+    Public Function GetHomeObject(ByVal homeid As Integer) As HomeLayouts
+
+        Dim chosenhome As HomeLayouts
+        Dim allhomelist As List(Of HomeLayouts)
+        allhomelist = Session("HomeSet")
+
+        For Each chosenhome In allhomelist
+            If chosenhome.gethomeID = homeid Then
+                Return chosenhome
+                Exit Function
+            End If
+        Next
+
+        Return Nothing
+
+
+    End Function
+
 End Class

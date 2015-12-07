@@ -8,44 +8,28 @@ Public Class HomeLayouts
 
 
     Private houseID As Integer
-    Private Name As String
-    Private Bedroom As Double
-    Private Bathroom As Double
-    Private Price As Double
-    Private Squarefeet As Double
-    Private Style As String
+    Private myName As String
+    Private myBedroom As Double
+    Private myBathroom As Double
+    Private myPrice As Double
+    Private mySquarefeet As Double
+    Private myStyle As String
+
+    Public Sub New()
+
+    End Sub
 
     Public Sub New(ByVal homeid As Integer, ByVal homename As String, ByVal homebedroom As Double, ByVal homebathroom As Double, ByVal homeprice As Double, ByVal homesqft As Double, ByVal homestyle As String)
 
         houseID = homeid
-        Name = homename
-        Bedroom = homebedroom
-        Bathroom = homebathroom
-        Price = homeprice
-        Squarefeet = homesqft
-        Style = homestyle
+        myName = homename
+        myBedroom = homebedroom
+        myBathroom = homebathroom
+        myPrice = homeprice
+        mySquarefeet = homesqft
+        myStyle = homestyle
 
     End Sub
-
-    Public Function GetHomeObject(ByVal homeid As Integer) As HomeLayouts
-
-        Dim chosenhome As HomeLayouts
-        Dim allhomelist As List(Of HomeLayouts)
-        allhomelist = Session("HomeSet")
-
-        For Each chosenhome In allhomelist
-            If houseID = homeid Then
-                Return chosenhome
-                Exit Function
-            End If
-        Next
-
-        Return Nothing
-
-
-    End Function
-
-
 
     Public ReadOnly Property gethomeID As Integer
         Get
@@ -53,5 +37,40 @@ Public Class HomeLayouts
         End Get
     End Property
 
+    Public ReadOnly Property Name
+        Get
+            Return myName
+        End Get
+    End Property
+
+    Public ReadOnly Property NumberOfBedrooms
+        Get
+            Return myBedroom
+        End Get
+    End Property
+
+    Public ReadOnly Property NumberOfBathrooms
+        Get
+            Return myBathroom
+        End Get
+    End Property
+
+    Public ReadOnly Property Price
+        Get
+            Return myPrice
+        End Get
+    End Property
+
+    Public ReadOnly Property SquareFeet
+        Get
+            Return mySquarefeet
+        End Get
+    End Property
+
+    Public ReadOnly Property Style
+        Get
+            Return myStyle
+        End Get
+    End Property
 
 End Class

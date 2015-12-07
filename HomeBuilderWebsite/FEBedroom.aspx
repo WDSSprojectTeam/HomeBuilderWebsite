@@ -59,9 +59,29 @@
             width: 129px;
             height: 31px;
         }
+        .auto-style44 {
+            width: 149px;
+            height: 23px;
+        }
+        .auto-style65 {
+            width: 146px;
+            height: 23px;
+        }
+        .auto-style66 {
+            width: 142px;
+            height: 23px;
+        }
+        .auto-style67 {
+            width: 154px;
+            height: 23px;
+        }
         </style>
 </head>
 <body>
+    <table>
+        <tr>
+            <td>
+
     <form id="form1" runat="server">
     <div>
     <h1>Bedrooms</h1>
@@ -76,11 +96,11 @@
         <table>
             <tr>
                 <td class="auto-style22"></td>
-                <td class="auto-style23">Must Have</td>
-                <td class="auto-style23">Very Important</td>
-                <td class="auto-style23">Important</td>
-                <td class="auto-style23">Indifferent</td>
-                <td class="auto-style23">Not Important</td>
+                <td class="auto-style44">Must Have</td>
+                <td class="auto-style65">Love it</td>
+                <td class="auto-style66">Like it</td>
+                <td class="auto-style67">It&#39;s Okay</td>
+                <td class="auto-style23">Dislike</td>
             </tr>
         </table>
         <asp:Panel ID="pnlBathShower" runat="server">
@@ -91,10 +111,10 @@
                     </td>
                     <td class="auto-style7">
                         <asp:RadioButtonList ID="rltBathShower" runat="server" AutoPostBack="True" ForeColor="White" Height="19px" RepeatDirection="Horizontal" style="margin-left: 0px" Width="600px">
-                            <asp:ListItem Value="4"></asp:ListItem>
                             <asp:ListItem Value="3"></asp:ListItem>
                             <asp:ListItem Value="2"></asp:ListItem>
-                            <asp:ListItem Value="1"></asp:ListItem>
+                            <asp:ListItem Value="1" Selected="True"></asp:ListItem>
+                            <asp:ListItem>0</asp:ListItem>
                         </asp:RadioButtonList>
                     </td>
                     
@@ -109,10 +129,10 @@
                     </td>
                     <td class="auto-style7">
                         <asp:RadioButtonList ID="rltWalkinShower" runat="server" AutoPostBack="True" ForeColor="White" Height="19px" RepeatDirection="Horizontal" style="margin-left: 0px" Width="600px">
-                            <asp:ListItem Value="4"></asp:ListItem>
                             <asp:ListItem Value="3"></asp:ListItem>
                             <asp:ListItem Value="2"></asp:ListItem>
-                            <asp:ListItem Value="1"></asp:ListItem>
+                            <asp:ListItem Value="1" Selected="True"></asp:ListItem>
+                            <asp:ListItem>0</asp:ListItem>
                         </asp:RadioButtonList>
                     </td>
                     
@@ -127,10 +147,10 @@
                     </td>
                     <td class="auto-style32">
                         <asp:RadioButtonList ID="rltRainfall" runat="server" AutoPostBack="True" ForeColor="White" Height="19px" RepeatDirection="Horizontal" style="margin-left: 0px" Width="600px">
-                            <asp:ListItem Value="4"></asp:ListItem>
                             <asp:ListItem Value="3"></asp:ListItem>
                             <asp:ListItem Value="2"></asp:ListItem>
-                            <asp:ListItem Value="1"></asp:ListItem>
+                            <asp:ListItem Value="1" Selected="True"></asp:ListItem>
+                            <asp:ListItem>0</asp:ListItem>
                         </asp:RadioButtonList>
                     </td>
                     
@@ -149,11 +169,11 @@
         <table>
             <tr>
                 <td class="auto-style22"></td>
-                <td class="auto-style23">Must Have</td>
-                <td class="auto-style23">Very Important</td>
-                <td class="auto-style23">Important</td>
-                <td class="auto-style23">Indifferent</td>
-                <td class="auto-style23">Not Important</td>
+                <td class="auto-style44">Must Have</td>
+                <td class="auto-style65">Love it</td>
+                <td class="auto-style66">Like it</td>
+                <td class="auto-style67">It&#39;s Okay</td>
+                <td class="auto-style23">Dislike</td>
             </tr>
         </table>
         <asp:Panel ID="pnlWardrobe" runat="server">
@@ -164,10 +184,10 @@
                     </td>
                     <td class="auto-style53">
                         <asp:RadioButtonList ID="rltWardrobe" runat="server" AutoPostBack="True" ForeColor="White" Height="19px" RepeatDirection="Horizontal" style="margin-left: 0px" Width="600px">
-                            <asp:ListItem Value="4"></asp:ListItem>
                             <asp:ListItem Value="3"></asp:ListItem>
                             <asp:ListItem Value="2"></asp:ListItem>
-                            <asp:ListItem Value="1"></asp:ListItem>
+                            <asp:ListItem Value="1" Selected="True"></asp:ListItem>
+                            <asp:ListItem>0</asp:ListItem>
                         </asp:RadioButtonList>
                     </td>
                     
@@ -182,22 +202,64 @@
                     </td>
                     <td class="auto-style50">
                         <asp:RadioButtonList ID="rltWalkinCloset" runat="server" AutoPostBack="True" ForeColor="White" Height="19px" RepeatDirection="Horizontal" style="margin-left: 0px" Width="600px">
-                            <asp:ListItem Value="4"></asp:ListItem>
                             <asp:ListItem Value="3"></asp:ListItem>
                             <asp:ListItem Value="2"></asp:ListItem>
-                            <asp:ListItem Value="1"></asp:ListItem>
+                            <asp:ListItem Value="1" Selected="True"></asp:ListItem>
+                            <asp:ListItem>0</asp:ListItem>
                         </asp:RadioButtonList>
                     </td>
                     
                 </tr>
             </table>
+            </asp:Panel>
+            <div>
             <br />
             <br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <asp:Button ID="btnNext" runat="server" Height="30px" Text="Next" Width="105px" />
-        </asp:Panel>
-    
+            </div>
+    </td>
+            <td style="vertical-align: top">
+                <table>
+                    <tr>
+                        <td>
+                            <br />
+                            <br />
+                           <asp:Label ID="lblBudget" runat="server" Font-Size="X-Large"></asp:Label>
+                    <br />
+                    <br />
+&nbsp;<br />
+                    
+                    <table>
+                        <tr>
+                            <td>
+                                <asp:Table ID="tblBar" runat="server" BackColor="White" BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" Height="25px" Width="200px">
+                        <asp:TableRow ID="TableRow1" runat="server">
+                            <asp:TableCell ID="TableCell1" runat="server" BackColor="#009933" Width="5px"></asp:TableCell>
+                            <asp:TableCell ID="TableCell2" runat="server"></asp:TableCell>
+                        </asp:TableRow>
+                    </asp:Table>
+                            </td>
+                            <td>
+                                <asp:Label ID="lblpercent" runat="server" Text=""></asp:Label>
+                            </td>
+                        </tr>
+                    </table>
+                    
+                    <br />
+                 </td>
+            </tr>
+        </table> 
+                        </td>
+                    </tr>
+                </table>
+            </td>
+
+        </tr>
+    </table>
     </div>
     </form>
-</body>
+
+            
+    </body>
 </html>

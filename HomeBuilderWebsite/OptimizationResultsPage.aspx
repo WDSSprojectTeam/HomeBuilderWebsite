@@ -19,6 +19,10 @@
      <asp:Panel ID="pnlGVW" runat="server" Visible="False">
          <asp:GridView ID="gvwDetails" runat="server">
          </asp:GridView>
+         <br />
+         <asp:Button ID="btnEdit" runat="server" Text="Edit" Width="78px" />
+         <asp:Button ID="btnSave" runat="server" style="margin-left: 69px" Text="Save" Width="78px" />
+         <br />
      </asp:Panel>
      <br />
      
