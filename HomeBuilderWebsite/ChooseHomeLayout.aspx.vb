@@ -149,19 +149,24 @@ Partial Class ChooseHomeLayout
 
 
 
-    'Private Sub lnkchoosehome_Click(sender As Object, e As EventArgs) Handles lnkchoosehome.Click
-    '    Dim selectedcourseID As String
-    '    Dim selectedhome As HomeLayouts
+    Private Sub lnkchoosehome_Click(sender As Object, e As EventArgs) Handles lnkchoosehome.Click
+        Dim selectedcourseID As Integer = 1
 
-    '    If gvwalltypes.Visible = True Then
-    '        selectedcourseID = gvwalltypes.SelectedRow.Cells.Item(2).Text
+        Dim homelist As List(Of HomeLayouts) = Session("HomeSet")
 
-    '        Session("SelectedHome") = selectedhome.GetHomeObject(selectedcourseID)
-    '    ElseIf gvwfiltered.Visible = True
-    '        selectedcourseID = gvwfiltered.SelectedRow.Cells.Item(2).Text
-    '        Session("SelectedHome") = selectedcourseID
-    '    End If
+        If gvwalltypes.Visible = True Then
+            selectedcourseID = gvwalltypes.SelectedRow.Cells.Item(2).Text
+        ElseIf gvwfiltered.Visible = True
+            selectedcourseID = gvwfiltered.SelectedRow.Cells.Item(2).Text
+        End If
 
-    '    Response.Redirect("FEBedroom.aspx")         'this needs to be changed
-    'End Sub
+        For i = 0 To homelist.Count - 1
+
+            Session("SelectedHome") = homelist.Item(selectedcourseID - 1)
+
+        Next
+
+
+        Response.Redirect("FEBedroom.aspx")         'this needs to be changed
+    End Sub
 End Class
