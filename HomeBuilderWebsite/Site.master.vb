@@ -58,4 +58,7 @@ Public Partial Class SiteMaster
     Protected Sub Unnamed_LoggingOut(sender As Object, e As LoginCancelEventArgs)
         Context.GetOwinContext().Authentication.SignOut()
     End Sub
+    Protected Sub btnReturn_Click(sender As Object, e As EventArgs) Handles btnReturn.Click
+        Response.Redirect("~\Home.aspx")
+    End Sub
 End Class
