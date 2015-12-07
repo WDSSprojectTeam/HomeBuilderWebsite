@@ -49,7 +49,8 @@
        
                     
                                
-        &nbsp;<asp:Button ID="btnAboutUs" runat="server" BackColor="#C09E4E" Font-Bold="False" Font-Names="Gabriola" Font-Size="Medium" ForeColor="Black" Text="About Us" Width="232px" />
+        &nbsp;
+           <asp:Button ID="btnAboutUs" runat="server" href="~/AboutUs.aspx" BackColor="#C09E4E" Font-Bold="False" Font-Names="Gabriola" Font-Size="Medium" ForeColor="Black" Text="About Us" Width="232px" />
                     
             <asp:Button ID="btnReturn" runat="server" href="~/Home.aspx" BackColor="#C09E4E" Font-Bold="False" Font-Names="Gabriola" Font-Size="Medium" ForeColor="Black" Text="Return To Homepage" Width="232px" />
             <body style="background-color:#EBFAFA">

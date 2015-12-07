@@ -79,22 +79,37 @@ Partial Class ChooseHomeLayout
 
     Private Sub gvwalltypes_RowCommand(sender As Object, e As GridViewCommandEventArgs) Handles gvwalltypes.RowCommand
 
+        Dim rowindex As Integer = e.CommandArgument
+        Dim homeid As Integer = gvwalltypes.Rows.Item(rowindex).Cells.Item(2).Text
+        'Dim aDataLoader As DataLoader
+        Session("homeid") = homeid
+        Dim myHome As New HomeLayouts
+
         If (e.CommandName = "btnDetails") Then
-            Dim rowindex As Integer = e.CommandArgument
-            Dim homeid As Integer = gvwalltypes.Rows.Item(rowindex).Cells.Item(2).Text
-            Session("homeid") = homeid
+            Response.Redirect("~\SeeHomeDetails.aspx")
+        Else
+            myHome = myDataLoader.GetHomeObject(homeid)
+
+            Session("SelectedHome") = myHome
+
+
+            Response.Redirect("~\ChooseFeature.aspx")
         End If
-        Response.Redirect("SeeHomeDetails.aspx")
+
+
+
 
     End Sub
 
     Private Sub gvwfiltered_RowCommand(sender As Object, e As GridViewCommandEventArgs) Handles gvwfiltered.RowCommand
         Dim rowindex As Integer = e.CommandArgument
-        Dim homeid As Integer = gvwfiltered.Rows.Item(rowindex).Cells.Item(2).Text
+        Dim homeid As Integer = gvwalltypes.Rows.Item(rowindex).Cells.Item(2).Text
         Session("homeid") = homeid
 
         If (e.CommandName = "btnDetails") Then
-            Response.Redirect("SeeHomeDetails.aspx")
+            Response.Redirect("~\SeeHomeDetails.aspx")
+        Else
+            Response.redirect("~\FEOutdoor.aspx")
         End If
 
 

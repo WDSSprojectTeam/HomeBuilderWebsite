@@ -25,7 +25,7 @@ Public Class Optimization
         myFeatureList = Session("FeatureSet")
         myOptionList = Session("OptionSet")
 
-        'MakeUpOptimizationData()
+        MakeUpOptimizationData()
 
         For Each aFeature In myFeatureList
             featureUtility.Add(aFeature.Rating)

@@ -215,6 +215,7 @@ FROM tblHomeLayouts;", myConnection)
         Dim allhomelist As List(Of HomeLayouts)
         allhomelist = Session("HomeSet")
 
+
         For Each chosenhome In allhomelist
             If chosenhome.gethomeID = homeid Then
                 Return chosenhome

@@ -61,4 +61,8 @@ Public Partial Class SiteMaster
     Protected Sub btnReturn_Click(sender As Object, e As EventArgs) Handles btnReturn.Click
         Response.Redirect("~\Home.aspx")
     End Sub
+    Protected Sub btnAboutUs_Click(sender As Object, e As EventArgs) Handles btnAboutUs.Click
+        Response.Redirect("~\AboutUs.aspx")
+    End Sub
+
 End Class
