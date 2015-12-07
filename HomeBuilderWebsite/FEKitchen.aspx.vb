@@ -2,98 +2,98 @@
 Partial Class FEKitchen
     Inherits System.Web.UI.Page
 
-    'Private myOptionList As New List(Of Options)
+    Private myOptionList As New List(Of Options)
 
     Protected Sub btnNext_Click(sender As Object, e As EventArgs) Handles btnNext.Click
-        'myOptionList = Session("myOptions")
+        Dim myOptionList As New optionSet(Session("OptionSet"))
 
-        '    'APPLIANCES
+        'APPLIANCES
 
-        '    If cbxStandardBeige.Checked = True Then
-        '        myOptionList.GetName("Standard Beige").Need = True
-        '    Else
-        '        myOptionList.GetName("Standard Beige").Preference = rltStandardBeige.SelectedValue
-        '    End If
+        If cbxStandardBeige.Checked = True Then
+            myOptionList.GetName("Standard Beige").Need = True
+        Else
+            myOptionList.GetName("Standard Beige").Preference = rltStandardBeige.SelectedValue
+        End If
 
-        '    If cbxBlack.Checked = True Then
-        '        myOptionList.GetName("Black").Need = True
-        '    Else
-        '        myOptionList.GetName("Black").Preference = rltBlack.SelectedValue
-        '    End If
+        If cbxBlack.Checked = True Then
+            myOptionList.GetName("Black").Need = True
+        Else
+            myOptionList.GetName("Black").Preference = rltBlack.SelectedValue
+        End If
 
-        '    If cbxStainlessSteel.Checked = True Then
-        '        myOptionList.GetName("Stainless Steel").Need = True
-        '    Else
-        '        myOptionList.GetName("Stainless Steel").Preference = rltStainlessSteel.SelectedValue
-        '    End If
+        If cbxStainlessSteel.Checked = True Then
+            myOptionList.GetName("Stainless Steel").Need = True
+        Else
+            myOptionList.GetName("Stainless Steel").Preference = rltStainlessSteel.SelectedValue
+        End If
 
-        '    If cbxProfessional.Checked = True Then
-        '        myOptionList.GetName("Professional Grade").Need = True
-        '    Else
-        '        myOptionList.GetName("Professional Grade").Preference = rltProfessional.SelectedValue
-        '    End If
+        If cbxProfessional.Checked = True Then
+            myOptionList.GetName("Professional Grade").Need = True
+        Else
+            myOptionList.GetName("Professional Grade").Preference = rltProfessional.SelectedValue
+        End If
 
-        '    'COUNTERTOPS
+        'COUNTERTOPS
 
-        '    If cbxQuartz.Checked = True Then
-        '        myOptionListt.GetName("Quartz").Need = True
-        '    Else
-        '        myOptionList.GetName("Quartz").Preference = rltQuartz.SelectedValue
-        '    End If
+        If cbxQuartz.Checked = True Then
+            myOptionList.GetName("Quartz").Need = True
+        Else
+            myOptionList.GetName("Quartz").Preference = rltQuartz.SelectedValue
+        End If
 
-        '    If cbxGranite.Checked = True Then
-        '        myOptionList.GetName("Granite").Need = True
-        '    Else
-        '        myOptionList.GetName("Granite").Preference = rltGranite.SelectedValue
-        '    End If
+        If cbxGranite.Checked = True Then
+            myOptionList.GetName("Granite").Need = True
+        Else
+            myOptionList.GetName("Granite").Preference = rltGranite.SelectedValue
+        End If
 
-        '    If cbxLaminate.Checked = True Then
-        '        myOptionList.GetName("Laminate").Need = True
-        '    Else
-        '        myOptionList.GetName("Laminate").Preference = rltLaminate.SelectedValue
-        '    End If
+        If cbxLaminate.Checked = True Then
+            myOptionList.GetName("Laminate").Need = True
+        Else
+            myOptionList.GetName("Laminate").Preference = rltLaminate.SelectedValue
+        End If
 
-        '    If cbxWood.Checked = True Then
-        '        myOptionList.GetName("Wood").Need = True
-        '    Else
-        '        myOptionList.GetName("Wood").Preference = rltWood.SelectedValue
-        '    End If
+        If cbxWood.Checked = True Then
+            myOptionList.GetName("Wood").Need = True
+        Else
+            myOptionList.GetName("Wood").Preference = rltWood.SelectedValue
+        End If
 
-        '    If cbxMarble.Checked = True Then
-        '        myOptionList.GetName("Marble").Need = True
-        '    Else
-        '        myOptionList.GetName("Marble").Preference = rltMarble.SelectedValue
-        '    End If
+        If cbxMarble.Checked = True Then
+            myOptionList.GetName("Marble").Need = True
+        Else
+            myOptionList.GetName("Marble").Preference = rltMarble.SelectedValue
+        End If
 
-        ''APPLIANCES
-        'Dim beigePrice As Double = myOptionList.GetName("Standard Beige").getoptionprice
-        'Dim blackPrice As Double = myOptionList.GetName("Black").getoptionprice
-        'Dim stainPrice As Double = myOptionList.GetName("Stainless Steel").getoptionprice
-        'Dim profPrice As Double = myOptionList.GetName("Professional Grader").getoptionprice
+        'APPLIANCES
+        Dim beigePrice As Double = myOptionList.GetName("Standard Beige").getoptionprice
+        Dim blackPrice As Double = myOptionList.GetName("Black").getoptionprice
+        Dim stainPrice As Double = myOptionList.GetName("Stainless Steel").getoptionprice
+        Dim profPrice As Double = myOptionList.GetName("Professional Grade").getoptionprice
 
-        'Dim beigeRating As Integer = myOptionList.GetName("Standard Beige").Preference
-        'Dim blackRating As Integer = myOptionList.GetName("Black").Preference
-        'Dim stainRating As Integer = myOptionList.GetName("Stainless Steel").Preference
-        'Dim profRating As Double = myOptionList.GetName("Professional Grade").getoptionprice
+        Dim beigeRating As Integer = myOptionList.GetName("Standard Beige").Preference
+        Dim blackRating As Integer = myOptionList.GetName("Black").Preference
+        Dim stainRating As Integer = myOptionList.GetName("Stainless Steel").Preference
+        Dim profRating As Double = myOptionList.GetName("Professional Grade").getoptionprice
 
-        ''COUNTERTOPS
-        'Dim quartzPrice As Double = myOptionList.GetName("Quartz").getoptionprice
-        'Dim granitePrice As Double = myOptionList.GetName("Granite").getoptionprice
-        'Dim laminatePrice As Double = myOptionList.GetName("Laminate").getoptionprice
-        'Dim woodPrice As Double = myOptionList.GetName("Wood").getoptionprice
-        'Dim marblePrice As Double = myOptionList.GetName("Marble").getoptionprice
+        'COUNTERTOPS
+        Dim quartzPrice As Double = myOptionList.GetName("Quartz").getoptionprice
+        Dim granitePrice As Double = myOptionList.GetName("Granite").getoptionprice
+        Dim laminatePrice As Double = myOptionList.GetName("Laminate").getoptionprice
+        Dim woodPrice As Double = myOptionList.GetName("Wood").getoptionprice
+        Dim marblePrice As Double = myOptionList.GetName("Marble").getoptionprice
 
-        'Dim quartzRating As Integer = myOptionList.GetName("Quartz").Preference
-        'Dim graniteRating As Integer = myOptionList.GetName("Granite").Preference
-        'Dim laminateRating As Integer = myOptionList.GetName("Laminate").Preference
-        'Dim woodRating As Integer = myOptionList.GetName("Wood").Preference
-        'Dim marbleRating As Integer = myOptionList.GetName("Marble").Preference
+        Dim quartzRating As Integer = myOptionList.GetName("Quartz").Preference
+        Dim graniteRating As Integer = myOptionList.GetName("Granite").Preference
+        Dim laminateRating As Integer = myOptionList.GetName("Laminate").Preference
+        Dim woodRating As Integer = myOptionList.GetName("Wood").Preference
+        Dim marbleRating As Integer = myOptionList.GetName("Marble").Preference
 
-        'Dim counteropsavg As Double = AvgPrice(beigePrice, blackPrice, stainPrice, profPrice, 0, beigeRating, blackRating, stainPrice, profRating, 0)
-        'Dim appliancesavg As Double = AvgPrice(quartzPrice, granitePrice, laminatePrice, woodPrice, marblePrice, quartzRating, graniteRating, laminateRating, woodRating, marbleRating)
+        Dim counteropsavg As Double = AvgPrice(beigePrice, blackPrice, stainPrice, profPrice, 0, beigeRating, blackRating, stainPrice, profRating, 0)
+        Dim appliancesavg As Double = AvgPrice(quartzPrice, granitePrice, laminatePrice, woodPrice, marblePrice, quartzRating, graniteRating, laminateRating, woodRating, marbleRating)
 
-        'Dim remainderbudget As Double = Session("myRemainderBudget")
-        'Session("myRemainderBudget") = remainderbudget - (counteropsavg + appliancesavg)
+        Dim remainderbudget As Double = Session("myRemainderBudget")
+        Session("myRemainderBudget") = remainderbudget - (counteropsavg + appliancesavg)
 
         Response.Redirect("FEBedroom.aspx")
     End Sub
