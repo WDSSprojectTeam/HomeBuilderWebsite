@@ -14,8 +14,8 @@ Public Class COMPDAL
         Dim mytable As New DataTable
         myConnection = New OleDbConnection(myConnectionStr)
         myCommand = New OleDbCommand("SELECT tblScenarios.ScenarioID, tblScenarios.HouseName, tblScenarios.Budget, tblScenarios.ScenarioName, tblScenarios.TotalCost " &
-                                     "FROM tblScenarios WHERE ((tblScenarios.TotalCost)@param)", myConnection)
-        myCommand.Parameters.AddWithValue("@param", totalcost)
+                                     "FROM tblScenarios", myConnection)
+
         myConnection.Open()
         myReader = myCommand.ExecuteReader
         mytable.Load(myReader)

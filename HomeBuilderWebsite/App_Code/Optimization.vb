@@ -34,8 +34,8 @@ Public Class Optimization
         For Each aOption In myOptionList
             optionUtility.Add(aOption.Preference)
         Next
-
-        budget = Session("Budget")
+        Dim myHome As HomeLayouts = Session("SelectedHome")
+        budget = Session("Budget") - myHome.Price
 
     End Sub
 
@@ -249,10 +249,10 @@ Public Class Optimization
 
     Private Sub MakeUpOptimizationData()
         Dim myDataLoader As New DataLoader
-        myDataLoader.LoadHomesLayouts()
-        Session("homeid") = 1
-        budget = 100000
-        Session("Budget") = budget
+        'myDataLoader.LoadHomesLayouts()
+        'Session("homeid") = 1
+        'budget = 100000
+        'Session("Budget") = budget
 
         myFeatureList.Item(0).Rating = 3
         myFeatureList.Item(1).Rating = 2
