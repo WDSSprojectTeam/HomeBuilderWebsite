@@ -1,15 +1,14 @@
+Imports System.Web.UI.DataVisualization.Charting
+Imports System.Data
 
 Partial Class ChooseFeature
-    Inherits System.Web.UI.Page
-    Inherits page
-
-
-    Dim myFeatureList As New featureset
-    myFeatureList = session("FeatureSet")
+    Inherits Page
 
     Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
-        Dim remainderbudget As Double = Session("myRemainderBudget")
-        Dim budget As Double = Session("myBudget")
+        Dim myHome As HomeLayouts = Session("SelectedHome")
+        Dim remainderbudget As Double = Session("Budget") - myHome.Price
+        Session("myRemainderBudget") = remainderbudget
+        Dim budget As Double = Session("Budget")
         lblBudget.Text = "$ " & Convert.ToString(remainderbudget) & " left in your budget"
         Dim percentbudgetused As Double = (budget - remainderbudget) / budget
         Math.Round(percentbudgetused)
@@ -25,6 +24,8 @@ Partial Class ChooseFeature
     End Sub
 
     Protected Sub btnNext_Click(sender As Object, e As EventArgs) Handles btnNext.Click
+        Dim myFeatureList As New FeatureSet(Session("FeatureSet"))
+
         myFeatureList.GetFeature("Roof_Type").Rating = Convert.ToInt32(ddlRoof.SelectedValue)
         myFeatureList.GetFeature("Floors").Rating = Convert.ToInt32(ddlFloor.SelectedValue)
         myFeatureList.GetFeature("Appliances").Rating = Convert.ToInt32(ddlAppliances.SelectedValue)

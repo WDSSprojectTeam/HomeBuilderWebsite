@@ -15,7 +15,7 @@ Partial Class EditOptResults
         displayList.Columns.Add("Name")
         displayList.Columns.Add("Description")
         displayList.Columns.Add("Price")
-
+        displayList.Columns.Add("Preference")
 
         For i = 0 To myOptionList.Count - 1
             For j = 0 To myChosenOptions.Count - 1
@@ -26,6 +26,7 @@ Partial Class EditOptResults
                     displayList.Rows(displayList.Rows.Count - 1)("Name") = myOptionList.item(i).getoptionname
                     displayList.Rows(displayList.Rows.Count - 1)("Description") = myOptionList.Item(i).getoptiondescription
                     displayList.Rows(displayList.Rows.Count - 1)("Price") = myOptionList.Item(i).getoptionprice
+                    displayList.Rows(displayList.Rows.Count - 1)("Preference") = myOptionList.Item(i).getFeaturePreference
                     'list.Add(myOptionList.Item(i).getoptionname)
                     'list.Add(myOptionList.Item(i).getoptiondescription)
                     'list.Add(myOptionList.Item(i).getoptionprice)

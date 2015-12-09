@@ -142,7 +142,17 @@ Public Class Options
         Return name
     End Function
 
+    Public Function getFeaturePreference() As String
+        Dim name As String = ""
+        Dim myFeatureList As List(Of Feature) = Session("FeatureSet")
+        For Each aFeature In myFeatureList
+            If FeatureID = aFeature.getID Then
+                name = aFeature.Rating
+            End If
+        Next
 
+        Return name
+    End Function
 
 
 

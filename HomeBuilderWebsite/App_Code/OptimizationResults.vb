@@ -31,6 +31,15 @@ Public Class OptimizationResults
         Return c
     End Function
 
+    Public Function getTotalCost() As Double
+        Dim cost As Double = 0
+        For i = 0 To myChoiceList.Count - 1
+            cost += myChoiceList.Item(i).ToDouble * myOptionList.Item(i).getoptionprice
+        Next
+
+        Return cost
+    End Function
+
     Public Function getTotalUtility() As Double
         Dim utility As Double = 0
         Dim featUtility As Integer = 0
@@ -43,6 +52,26 @@ Public Class OptimizationResults
             Next
             utility += myChoiceList.Item(i).ToDouble * myOptionList.Item(i).Preference * featUtility
         Next
+
+        Return utility
+    End Function
+
+    Public Function getMaxUtility() As Double
+        Dim utility As Double = 0
+        Dim featUtility As Integer = 0
+
+        For i = 0 To myFeatureList.Count - 1
+            For j = 0 To myOptionList.Count - 1
+                If myOptionList.Item(j).getFeatureID = myFeatureList.Item(i).getID Then
+                    If myOptionList.Item(j).Preference * myFeatureList.Item(i).Rating > featUtility Then
+                        featUtility = myOptionList.Item(j).Preference * myFeatureList.Item(i).Rating
+                    End If
+                End If
+            Next
+            utility += featUtility
+        Next
+
+
 
         Return utility
     End Function

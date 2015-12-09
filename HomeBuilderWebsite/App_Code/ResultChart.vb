@@ -24,7 +24,7 @@ Public Class ResultChart
         mychart.Titles.Add("Compare Budget Options")
         SetChartSize()
             SetBorderStyle()
-            DefineChartArea()
+        DefineChartArea(myOptResults.Item(0))
         'AddLegend()
 
         For i = 0 To myOptResults.Count - 1
@@ -36,8 +36,8 @@ Public Class ResultChart
     End Sub
 
     Private Sub SetChartSize()
-        mychart.Height = 300
-        mychart.Width = 500
+        mychart.Height = 900
+        mychart.Width = 1500
     End Sub
 
     Private Sub SetBorderStyle()
@@ -47,22 +47,24 @@ Public Class ResultChart
         mychart.BackColor = Drawing.Color.Beige
     End Sub
 
-    Private Sub DefineChartArea()
+    Private Sub DefineChartArea(ByVal aopt As OptimizationResults)
         Dim chArea As New ChartArea
-        mychart.ChartAreas.Add(chArea)
+        chArea = mychart.ChartAreas.Item(0)
         ' x-axis
         chArea.AxisX.MajorGrid.LineDashStyle = ChartDashStyle.Dash
         chArea.AxisX.LabelStyle.Font = New Drawing.Font("Arial", 12)
         chArea.AxisX.LabelStyle.Angle = -45
         chArea.AxisX.TitleFont = New Drawing.Font("Courier New", 12)
-        chArea.AxisX.Title = "House Options"
+        chArea.AxisX.Title = "House Option Cost"
         ' y-axis
         chArea.AxisY.MajorGrid.LineDashStyle = ChartDashStyle.Dash
-        chArea.AxisY.Interval = 1
-        chArea.AxisY.Maximum = 10
-        chArea.AxisY.Minimum = 0
+        chArea.AxisY.Interval = 10
+        chArea.AxisY.Maximum = 80
+        chArea.AxisY.Minimum = aopt.getTotalUtility / aopt.getMaxUtility * 100 - 5
         chArea.AxisY.TitleFont = New Drawing.Font("Courier New", 12)
-        chArea.AxisY.Title = "Percent of Budget Spent in each Area"
+        chArea.AxisY.Title = "Percent of Maximum Utility"
+
+
     End Sub
 
     'Private Sub AddLegend()
@@ -78,14 +80,16 @@ Public Class ResultChart
         mySeries.Points.DataBindXY(x, y)
         mySeries.ChartType = SeriesChartType.Line
         mySeries.Color = Drawing.Color.Blue
+
         mySeries.PostBackValue = "#SERIESNAME,#VALX"
         mychart.Series.Add(mySeries)
     End Sub
 
     Private Sub LoadSeriesData(ByVal aopt As OptimizationResults)
         mychart.Series.Clear()
-        Dim xValue As String = aopt.getOptName
-        Dim yValue As Double = aopt.getTotalUtility
+        Dim myHome As HomeLayouts = Session("SelectedHome")
+        Dim xValue As Double = aopt.getTotalCost + myHome.Price
+        Dim yValue As Double = aopt.getTotalUtility / aopt.getMaxUtility * 100
         xlist.Add(xValue)
         ylist.Add(yValue)
         'Dim sum As Integer
