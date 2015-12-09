@@ -6,6 +6,10 @@ Public Class FeatureSet
     Inherits Page
     Private myFeatureList As List(Of Feature)
 
+    Public Sub New()
+
+    End Sub
+
     Public Sub New(ByVal featureList As List(Of Feature))
 
         myFeatureList = featureList
