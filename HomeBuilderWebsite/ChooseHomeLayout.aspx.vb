@@ -109,7 +109,7 @@ Partial Class ChooseHomeLayout
         If (e.CommandName = "btnDetails") Then
             Response.Redirect("~\SeeHomeDetails.aspx")
         Else
-            Response.redirect("~\FEOutdoor.aspx")
+            Response.Redirect("~\ChooseFeature.aspx")
         End If
 
 
@@ -182,6 +182,6 @@ Partial Class ChooseHomeLayout
         Next
 
 
-        Response.Redirect("ChooseFeature.aspx")
+        Response.Redirect("~\ChooseFeature.aspx")
     End Sub
 End Class
