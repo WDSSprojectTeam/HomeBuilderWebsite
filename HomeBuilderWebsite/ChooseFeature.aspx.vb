@@ -2,7 +2,8 @@
 Partial Class ChooseFeature
     Inherits System.Web.UI.Page
 
-    Dim myFeatureList As New FeatureSet(Session("FeatureSet"))
+    Dim myFeatureList As New FeatureSet
+    myFeatureList = Session("FeatureSet")
 
     Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
         Dim remainderbudget As Double = Session("myRemainderBudget")
