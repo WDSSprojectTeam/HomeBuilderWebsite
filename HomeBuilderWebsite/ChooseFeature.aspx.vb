@@ -1,9 +1,11 @@
 ﻿
 Partial Class ChooseFeature
     Inherits System.Web.UI.Page
+    Inherits Page
 
-    'Dim myFeatureList As New List(Of Feature)
-    'myFeatureList = session("myFeatures")
+
+    Dim myFeatureList As New FeatureSet
+    myFeatureList = session("FeatureSet")
 
     Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
         Dim remainderbudget As Double = Session("myRemainderBudget")
@@ -23,14 +25,14 @@ Partial Class ChooseFeature
     End Sub
 
     Protected Sub btnNext_Click(sender As Object, e As EventArgs) Handles btnNext.Click
-        'myFeatureList.GetFeature("Roof_Type").Rating = Convert.ToInt32(ddlRoof.SelectedValue)
-        'myFeatureList.GetFeature("Floors").Rating = Convert.ToInt32(ddlFloor.SelectedValue)
-        'myFeatureList.GetFeature("Appliances").Rating = Convert.ToInt32(ddlAppliances.SelectedValue)
-        'myFeatureList.GetFeature("Garage").Rating = Convert.ToInt32(ddlGarage.SelectedValue)
-        'myFeatureList.GetFeature("Countertops").Rating = Convert.ToInt32(ddlCountertops.SelectedValue)
-        'myFeatureList.GetFeature("Bath").Rating = Convert.ToInt32(ddlBath.SelectedValue)
-        'myFeatureList.GetFeature("Closets").Rating = Convert.ToInt32(ddlClosets.SelectedValue)
-        'myFeatureList.GetFeature("Fireplace").Rating = Convert.ToInt32(ddlFireplace.SelectedValue)
+        myFeatureList.GetFeature("Roof_Type").Rating = Convert.ToInt32(ddlRoof.SelectedValue)
+        myFeatureList.GetFeature("Floors").Rating = Convert.ToInt32(ddlFloor.SelectedValue)
+        myFeatureList.GetFeature("Appliances").Rating = Convert.ToInt32(ddlAppliances.SelectedValue)
+        myFeatureList.GetFeature("Garage").Rating = Convert.ToInt32(ddlGarage.SelectedValue)
+        myFeatureList.GetFeature("Countertops").Rating = Convert.ToInt32(ddlCountertops.SelectedValue)
+        myFeatureList.GetFeature("Bath").Rating = Convert.ToInt32(ddlBath.SelectedValue)
+        myFeatureList.GetFeature("Closets").Rating = Convert.ToInt32(ddlClosets.SelectedValue)
+        myFeatureList.GetFeature("Fireplace").Rating = Convert.ToInt32(ddlFireplace.SelectedValue)
 
         Response.Redirect("FEOutdoor.aspx")
     End Sub
