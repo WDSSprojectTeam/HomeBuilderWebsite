@@ -1,6 +1,4 @@
-﻿Imports Microsoft.VisualBasic
-Imports System.Web.UI.DataVisualization.Charting
-
+﻿Imports System.Web.UI.DataVisualization.Charting
 
 Partial Class FEOutdoor
     Inherits System.Web.UI.Page
@@ -14,31 +12,19 @@ Partial Class FEOutdoor
 
         If cbxAsphaltShingle.Checked = True Then
             myOptionList.GetName("Asphalt Shingle").Need = True
-        Else
-            myOptionList.GetName("Asphalt Shingle").Preference = rltAsphaltShingle.SelectedValue
-        End If
-
-        If cbxWoodShingle.Checked = True Then
+        ElseIf cbxWoodShingle.Checked = True Then
             myOptionList.GetName("Wood Shingle").Need = True
-        Else
-            myOptionList.GetName("Wood Shingle").Preference = rltWoodShingle.SelectedValue
-        End If
-
-        If cbxMetalShingle.Checked = True Then
+        ElseIf cbxMetalShingle.Checked = True Then
             myOptionList.GetName("Metal Shingle").Need = True
-        Else
-            myOptionList.GetName("Metal Shingle").Preference = rltMetalShingle.SelectedValue
-        End If
-
-        If cbxSlateShingle.Checked = True Then
+        ElseIf cbxSlateShingle.Checked = True Then
             myOptionList.GetName("Slate Shingle").Need = True
-        Else
-            myOptionList.GetName("Slate Shingle").Preference = rltSlateShingle.SelectedValue
-        End If
-
-        If cbxTileShingle.Checked = True Then
+        ElseIf cbxTileShingle.Checked = True Then
             myOptionList.GetName("Tile Shingle").Need = True
         Else
+            myOptionList.GetName("Asphalt Shingle").Preference = rltAsphaltShingle.SelectedValue
+            myOptionList.GetName("Wood Shingle").Preference = rltWoodShingle.SelectedValue
+            myOptionList.GetName("Metal Shingle").Preference = rltMetalShingle.SelectedValue
+            myOptionList.GetName("Slate Shingle").Preference = rltSlateShingle.SelectedValue
             myOptionList.GetName("Tile Shingle").Preference = rltTileShingle.SelectedValue
         End If
 
@@ -46,19 +32,13 @@ Partial Class FEOutdoor
 
         If cbxOneCar.Checked = True Then
             myOptionList.GetName("One Car").Need = True
-        Else
-            myOptionList.GetName("One Car").Preference = rltOneCar.SelectedValue
-        End If
-
-        If cbxTwoCar.Checked = True Then
+        ElseIf cbxTwoCar.Checked = True Then
             myOptionList.GetName("Two Car").Need = True
-        Else
-            myOptionList.GetName("Two Car").Preference = rltTwoCar.SelectedValue
-        End If
-
-        If cbxThreeCar.Checked = True Then
+        ElseIf cbxThreeCar.Checked = True Then
             myOptionList.GetName("Three Car").Need = True
         Else
+            myOptionList.GetName("One Car").Preference = rltOneCar.SelectedValue
+            myOptionList.GetName("Two Car").Preference = rltTwoCar.SelectedValue
             myOptionList.GetName("Three Car").Preference = rltThreeCar.SelectedValue
         End If
 
@@ -90,7 +70,29 @@ Partial Class FEOutdoor
         Dim roofavg As Double = AvgPrice(asphaltshinglePrice, woodshinglePrice, metalshinglePrice, slateshinglePrice, tileshinglePrice, asphaltshingleRating, woodshingleRating, metalshingleRating, slateshingleRating, tileshingleRating)
         Dim garageavg As Double = AvgPrice(onecarPrice, twocarPrice, threecarPrice, 0, 0, onecarRating, twocarRating, threecarRating, 0, 0)
 
+        'ROOF
 
+        If cbxAsphaltShingle.Checked = True Then
+            roofavg = asphaltshinglePrice
+        ElseIf cbxWoodShingle.Checked = True Then
+            roofavg = woodshinglePrice
+        ElseIf cbxMetalShingle.Checked = True Then
+            roofavg = metalshinglePrice
+        ElseIf cbxSlateShingle.Checked = True Then
+            roofavg = slateshinglePrice
+        ElseIf cbxTileShingle.Checked = True Then
+            roofavg = tileshinglePrice
+        End If
+
+        'GARAGE
+
+        If cbxOneCar.Checked = True Then
+            garageavg = onecarPrice
+        ElseIf cbxTwoCar.Checked = True Then
+            garageavg = twocarPrice
+        ElseIf cbxThreeCar.Checked = True Then
+            garageavg = threecarPrice
+        End If
 
         Dim remainderbudget As Double = Session("myRemainderBudget")
         Session("myRemainderBudget") = remainderbudget - (roofavg + garageavg)
@@ -116,7 +118,7 @@ Partial Class FEOutdoor
 
 
         Response.Redirect("FEInterior.aspx")
-        
+
     End Sub
 
     'ROOF
@@ -310,7 +312,6 @@ Partial Class FEOutdoor
         End If
         tblBar.Rows.Item(0).Cells.Item(0).Width = 200 * percentbudgetused
         lblpercent.Text = Convert.ToString(Math.Round(100 * percentbudgetused)) & " % of budget is spent"
-
         DrawBudgetCharter()
     End Sub
 
@@ -321,14 +322,11 @@ Partial Class FEOutdoor
         Return weightedavg
     End Function
 
-
     Private Sub DrawBudgetCharter()
-
         Dim chtBudget As New Chart
         pnlydynamichart.Controls.Add(chtBudget)
         Dim mycharter As New BudgetAllocationCharter(chtBudget)
         mycharter.Draw()
-
     End Sub
 
 End Class

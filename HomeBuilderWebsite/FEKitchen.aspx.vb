@@ -3,8 +3,6 @@
 Partial Class FEKitchen
     Inherits System.Web.UI.Page
 
-    Private myOptionList As New List(Of Options)
-
     Protected Sub btnNext_Click(sender As Object, e As EventArgs) Handles btnNext.Click
         Dim myOptionList As New optionSet(Session("OptionSet"))
 
@@ -12,25 +10,16 @@ Partial Class FEKitchen
 
         If cbxStandardBeige.Checked = True Then
             myOptionList.GetName("Standard Beige").Need = True
-        Else
-            myOptionList.GetName("Standard Beige").Preference = rltStandardBeige.SelectedValue
-        End If
-
-        If cbxBlack.Checked = True Then
+        ElseIf cbxBlack.Checked = True Then
             myOptionList.GetName("Black").Need = True
-        Else
-            myOptionList.GetName("Black").Preference = rltBlack.SelectedValue
-        End If
-
-        If cbxStainlessSteel.Checked = True Then
+        ElseIf cbxStainlessSteel.Checked = True Then
             myOptionList.GetName("Stainless Steel").Need = True
-        Else
-            myOptionList.GetName("Stainless Steel").Preference = rltStainlessSteel.SelectedValue
-        End If
-
-        If cbxProfessional.Checked = True Then
+        ElseIf cbxProfessional.Checked = True Then
             myOptionList.GetName("Professional Grade").Need = True
         Else
+            myOptionList.GetName("Standard Beige").Preference = rltStandardBeige.SelectedValue
+            myOptionList.GetName("Black").Preference = rltBlack.SelectedValue
+            myOptionList.GetName("Stainless Steel").Preference = rltStainlessSteel.SelectedValue
             myOptionList.GetName("Professional Grade").Preference = rltProfessional.SelectedValue
         End If
 
@@ -38,31 +27,18 @@ Partial Class FEKitchen
 
         If cbxQuartz.Checked = True Then
             myOptionList.GetName("Quartz").Need = True
-        Else
-            myOptionList.GetName("Quartz").Preference = rltQuartz.SelectedValue
-        End If
-
-        If cbxGranite.Checked = True Then
+        ElseIf cbxGranite.Checked = True Then
             myOptionList.GetName("Granite").Need = True
-        Else
-            myOptionList.GetName("Granite").Preference = rltGranite.SelectedValue
-        End If
-
-        If cbxLaminate.Checked = True Then
+        ElseIf cbxLaminate.Checked = True Then
             myOptionList.GetName("Laminate").Need = True
-        Else
-            myOptionList.GetName("Laminate").Preference = rltLaminate.SelectedValue
-        End If
-
-        If cbxWood.Checked = True Then
+        ElseIf cbxWood.Checked = True Then
             myOptionList.GetName("Wood").Need = True
-        Else
-            myOptionList.GetName("Wood").Preference = rltWood.SelectedValue
-        End If
-
-        If cbxMarble.Checked = True Then
+        ElseIf cbxMarble.Checked = True Then
             myOptionList.GetName("Marble").Need = True
         Else
+            myOptionList.GetName("Quartz").Preference = rltQuartz.SelectedValue
+            myOptionList.GetName("Laminate").Preference = rltLaminate.SelectedValue
+            myOptionList.GetName("Wood").Preference = rltWood.SelectedValue
             myOptionList.GetName("Marble").Preference = rltMarble.SelectedValue
         End If
 
@@ -92,6 +68,30 @@ Partial Class FEKitchen
 
         Dim counteropsavg As Double = AvgPrice(beigePrice, blackPrice, stainPrice, profPrice, 0, beigeRating, blackRating, stainPrice, profRating, 0)
         Dim appliancesavg As Double = AvgPrice(quartzPrice, granitePrice, laminatePrice, woodPrice, marblePrice, quartzRating, graniteRating, laminateRating, woodRating, marbleRating)
+
+        'APPLIANCES
+
+        If cbxStandardBeige.Checked = True Then
+            appliancesavg = beigePrice
+        ElseIf cbxBlack.Checked = True Then
+            appliancesavg = blackPrice
+        ElseIf cbxStainlessSteel.Checked = True Then
+            appliancesavg = stainPrice
+        ElseIf cbxProfessional.Checked = True Then
+            appliancesavg = profPrice
+        End If
+
+        'COUNTERTOPS
+
+        If cbxGranite.Checked = True Then
+            counteropsavg = granitePrice
+        ElseIf cbxLaminate.Checked = True Then
+            counteropsavg = laminatePrice
+        ElseIf cbxWood.Checked = True Then
+            counteropsavg = woodPrice
+        ElseIf cbxMarble.Checked = True Then
+            counteropsavg = marblePrice
+        End If
 
         Dim remainderbudget As Double = Session("myRemainderBudget")
         Session("myRemainderBudget") = remainderbudget - (counteropsavg + appliancesavg)
@@ -349,12 +349,9 @@ Partial Class FEKitchen
     End Function
 
     Private Sub DrawBudgetCharter()
-
         Dim chtBudget As New Chart
         pnlydynamichart.Controls.Add(chtBudget)
         Dim mycharter As New BudgetAllocationCharter(chtBudget)
         mycharter.Draw()
-
     End Sub
-
 End Class

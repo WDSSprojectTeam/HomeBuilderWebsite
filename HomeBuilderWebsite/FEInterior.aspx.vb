@@ -1,8 +1,7 @@
 ﻿Imports System.Web.UI.DataVisualization.Charting
+
 Partial Class FEInterior
     Inherits System.Web.UI.Page
-
-
 
     Protected Sub btnNext_Click(sender As Object, e As EventArgs) Handles btnNext.Click
         Dim myOptionList As New optionSet(Session("OptionSet"))
@@ -11,19 +10,13 @@ Partial Class FEInterior
 
         If cbxCarpet.Checked = True Then
             myOptionList.GetName("Carpet").Need = True
-        Else
-            myOptionList.GetName("Carpet").Preference = rltCarpet.SelectedValue
-        End If
-
-        If cbxTile.Checked = True Then
+        ElseIf cbxTile.Checked = True Then
             myOptionList.GetName("Tile").Need = True
-        Else
-            myOptionList.GetName("Tile").Preference = rltTile.SelectedValue
-        End If
-
-        If cbxHardwood.Checked = True Then
+        ElseIf cbxHardwood.Checked = True Then
             myOptionList.GetName("Hardwood").Need = True
         Else
+            myOptionList.GetName("Carpet").Preference = rltCarpet.SelectedValue
+            myOptionList.GetName("Tile").Preference = rltTile.SelectedValue
             myOptionList.GetName("Hardwood").Preference = rltHardwood.SelectedValue
         End If
 
@@ -31,24 +24,17 @@ Partial Class FEInterior
 
         If cbxBrick.Checked = True Then
             myOptionList.GetName("Brick Fireplace").Need = True
-        Else
-            myOptionList.GetName("Brick Fireplace").Preference = rltBrick.SelectedValue
-        End If
-
-        If cbxManufactured.Checked = True Then
+        ElseIf cbxManufactured.Checked = True Then
             myOptionList.GetName("Manufactured Stone Fireplace").Need = True
-        Else
-            myOptionList.GetName("Manufactured Stone Fireplace").Preference = rltManufactured.SelectedValue
-        End If
-
-        If cbxNatural.Checked = True Then
+        ElseIf cbxNatural.Checked = True Then
             myOptionList.GetName("Natural Stone Fireplace").Need = True
         Else
+            myOptionList.GetName("Brick Fireplace").Preference = rltBrick.SelectedValue
+            myOptionList.GetName("Manufactured Stone Fireplace").Preference = rltManufactured.SelectedValue
             myOptionList.GetName("Natural Stone Fireplace").Preference = rltNatural.SelectedValue
         End If
 
         'Dim myHome As HomeLayouts = Session("SelectedHome")
-
 
         'FLOOR
         Dim carpetPrice As Double = myOptionList.GetName("Carpet").getoptionprice
@@ -71,6 +57,26 @@ Partial Class FEInterior
         Dim flooravg As Double = AvgPrice(carpetPrice, tilePrice, hardwoodPrice, 0, 0, carpetRating, tileRating, hardwoodRating, 0, 0)
         Dim fireplaceavg As Double = AvgPrice(brickPrice, manPrice, natPrice, 0, 0, brickRating, manRating, natRating, 0, 0)
 
+        'FLOORS
+
+        If cbxCarpet.Checked = True Then
+            flooravg = carpetPrice
+        ElseIf cbxTile.Checked = True Then
+            flooravg = tilePrice
+        ElseIf cbxHardwood.Checked = True Then
+            flooravg = hardwoodPrice
+        End If
+
+        'FIREPLACE
+
+        If cbxBrick.Checked = True Then
+            fireplaceavg = brickPrice
+        ElseIf cbxManufactured.Checked = True Then
+            fireplaceavg = manPrice
+        ElseIf cbxNatural.Checked = True Then
+            fireplaceavg = natPrice
+        End If
+
         Dim remainderbudget As Double = Session("myRemainderBudget")
         Session("myRemainderBudget") = remainderbudget - (flooravg + fireplaceavg)
 
@@ -92,8 +98,6 @@ Partial Class FEInterior
             budgetvaluelist.Add(0)
         End If
         Session("yvaluespie") = budgetvaluelist
-
-
 
         Response.Redirect("FEKitchen.aspx")
     End Sub
@@ -229,11 +233,9 @@ Partial Class FEInterior
     End Function
 
     Private Sub DrawBudgetCharter()
-
         Dim chtBudget As New Chart
         pnlydynamichart.Controls.Add(chtBudget)
         Dim mycharter As New BudgetAllocationCharter(chtBudget)
         mycharter.Draw()
-
     End Sub
 End Class

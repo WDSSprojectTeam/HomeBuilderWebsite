@@ -101,4 +101,24 @@ Partial Class OptimizationResultsPage
         Response.Redirect("EditOptResults.aspx")
     End Sub
 
+    Protected Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
+        Dim HouseName As String = "Yoooo"
+        Dim Budget As Integer = Session("Budget")
+        Dim ScenarioName As String = "whaaaa"
+        Dim TotalCost As Double = 1
+        Dim FloorCost As Double = 1
+        Dim RoofCost As Double = 1
+        Dim Floors As Integer = 1
+        Dim Roof_Type As Integer = 1
+        Dim Appliances As Integer = 1
+        Dim Garage As Integer = 1
+        Dim Countertops As Integer = 1
+        Dim Bath As Integer = 1
+        Dim Closets As Integer = 1
+        Dim Fireplace As Integer = 1
+
+        Dim DAL As New DataLoader
+        DAL.InsertSavedScenario(HouseName, Budget, ScenarioName, TotalCost, FloorCost, RoofCost, Floors, Roof_Type, Appliances, Garage, Countertops, Bath, Closets, Fireplace)
+    End Sub
+
 End Class
