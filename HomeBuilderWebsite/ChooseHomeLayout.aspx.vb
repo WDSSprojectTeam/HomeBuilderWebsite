@@ -36,12 +36,18 @@ Partial Class ChooseHomeLayout
 
         Session("numberofloads") += 1
         If Session("numberofloads") = 1 Then
-            Session("temptype") = "Family"
+
+            Dim type As String = Session("homestyleselected")
+            Dim budget As Double = Session("Budget")
+
+            Session("temptype") = Session("homestyleselected")
             Session("tempbath") = 1
             Session("tempbed") = 1
-            gvwalltypes.DataSource = myDataLoader.GetHomeDetails()
+
+            gvwalltypes.DataSource = myDataLoader.GetHomeDetails(type, budget)
             gvwalltypes.DataBind()
             gvwalltypes.Visible = True
+
         End If
         myDataLoader.LoadHomesLayouts()
     End Sub
@@ -182,6 +188,6 @@ Partial Class ChooseHomeLayout
     '    Next
 
 
-        Response.Redirect("~\ChooseFeature.aspx")
-    End Sub
+    '    Response.Redirect("~\ChooseFeature.aspx")
+    'End Sub
 End Class

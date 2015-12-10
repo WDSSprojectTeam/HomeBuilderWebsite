@@ -237,4 +237,24 @@ FROM tblHomeLayouts;", myConnection)
     '    myConnection.Close()
     'End Sub
 
+
+    Public Function GetHomeDetails(ByVal type As String, ByVal budget As Double) As DataTable
+        Dim myTable As New DataTable
+        myConnection = New OleDbConnection(myConnectionStr)
+        myCommand = New OleDbCommand("SELECT tblHomeLayouts.Picture, tblHomeLayouts.ID, tblHomeLayouts.HouseName, tblHomeLayouts.Price, tblHomeLayouts.Bedrooms, tblHomeLayouts.Bathrooms, tblHomeLayouts.Style
+FROM tblHomeLayouts WHERE (((tblHomeLayouts.Price)<param1) And ((tblHomeLayouts.Style)=param2));", myConnection)
+        myCommand.Parameters.AddWithValue("param1", budget)
+        myCommand.Parameters.AddWithValue("param2", type)
+
+        myConnection.Open()
+        myReader = myCommand.ExecuteReader
+        myTable.Load(myReader)
+        myReader.Close()
+        myConnection.Close()
+        Return myTable
+    End Function
+
+
+
+
 End Class

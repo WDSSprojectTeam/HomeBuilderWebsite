@@ -52,11 +52,11 @@ Public Class Options
             'myHome = myDataLoader.GetHomeObject(Session("SelectedHome"))
 
             If (getoptionID >= 5 And getoptionID <= 9) Then
-                myPrice *= 50
+                myPrice *= 0.1 * myHome.SquareFeet
             ElseIf (getoptionID >= 10 And getoptionID <= 12)
                 myPrice *= myHome.SquareFeet
             ElseIf (getoptionID >= 16 And getoptionID <= 20)
-                myPrice *= (myHome.SquareFeet * 1.05) / 100
+                myPrice *= (myHome.SquareFeet * 1.05)
             ElseIf (getoptionID >= 21 And getoptionID <= 23)
                 myPrice *= myHome.NumberOfBathrooms
             ElseIf (getoptionID >= 24 And getoptionID <= 25)

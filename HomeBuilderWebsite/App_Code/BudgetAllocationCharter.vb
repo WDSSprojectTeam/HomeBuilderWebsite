@@ -31,7 +31,9 @@ Public Class BudgetAllocationCharter
         Dim xvalues As ArrayList = Session("xvaluespie")
         Dim yvalues As ArrayList = Session("yvaluespie")
 
-        AddSeries(xvalues, yvalues, Drawing.Color.Red)
+        AddSeries(xvalues, yvalues, Drawing.Color.Blue)
+
+        myChart.Series(0)("PieLabelStyle") = "Disabled"
 
     End Sub
 
@@ -70,18 +72,18 @@ Public Class BudgetAllocationCharter
 
         myChart.ChartAreas.Add(charea)
 
-        charea.AxisX.MajorGrid.LineDashStyle = ChartDashStyle.Dash
-        charea.AxisX.LabelStyle.Font = New Drawing.Font("Cambria", 12)
-        charea.AxisX.LabelStyle.Angle = -45
-        charea.AxisX.TitleFont = New Drawing.Font("Cambria", 12)
-        charea.AxisX.Title = "Options"
+        'charea.AxisX.MajorGrid.LineDashStyle = ChartDashStyle.Dash
+        'charea.AxisX.LabelStyle.Font = New Drawing.Font("Cambria", 12)
+        'charea.AxisX.LabelStyle.Angle = -45
+        'charea.AxisX.TitleFont = New Drawing.Font("Cambria", 12)
+        'charea.AxisX.Title = "Options"
 
-        charea.AxisY.MajorGrid.LineDashStyle = ChartDashStyle.Dash
-        charea.AxisY.Interval = 1000
-        charea.AxisY.Maximum = 500000
-        charea.AxisY.Minimum = 0
-        charea.AxisY.TitleFont = New Drawing.Font("Cambria", 12)
-        charea.AxisY.Title = "Dollars Allocation"
+        'charea.AxisY.MajorGrid.LineDashStyle = ChartDashStyle.Dash
+        'charea.AxisY.Interval = 1000
+        'charea.AxisY.Maximum = 500000
+        'charea.AxisY.Minimum = 0
+        'charea.AxisY.TitleFont = New Drawing.Font("Cambria", 12)
+        'charea.AxisY.Title = "Dollars Allocation"
 
 
 
