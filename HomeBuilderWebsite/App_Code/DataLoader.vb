@@ -133,8 +133,8 @@ Imports System.Data
     Public Function GetHomeDetails(ByVal type As String, ByVal bed As Double, ByVal bath As Double) As DataTable
         Dim myTable As New DataTable
         myConnection = New OleDbConnection(myConnectionStr)
-        myCommand = New OleDbCommand("SELECT tblHomeLayouts.Picture, tblHomeLayouts.ID,tblHomeLayouts.HouseName, tblHomeLayouts.Price
-FROM tblHomeLayouts WHERE (((tblHomeLayouts.Style)=param1) AND ((tblHomeLayouts.Bedrooms)=param2) AND ((tblHomeLayouts.Bathrooms)=param3));", myConnection)
+        myCommand = New OleDbCommand("SELECT tblHomeLayouts.Picture, tblHomeLayouts.ID, tblHomeLayouts.HouseName, tblHomeLayouts.Price, tblHomeLayouts.Bedrooms, tblHomeLayouts.Bathrooms, tblHomeLayouts.Style
+FROM tblHomeLayouts WHERE (((tblHomeLayouts.Style)=param1) And ((tblHomeLayouts.Bedrooms)=param2) And ((tblHomeLayouts.Bathrooms)=param3));", myConnection)
         myCommand.Parameters.AddWithValue("param1", type)
         myCommand.Parameters.AddWithValue("param2", bed)
         myCommand.Parameters.AddWithValue("param3", bath)
@@ -255,7 +255,48 @@ FROM tblHomeLayouts WHERE (((tblHomeLayouts.Price)<param1) And ((tblHomeLayouts.
         Return myTable
     End Function
 
+    Public Function GetHomeDetailsAllBed(ByVal type As String, ByVal bath As Double) As DataTable
+        Dim myTable As New DataTable
+        myConnection = New OleDbConnection(myConnectionStr)
+        myCommand = New OleDbCommand("SELECT tblHomeLayouts.Picture, tblHomeLayouts.ID, tblHomeLayouts.HouseName, tblHomeLayouts.Price, tblHomeLayouts.Bedrooms, tblHomeLayouts.Bathrooms, tblHomeLayouts.Style
+FROM tblHomeLayouts WHERE (((tblHomeLayouts.Style)=param1) And ((tblHomeLayouts.Bathrooms)=param2));", myConnection)
+        myCommand.Parameters.AddWithValue("param1", type)
+        myCommand.Parameters.AddWithValue("param3", bath)
+        myConnection.Open()
+        myReader = myCommand.ExecuteReader
+        myTable.Load(myReader)
+        myReader.Close()
+        myConnection.Close()
+        Return myTable
+    End Function
 
+    Public Function GetHomeDetailsAllBath(ByVal type As String, ByVal bed As Double) As DataTable
+        Dim myTable As New DataTable
+        myConnection = New OleDbConnection(myConnectionStr)
+        myCommand = New OleDbCommand("SELECT tblHomeLayouts.Picture, tblHomeLayouts.ID, tblHomeLayouts.HouseName, tblHomeLayouts.Price, tblHomeLayouts.Bedrooms, tblHomeLayouts.Bathrooms, tblHomeLayouts.Style
+FROM tblHomeLayouts WHERE (((tblHomeLayouts.Style)=param1) And ((tblHomeLayouts.Bedrooms)=param2));", myConnection)
+        myCommand.Parameters.AddWithValue("param1", type)
+        myCommand.Parameters.AddWithValue("param2", bed)
+        myConnection.Open()
+        myReader = myCommand.ExecuteReader
+        myTable.Load(myReader)
+        myReader.Close()
+        myConnection.Close()
+        Return myTable
+    End Function
 
+    Public Function GetHomeDetailsAllBedAllBath(ByVal type As String) As DataTable
+        Dim myTable As New DataTable
+        myConnection = New OleDbConnection(myConnectionStr)
+        myCommand = New OleDbCommand("SELECT tblHomeLayouts.Picture, tblHomeLayouts.ID, tblHomeLayouts.HouseName, tblHomeLayouts.Price, tblHomeLayouts.Bedrooms, tblHomeLayouts.Bathrooms, tblHomeLayouts.Style
+FROM tblHomeLayouts WHERE (((tblHomeLayouts.Style)=param1));", myConnection)
+        myCommand.Parameters.AddWithValue("param1", type)
+        myConnection.Open()
+        myReader = myCommand.ExecuteReader
+        myTable.Load(myReader)
+        myReader.Close()
+        myConnection.Close()
+        Return myTable
+    End Function
 
 End Class
