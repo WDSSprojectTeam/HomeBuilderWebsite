@@ -24,7 +24,7 @@ Public Class ResultChart
         mychart.Titles.Add("Compare Budget Options")
         SetChartSize()
             SetBorderStyle()
-        DefineChartArea(myOptResults.Item(0))
+        DefineChartArea()
         'AddLegend()
 
         For i = 0 To myOptResults.Count - 1
@@ -47,7 +47,7 @@ Public Class ResultChart
         mychart.BackColor = Drawing.Color.Beige
     End Sub
 
-    Private Sub DefineChartArea(ByVal aopt As OptimizationResults)
+    Private Sub DefineChartArea()
         Dim chArea As New ChartArea
         chArea = mychart.ChartAreas.Item(0)
         ' x-axis
@@ -59,8 +59,8 @@ Public Class ResultChart
         ' y-axis
         chArea.AxisY.MajorGrid.LineDashStyle = ChartDashStyle.Dash
         chArea.AxisY.Interval = 10
-        chArea.AxisY.Maximum = 80
-        chArea.AxisY.Minimum = aopt.getTotalUtility / aopt.getMaxUtility * 100 - 5
+        chArea.AxisY.Maximum = myOptResults.Item(8).getTotalUtility / myOptResults.Item(8).getMaxUtility * 100 + 5
+        chArea.AxisY.Minimum = myOptResults.Item(0).getTotalUtility / myOptResults.Item(0).getMaxUtility * 100 - 5
         chArea.AxisY.TitleFont = New Drawing.Font("Courier New", 12)
         chArea.AxisY.Title = "Percent of Maximum Utility"
 
