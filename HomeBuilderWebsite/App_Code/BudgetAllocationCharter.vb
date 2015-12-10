@@ -31,22 +31,23 @@ Public Class BudgetAllocationCharter
         Dim xvalues As ArrayList = Session("xvaluespie")
         Dim yvalues As ArrayList = Session("yvaluespie")
 
-        AddSeries(xvalues, yvalues, "Options", Drawing.Color.Red)
+        AddSeries(xvalues, yvalues, Drawing.Color.Red)
 
     End Sub
 
 
-    Private Sub AddSeries(ByVal x As ArrayList, ByVal y As ArrayList, ByVal legend As String, ByVal color As Drawing.Color)
+    Private Sub AddSeries(ByVal x As ArrayList, ByVal y As ArrayList, ByVal color As Drawing.Color)
 
         Dim myseries As New Series
 
-        myseries.Name = legend
-        myseries.LegendText = legend
+        ' myseries.Name = Legend
+        ' myseries.LegendText = Legend
         myseries.Points.DataBindXY(x, y)
         myseries.ChartType = SeriesChartType.Pie
         myseries.Color = color
 
         myChart.Series.Add(myseries)
+
 
     End Sub
 
@@ -90,8 +91,9 @@ Public Class BudgetAllocationCharter
         myChart.Legends.Clear()
         Dim mylegend As New Legend("Options Legend")
         myChart.Legends.Add(mylegend)
-        mylegend.Title = "Legend"
-        mylegend.Docking = Docking.Left
+
+        mylegend.Title = "Options"
+        mylegend.Docking = Docking.Right
     End Sub
 
 
