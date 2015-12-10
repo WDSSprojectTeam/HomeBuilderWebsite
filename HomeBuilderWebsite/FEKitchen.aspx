@@ -1,4 +1,4 @@
-﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="FEKitchen.aspx.vb" Inherits="FEKitchen" %>
+﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="FEKitchen.aspx.vb" Inherits="FEKitchen" MaintainScrollPositionOnPostback="true" %>
 
 <!DOCTYPE html>
 

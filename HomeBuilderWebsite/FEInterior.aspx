@@ -1,4 +1,4 @@
-﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="FEInterior.aspx.vb" Inherits="FEInterior" %>
+﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="FEInterior.aspx.vb" Inherits="FEInterior" MaintainScrollPositionOnPostback="true" %>
 
 <!DOCTYPE html>
 

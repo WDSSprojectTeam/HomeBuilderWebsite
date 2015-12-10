@@ -1,4 +1,4 @@
-﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="FEOutdoor.aspx.vb" Inherits="FEOutdoor" %>
+﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="FEOutdoor.aspx.vb" Inherits="FEOutdoor" MaintainScrollPositionOnPostback="true" %>
 
 <!DOCTYPE html>
 
