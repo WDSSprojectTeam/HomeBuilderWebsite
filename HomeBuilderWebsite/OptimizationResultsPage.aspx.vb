@@ -49,7 +49,7 @@ Partial Class OptimizationResultsPage
             check = 8
         End If
         Session("Chart") = check
-        pnlGVW.Visible = True
+        gvwDetails.visible = True
         Dim myResults As List(Of OptimizationResults) = Session("Results")
         Dim displayList As New DataTable
         'gvwDetails.DataSource = myResults.Item(check).getSelectedOptions
@@ -119,6 +119,132 @@ Partial Class OptimizationResultsPage
 
         Dim DAL As New DataLoader
         DAL.InsertSavedScenario(HouseName, Budget, ScenarioName, TotalCost, FloorCost, RoofCost, Floors, Roof_Type, Appliances, Garage, Countertops, Bath, Closets, Fireplace)
+    End Sub
+
+    Protected Sub gvwDetails_RowCommand(sender As Object, e As GridViewCommandEventArgs) Handles gvwDetails.RowCommand
+
+        Dim rowIndex As Integer = e.CommandArgument    ' which row
+        Session("whichFeature") = rowIndex + 1
+        Dim myResults As List(Of OptimizationResults) = Session("Results")
+
+        Dim myChosenOptions As List(Of Integer) = Session("chosenOptions")
+        Dim optID As Integer = myChosenOptions.Item(rowIndex)
+        Dim myOptionSet As List(Of Options) = Session("OptionSet")
+
+        For Each aOption In myOptionSet
+            If aOption.getoptionID = optID Then
+                Session("whichOption") = aOption
+            End If
+        Next
+
+        Dim myFeature As Integer = Session("whichFeature")
+        Dim myOption As Options = Session("whichOption")
+        Dim myFeatureSet As List(Of Feature) = Session("FeatureSet")
+        Dim myOptionList As List(Of Options) = Session("OptionSet")
+        Dim panelCount As Integer = 0
+        For Each aFeature In myFeatureSet
+            If aFeature.getID = myFeature Then
+                lblFeatureName.visible = True
+                lblFeatureName.Text = aFeature.Name
+            End If
+        Next
+
+
+        For i = 0 To myOptionList.Count - 1
+            If myOptionList.Item(i).getFeatureID = myFeature Then
+                panelCount = panelCount + 1
+
+                If panelCount = 1 Then
+                    rdb1.Visible = True
+                    rdb1.Text = myOptionList.Item(i).getoptionname
+                    If myOptionList.Item(i).getoptionname = myOption.getoptionname Then
+                        rdb1.Checked = True
+                    End If
+
+                ElseIf panelCount = 2 Then
+                    rdb2.Visible = True
+                    rdb2.Text = myOptionList.Item(i).getoptionname
+                    If myOptionList.Item(i).getoptionname = myOption.getoptionname Then
+                        rdb2.Checked = True
+                    End If
+
+                ElseIf panelCount = 3 Then
+                    rdb3.Visible = True
+                    rdb3.Text = myOptionList.Item(i).getoptionname
+                    If myOptionList.Item(i).getoptionname = myOption.getoptionname Then
+                        rdb3.Checked = True
+                    End If
+
+                ElseIf panelCount = 4 Then
+                    rdb4.Visible = True
+                    rdb4.Text = myOptionList.Item(i).getoptionname
+                    If myOptionList.Item(i).getoptionname = myOption.getoptionname Then
+                        rdb4.Checked = True
+                    End If
+
+                ElseIf panelCount = 5 Then
+                    rdb5.Visible = True
+                    rdb5.Text = myOptionList.Item(i).getoptionname
+                    If myOptionList.Item(i).getoptionname = myOption.getoptionname Then
+                        rdb5.Checked = True
+                    End If
+
+
+                End If
+
+            End If
+        Next
+        Dim index As Integer
+        For i = 0 To myOptionList.Count - 1
+            If myOption.getoptionID = myOptionList.Item(i).getoptionID Then
+                index = i
+            End If
+        Next
+
+
+        Dim check As String
+
+        If rdb1.Checked = True And rdb1.Text IsNot myOptionList.Item(index).getoptionname Then
+            check = rdb1.Text
+
+        ElseIf rdb2.Checked = True And rdb2.Text IsNot myOptionList.Item(index).getoptionname
+            check = rdb2.Text
+
+
+        ElseIf rdb3.Checked = True And rdb3.Text IsNot myOptionList.Item(index).getoptionname
+            check = rdb3.Text
+
+        ElseIf rdb4.Checked = True And rdb4.Text IsNot myOptionList.Item(index).getoptionname
+            check = rdb1.Text
+
+        ElseIf rdb5.Checked = True And rdb5.Text IsNot myOptionList.Item(index).getoptionname
+            check = rdb5.Text
+
+        Else
+            check = myOptionList.Item(index).getoptionname
+        End If
+
+        ChangeChoice(check)
+
+
+    End Sub
+
+    Private Sub ChangeChoice(ByVal checkText As String)
+        Dim myOptionList As List(Of Options) = Session("OptionSet")
+        Dim myChosenOptions As List(Of Integer) = Session("chosenOptions")
+        Dim myFeature As Integer = Session("whichFeature")
+        Dim myOption As Options
+
+        For i = 0 To myOptionList.Count - 1
+            If myOptionList.Item(i).getoptionname = checkText Then
+                myChosenOptions.Item(myFeature - 1) = myOptionList.Item(i).getoptionID
+                myOption = myOptionList.Item(i)
+            End If
+        Next
+        Session("whichOption") = myOption
+
+
+
     End Sub
 
 End Class

@@ -5,7 +5,11 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
 
 
-     <asp:Chart ID="chtCompareBudgets" runat="server">
+    
+     <table>
+         <tr>
+             <td>
+ <asp:Chart ID="chtCompareBudgets" runat="server">
          <series>
              <asp:Series Name="Series1">
              </asp:Series>
@@ -15,15 +19,52 @@
              </asp:ChartArea>
          </chartareas>
      </asp:Chart>
-     
-     <asp:Panel ID="pnlGVW" runat="server" Visible="False">
-         <asp:GridView ID="gvwDetails" runat="server">
+             </td>
+         </tr>
+         </table>
+     <table>
+         <tr>
+             <td>
+                 <asp:GridView ID="gvwDetails" runat="server" Visible="False">
+             <Columns>
+                 <asp:CommandField SelectText="Edit" ShowSelectButton="True" />
+             </Columns>
          </asp:GridView>
+             </td>
+             <td>
+                 <asp:Label ID="lblFeatureName" align="left" runat="server" Visible="False" Font-Bold="True" Font-Size="Large"></asp:Label>
+                 <br /> 
+                 <br /> 
+          <table style="height: 58px; width: 45px">
+              <tr>
+         <asp:RadioButton ID="rdb1" alight="left" runat="server" Autopostback =" true" GroupName="1" Visible="False" />
+              
+        </tr>
+             <tr>  
+        <asp:RadioButton ID="rdb2" runat="server" Autopostback=" true" GroupName="1" Visible="False" />
+                     
+        </tr>
+              <tr>
+        <asp:RadioButton ID="rdb3" runat="server" Autopostback=" true" GroupName="1" Visible="False" />
+        </tr>
+              <tr>
+        <asp:RadioButton ID="rdb4" runat="server" Autopostback=" true" GroupName="1" Visible="False" />
+        </tr>
+              <tr>
+        <asp:RadioButton ID="rdb5" runat="server" Autopostback=" true" GroupName="1" Visible="False" />
+                  </tr>
+</table>
+             </td>
+         </tr>
+     </table>
+         
+
+        
          <br />
          <asp:Button ID="btnEdit" runat="server" Text="Edit" Width="78px" />
          <asp:Button ID="btnSave" runat="server" style="margin-left: 69px" Text="Save" Width="78px" />
          <br />
-     </asp:Panel>
+     
      <br />
      
 </asp:Content>
