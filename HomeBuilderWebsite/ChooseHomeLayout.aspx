@@ -72,6 +72,7 @@
                 </td>
 
                 <td style="width: 1000px"> 
+                     <asp:Label ID="lblnoinitialoptions" runat="server" Text="We apologize. We do not offer any homes that are that style within your budget. Please select another home type."></asp:Label>
                     <asp:GridView ID="gvwalltypes" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#336666" BorderStyle="Double" BorderWidth="3px" CellPadding="4" GridLines="Horizontal">
            <Columns>
                <asp:CommandField ShowSelectButton="True" />

@@ -37,40 +37,43 @@ Public Class HomeLayouts
         End Get
     End Property
 
-    Public ReadOnly Property Name
+    Public ReadOnly Property Name As String
         Get
             Return myName
         End Get
     End Property
 
-    Public ReadOnly Property NumberOfBedrooms
+    Public ReadOnly Property NumberOfBedrooms As Double
         Get
             Return myBedroom
         End Get
     End Property
 
-    Public ReadOnly Property NumberOfBathrooms
+    Public ReadOnly Property NumberOfBathrooms As Double
         Get
             Return myBathroom
         End Get
     End Property
 
-    Public ReadOnly Property Price
+    Public ReadOnly Property Price As Double
         Get
             Return myPrice
         End Get
     End Property
 
-    Public ReadOnly Property SquareFeet
+    Public ReadOnly Property SquareFeet As Double
         Get
             Return mySquarefeet
         End Get
     End Property
 
-    Public ReadOnly Property Style
+    Public ReadOnly Property Style As String
         Get
             Return myStyle
         End Get
     End Property
+
+
+
 
 End Class

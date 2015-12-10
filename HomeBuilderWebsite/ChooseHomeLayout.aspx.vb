@@ -9,6 +9,7 @@ Partial Class ChooseHomeLayout
     Private Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
 
         If (Not IsPostBack) Then
+            lblnoinitialoptions.Visible = False
 
             firstload()
 
@@ -44,9 +45,16 @@ Partial Class ChooseHomeLayout
             Session("tempbath") = 1
             Session("tempbed") = 1
 
-            gvwalltypes.DataSource = myDataLoader.GetHomeDetails(type, budget)
-            gvwalltypes.DataBind()
-            gvwalltypes.Visible = True
+            Dim filteredhome As New DataTable
+            filteredhome = myDataLoader.GetHomeDetails(type, budget)
+
+            If filteredhome.Rows.Count <> 0 Then
+                gvwalltypes.DataSource = filteredhome
+                gvwalltypes.DataBind()
+                gvwalltypes.Visible = True
+            Else
+                lblnoinitialoptions.Visible = True
+            End If
 
         End If
         myDataLoader.LoadHomesLayouts()

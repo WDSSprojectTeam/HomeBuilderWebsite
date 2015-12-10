@@ -25,7 +25,7 @@
                   
                     <asp:RadioButtonList ID="rdbhomestyle" runat="server" RepeatDirection="Horizontal" Width="813px">
                         <asp:ListItem>Luxury</asp:ListItem>
-                        <asp:ListItem>Family</asp:ListItem>
+                        <asp:ListItem Selected="True">Family</asp:ListItem>
                         <asp:ListItem>Starter Home</asp:ListItem>
                     </asp:RadioButtonList>
                          
