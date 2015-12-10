@@ -107,7 +107,11 @@ Partial Class FEOutdoor
         budgetvaluelist.Add(Session("Countertopsavg"))
         budgetvaluelist.Add(Session("Bathroomsavg"))
         budgetvaluelist.Add(Session("Closetsavg"))
-        budgetvaluelist.Add(Session("myRemainderBudget"))
+        If Session("myRemainderBudget") > 0 Then
+            budgetvaluelist.Add(Session("myRemainderBudget"))
+        Else
+            budgetvaluelist.Add(0)
+        End If
         Session("yvaluespie") = budgetvaluelist
 
 
