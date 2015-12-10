@@ -182,6 +182,6 @@ Partial Class ChooseHomeLayout
     '    Next
 
 
-        Response.Redirect("~\ChooseFeature.aspx")
-    End Sub
+    '    Response.Redirect("~\ChooseFeature.aspx")
+    'End Sub
 End Class
