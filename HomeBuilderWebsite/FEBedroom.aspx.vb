@@ -1,4 +1,4 @@
-﻿
+﻿Imports System.Web.UI.DataVisualization.Charting
 Partial Class FEBedroom
     Inherits System.Web.UI.Page
 
@@ -61,6 +61,21 @@ Partial Class FEBedroom
         Dim remainderbudget As Double = Session("myRemainderBudget")
         Session("myRemainderBudget") = remainderbudget - (bathavg + closetavg)
         '
+        Session("Bathroomsavg") = bathavg
+        Session("Closetsavg") = closetavg
+
+        Dim budgetvaluelist As New ArrayList
+        budgetvaluelist.Add(Session("Roofavg"))
+        budgetvaluelist.Add(Session("Garageavg"))
+        budgetvaluelist.Add(Session("Flooringavg"))
+        budgetvaluelist.Add(Session("Fireplaceavg"))
+        budgetvaluelist.Add(Session("Appliancesavg"))
+        budgetvaluelist.Add(Session("Countertopsavg"))
+        budgetvaluelist.Add(Session("Bathroomsavg"))
+        budgetvaluelist.Add(Session("Closetsavg"))
+        budgetvaluelist.Add(Session("myRemainderBudget"))
+        Session("yvaluespie") = budgetvaluelist
+
 
         Dim myFeatureList As New List(Of Feature)
         myFeatureList = Session("FeatureSet")
@@ -72,6 +87,8 @@ Partial Class FEBedroom
             Dim opt As New Optimization
             opt.Solve(i)
         Next
+
+
         Response.Redirect("~\OptimizationResultsPage.aspx")
     End Sub
 
@@ -175,6 +192,7 @@ Partial Class FEBedroom
         End If
         tblBar.Rows.Item(0).Cells.Item(0).Width = 200 * percentbudgetused
         lblpercent.Text = Convert.ToString(Math.Round(100 * percentbudgetused)) & " % of budget is spent"
+        DrawBudgetCharter()
     End Sub
 
     Public Function AvgPrice(ByVal p1 As Double, ByVal p2 As Double, ByVal p3 As Double, ByVal p4 As Double, ByVal p5 As Double, ByVal r1 As Integer, ByVal r2 As Integer, ByVal r3 As Integer, ByVal r4 As Integer, ByVal r5 As Integer) As Double
@@ -183,4 +201,14 @@ Partial Class FEBedroom
         Dim weightedavg As Double = weightedsum / ratingsum
         Return weightedavg
     End Function
+
+    Private Sub DrawBudgetCharter()
+
+        Dim chtBudget As New Chart
+        pnlydynamichart.Controls.Add(chtBudget)
+        Dim mycharter As New BudgetAllocationCharter(chtBudget)
+        mycharter.Draw()
+
+    End Sub
+
 End Class

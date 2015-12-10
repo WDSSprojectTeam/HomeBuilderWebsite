@@ -296,6 +296,8 @@
                     </table>
                     
                     <br />
+                            <asp:Panel ID="pnlydynamichart" runat="server">
+                            </asp:Panel>
                  </td>
             </tr>
         </table> 

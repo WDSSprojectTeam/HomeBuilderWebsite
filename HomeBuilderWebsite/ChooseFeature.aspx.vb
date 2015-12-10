@@ -21,6 +21,40 @@ Partial Class ChooseFeature
         End If
         tblBar.Rows.Item(0).Cells.Item(0).Width = 200 * percentbudgetused
         lblpercent.Text = Convert.ToString(Math.Round(100 * percentbudgetused)) & " % of your budget is spent"
+
+        Dim budgetitemlist As New ArrayList
+        budgetitemlist.Add("Roof")
+        budgetitemlist.Add("Garage")
+        budgetitemlist.Add("Flooring")
+        budgetitemlist.Add("Fireplace")
+        budgetitemlist.Add("Appliances")
+        budgetitemlist.Add("Countertops")
+        budgetitemlist.Add("Bathrooms")
+        budgetitemlist.Add("Closets")
+        budgetitemlist.Add("Remaining Budget")
+        Session("xvaluespie") = budgetitemlist
+
+        Session("Roofavg") = 0
+        Session("Flooringavg") = 0
+        Session("Garageavg") = 0
+        Session("Fireplaceavg") = 0
+        Session("Appliancesavg") = 0
+        Session("Countertopsavg") = 0
+        Session("Bathroomsavg") = 0
+        Session("Closetsavg") = 0
+
+        Dim budgetvaluelist As New ArrayList
+        budgetvaluelist.Add(Session("Roofavg"))
+        budgetvaluelist.Add(Session("Garageavg"))
+        budgetvaluelist.Add(Session("Flooringavg"))
+        budgetvaluelist.Add(Session("Fireplaceavg"))
+        budgetvaluelist.Add(Session("Appliancesavg"))
+        budgetvaluelist.Add(Session("Countertopsavg"))
+        budgetvaluelist.Add(Session("Bathroomsavg"))
+        budgetvaluelist.Add(Session("Closetsavg"))
+        budgetvaluelist.Add(Session("myRemainderBudget"))
+        Session("yvaluespie") = budgetvaluelist
+
     End Sub
 
     Protected Sub btnNext_Click(sender As Object, e As EventArgs) Handles btnNext.Click
