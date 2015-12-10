@@ -42,8 +42,8 @@ Partial Class ChooseHomeLayout
             Dim budget As Double = Session("Budget")
 
             Session("temptype") = Session("homestyleselected")
-            Session("tempbath") = 1
-            Session("tempbed") = 1
+            Session("tempbath") = "All"
+            Session("tempbed") = "All"
 
             Dim filteredhome As New DataTable
             filteredhome = myDataLoader.GetHomeDetails(type, budget)
@@ -74,13 +74,25 @@ Partial Class ChooseHomeLayout
         Session("tempbed") = bed
 
         Dim homedetails As New DataTable
-        homedetails = myDataLoader.GetHomeDetails(type, bed, bath)
+
+        If bed = 0 And bath <> 0 Then
+            homedetails = myDataLoader.GetHomeDetailsAllBed(type, bath)
+        ElseIf bed <> 0 And bath = 0 Then
+            homedetails = myDataLoader.GetHomeDetailsAllBath(type, bed)
+        ElseIf bed = 0 And bath = 0 Then
+            homedetails = myDataLoader.GetHomeDetailsAllBedAllBath(type)
+        Else
+            homedetails = myDataLoader.GetHomeDetails(type, bed, bath)
+        End If
+
 
         If homedetails.Rows.Count <> 0 Then
-            gvwfiltered.DataSource = homedetails
-            gvwfiltered.DataBind()
-            gvwfiltered.Visible = True
-            gvwalltypes.Visible = False
+            'gvwfiltered.DataSource = homedetails
+            'gvwfiltered.DataBind()
+            gvwfiltered.Visible = False
+            gvwalltypes.DataSource = homedetails
+            gvwalltypes.DataBind()
+            gvwalltypes.Visible = True
             lblnooptions.Visible = False
         Else
             gvwalltypes.Visible = False
@@ -139,11 +151,14 @@ Partial Class ChooseHomeLayout
             lblfamily.Visible = False
             lblluxury.Visible = False
             lblstarter.Visible = True
-        Else
+        ElseIf lbxhometype.SelectedValue = "Luxury"
             lblfamily.Visible = False
             lblluxury.Visible = True
             lblstarter.Visible = False
-
+        Else
+            lblfamily.Visible = False
+            lblluxury.Visible = False
+            lblstarter.Visible = False
         End If
 
         gvwalltypes.Visible = False

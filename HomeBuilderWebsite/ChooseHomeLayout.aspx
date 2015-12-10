@@ -42,6 +42,7 @@
                     <br />
         <asp:Label ID="Label2" runat="server" Text="Number of Bedrooms"></asp:Label>
         <asp:DropDownList ID="ddlbedroom" runat="server" AutoPostBack="True">
+            <asp:ListItem Value="0">All</asp:ListItem>
             <asp:ListItem>1</asp:ListItem>
             <asp:ListItem>2</asp:ListItem>
             <asp:ListItem>3</asp:ListItem>
@@ -53,6 +54,7 @@
             
         <asp:Label ID="Label3" runat="server" Text="Number of Bathrooms"></asp:Label>
         <asp:DropDownList ID="ddlbathroom" runat="server" AutoPostBack="True">
+            <asp:ListItem Value="0">All</asp:ListItem>
             <asp:ListItem>1</asp:ListItem>
             <asp:ListItem>2</asp:ListItem>
             <asp:ListItem>3</asp:ListItem>
