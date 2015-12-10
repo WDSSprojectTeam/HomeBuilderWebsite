@@ -1,4 +1,6 @@
-﻿Imports System.Web.UI.DataVisualization.Charting
+﻿Imports Microsoft.VisualBasic
+Imports System.Web.UI.DataVisualization.Charting
+
 Partial Class FEBedroom
     Inherits System.Web.UI.Page
 
@@ -9,19 +11,13 @@ Partial Class FEBedroom
 
         If cbxBathShower.Checked = True Then
             myOptionList.GetName("Bath/Shower Combination").Need = True
-        Else
-            myOptionList.GetName("Bath/Shower Combination").Preference = rltBathShower.SelectedValue
-        End If
-
-        If cbxWalkinShower.Checked = True Then
+        ElseIf cbxWalkinShower.Checked = True Then
             myOptionList.GetName("Walk-in-shower").Need = True
-        Else
-            myOptionList.GetName("Walk-in-shower").Preference = rltWalkinShower.SelectedValue
-        End If
-
-        If cbxRainfall.Checked = True Then
+        ElseIf cbxRainfall.Checked = True Then
             myOptionList.GetName("Luxury rainfall shower").Need = True
         Else
+            myOptionList.GetName("Bath/Shower Combination").Preference = rltBathShower.SelectedValue
+            myOptionList.GetName("Walk-in-shower").Preference = rltWalkinShower.SelectedValue
             myOptionList.GetName("Luxury rainfall shower").Preference = rltRainfall.SelectedValue
         End If
 
@@ -29,13 +25,10 @@ Partial Class FEBedroom
 
         If cbxWardrobe.Checked = True Then
             myOptionList.GetName("Wardrobe Closet").Need = True
-        Else
-            myOptionList.GetName("Wardrobe Closet").Preference = rltWardrobe.SelectedValue
-        End If
-
-        If cbxWalkinCloset.Checked = True Then
+        ElseIf cbxWalkinCloset.Checked = True Then
             myOptionList.GetName("Walk-in Closet").Need = True
         Else
+            myOptionList.GetName("Wardrobe Closet").Preference = rltWardrobe.SelectedValue
             myOptionList.GetName("Walk-in Closet").Preference = rltWalkinCloset.SelectedValue
         End If
 
@@ -58,9 +51,27 @@ Partial Class FEBedroom
         Dim bathavg As Double = AvgPrice(bathPrice, showerPrice, luxryPrice, 0, 0, bathRating, showerRating, luxryRating, 0, 0)
         Dim closetavg As Double = AvgPrice(wardrobePrice, walkPrice, 0, 0, 0, wardrobeRating, walkRating, 0, 0, 0)
 
+        'BATH
+
+        If cbxBathShower.Checked = True Then
+            bathavg = bathPrice
+        ElseIf cbxWalkinShower.Checked = True Then
+            bathavg = showerPrice
+        ElseIf cbxRainfall.Checked = True Then
+            bathavg = luxryPrice
+        End If
+
+        'CLOSET
+
+        If cbxWardrobe.Checked = True Then
+            closetavg = wardrobePrice
+        ElseIf cbxWalkinCloset.Checked = True Then
+            closetavg = walkPrice
+        End If
+
         Dim remainderbudget As Double = Session("myRemainderBudget")
         Session("myRemainderBudget") = remainderbudget - (bathavg + closetavg)
-        '
+
         Session("Bathroomsavg") = bathavg
         Session("Closetsavg") = closetavg
 
@@ -80,7 +91,6 @@ Partial Class FEBedroom
         End If
         Session("yvaluespie") = budgetvaluelist
 
-
         Dim myFeatureList As New List(Of Feature)
         myFeatureList = Session("FeatureSet")
 
@@ -92,11 +102,8 @@ Partial Class FEBedroom
             opt.Solve(i)
         Next
 
-
         Response.Redirect("~\OptimizationResultsPage.aspx")
     End Sub
-
-
 
     'BATH
 
@@ -207,12 +214,9 @@ Partial Class FEBedroom
     End Function
 
     Private Sub DrawBudgetCharter()
-
         Dim chtBudget As New Chart
         pnlydynamichart.Controls.Add(chtBudget)
         Dim mycharter As New BudgetAllocationCharter(chtBudget)
         mycharter.Draw()
-
     End Sub
-
 End Class

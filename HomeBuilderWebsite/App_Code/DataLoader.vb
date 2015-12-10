@@ -228,14 +228,14 @@ FROM tblHomeLayouts;", myConnection)
 
     End Function
 
-    'Public Sub InsertSavedScenario(ByVal HS As String, ByVal pool As String, ByVal roof As String, ByVal TC As Double, ByVal DF As String, ByVal FS As String, ByVal FC As Double, ByVal AP As String, ByVal APC As Double, ByVal CT As String, ByVal CTC As Double, ByVal CL As String, ByVal CLC As Double, ByVal F5 As String, ByVal F5C As Double, )
-    '    myConnection = New OleDbConnection(myConnectionStr)   ' no connection yet
-    '    Dim paramStr As String = HS & ",'" & pool & "','" & roof & "'"
-    '    myCommand = New OleDbCommand("INSERT INTO tblScenarios(HomeStyle, Pool, Roof, TotalCost, DefiningFeature, FloorStyle, FloorCost, Appliances, AppliancesCost, Countertops, CountertopsCost, Closets, ClosetsCost, Feature5, Feature5Cost, Option12, Option12Cost, ect, Option121, Option12Cost1, etc) VALUES (" & paramStr & ")", myConnection)
-    '    myConnection.Open()
-    '    myCommand.ExecuteNonQuery()
-    '    myConnection.Close()
-    'End Sub
+    Public Sub InsertSavedScenario(ByVal HouseName As String, ByVal Budget As Integer, ByVal ScenarioName As String, ByVal TotalCost As Double, ByVal FloorCost As Double, ByVal RoofCost As Double, ByVal Floors As Integer, ByVal Roof_Type As Integer, ByVal Appliances As Integer, ByVal Garage As Integer, ByVal Countertops As Integer, ByVal Bath As Integer, ByVal Closets As Integer, ByVal Fireplace As Integer)
+        myConnection = New OleDbConnection(myConnectionStr)   ' no connection yet
+        Dim paramStr As String = "'" & 2 & "','" & HouseName & ",'" & Budget & "','" & ScenarioName & "','" & TotalCost & "','" & FloorCost & "','" & RoofCost & "','" & Floors & "','" & Roof_Type & "','" & Appliances & "','" & Garage & "','" & Countertops & "','" & Bath & "','" & Closets & "','" & Fireplace & "'"
+        myCommand = New OleDbCommand("INSERT INTO tblScenarios(ScenarioID, HouseName, Budget, ScenarioName, TotalCost, FloorCost, RoofCost, Floors, Roof_Type, Appliances, Garage, Countertops, Bath, Closets, Fireplace) VALUES (" & paramStr & ")", myConnection)
+        myConnection.Open()
+        myCommand.ExecuteNonQuery()
+        myConnection.Close()
+    End Sub
 
 
     Public Function GetHomeDetails(ByVal type As String, ByVal budget As Double) As DataTable

@@ -43,15 +43,20 @@ Public Class OptimizationResults
     Public Function getTotalUtility() As Double
         Dim utility As Double = 0
         Dim featUtility As Integer = 0
-        For i = 0 To myChoiceList.Count - 1
-            For Each aFeature In myFeatureList
-                If myOptionList.Item(i).getFeatureID = aFeature.getID Then
-                    featUtility = aFeature.Rating
-                End If
 
-            Next
-            utility += myChoiceList.Item(i).ToDouble * myOptionList.Item(i).Preference * featUtility
+        For i = 0 To myChoiceList.Count - 1
+            utility += myChoiceList.Item(i).ToDouble * myOptionList.Item(i).Preference * myOptionList.Item(i).getFeaturePreference
         Next
+
+        'For i = 0 To myChoiceList.Count - 1
+        '    For Each aFeature In myFeatureList
+        '        If myOptionList.Item(i).getFeatureID = aFeature.getID Then
+        '            featUtility = aFeature.Rating
+        '        End If
+
+        '    Next
+        '    utility += myChoiceList.Item(i).ToDouble * myOptionList.Item(i).Preference * featUtility
+        'Next
 
         Return utility
     End Function
