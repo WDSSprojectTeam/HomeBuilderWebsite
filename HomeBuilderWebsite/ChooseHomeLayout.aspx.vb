@@ -164,22 +164,22 @@ Partial Class ChooseHomeLayout
 
 
 
-    Private Sub lnkchoosehome_Click(sender As Object, e As EventArgs) Handles lnkchoosehome.Click
-        Dim selectedcourseID As Integer = 1
+    'Private Sub lnkchoosehome_Click(sender As Object, e As EventArgs) Handles lnkchoosehome.Click
+    '    Dim selectedcourseID As Integer = 1
 
-        Dim homelist As List(Of HomeLayouts) = Session("HomeSet")
+    '    Dim homelist As List(Of HomeLayouts) = Session("HomeSet")
 
-        If gvwalltypes.Visible = True Then
-            selectedcourseID = gvwalltypes.SelectedRow.Cells.Item(2).Text
-        ElseIf gvwfiltered.Visible = True
-            selectedcourseID = gvwfiltered.SelectedRow.Cells.Item(2).Text
-        End If
+    '    If gvwalltypes.Visible = True Then
+    '        selectedcourseID = gvwalltypes.SelectedRow.Cells.Item(2).Text
+    '    ElseIf gvwfiltered.Visible = True
+    '        selectedcourseID = gvwfiltered.SelectedRow.Cells.Item(2).Text
+    '    End If
 
-        For i = 0 To homelist.Count - 1
+    '    For i = 0 To homelist.Count - 1
 
-            Session("SelectedHome") = homelist.Item(selectedcourseID - 1)
+    '        Session("SelectedHome") = homelist.Item(selectedcourseID - 1)
 
-        Next
+    '    Next
 
 
         Response.Redirect("~\ChooseFeature.aspx")
