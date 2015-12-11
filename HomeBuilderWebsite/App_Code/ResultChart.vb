@@ -78,7 +78,7 @@ Public Class ResultChart
     Private Sub AddSeries(ByVal x As ArrayList, ByVal y As ArrayList)
         Dim mySeries As New Series
         mySeries.Points.DataBindXY(x, y)
-        mySeries.ChartType = SeriesChartType.Line
+        mySeries.ChartType = SeriesChartType.Point
         mySeries.Color = Drawing.Color.Blue
 
         mySeries.PostBackValue = "#SERIESNAME,#VALX"

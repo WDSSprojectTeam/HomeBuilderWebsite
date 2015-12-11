@@ -35,33 +35,34 @@
                  <asp:Label ID="lblFeatureName" align="left" runat="server" Visible="False" Font-Bold="True" Font-Size="Large"></asp:Label>
                  <br /> 
                  <br /> 
-          <table style="height: 58px; width: 45px">
-              <tr>
+         
          <asp:RadioButton ID="rdb1" alight="left" runat="server" Autopostback =" true" GroupName="1" Visible="False" />
               
-        </tr>
-             <tr>  
+      
+                 <br />
+              
+      
         <asp:RadioButton ID="rdb2" runat="server" Autopostback=" true" GroupName="1" Visible="False" />
                      
-        </tr>
-              <tr>
+     
+                 <br />
+                     
+     
         <asp:RadioButton ID="rdb3" runat="server" Autopostback=" true" GroupName="1" Visible="False" />
-        </tr>
-              <tr>
+        
+                 <br />
+        
         <asp:RadioButton ID="rdb4" runat="server" Autopostback=" true" GroupName="1" Visible="False" />
-        </tr>
-              <tr>
+        
+                 <br />
+        
         <asp:RadioButton ID="rdb5" runat="server" Autopostback=" true" GroupName="1" Visible="False" />
-                  </tr>
-</table>
-             </td>
-         </tr>
-     </table>
+                  
+        
          
 
         
          <br />
-         <asp:Button ID="btnEdit" runat="server" Text="Edit" Width="78px" />
          <asp:Button ID="btnSave" runat="server" style="margin-left: 69px" Text="Save" Width="78px" />
          <br />
      

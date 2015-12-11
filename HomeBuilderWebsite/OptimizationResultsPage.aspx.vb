@@ -2,11 +2,83 @@
 Imports System.data
 
 Partial Class OptimizationResultsPage
-    Inherits Page
-
+    Inherits System.Web.UI.Page
+    Private check2 As Boolean = False
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         DrawCharts()
+
+        If (IsPostBack And lblFeatureName.visible = True) Then
+            updateFeatures()
+        End If
+
+        check2 = False
+
+    End Sub
+
+    Private Sub updateFeatures()
+        Dim myFeature As Integer = Session("whichFeature")
+        Dim myOption As Options = Session("whichOption")
+        Dim myFeatureSet As List(Of Feature) = Session("FeatureSet")
+        Dim myOptionList As List(Of Options) = Session("OptionSet")
+        Dim myChosenOptions As List(Of Integer) = Session("chosenOptions")
+        Dim index As Integer
+        For i = 0 To myOptionList.Count - 1
+            If myOption.getoptionID = myOptionList.Item(i).getoptionID Then
+                index = i
+            End If
+        Next
+
+
+        Dim check As String
+
+        If rdb1.Checked = True And rdb1.Text IsNot myOptionList.Item(index).getoptionname Then
+            check = rdb1.Text
+
+        ElseIf rdb2.Checked = True And rdb2.Text IsNot myOptionList.Item(index).getoptionname
+            check = rdb2.Text
+
+
+        ElseIf rdb3.Checked = True And rdb3.Text IsNot myOptionList.Item(index).getoptionname
+            check = rdb3.Text
+
+        ElseIf rdb4.Checked = True And rdb4.Text IsNot myOptionList.Item(index).getoptionname
+            check = rdb4.Text
+
+        ElseIf rdb5.Checked = True And rdb5.Text IsNot myOptionList.Item(index).getoptionname
+            check = rdb5.Text
+
+        Else
+            check = myOptionList.Item(index).getoptionname
+        End If
+
+        ChangeChoice(check)
+        Dim displayList As New datatable
+        displayList.Columns.Add("Feature")
+        displayList.Columns.Add("Name")
+        displayList.Columns.Add("Description")
+        displayList.Columns.Add("Price")
+
+        myChosenOptions = Session("chosenOptions")
+
+        For i = 0 To myOptionList.Count - 1
+            For j = 0 To myChosenOptions.Count - 1
+                If myOptionList.Item(i).getoptionID = myChosenOptions.Item(j) Then
+                    Dim list As New ArrayList
+                    displayList.Rows.Add()
+                    displayList.Rows(displayList.Rows.Count - 1)("Feature") = myOptionList.Item(i).getFeatureName
+                    displayList.Rows(displayList.Rows.Count - 1)("Name") = myOptionList.Item(i).getoptionname
+                    displayList.Rows(displayList.Rows.Count - 1)("Description") = myOptionList.Item(i).getoptiondescription
+                    displayList.Rows(displayList.Rows.Count - 1)("Price") = myOptionList.Item(i).getoptionprice
+
+                End If
+            Next
+
+        Next
+        gvwDetails.DataSource = displayList
+        gvwDetails.DataBind()
+
+
     End Sub
 
 
@@ -97,12 +169,13 @@ Partial Class OptimizationResultsPage
         gvwDetails.DataBind()
 
     End Sub
-    Protected Sub btnEdit_Click(sender As Object, e As EventArgs) Handles btnEdit.Click
-        Response.Redirect("EditOptResults.aspx")
-    End Sub
+    'Protected Sub btnEdit_Click(sender As Object, e As EventArgs) Handles btnEdit.Click
+    '    Response.Redirect("EditOptResults.aspx")
+    'End Sub
 
     Protected Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
-        Dim HouseName As String = "Yoooo"
+        Dim myHome As homeLayouts = Session("selectedHome")
+        Dim HouseName As String = myHome.name
         Dim Budget As Integer = Session("Budget")
         Dim ScenarioName As String = "whaaaa"
         Dim TotalCost As Double = 1
@@ -116,18 +189,23 @@ Partial Class OptimizationResultsPage
         Dim Bath As Integer = 1
         Dim Closets As Integer = 1
         Dim Fireplace As Integer = 1
-        Dim Utility as integer = 1
+        Dim Utility As Integer = 1
 
         Dim DAL As New DataLoader
         DAL.InsertSavedScenario(HouseName, Budget, ScenarioName, TotalCost, FloorCost, RoofCost, Floors, Roof_Type, Appliances, Garage, Countertops, Bath, Closets, Fireplace, Utility)
     End Sub
 
     Protected Sub gvwDetails_RowCommand(sender As Object, e As GridViewCommandEventArgs) Handles gvwDetails.RowCommand
+        lblFeatureName.visible = False
+        rdb1.visible = False
+        rdb2.visible = False
+        rdb3.visible = False
+        rdb4.visible = False
+        rdb5.visible = False
 
         Dim rowIndex As Integer = e.CommandArgument    ' which row
         Session("whichFeature") = rowIndex + 1
         Dim myResults As List(Of OptimizationResults) = Session("Results")
-
         Dim myChosenOptions As List(Of Integer) = Session("chosenOptions")
         Dim optID As Integer = myChosenOptions.Item(rowIndex)
         Dim myOptionSet As List(Of Options) = Session("OptionSet")
@@ -189,43 +267,12 @@ Partial Class OptimizationResultsPage
                     If myOptionList.Item(i).getoptionname = myOption.getoptionname Then
                         rdb5.Checked = True
                     End If
-
-
                 End If
-
-            End If
-        Next
-        Dim index As Integer
-        For i = 0 To myOptionList.Count - 1
-            If myOption.getoptionID = myOptionList.Item(i).getoptionID Then
-                index = i
             End If
         Next
 
 
-        Dim check As String
 
-        If rdb1.Checked = True And rdb1.Text IsNot myOptionList.Item(index).getoptionname Then
-            check = rdb1.Text
-
-        ElseIf rdb2.Checked = True And rdb2.Text IsNot myOptionList.Item(index).getoptionname
-            check = rdb2.Text
-
-
-        ElseIf rdb3.Checked = True And rdb3.Text IsNot myOptionList.Item(index).getoptionname
-            check = rdb3.Text
-
-        ElseIf rdb4.Checked = True And rdb4.Text IsNot myOptionList.Item(index).getoptionname
-            check = rdb1.Text
-
-        ElseIf rdb5.Checked = True And rdb5.Text IsNot myOptionList.Item(index).getoptionname
-            check = rdb5.Text
-
-        Else
-            check = myOptionList.Item(index).getoptionname
-        End If
-
-        ChangeChoice(check)
 
 
     End Sub
@@ -244,7 +291,7 @@ Partial Class OptimizationResultsPage
         Next
         Session("whichOption") = myOption
 
-
+        check2 = True
 
     End Sub
 
