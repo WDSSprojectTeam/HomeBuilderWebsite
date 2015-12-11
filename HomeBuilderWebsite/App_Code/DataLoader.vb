@@ -229,8 +229,13 @@ FROM tblHomeLayouts;", myConnection)
     End Function
 
     Public Sub InsertSavedScenario(ByVal HouseName As String, ByVal Budget As Integer, ByVal ScenarioName As String, ByVal TotalCost As Double, ByVal FloorCost As Double, ByVal RoofCost As Double, ByVal Floors As Integer, ByVal Roof_Type As Integer, ByVal Appliances As Integer, ByVal Garage As Integer, ByVal Countertops As Integer, ByVal Bath As Integer, ByVal Closets As Integer, ByVal Fireplace As Integer, ByVal Utility As Integer)
+        Dim numTable As DataTable = getAutoNumber()
+        Dim num As Integer = numTable.Rows.Count + 1
+
+
+
         myConnection = New OleDbConnection(myConnectionStr)   ' no connection yet
-        Dim paramStr As String = "'" & 2 & "','" & HouseName & "','" & Budget & "','" & ScenarioName & "','" & TotalCost & "','" & FloorCost & "','" & RoofCost & "','" & Floors & "','" & Roof_Type & "','" & Appliances & "','" & Garage & "','" & Countertops & "','" & Bath & "','" & Closets & "','" & Fireplace & "','" & Utility & "'"
+        Dim paramStr As String = "'" & num & "','" & HouseName & "','" & Budget & "','" & ScenarioName & "','" & TotalCost & "','" & FloorCost & "','" & RoofCost & "','" & Floors & "','" & Roof_Type & "','" & Appliances & "','" & Garage & "','" & Countertops & "','" & Bath & "','" & Closets & "','" & Fireplace & "','" & Utility & "'"
         myCommand = New OleDbCommand("INSERT INTO tblScenarios(ScenarioID, HouseName, Budget, ScenarioName, TotalCost, FloorCost, RoofCost, 
     Floors, Roof_Type, Appliances, Garage, Countertops, Bath, Closets, Fireplace, Utility) VALUES (" & paramStr & ")", myConnection)
         myConnection.Open()
@@ -238,8 +243,20 @@ FROM tblHomeLayouts;", myConnection)
         myConnection.Close()
     End Sub
 
+    Public Function getAutoNumber() As DataTable
+        Dim myTable As New DataTable
+        myConnection = New OleDbConnection(myConnectionStr)
+        myCommand = New OleDbCommand("SELECT tblScenarios.ScenarioID FROM tblScenarios;", myConnection)
+        myConnection.Open()
+        myReader = myCommand.ExecuteReader
+        myTable.Load(myReader)
+        myReader.Close()
+        myConnection.Close()
+        Return myTable
+    End Function
 
     Public Function GetHomeDetails(ByVal type As String, ByVal budget As Double) As DataTable
+
         Dim myTable As New DataTable
         myConnection = New OleDbConnection(myConnectionStr)
         myCommand = New OleDbCommand("SELECT tblHomeLayouts.Picture, tblHomeLayouts.ID, tblHomeLayouts.HouseName, tblHomeLayouts.Price, tblHomeLayouts.Bedrooms, tblHomeLayouts.Bathrooms, tblHomeLayouts.Style
@@ -254,6 +271,8 @@ FROM tblHomeLayouts WHERE (((tblHomeLayouts.Price)<param1) And ((tblHomeLayouts.
         myConnection.Close()
         Return myTable
     End Function
+
+
 
     Public Function GetHomeDetailsAllBed(ByVal type As String, ByVal bath As Double) As DataTable
         Dim myTable As New DataTable
