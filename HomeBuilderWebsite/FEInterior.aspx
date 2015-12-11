@@ -1,10 +1,8 @@
-﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="FEInterior.aspx.vb" Inherits="FEInterior" MaintainScrollPositionOnPostback="true" %>
+﻿<%@ Page Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false" CodeFile="FEInterior.aspx.vb" Inherits="FEInterior" MaintainScrollPositionOnPostback="true" %>
 
-<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
+
     <style type="text/css">
 
 
@@ -65,9 +63,8 @@
             height: 23px;
         }
         </style>
-    </head>
-<body>
-    <form id="form1" runat="server">
+    
+  
     <div>
     <table>
         <tr>
@@ -280,6 +277,5 @@
         </tr>
     </table>
     </div>
-    </form>
-</body>
-</html>
+    
+    </asp:Content>

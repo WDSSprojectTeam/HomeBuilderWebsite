@@ -16,6 +16,9 @@ Public Class Home
         Dim myDataLoader As New DataLoader
         myDataLoader.GetData()
 
+
+
+
     End Sub
 
     '    Private Sub LoadData()

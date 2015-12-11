@@ -1,10 +1,6 @@
-﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="ChooseFeature.aspx.vb" Inherits="ChooseFeature" %>
+﻿<%@ Page Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false" CodeFile="ChooseFeature.aspx.vb" Inherits="ChooseFeature" %>
 
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
     <style type="text/css">
         .auto-style1 {
             width: 200px;
@@ -19,10 +15,8 @@
             height: 35px;
         }
     </style>
-</head>
-<body>
-    <form id="form1" runat="server">
-    <div>
+
+
         <table>
             <tr>
                 <td>
@@ -194,7 +188,5 @@
                  </td>
             </tr>
         </table>
-    </div>
-    </form>
-</body>
-</html>
+    
+       </asp:Content>
