@@ -36,8 +36,8 @@ Public Class ResultChart
     End Sub
 
     Private Sub SetChartSize()
-        mychart.Height = 900
-        mychart.Width = 1500
+        mychart.Height = 500
+        mychart.Width = 700
     End Sub
 
     Private Sub SetBorderStyle()

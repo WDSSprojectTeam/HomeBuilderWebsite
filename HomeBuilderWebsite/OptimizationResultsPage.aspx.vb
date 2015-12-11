@@ -1,29 +1,32 @@
 ﻿Imports System.Web.UI.DataVisualization.Charting
-Imports System.data
+
+Imports System.Data
 
 Partial Class OptimizationResultsPage
     Inherits System.Web.UI.Page
+
     Private check2 As Boolean = False
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         DrawCharts()
-
-        If (IsPostBack And lblFeatureName.visible = True) Then
+        btnSave.Visible = False
+        If (IsPostBack And lblFeatureName.Visible = True) Then
             updateFeatures()
+
         End If
 
         check2 = False
 
     End Sub
 
-    Private Sub chtCompareBudgets_GetToolTipText(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataVisualization.Charting.ToolTipEventArgs) Handles chtCompareBudgets.GetToolTipText
-        If e.HitTestResult.PointIndex >= 0 Then
-            If e.HitTestResult.ChartElementType = DataVisualization.Charting.ChartElementType.DataPoint Then
-                Dim Xvalue As Integer = e.X
-                Dim Yvalue As Integer = e.Y
-            End If
-        End If
-    End Sub
+    'Private Sub chtCompareBudgets_GetToolTipText(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataVisualization.Charting.ToolTipEventArgs) Handles chtCompareBudgets.GetToolTipText
+    '    If e.HitTestResult.PointIndex >= 0 Then
+    '        If e.HitTestResult.ChartElementType = DataVisualization.Charting.ChartElementType.DataPoint Then
+    '            Dim Xvalue As Integer = e.X
+    '            Dim Yvalue As Integer = e.Y
+    '        End If
+    '    End If
+    'End Sub
 
     Private Sub updateFeatures()
         Dim myFeature As Integer = Session("whichFeature")
@@ -62,7 +65,7 @@ Partial Class OptimizationResultsPage
         End If
 
         ChangeChoice(check)
-        Dim displayList As New datatable
+        Dim displayList As New DataTable
         displayList.Columns.Add("Feature")
         displayList.Columns.Add("Name")
         displayList.Columns.Add("Description")
@@ -101,17 +104,18 @@ Partial Class OptimizationResultsPage
 
     Protected Sub chtCompareBudgets_Click(sender As Object, e As ImageMapEventArgs) Handles chtCompareBudgets.Click
         Dim check As Integer
-        Dim optBudgets As arraylist = Session("OptBudgets")
+        btnSave.Visible = True
+        Dim optBudgets As ArrayList = Session("OptBudgets")
         Dim wc = e.PostBackValue.Remove(0, 8)
 
         For i = 0 To 8
-            If wc = optBudgets.item(i).toString Then
+            If wc = optBudgets.Item(i).ToString Then
                 check = i
             End If
         Next
 
         Session("Chart") = check
-        gvwDetails.visible = True
+        gvwDetails.Visible = True
         Dim myResults As List(Of OptimizationResults) = Session("Results")
         Dim displayList As New DataTable
         'gvwDetails.DataSource = myResults.Item(check).getSelectedOptions
@@ -164,8 +168,8 @@ Partial Class OptimizationResultsPage
     'End Sub
 
     Protected Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
-        Dim myHome As homeLayouts = Session("selectedHome")
-        Dim HouseName As String = myHome.name
+        Dim myHome As HomeLayouts = Session("selectedHome")
+        Dim HouseName As String = myHome.Name
         Dim Budget As Integer = Session("Budget")
         Dim ScenarioName As String = "whaaaa"
         Dim TotalCost As Double = 1
@@ -186,12 +190,12 @@ Partial Class OptimizationResultsPage
     End Sub
 
     Protected Sub gvwDetails_RowCommand(sender As Object, e As GridViewCommandEventArgs) Handles gvwDetails.RowCommand
-        lblFeatureName.visible = False
-        rdb1.visible = False
-        rdb2.visible = False
-        rdb3.visible = False
-        rdb4.visible = False
-        rdb5.visible = False
+        lblFeatureName.Visible = False
+        rdb1.Visible = False
+        rdb2.Visible = False
+        rdb3.Visible = False
+        rdb4.Visible = False
+        rdb5.Visible = False
 
         Dim rowIndex As Integer = e.CommandArgument    ' which row
         Session("whichFeature") = rowIndex + 1
@@ -213,7 +217,7 @@ Partial Class OptimizationResultsPage
         Dim panelCount As Integer = 0
         For Each aFeature In myFeatureSet
             If aFeature.getID = myFeature Then
-                lblFeatureName.visible = True
+                lblFeatureName.Visible = True
                 lblFeatureName.Text = aFeature.Name
             End If
         Next
