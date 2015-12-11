@@ -16,21 +16,20 @@ Public Class Comparison2Charter
     End Sub
 
 
-    Public Sub draw(ByVal scenarios As ArrayList)
+    Public Sub draw(ByVal scenarios As ArrayList, type As String)
         mychart.Titles.Clear()
         mychart.Series.Clear()
-        mychart.Titles.Add("Scenario Comparison")
+        mychart.Titles.Add(type)
         setchartsize()
         setborderstyle()
         definechartarea()
-        Dim i As Integer
-        For Each i In scenarios
-            loadseriesdata(i)
-        Next
+        loadseriesdata(scenarios, type)
+
+
     End Sub
 
     Private Sub setchartsize()
-        mychart.Height = 500
+        mychart.Height = 300
         mychart.Width = 500
     End Sub
 
@@ -44,8 +43,8 @@ Public Class Comparison2Charter
 
     Private Sub definechartarea()
         Dim charea As New ChartArea
-        mychart.ChartAreas.Add(charea)
-        charea.AxisX.MajorGrid.LineDashStyle = ChartDashStyle.Dash
+        charea = mychart.ChartAreas.Item(0)
+        'charea.AxisX.MajorGrid.LineDashStyle = ChartDashStyle.Dash
         charea.AxisX.LabelStyle.Font = New Drawing.Font("Cambria", 12)
         charea.AxisX.LabelStyle.Angle = -45
         charea.AxisX.TitleFont = New Drawing.Font("cambria", 12)
@@ -59,21 +58,46 @@ Public Class Comparison2Charter
         charea.AxisY.Title = "Cost"
     End Sub
 
-    Private Sub loadseriesdata(ByVal identity As Integer)
-        Dim setupx As New ArrayList
-        Dim i As Integer
-        For i = 0 To 8
-            setupx.Add(identity)
-        Next
-        Dim xvalues As ArrayList = setupx
-        Dim yvalues As ArrayList = mydal.getscenariocosts(identity)
-        addseries(xvalues, yvalues, Drawing.Color.Blue)
+    Private Sub loadseriesdata(ByVal identity As ArrayList, ByVal type As String)
+        If type = "House" Then
+            Dim holder As New ArrayList
+            Dim xvalues As ArrayList = identity
+            For i = 0 To identity.Count - 1
+                holder.Add(mydal.gethousenamecost(mydal.gethousename(identity.Item(i))))
+            Next
+            Dim yvalues As ArrayList = holder
+            addseries(xvalues, yvalues, Drawing.Color.Blue)
+        ElseIf type = "FloorCost"
+            Dim holder As New ArrayList
+            Dim xvalues As ArrayList = identity
+            For i = 0 To identity.Count - 1
+                holder.Add(mydal.getfloorcost(identity.Item(i)))
+            Next
+            Dim yvalues As ArrayList = holder
+            addseries(xvalues, yvalues, Drawing.Color.Blue)
+        ElseIf type = "RoofCost"
+            Dim holder As New ArrayList
+            Dim xvalues As ArrayList = identity
+            For i = 0 To identity.Count - 1
+                holder.Add(mydal.getroofcost(identity.Item(i)))
+            Next
+            Dim yvalues As ArrayList = holder
+            addseries(xvalues, yvalues, Drawing.Color.Blue)
+        Else
+            Dim holder As New ArrayList
+            Dim xvalues As ArrayList = identity
+            For i = 0 To identity.Count - 1
+                holder.Add(mydal.getoptionstuff(type, identity.Item(i)))
+            Next
+            Dim yvalues As ArrayList = holder
+            addseries(xvalues, yvalues, Drawing.Color.Blue)
+        End If
     End Sub
 
     Private Sub addseries(ByVal exes As ArrayList, ByVal eyes As ArrayList, ByVal col As Drawing.Color)
         Dim myseries As New Series
         myseries.Points.DataBindXY(exes, eyes)
-        myseries.ChartType = SeriesChartType.StackedColumn
+        myseries.ChartType = SeriesChartType.Column
         myseries.Color = col
         mychart.Series.Add(myseries)
     End Sub
