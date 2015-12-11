@@ -16,6 +16,15 @@ Partial Class OptimizationResultsPage
 
     End Sub
 
+    Private Sub chtCompareBudgets_GetToolTipText(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataVisualization.Charting.ToolTipEventArgs) Handles chtCompareBudgets.GetToolTipText
+        If e.HitTestResult.PointIndex >= 0 Then
+            If e.HitTestResult.ChartElementType = DataVisualization.Charting.ChartElementType.DataPoint Then
+                Dim Xvalue As Integer = e.X
+                Dim Yvalue As Integer = e.Y
+            End If
+        End If
+    End Sub
+
     Private Sub updateFeatures()
         Dim myFeature As Integer = Session("whichFeature")
         Dim myOption As Options = Session("whichOption")

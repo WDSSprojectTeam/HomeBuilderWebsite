@@ -49,18 +49,22 @@ Public Class ResultChart
 
     Private Sub DefineChartArea()
         Dim chArea As New ChartArea
+        Dim myHome As HomeLayouts = Session("SelectedHome")
         chArea = mychart.ChartAreas.Item(0)
         ' x-axis
         chArea.AxisX.MajorGrid.LineDashStyle = ChartDashStyle.Dash
+        chArea.AxisX.Interval = 10000
+        chArea.AxisX.Maximum = Math.Round(myOptResults.Item(8).getTotalCost / 10000, 0) * 10000 + 10000 + myHome.Price
+        chArea.AxisX.Minimum = Math.Round(myOptResults.Item(0).getTotalCost / 10000, 0) * 10000 - 10000 + myHome.Price
         chArea.AxisX.LabelStyle.Font = New Drawing.Font("Arial", 12)
         chArea.AxisX.LabelStyle.Angle = -45
         chArea.AxisX.TitleFont = New Drawing.Font("Courier New", 12)
         chArea.AxisX.Title = "House Option Cost"
         ' y-axis
         chArea.AxisY.MajorGrid.LineDashStyle = ChartDashStyle.Dash
-        chArea.AxisY.Interval = 10
-        chArea.AxisY.Maximum = myOptResults.Item(8).getTotalUtility / myOptResults.Item(8).getMaxUtility * 100 + 5
-        chArea.AxisY.Minimum = myOptResults.Item(0).getTotalUtility / myOptResults.Item(0).getMaxUtility * 100 - 5
+        chArea.AxisY.Interval = 5
+        chArea.AxisY.Maximum = Math.Round(myOptResults.Item(8).getTotalUtility / myOptResults.Item(8).getMaxUtility, 1) * 100 + 10
+        chArea.AxisY.Minimum = Math.Round(myOptResults.Item(0).getTotalUtility / myOptResults.Item(0).getMaxUtility, 1) * 100 - 10
         chArea.AxisY.TitleFont = New Drawing.Font("Courier New", 12)
         chArea.AxisY.Title = "Percent of Maximum Utility"
 
