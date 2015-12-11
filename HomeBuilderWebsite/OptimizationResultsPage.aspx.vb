@@ -6,10 +6,15 @@ Partial Class OptimizationResultsPage
 
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        DrawCharts()
+        DrawCharts(10000)
         btnSave.Visible = False
 
+        If (ispostback) Then
+            btnSave.visible = True
+        End If
+
         If (IsPostBack And lblFeatureName.Visible = True) Then
+            btnSave.visible = True
             updateFeatures()
         End If
 
@@ -92,10 +97,10 @@ Partial Class OptimizationResultsPage
     End Sub
 
 
-    Private Sub DrawCharts()
+    Private Sub DrawCharts(ByVal i As Integer)
         Dim myResults As New List(Of OptimizationResults)
         myResults = Session("Results")
-        Dim C As New ResultChart(chtCompareBudgets)
+        Dim C As New ResultChart(chtCompareBudgets, i)
         C.LoadData(myResults)
         C.DrawOptResults()
     End Sub
@@ -119,6 +124,7 @@ Partial Class OptimizationResultsPage
         Next
 
         Session("Chart") = check
+        DrawCharts(check)
         gvwDetails.Visible = True
         Dim myResults As List(Of OptimizationResults) = Session("Results")
         Dim displayList As New DataTable
@@ -181,6 +187,8 @@ Partial Class OptimizationResultsPage
         Dim upgradeCost As Double = 0
         Dim Utility As Integer = 0
 
+
+
         For Each aOption In myOptionsList
             For Each chosenOption In myChosenOptions
                 If aOption.getoptionID = chosenOption Then
@@ -194,7 +202,7 @@ Partial Class OptimizationResultsPage
 
         Dim HouseName As String = myHome.Name
         Dim Budget As Integer = Session("Budget")
-        Dim ScenarioName As String = "whaaaa"
+        Dim ScenarioName As String = InputBox("What would you like to save this scenario as?", "Save Scenario", "")
         Dim TotalCost As Double = upgradeCost + myHome.Price
 
         Dim FloorCost As Double = 1
@@ -225,6 +233,7 @@ Partial Class OptimizationResultsPage
     End Sub
 
     Protected Sub gvwDetails_RowCommand(sender As Object, e As GridViewCommandEventArgs) Handles gvwDetails.RowCommand
+
         lblFeatureName.Visible = False
         rdb1.Visible = False
         rdb2.Visible = False
