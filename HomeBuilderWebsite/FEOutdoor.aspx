@@ -1,10 +1,11 @@
-﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="FEOutdoor.aspx.vb" Inherits="FEOutdoor" MaintainScrollPositionOnPostback="true" %>
+﻿<%@ Page Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false" CodeFile="FEOutdoor.aspx.vb" Inherits="FEOutdoor" MaintainScrollPositionOnPostback="true" %>
 
-<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
+                
+           
+
     <style type="text/css">
 
 
@@ -51,12 +52,12 @@
             width: 123px;
         }
         </style>
-</head>
-<body>
+
+
     <table>
         <tr>
             <td>
-                <form id="form1" runat="server">
+             
                     <div>
                         <h1>Exterior</h1>
                         <br />
@@ -262,7 +263,7 @@
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <asp:Button ID="btnNext" runat="server" Height="30px" Text="Next" Width="105px" />
                     </div>
-                </form>
+           
             </td>
             <td style="vertical-align: top">
                 <table>
@@ -298,5 +299,5 @@
             </td>
         </tr>
     </table>
-    </body>
-</html>
+ 
+</asp:Content>

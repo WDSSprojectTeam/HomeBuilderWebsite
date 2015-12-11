@@ -1,10 +1,6 @@
-﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="FEBedroom.aspx.vb" Inherits="FEBedroom" MaintainScrollPositionOnPostback="true"%>
+﻿<%@ Page Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false" CodeFile="FEBedroom.aspx.vb" Inherits="FEBedroom" MaintainScrollPositionOnPostback="true"%>
 
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
     <style type="text/css">
 
         .auto-style24 {
@@ -81,8 +77,7 @@
             width: 81px;
         }
         </style>
-</head>
-<body>
+
     <table>
         <tr>
             <td class="auto-style70">
@@ -90,7 +85,7 @@
                 <table>
                     <tr>
                         <td>
-                            <form id="form1" runat="server">
+                          
                                 <div>
                                     <h1>Bedrooms</h1>
                                     <br />
@@ -277,9 +272,5 @@
 
         </tr>
     </table>
-    </div>
-    </form>
-
-            
-    </body>
-</html>
+    
+        </asp:Content>

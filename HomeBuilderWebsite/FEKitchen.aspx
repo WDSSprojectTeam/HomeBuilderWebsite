@@ -1,10 +1,7 @@
-﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="FEKitchen.aspx.vb" Inherits="FEKitchen" MaintainScrollPositionOnPostback="true" %>
+﻿<%@ Page Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false" CodeFile="FEKitchen.aspx.vb" Inherits="FEKitchen" MaintainScrollPositionOnPostback="true" %>
 
-<!DOCTYPE html>
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
     <style type="text/css">
 
 
@@ -69,12 +66,10 @@
             width: 81px;
         }
         </style>
-</head>
-<body>
     <table>
         <tr>
             <td>
-                <form id="form1" runat="server">
+                
                     <div>
                         <h1>Kitchen</h1>
                         <br />
@@ -300,7 +295,7 @@
                             <asp:Button ID="btnNext" runat="server" Height="30px" Text="Next" Width="105px" />
                         </div>
                     </div>
-                </form>
+             
             </td>
             <td style="vertical-align: top">
                 <table>
@@ -336,10 +331,5 @@
             </td>
         </tr>
     </table>
-            </td>
-
-        </tr>
-        
-    </table>
-    </body>
-</html>
+           
+    </asp:Content>
