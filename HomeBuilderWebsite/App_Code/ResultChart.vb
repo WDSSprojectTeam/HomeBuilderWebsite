@@ -9,9 +9,11 @@ Public Class ResultChart
     Private myOptResults As New List(Of OptimizationResults)
     Private myFeatureList As List(Of Feature) = Session("FeatureSet")
     Private xlist, ylist As New ArrayList
+    Private index As Integer
 
-    Public Sub New(ByVal chartstodraw As Chart)
+    Public Sub New(ByVal chartstodraw As Chart, ByVal i As Integer)
         mychart = chartstodraw
+        index = i
     End Sub
 
     Public Sub LoadData(ByVal optResults As List(Of OptimizationResults))
@@ -90,6 +92,15 @@ Public Class ResultChart
         mySeries.Points.DataBindXY(x, y)
         mySeries.ChartType = SeriesChartType.Point
         mySeries.Color = Drawing.Color.Blue
+        For i = 0 To 7
+            mySeries.Points.Item(i).MarkerSize = 10
+            mySeries.Points.Item(i).MarkerImage = "~/Images/kirli.JPG"
+            'mySeries.Points.Item(i).MarkerStyle = MarkerStyle.Circle
+        Next
+
+        If index <> 10000 Then
+            mySeries.Points.Item(index).Color = Drawing.Color.Orange
+        End If
 
         mySeries.PostBackValue = "#SERIESNAME,#VALX"
         mychart.Series.Add(mySeries)

@@ -6,7 +6,7 @@ Partial Class OptimizationResultsPage
 
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        DrawCharts()
+        DrawCharts(10000)
 
         If (IsPostBack And lblFeatureName.visible = True) Then
             updateFeatures()
@@ -91,10 +91,12 @@ Partial Class OptimizationResultsPage
     End Sub
 
 
-    Private Sub DrawCharts()
+    Private Sub DrawCharts(ByVal index As Integer)
         Dim myResults As New List(Of OptimizationResults)
         myResults = Session("Results")
-        Dim C As New ResultChart(chtCompareBudgets)
+
+
+        Dim C As New ResultChart(chtCompareBudgets, index)
         C.LoadData(myResults)
         C.DrawOptResults()
     End Sub
@@ -117,6 +119,7 @@ Partial Class OptimizationResultsPage
         Next
 
         Session("Chart") = check
+        DrawCharts(check)
         gvwDetails.Visible = True
         Dim myResults As List(Of OptimizationResults) = Session("Results")
         Dim displayList As New DataTable
