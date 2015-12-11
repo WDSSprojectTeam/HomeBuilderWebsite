@@ -12,6 +12,14 @@ Public Class COMPDAL
 
     Public Function GetComparisonByCost(ByVal totalcost As Double) As DataTable
         Dim mytable As New DataTable
+        Dim thetable As New DataTable
+        Dim therow As DataRow
+        thetable.Columns.Add(New DataColumn("ScenarioID"))
+        thetable.Columns.Add(New DataColumn("HouseName"))
+        thetable.Columns.Add(New DataColumn("Budget"))
+        thetable.Columns.Add(New DataColumn("ScenarioName"))
+        thetable.Columns.Add(New DataColumn("TotalCost"))
+        Dim i As Integer
         myConnection = New OleDbConnection(myConnectionStr)
         myCommand = New OleDbCommand("SELECT tblScenarios.ScenarioID, tblScenarios.HouseName, tblScenarios.Budget, tblScenarios.ScenarioName, tblScenarios.TotalCost " &
                                      "FROM tblScenarios", myConnection)
@@ -21,7 +29,14 @@ Public Class COMPDAL
         mytable.Load(myReader)
         myReader.Close()
         myConnection.Close()
-        Return mytable
+        For i = 0 To mytable.Rows.Count - 1
+            If mytable.Rows(i).Item(4) < totalcost Then
+                therow = mytable.Rows(i)
+                thetable.Rows.Add(therow)
+            End If
+
+        Next
+        Return thetable
     End Function
 
     Public Function getscenariocosts(ByVal scenID As Integer) As ArrayList
@@ -185,6 +200,32 @@ Public Class COMPDAL
         myConnection.Close()
 
         Return optionname
+    End Function
+
+    Public Function gettotalcost(ByVal ID As Integer) As Double
+        Dim cost As Double
+        myConnection = New OleDbConnection(myConnectionStr)
+        myCommand = New OleDbCommand("SELECT tblOptions.TotalCost" &
+                                     "FROM tblOptions WHERE ((tblOptions.UpgradeID)=@param)", myConnection)
+        myCommand.Parameters.AddWithValue("param", ID)
+        myConnection.Open()
+        cost = myCommand.ExecuteScalar
+        myConnection.Close()
+
+        Return cost
+    End Function
+
+    Public Function getutility(ByVal ID As Integer) As Double
+        Dim util As Double
+        myConnection = New OleDbConnection(myConnectionStr)
+        myCommand = New OleDbCommand("SELECT tblOptions.Utility" &
+                                     "FROM tblOptions WHERE ((tblOptions.UpgradeID)=@param)", myConnection)
+        myCommand.Parameters.AddWithValue("param", ID)
+        myConnection.Open()
+        util = myCommand.ExecuteScalar
+        myConnection.Close()
+
+        Return util
     End Function
 
     Public Function getoptioncost(ByVal ID As Integer) As Double

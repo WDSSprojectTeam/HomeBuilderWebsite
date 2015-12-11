@@ -116,9 +116,10 @@ Partial Class OptimizationResultsPage
         Dim Bath As Integer = 1
         Dim Closets As Integer = 1
         Dim Fireplace As Integer = 1
+        Dim Utility as integer = 1
 
         Dim DAL As New DataLoader
-        DAL.InsertSavedScenario(HouseName, Budget, ScenarioName, TotalCost, FloorCost, RoofCost, Floors, Roof_Type, Appliances, Garage, Countertops, Bath, Closets, Fireplace)
+        DAL.InsertSavedScenario(HouseName, Budget, ScenarioName, TotalCost, FloorCost, RoofCost, Floors, Roof_Type, Appliances, Garage, Countertops, Bath, Closets, Fireplace, Utility)
     End Sub
 
     Protected Sub gvwDetails_RowCommand(sender As Object, e As GridViewCommandEventArgs) Handles gvwDetails.RowCommand

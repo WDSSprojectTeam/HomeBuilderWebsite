@@ -60,8 +60,12 @@ Public Class Comparison2Charter
     End Sub
 
     Private Sub loadseriesdata(ByVal identity As Integer)
-
-        Dim xvalues As ArrayList = mydal.getscenarioparts(identity)
+        Dim setupx As New ArrayList
+        Dim i As Integer
+        For i = 0 To 8
+            setupx.Add(identity)
+        Next
+        Dim xvalues As ArrayList = setupx
         Dim yvalues As ArrayList = mydal.getscenariocosts(identity)
         addseries(xvalues, yvalues, Drawing.Color.Blue)
     End Sub

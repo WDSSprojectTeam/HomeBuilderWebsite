@@ -4,11 +4,11 @@ Imports System.Data.OleDb
 Imports System
 Imports System.Web.UI.WebControls.GridView
 Imports System.Web.UI.WebControls
+Imports System.Collections
 
 Partial Class HomeBuilderWebsite_master_Comparison2
     Inherits System.Web.UI.Page
     Private mydataAccess As New COMPDAL
-
 
 
     Private Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
@@ -31,24 +31,44 @@ Partial Class HomeBuilderWebsite_master_Comparison2
             Next
         Next
 
+
+
         DropDownList1.DataSource = infolist
         DropDownList1.DataBind()
         GridView1.DataSource = dt2
         GridView1.DataBind()
-        drawchart(infolist)
+        drawchart1(infolist)
     End Sub
 
 
 
-    Private Sub drawchart(ByVal scenlist As ArrayList)
+    Private Sub drawchart1(ByVal scenlist As ArrayList)
         Dim mycharter As New Comparison2Charter(Chart1)
         mycharter.loaddata(mydataAccess)
         mycharter.draw(scenlist)
     End Sub
 
+    Private Sub drawchart2(ByVal scenlist As ArrayList)
+        Dim mycharter As New Comparison2Charter2(Chart1)
+        mycharter.loaddata(mydataAccess)
+        mycharter.draw(scenlist)
+    End Sub
+
+
     Private Sub dropdownlist1_selectedIndexChanged(sender As Object, e As EventArgs) Handles DropDownList1.SelectedIndexChanged
         populatedetailsview(DropDownList1.SelectedValue)
 
+    End Sub
+
+    Private Sub dropdownlist2_selectedIndexChanged(sender As Object, e As EventArgs) Handles DropDownList2.SelectedIndexChanged
+        Dim type As String = DropDownList2.SelectedValue
+        Dim infolist As New ArrayList
+        infolist = Session("checkedscenarios")
+        If type = "Utility" Then
+            drawchart2(infolist)
+        Else
+            drawchart1(infolist)
+        End If
     End Sub
 
 

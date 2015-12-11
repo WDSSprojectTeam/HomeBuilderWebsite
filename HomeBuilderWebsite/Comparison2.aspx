@@ -9,11 +9,15 @@
 <body>
     <form id="form1" runat="server">--%>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
-    <div>
+    <div style="font-size: x-large">
     
-        <asp:Chart ID="Chart1" runat="server">
+        <br />
+        Multiple Scenario Comparison<br />
+        <br />
+    
+        <asp:Chart ID="Chart1" align="center" runat="server">
             <Series>
-                <asp:Series ChartType="StackedColumn" Name="Series1">
+                <asp:Series ChartType="Point" Name="Series1">
                 </asp:Series>
             </Series>
             <ChartAreas>
@@ -23,8 +27,16 @@
         </asp:Chart>
         <br />
         <br />
+        Please select which style of graph you are interested in seeing, a price comparison or a utility vs price comparison.<br />
         <br />
-        <asp:GridView ID="GridView1" runat="server" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" CellPadding="3" ForeColor="Black" GridLines="Vertical">
+        <asp:DropDownList ID="DropDownList2" align="center" runat="server">
+            <asp:ListItem Selected="True">Price Comparison Graph</asp:ListItem>
+            <asp:ListItem Value="Utility">Utility vs Price Comparison</asp:ListItem>
+        </asp:DropDownList>
+        <br />
+        <br />
+        <br />
+        <asp:GridView ID="GridView1" runat="server" align="center" ShowHeader="false" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" CellPadding="3" ForeColor="Black" GridLines="Vertical">
             <AlternatingRowStyle BackColor="#CCCCCC" />
             <FooterStyle BackColor="#CCCCCC" />
             <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
@@ -36,13 +48,13 @@
             <SortedDescendingHeaderStyle BackColor="#383838" />
         </asp:GridView>
         <br />
-        Please select which scenario you would like to see more details about.<br />
+        Please select which scenario you would like to see a few more details about.<br />
         <br />
-        <asp:DropDownList ID="DropDownList1" runat="server">
+        <asp:DropDownList ID="DropDownList1" align="center" runat="server">
         </asp:DropDownList>
         <br />
         <br />
-        <asp:DetailsView ID="DetailsView1" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" Height="50px" Width="125px">
+        <asp:DetailsView ID="DetailsView1" runat="server" align="center" CellPadding="4" ForeColor="#333333" GridLines="None" Height="50px" Width="125px">
             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
             <CommandRowStyle BackColor="#E2DED6" Font-Bold="True" />
             <EditRowStyle BackColor="#999999" />

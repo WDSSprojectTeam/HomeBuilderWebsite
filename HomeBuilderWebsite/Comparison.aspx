@@ -13,13 +13,13 @@
     <form id="form1" runat="server">--%>
     <div>
     
-        Welcome To The Comparison Page!<br />
-        <br />
-        Below you will find saved scenarios that you have already completed that you can select to compare.<br />
-        <br />
-        <br />
-        Please choose what your price limit you would like to set for your scenarios.<br />
-        <br />
+        <span style="font-size: large">Welcome To The Comparison Page!</span><br style="font-size: large" />
+        <br style="font-size: large" />
+        <span style="font-size: large">Below you will find saved scenarios that you have already completed that you can select to compare.</span><br style="font-size: large" />
+        <br style="font-size: large" />
+        <br style="font-size: large" />
+        <span style="font-size: large">Please choose what your price limit you would like to set for your scenarios.</span><br style="font-size: large" />
+        <br style="font-size: large" />
         <br />
         <asp:Chart ID="Chart1" runat="server">
             <series>
@@ -33,19 +33,22 @@
         </asp:Chart>
         <br />
         <br />
-        <br />
+        Set Price Limit<br />
         <asp:DropDownList ID="DropDownList1" runat="server">
             <asp:ListItem>100000</asp:ListItem>
             <asp:ListItem Value="200000">200000</asp:ListItem>
             <asp:ListItem>300000</asp:ListItem>
             <asp:ListItem>400000</asp:ListItem>
             <asp:ListItem>500000</asp:ListItem>
-            <asp:ListItem>600000</asp:ListItem>
+            <asp:ListItem Selected="True">600000</asp:ListItem>
         </asp:DropDownList>
         <br />
         <br />
+        Saved Scenarios are below, please select which ones you&#39;d like to compare on the next page.
         <br />
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateSelectButton="True" BackColor="White" BorderColor="#336666" BorderStyle="Double" BorderWidth="3px" CellPadding="4" GridLines="Horizontal" SelectedIndex="0">
+        You can also press &quot;Select&quot; to see a cost break down for each on the chart above.<br />
+        <br />
+        <asp:GridView ID="GridView1" align="center" runat="server" AutoGenerateSelectButton="True" BackColor="White" BorderColor="#336666" BorderStyle="Double" BorderWidth="3px" CellPadding="4" GridLines="Horizontal" SelectedIndex="0">
             <Columns>
                 <asp:TemplateField>
                     <ItemTemplate>

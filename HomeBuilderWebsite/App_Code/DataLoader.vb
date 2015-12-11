@@ -228,11 +228,11 @@ FROM tblHomeLayouts;", myConnection)
 
     End Function
 
-    Public Sub InsertSavedScenario(ByVal HouseName As String, ByVal Budget As Integer, ByVal ScenarioName As String, ByVal TotalCost As Double, ByVal FloorCost As Double, ByVal RoofCost As Double, ByVal Floors As Integer, ByVal Roof_Type As Integer, ByVal Appliances As Integer, ByVal Garage As Integer, ByVal Countertops As Integer, ByVal Bath As Integer, ByVal Closets As Integer, ByVal Fireplace As Integer)
+    Public Sub InsertSavedScenario(ByVal HouseName As String, ByVal Budget As Integer, ByVal ScenarioName As String, ByVal TotalCost As Double, ByVal FloorCost As Double, ByVal RoofCost As Double, ByVal Floors As Integer, ByVal Roof_Type As Integer, ByVal Appliances As Integer, ByVal Garage As Integer, ByVal Countertops As Integer, ByVal Bath As Integer, ByVal Closets As Integer, ByVal Fireplace As Integer, ByVal Utility As Integer)
         myConnection = New OleDbConnection(myConnectionStr)   ' no connection yet
-        Dim paramStr As String = "'" & 2 & "','" & HouseName & "','" & Budget & "','" & ScenarioName & "','" & TotalCost & "','" & FloorCost & "','" & RoofCost & "','" & Floors & "','" & Roof_Type & "','" & Appliances & "','" & Garage & "','" & Countertops & "','" & Bath & "','" & Closets & "','" & Fireplace & "'"
+        Dim paramStr As String = "'" & 2 & "','" & HouseName & "','" & Budget & "','" & ScenarioName & "','" & TotalCost & "','" & FloorCost & "','" & RoofCost & "','" & Floors & "','" & Roof_Type & "','" & Appliances & "','" & Garage & "','" & Countertops & "','" & Bath & "','" & Closets & "','" & Fireplace & "','" & Utility & "'"
         myCommand = New OleDbCommand("INSERT INTO tblScenarios(ScenarioID, HouseName, Budget, ScenarioName, TotalCost, FloorCost, RoofCost, 
-    Floors, Roof_Type, Appliances, Garage, Countertops, Bath, Closets, Fireplace) VALUES (" & paramStr & ")", myConnection)
+    Floors, Roof_Type, Appliances, Garage, Countertops, Bath, Closets, Fireplace, Utility) VALUES (" & paramStr & ")", myConnection)
         myConnection.Open()
         myCommand.ExecuteNonQuery()
         myConnection.Close()
