@@ -65,7 +65,12 @@ Public Class OptimizationResults
         Dim utility As Double = 0
         Dim featUtility As Integer = 0
 
+        For i = 0 To myChoiceList.Count - 1
+
+        Next
+
         For i = 0 To myFeatureList.Count - 1
+            featUtility = 0
             For j = 0 To myOptionList.Count - 1
                 If myOptionList.Item(j).getFeatureID = myFeatureList.Item(i).getID Then
                     If myOptionList.Item(j).Preference * myFeatureList.Item(i).Rating > featUtility Then
