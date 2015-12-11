@@ -90,16 +90,17 @@ Public Class ResultChart
     Private Sub AddSeries(ByVal x As ArrayList, ByVal y As ArrayList)
         Dim mySeries As New Series
         mySeries.Points.DataBindXY(x, y)
-        mySeries.ChartType = SeriesChartType.Point
+        mySeries.ChartType = SeriesChartType.Line
         mySeries.Color = Drawing.Color.Blue
         For i = 0 To 7
             mySeries.Points.Item(i).MarkerSize = 10
-            mySeries.Points.Item(i).MarkerImage = "~/Images/kirli.JPG"
-            'mySeries.Points.Item(i).MarkerStyle = MarkerStyle.Circle
+            'mySeries.Points.Item(i).MarkerImage = "~/Images/kirli.JPG"
+            mySeries.Points.Item(i).MarkerStyle = MarkerStyle.Circle
         Next
 
         If index <> 10000 Then
-            mySeries.Points.Item(index).Color = Drawing.Color.Orange
+            mySeries.Points.Item(index).MarkerImage = "~/Images/house.png"
+            'mySeries.Points.Item(index).Color = Drawing.Color.Orange
         End If
 
         mySeries.PostBackValue = "#SERIESNAME,#VALX"
