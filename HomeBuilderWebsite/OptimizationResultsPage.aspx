@@ -6,9 +6,9 @@
 
      <div style="text-align:center" >
     
-     <table style="margin:0px auto; width: 800px;">
+     <table style="margin:0px auto; width: 1000px;">
          <tr>
-             <td colspan="2">
+             <td >
  <asp:Chart ID="chtCompareBudgets" runat="server">
          <series>
              <asp:Series Name="Series1">
@@ -23,7 +23,7 @@
          </tr>
              <tr>
              <td style="width: 632px">
-                 <asp:GridView ID="gvwDetails" runat="server" Visible="False" AutoGenerateColumns="False" BackColor="White" BorderColor="#336666" BorderStyle="Double" BorderWidth="3px" CellPadding="4" GridLines="Horizontal" Width="625px">
+                 <asp:GridView ID="gvwDetails" runat="server" Visible="False" AutoGenerateColumns="False" BackColor="White" BorderColor="#336666" BorderStyle="Double" BorderWidth="3px" CellPadding="4" GridLines="Horizontal" Width="700px">
              <Columns>
                  <asp:CommandField SelectText="Edit" ShowSelectButton="True" />
                  <asp:BoundField DataField="Feature" HeaderText="Feature" />
@@ -44,7 +44,9 @@
                      <SortedDescendingHeaderStyle BackColor="#275353" />
          </asp:GridView>
              </td>
-             <td>
+                 <td style="width: 100px"></td>
+
+             <td style="border-style: none; border-width: thin; width: 375px" >
                  <asp:Label ID="lblFeatureName" align="left" runat="server" Visible="False" Font-Bold="True" Font-Size="Large"></asp:Label>
                  <br /> 
     
@@ -72,8 +74,9 @@
         <asp:RadioButton ID="rdb5" runat="server" Autopostback=" true" GroupName="1" Visible="False" />
    
          <tr>
-             <td colspan="2">
+             <td colspan="3"  >
                  <br />
+                 <div style="text-align:left"></div>
                  <asp:Button ID="btnSave" runat="server"  Font-Names="Corbel" Text="Save My Changes" Font-Size="Larger" BackColor="#336666" Font-Bold="True" ForeColor="White" Width="351px" />
                
              </td>
