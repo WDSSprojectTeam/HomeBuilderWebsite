@@ -63,7 +63,13 @@ Public Class ResultChart
         ' y-axis
         chArea.AxisY.MajorGrid.LineDashStyle = ChartDashStyle.Dash
         chArea.AxisY.Interval = 5
-        chArea.AxisY.Maximum = Math.Round(myOptResults.Item(8).getTotalUtility / myOptResults.Item(8).getMaxUtility, 1) * 100 + 10
+
+        If (myOptResults.Item(8).getTotalUtility / myOptResults.Item(8).getMaxUtility) > 1 Then
+            chArea.AxisY.Maximum = 100
+        Else
+            chArea.AxisY.Maximum = Math.Round(myOptResults.Item(8).getTotalUtility / myOptResults.Item(8).getMaxUtility, 1) * 100 + 10
+        End If
+
         chArea.AxisY.Minimum = Math.Round(myOptResults.Item(0).getTotalUtility / myOptResults.Item(0).getMaxUtility, 1) * 100 - 10
         chArea.AxisY.TitleFont = New Drawing.Font("Courier New", 12)
         chArea.AxisY.Title = "Percent of Maximum Utility"

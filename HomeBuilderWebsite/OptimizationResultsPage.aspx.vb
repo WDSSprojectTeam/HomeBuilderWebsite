@@ -3,7 +3,7 @@ Imports System.data
 
 Partial Class OptimizationResultsPage
     Inherits System.Web.UI.Page
-    Private check2 As Boolean = False
+
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         DrawCharts()
@@ -12,18 +12,18 @@ Partial Class OptimizationResultsPage
             updateFeatures()
         End If
 
-        check2 = False
+
 
     End Sub
 
-    Private Sub chtCompareBudgets_GetToolTipText(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataVisualization.Charting.ToolTipEventArgs) Handles chtCompareBudgets.GetToolTipText
-        If e.HitTestResult.PointIndex >= 0 Then
-            If e.HitTestResult.ChartElementType = DataVisualization.Charting.ChartElementType.DataPoint Then
-                Dim Xvalue As Integer = e.X
-                Dim Yvalue As Integer = e.Y
-            End If
-        End If
-    End Sub
+    'Private Sub chtCompareBudgets_GetToolTipText(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataVisualization.Charting.ToolTipEventArgs) Handles chtCompareBudgets.GetToolTipText
+    '    If e.HitTestResult.PointIndex >= 0 Then
+    '        If e.HitTestResult.ChartElementType = DataVisualization.Charting.ChartElementType.DataPoint Then
+    '            Dim Xvalue As Integer = e.X
+    '            Dim Yvalue As Integer = e.Y
+    '        End If
+    '    End If
+    'End Sub
 
     Private Sub updateFeatures()
         Dim myFeature As Integer = Session("whichFeature")
@@ -100,18 +100,24 @@ Partial Class OptimizationResultsPage
     End Sub
 
     Protected Sub chtCompareBudgets_Click(sender As Object, e As ImageMapEventArgs) Handles chtCompareBudgets.Click
+        lblFeatureName.Visible = False
+        rdb1.Visible = False
+        rdb2.Visible = False
+        rdb3.Visible = False
+        rdb4.Visible = False
+        rdb5.Visible = False
         Dim check As Integer
-        Dim optBudgets As arraylist = Session("OptBudgets")
+        Dim optBudgets As ArrayList = Session("OptBudgets")
         Dim wc = e.PostBackValue.Remove(0, 8)
 
         For i = 0 To 8
-            If wc = optBudgets.item(i).toString Then
+            If wc = optBudgets.Item(i).ToString Then
                 check = i
             End If
         Next
 
         Session("Chart") = check
-        gvwDetails.visible = True
+        gvwDetails.Visible = True
         Dim myResults As List(Of OptimizationResults) = Session("Results")
         Dim displayList As New DataTable
         'gvwDetails.DataSource = myResults.Item(check).getSelectedOptions
@@ -164,22 +170,53 @@ Partial Class OptimizationResultsPage
     'End Sub
 
     Protected Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
-        Dim myHome As homeLayouts = Session("selectedHome")
+        Dim myHome As HomeLayouts = Session("selectedHome")
+        Dim index As Integer = Session("Chart")
+        Dim myResults As List(Of OptimizationResults) = Session("Results")
+        Dim Result As OptimizationResults = myResults.Item(index)
+        Dim myChosenOptions As List(Of Integer) = Session("chosenOptions")
+        Dim myOptionsList As List(Of Options) = Session("OptionSet")
+        Dim upgradeCost As Double = 0
+        Dim Utility As Integer = 0
+
+        For Each aOption In myOptionsList
+            For Each chosenOption In myChosenOptions
+                If aOption.getoptionID = chosenOption Then
+                    upgradeCost += aOption.getoptionprice
+                    Utility += aOption.Preference * aOption.getFeaturePreference
+                End If
+            Next
+        Next
+
+        Utility = Utility / Result.getMaxUtility * 100
+
         Dim HouseName As String = myHome.name
         Dim Budget As Integer = Session("Budget")
         Dim ScenarioName As String = "whaaaa"
-        Dim TotalCost As Double = 1
+        Dim TotalCost As Double = upgradeCost + myHome.Price
+
         Dim FloorCost As Double = 1
         Dim RoofCost As Double = 1
-        Dim Floors As Integer = 1
-        Dim Roof_Type As Integer = 1
-        Dim Appliances As Integer = 1
-        Dim Garage As Integer = 1
-        Dim Countertops As Integer = 1
-        Dim Bath As Integer = 1
-        Dim Closets As Integer = 1
-        Dim Fireplace As Integer = 1
-        Dim Utility As Integer = 1
+
+        For Each aOption In myOptionsList
+            If aOption.getoptionID = myChosenOptions.Item(0) Then
+                FloorCost = aOption.getoptionprice
+            End If
+
+            If aOption.getoptionID = myChosenOptions.Item(1) Then
+                RoofCost = aOption.getoptionprice
+            End If
+        Next
+
+        Dim Floors As Integer = myChosenOptions.Item(0)
+        Dim Roof_Type As Integer = myChosenOptions.Item(1)
+        Dim Appliances As Integer = myChosenOptions.Item(2)
+        Dim Garage As Integer = myChosenOptions.Item(3)
+        Dim Countertops As Integer = myChosenOptions.Item(4)
+        Dim Bath As Integer = myChosenOptions.Item(5)
+        Dim Closets As Integer = myChosenOptions.Item(6)
+        Dim Fireplace As Integer = myChosenOptions.Item(7)
+
 
         Dim DAL As New DataLoader
         DAL.InsertSavedScenario(HouseName, Budget, ScenarioName, TotalCost, FloorCost, RoofCost, Floors, Roof_Type, Appliances, Garage, Countertops, Bath, Closets, Fireplace, Utility)
@@ -281,7 +318,7 @@ Partial Class OptimizationResultsPage
         Next
         Session("whichOption") = myOption
 
-        check2 = True
+
 
     End Sub
 
