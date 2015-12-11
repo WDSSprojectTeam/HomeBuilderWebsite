@@ -16,7 +16,7 @@
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
 </head>
-<body>
+<body style="background-color:#EBFAFA">
     <form runat="server">
         <asp:ScriptManager runat="server">
             <Scripts>
@@ -38,28 +38,29 @@
                 <%--Site Scripts--%>
             </Scripts>
         </asp:ScriptManager>
-       <div style="text-align:center">
-             <asp:Image ID="imghome" runat="server" ImageUrl="~/Images/banner2.png" Height="159px" Width="881px" />
 
-        <h2 style="font-family: Gabriola; font-size: xx-large; font-style: normal; font-variant: normal; color: #333333; font-weight: bolder; margin-top: 10px;">Your dream home is only a few clicks away...</h2>
-       
+
+       <div style="text-align:center"> 
+             <asp:Image ID="imghome" runat="server" ImageUrl="~/Images/banner2.png" Height="159px" Width="100%" />
+           <br />
+           <asp:Label ID="Label1" runat="server" Text="Your dream home is only a few clicks away..." Font-Names="Bradley Hand ITC" Font-Size="X-Large" ForeColor="#000066"></asp:Label>
+     
+       </div>
        
 
         
        
                     
-                               
-        &nbsp;
-           <asp:Button ID="btnAboutUs" runat="server" href="~/AboutUs.aspx" BackColor="#C09E4E" Font-Bold="False" Font-Names="Gabriola" Font-Size="Medium" ForeColor="Black" Text="About Us" Width="232px" />
-                    
-            <asp:Button ID="btnReturn" runat="server" href="~/Home.aspx" BackColor="#C09E4E" Font-Bold="False" Font-Names="Gabriola" Font-Size="Medium" ForeColor="Black" Text="Return To Homepage" Width="232px" />
-            <body style="background-color:#EBFAFA">
-       
+
+
+            
 
         <asp:ContentPlaceHolder ID="MainContent" runat="server">
                 
             </asp:ContentPlaceHolder>
 
     </form>
+
+       
 </body>
 </html>

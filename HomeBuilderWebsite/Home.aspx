@@ -1,40 +1,35 @@
 ﻿<%@ Page Title="Home Page" Language="VB" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeFile="Home.aspx.vb" Inherits="Home" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+      <div style="text-align:center" >
     <h1>
        WELCOME!
    </h1>
 
     <h3>Where would you like to start?</h3>
     
-    <asp:Button ID="btnBuildHome" runat="server" Text="Build New Home" Height="50px" Width="300px" />
+   <asp:Button ID="btnBuildHome" runat="server"  Font-Names="Corbel" Text="Build New Home" Font-Size="Larger" BackColor="#336666" Font-Bold="True" ForeColor="White" Width="351px" />
+    
 
      <br />
-
-     <section>
-               
-        <asp:DropDownList ID="ddlScenariosSaved" runat="server"></asp:DropDownList>
-         <asp:Button ID="btnLoadScenario" runat="server" Text="Compare Saved Homes" />
+  <br />
+     
+    <asp:Button ID="btnLoadScenario" runat="server"  Font-Names="Corbel" Text="Compare Saved Homes" Font-Size="Larger" BackColor="#336666" Font-Bold="True" ForeColor="White" Width="351px" />
+         
       
-      <asp:GridView ID="gvwScenarios" runat="server"></asp:GridView>
-    <asp:Button ID="btnCompare" runat="server" Text="Compare Selected" /> 
-
+      <br />
+                <br />
+          <asp:Button ID="btnEditTemplate" runat="server"  Font-Names="Corbel" Text="Start From Template" Font-Size="Larger" BackColor="#336666" Font-Bold="True" ForeColor="White" Width="351px" />
+         
+            <br />
        
-               
-        </section>
-     &nbsp
-    <section>
-       
-        <asp:DropDownList ID="ddlTemplates" runat="server"></asp:DropDownList>
-         <asp:Button ID="btnLoadTemplate" runat="server" Text="Load Template" />
-   
-     <asp:GridView ID="gvwTemplates" runat="server"></asp:GridView>
-    <asp:Button ID="btnEditTemplate" runat="server" Text="Start From Template" />
     
-        
+    
+        <br />
     </section>
 
     &nbsp
+          </div>
 
     </asp:Content>
 
