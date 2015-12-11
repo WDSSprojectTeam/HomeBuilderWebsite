@@ -92,6 +92,7 @@ Public Class ResultChart
         Dim yValue As Double = aopt.getTotalUtility / aopt.getMaxUtility * 100
         xlist.Add(xValue)
         ylist.Add(yValue)
+        Session("OptBudgets") = xlist
         'Dim sum As Integer
         'Dim budget As Integer
         'budget = Session("Budget")

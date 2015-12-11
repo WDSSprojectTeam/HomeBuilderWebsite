@@ -92,34 +92,15 @@ Partial Class OptimizationResultsPage
 
     Protected Sub chtCompareBudgets_Click(sender As Object, e As ImageMapEventArgs) Handles chtCompareBudgets.Click
         Dim check As Integer
+        Dim optBudgets As arraylist = Session("OptBudgets")
         Dim wc = e.PostBackValue.Remove(0, 8)
-        If wc = "80% of Budget" Then
-            check = 0
 
-        ElseIf wc = "85% of Budget"
-            check = 1
+        For i = 0 To 8
+            If wc = optBudgets.item(i).toString Then
+                check = i
+            End If
+        Next
 
-        ElseIf wc = "90% of Budget"
-            check = 2
-
-        ElseIf wc = "95% of Budget"
-            check = 3
-
-        ElseIf wc = "100% of Budget"
-            check = 4
-
-        ElseIf wc = "106% of Budget"
-            check = 5
-
-        ElseIf wc = "110% of Budget"
-            check = 6
-
-        ElseIf wc = "115% of Budget"
-            check = 7
-
-        ElseIf wc = "120% of Budget"
-            check = 8
-        End If
         Session("Chart") = check
         gvwDetails.visible = True
         Dim myResults As List(Of OptimizationResults) = Session("Results")
