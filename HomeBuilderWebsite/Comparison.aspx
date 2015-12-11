@@ -13,6 +13,8 @@
     <form id="form1" runat="server">--%>
     <div>
     
+        <div style="text-align: center">
+    
         <span style="font-size: large">Welcome To The Comparison Page!</span><br style="font-size: large" />
         <br style="font-size: large" />
         <span style="font-size: large">Below you will find saved scenarios that you have already completed that you can select to compare.</span><br style="font-size: large" />
@@ -34,13 +36,20 @@
         <br />
         <br />
         Set Price Limit<br />
-        <asp:DropDownList ID="DropDownList1" runat="server">
+        <asp:DropDownList ID="DropDownList1" runat="server" autopostback ="true">
             <asp:ListItem>100000</asp:ListItem>
-            <asp:ListItem Value="200000">200000</asp:ListItem>
+            <asp:ListItem>200000</asp:ListItem>
             <asp:ListItem>300000</asp:ListItem>
             <asp:ListItem>400000</asp:ListItem>
             <asp:ListItem>500000</asp:ListItem>
             <asp:ListItem Selected="True">600000</asp:ListItem>
+            <asp:ListItem>700000</asp:ListItem>
+            <asp:ListItem>800000</asp:ListItem>
+            <asp:ListItem>900000</asp:ListItem>
+            <asp:ListItem>1000000</asp:ListItem>
+            <asp:ListItem>1500000</asp:ListItem>
+            <asp:ListItem>2000000</asp:ListItem>
+            <asp:ListItem>1</asp:ListItem>
         </asp:DropDownList>
         <br />
         <br />
@@ -48,6 +57,7 @@
         <br />
         You can also press &quot;Select&quot; to see a cost break down for each on the chart above.<br />
         <br />
+        </div>
         <asp:GridView ID="GridView1" align="center" runat="server" AutoGenerateSelectButton="True" BackColor="White" BorderColor="#336666" BorderStyle="Double" BorderWidth="3px" CellPadding="4" GridLines="Horizontal" SelectedIndex="0">
             <Columns>
                 <asp:TemplateField>

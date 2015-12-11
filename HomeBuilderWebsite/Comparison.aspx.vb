@@ -10,13 +10,16 @@ Partial Class HomeBuilderWebsite_master_Comparison
 
 
 
+
     Private Sub homebuilderwebsite_master_Comparison_load(sender As Object, e As EventArgs) Handles Me.Load
         If Not IsPostBack Then
             DropDownList1.SelectedIndex = 0
             Dim totcost As Double = DropDownList1.SelectedValue
             fillgridview(totcost)
+            GridView1.SelectedIndex = 0
 
-            Dim indexID As Integer = Convert.ToInt32(GridView1.SelectedRow.Cells.Item(2).text)
+            Dim indexID As Integer = Convert.ToInt32(GridView1.SelectedRow.Cells.Item(2).Text)
+            Session("compindex") = indexID
             DrawPieChart(indexID)
         End If
     End Sub
@@ -27,9 +30,10 @@ Partial Class HomeBuilderWebsite_master_Comparison
 
     End Sub
 
-    Sub Gridview1_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
+    Sub Gridview1_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles GridView1.SelectedIndexChanged
         Dim row As GridViewRow = GridView1.SelectedRow
         Dim indexID As Integer = Convert.ToInt32(GridView1.SelectedRow.Cells.Item(2).Text)
+        Session("compindex") = indexID
         DrawPieChart(indexID)
     End Sub
 
@@ -38,11 +42,14 @@ Partial Class HomeBuilderWebsite_master_Comparison
         Dim mycharter As New Comparison1Charter(Chart1)
         mycharter.loaddata(mydataAccess)
         mycharter.draw(ind)
+
     End Sub
 
     Private Sub dropdownlist1_selectedIndexChanged(sender As Object, e As EventArgs) Handles DropDownList1.SelectedIndexChanged
         Dim totalcost As Double = DropDownList1.SelectedValue
         fillgridview(totalcost)
+        Dim indo As Integer = Session("compindex")
+        DrawPieChart(indo)
     End Sub
 
 

@@ -9,7 +9,7 @@
 <body>
     <form id="form1" runat="server">--%>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
-    <div style="font-size: x-large">
+    <div style="font-size: x-large; text-align: center;">
     
         <br />
         Multiple Scenario Comparison<br />
@@ -17,7 +17,7 @@
     
         <asp:Chart ID="Chart1" align="center" runat="server">
             <Series>
-                <asp:Series ChartType="Point" Name="Series1">
+                <asp:Series Name="Series1">
                 </asp:Series>
             </Series>
             <ChartAreas>
@@ -29,9 +29,17 @@
         <br />
         Please select which style of graph you are interested in seeing, a price comparison or a utility vs price comparison.<br />
         <br />
-        <asp:DropDownList ID="DropDownList2" align="center" runat="server">
-            <asp:ListItem Selected="True">Price Comparison Graph</asp:ListItem>
+        <asp:DropDownList ID="DropDownList2" align="center" runat="server" AutoPostBack ="true">
             <asp:ListItem Value="Utility">Utility vs Price Comparison</asp:ListItem>
+            <asp:ListItem Value="House" Selected="True">House Type Price Comparison</asp:ListItem>
+            <asp:ListItem Value="FloorCost">Floor Price Comparison</asp:ListItem>
+            <asp:ListItem Value="RoofCost">Roof Price Comparison</asp:ListItem>
+            <asp:ListItem Value="Appliances">Appliance Price Comparison</asp:ListItem>
+            <asp:ListItem Value="Garage">Garage Type Comparison</asp:ListItem>
+            <asp:ListItem Value="Countertops">Countertop Price Comparison</asp:ListItem>
+            <asp:ListItem Value="Bath">Bath Price Comparison</asp:ListItem>
+            <asp:ListItem Value="Closets">Closet Price Comparison</asp:ListItem>
+            <asp:ListItem Value="Fireplace">Fireplace Price Comparison</asp:ListItem>
         </asp:DropDownList>
         <br />
         <br />
@@ -50,7 +58,7 @@
         <br />
         Please select which scenario you would like to see a few more details about.<br />
         <br />
-        <asp:DropDownList ID="DropDownList1" align="center" runat="server">
+        <asp:DropDownList ID="DropDownList1" align="center" runat="server" AutoPostBack ="true">
         </asp:DropDownList>
         <br />
         <br />

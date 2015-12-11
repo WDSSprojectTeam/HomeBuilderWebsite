@@ -12,40 +12,47 @@ Partial Class HomeBuilderWebsite_master_Comparison2
 
 
     Private Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        Dim infolist As New ArrayList
-        Dim dt As New DataTable
-        Dim dt2 As New DataTable
-        infolist = Session("checkedscenarios")
-        dt = mydataAccess.getselectedscenarios(infolist)
+        If Not ispostback Then
+            Dim infolist As New ArrayList
+            Dim dt As New DataTable
+            Dim dt2 As New DataTable
+            infolist = Session("checkedscenarios")
+            dt = mydataAccess.getselectedscenarios(infolist)
 
-        For i As Integer = 0 To dt.Rows.Count
-            dt2.Columns.Add()
-        Next
-        For i As Integer = 0 To dt.Columns.Count - 1
-            dt2.Rows.Add()
-            dt2.Rows(i)(0) = dt.Columns(i).ColumnName
-        Next
-        For i As Integer = 0 To dt.Columns.Count - 1
-            For j As Integer = 0 To dt.Rows.Count - 1
-                dt2.Rows(i)(j + 1) = dt.Rows(j)(i)
+            For i As Integer = 0 To dt.Rows.Count
+                dt2.Columns.Add()
             Next
-        Next
+            For i As Integer = 0 To dt.Columns.Count - 1
+                dt2.Rows.Add()
+                dt2.Rows(i)(0) = dt.Columns(i).ColumnName
+            Next
+            For i As Integer = 0 To dt.Columns.Count - 1
+                For j As Integer = 0 To dt.Rows.Count - 1
+                    dt2.Rows(i)(j + 1) = dt.Rows(j)(i)
+                Next
+            Next
 
 
 
-        DropDownList1.DataSource = infolist
-        DropDownList1.DataBind()
-        GridView1.DataSource = dt2
-        GridView1.DataBind()
-        drawchart1(infolist)
+            DropDownList1.DataSource = infolist
+            DropDownList1.DataBind()
+            DropDownList1.SelectedIndex = 0
+
+            Dim tipo As String = DropDownList2.SelectedValue
+            GridView1.DataSource = dt2
+            GridView1.DataBind()
+            drawchart1(infolist, tipo)
+            populatedetailsview(Convert.ToInt32(DropDownList1.SelectedValue))
+        End If
+
     End Sub
 
 
 
-    Private Sub drawchart1(ByVal scenlist As ArrayList)
+    Private Sub drawchart1(ByVal scenlist As ArrayList, ByVal type As String)
         Dim mycharter As New Comparison2Charter(Chart1)
         mycharter.loaddata(mydataAccess)
-        mycharter.draw(scenlist)
+        mycharter.draw(scenlist, type)
     End Sub
 
     Private Sub drawchart2(ByVal scenlist As ArrayList)
@@ -62,19 +69,27 @@ Partial Class HomeBuilderWebsite_master_Comparison2
 
     Private Sub dropdownlist2_selectedIndexChanged(sender As Object, e As EventArgs) Handles DropDownList2.SelectedIndexChanged
         Dim type As String = DropDownList2.SelectedValue
+
+        dropdownliststuff(type)
+    End Sub
+
+
+    Private Sub dropdownliststuff(ByVal tip As String)
         Dim infolist As New ArrayList
+        Dim type As String = tip
         infolist = Session("checkedscenarios")
-        If type = "Utility" Then
+        If Type = "Utility" Then
             drawchart2(infolist)
         Else
-            drawchart1(infolist)
+
+            drawchart1(infolist, type)
         End If
     End Sub
 
 
 
     Private Sub populatedetailsview(ByVal identity As Integer)
-        DetailsView1.DataSource = mydataAccess.getscenarioparts(identity)
+        DetailsView1.DataSource = mydataAccess.getscenariopartdetails(identity)
         DetailsView1.DataBind()
     End Sub
 
