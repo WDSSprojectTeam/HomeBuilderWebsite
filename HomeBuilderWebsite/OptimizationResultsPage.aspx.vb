@@ -1,21 +1,18 @@
 ﻿Imports System.Web.UI.DataVisualization.Charting
-
-Imports System.Data
+Imports System.data
 
 Partial Class OptimizationResultsPage
     Inherits System.Web.UI.Page
 
-    Private check2 As Boolean = False
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         DrawCharts()
-        btnSave.Visible = False
-        If (IsPostBack And lblFeatureName.Visible = True) Then
-            updateFeatures()
 
+        If (IsPostBack And lblFeatureName.visible = True) Then
+            updateFeatures()
         End If
 
-        check2 = False
+
 
     End Sub
 
@@ -65,7 +62,7 @@ Partial Class OptimizationResultsPage
         End If
 
         ChangeChoice(check)
-        Dim displayList As New DataTable
+        Dim displayList As New datatable
         displayList.Columns.Add("Feature")
         displayList.Columns.Add("Name")
         displayList.Columns.Add("Description")
@@ -103,8 +100,13 @@ Partial Class OptimizationResultsPage
     End Sub
 
     Protected Sub chtCompareBudgets_Click(sender As Object, e As ImageMapEventArgs) Handles chtCompareBudgets.Click
+        lblFeatureName.Visible = False
+        rdb1.Visible = False
+        rdb2.Visible = False
+        rdb3.Visible = False
+        rdb4.Visible = False
+        rdb5.Visible = False
         Dim check As Integer
-        btnSave.Visible = True
         Dim optBudgets As ArrayList = Session("OptBudgets")
         Dim wc = e.PostBackValue.Remove(0, 8)
 
@@ -169,33 +171,64 @@ Partial Class OptimizationResultsPage
 
     Protected Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
         Dim myHome As HomeLayouts = Session("selectedHome")
-        Dim HouseName As String = myHome.Name
+        Dim index As Integer = Session("Chart")
+        Dim myResults As List(Of OptimizationResults) = Session("Results")
+        Dim Result As OptimizationResults = myResults.Item(index)
+        Dim myChosenOptions As List(Of Integer) = Session("chosenOptions")
+        Dim myOptionsList As List(Of Options) = Session("OptionSet")
+        Dim upgradeCost As Double = 0
+        Dim Utility As Integer = 0
+
+        For Each aOption In myOptionsList
+            For Each chosenOption In myChosenOptions
+                If aOption.getoptionID = chosenOption Then
+                    upgradeCost += aOption.getoptionprice
+                    Utility += aOption.Preference * aOption.getFeaturePreference
+                End If
+            Next
+        Next
+
+        Utility = Utility / Result.getMaxUtility * 100
+
+        Dim HouseName As String = myHome.name
         Dim Budget As Integer = Session("Budget")
         Dim ScenarioName As String = "whaaaa"
-        Dim TotalCost As Double = 1
+        Dim TotalCost As Double = upgradeCost + myHome.Price
+
         Dim FloorCost As Double = 1
         Dim RoofCost As Double = 1
-        Dim Floors As Integer = 1
-        Dim Roof_Type As Integer = 1
-        Dim Appliances As Integer = 1
-        Dim Garage As Integer = 1
-        Dim Countertops As Integer = 1
-        Dim Bath As Integer = 1
-        Dim Closets As Integer = 1
-        Dim Fireplace As Integer = 1
-        Dim Utility As Integer = 1
+
+        For Each aOption In myOptionsList
+            If aOption.getoptionID = myChosenOptions.Item(0) Then
+                FloorCost = aOption.getoptionprice
+            End If
+
+            If aOption.getoptionID = myChosenOptions.Item(1) Then
+                RoofCost = aOption.getoptionprice
+            End If
+        Next
+
+        Dim Floors As Integer = myChosenOptions.Item(0)
+        Dim Roof_Type As Integer = myChosenOptions.Item(1)
+        Dim Appliances As Integer = myChosenOptions.Item(2)
+        Dim Garage As Integer = myChosenOptions.Item(3)
+        Dim Countertops As Integer = myChosenOptions.Item(4)
+        Dim Bath As Integer = myChosenOptions.Item(5)
+        Dim Closets As Integer = myChosenOptions.Item(6)
+        Dim Fireplace As Integer = myChosenOptions.Item(7)
+
 
         Dim DAL As New DataLoader
         DAL.InsertSavedScenario(HouseName, Budget, ScenarioName, TotalCost, FloorCost, RoofCost, Floors, Roof_Type, Appliances, Garage, Countertops, Bath, Closets, Fireplace, Utility)
     End Sub
 
     Protected Sub gvwDetails_RowCommand(sender As Object, e As GridViewCommandEventArgs) Handles gvwDetails.RowCommand
-        lblFeatureName.Visible = False
-        rdb1.Visible = False
-        rdb2.Visible = False
-        rdb3.Visible = False
-        rdb4.Visible = False
-        rdb5.Visible = False
+        lblFeatureName.visible = False
+        rdb1.visible = False
+        rdb2.visible = False
+        rdb3.visible = False
+        rdb4.visible = False
+        rdb5.visible = False
 
         Dim rowIndex As Integer = e.CommandArgument    ' which row
         Session("whichFeature") = rowIndex + 1
@@ -217,7 +250,7 @@ Partial Class OptimizationResultsPage
         Dim panelCount As Integer = 0
         For Each aFeature In myFeatureSet
             If aFeature.getID = myFeature Then
-                lblFeatureName.Visible = True
+                lblFeatureName.visible = True
                 lblFeatureName.Text = aFeature.Name
             End If
         Next
@@ -285,7 +318,7 @@ Partial Class OptimizationResultsPage
         Next
         Session("whichOption") = myOption
 
-        check2 = True
+
 
     End Sub
 
