@@ -45,15 +45,15 @@ Public Class Comparison2Charter
         Dim charea As New ChartArea
         charea = mychart.ChartAreas.Item(0)
         'charea.AxisX.MajorGrid.LineDashStyle = ChartDashStyle.Dash
-        charea.AxisX.LabelStyle.Font = New Drawing.Font("Cambria", 12)
-        charea.AxisX.LabelStyle.Angle = -45
+        ' charea.AxisX.LabelStyle.Font = New Drawing.Font("Cambria", 12)
+        ' charea.AxisX.LabelStyle.Angle = -45
         charea.AxisX.TitleFont = New Drawing.Font("cambria", 12)
         charea.AxisX.Title = "Scenarios"
-
-        charea.AxisY.MajorGrid.LineDashStyle = ChartDashStyle.Dash
-        charea.AxisY.Interval = 1000
-        charea.AxisY.Maximum = 500000
-        charea.AxisY.Minimum = 0
+        '
+        'charea.AxisY.MajorGrid.LineDashStyle = ChartDashStyle.Dash
+        'charea.AxisY.Interval = 1000
+        '  charea.AxisY.Maximum = 500000
+        '  charea.AxisY.Minimum = 0
         charea.AxisY.TitleFont = New Drawing.Font("cambria", 12)
         charea.AxisY.Title = "Cost"
     End Sub
