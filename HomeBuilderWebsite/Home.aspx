@@ -8,18 +8,18 @@
 
     <h3>Where would you like to start?</h3>
     
-   <asp:Button ID="btnBuildHome" runat="server"  Font-Names="Corbel" Text="Build New Home" Font-Size="Larger" BackColor="#336666" Font-Bold="True" ForeColor="White" Width="351px" />
+   <asp:Button ID="btnBuildHome" runat="server"  Font-Names="Corbel" Text="Build My New Home" Font-Size="Larger" BackColor="#336666" Font-Bold="True" ForeColor="White" Width="351px" />
     
 
      <br />
   <br />
      
-    <asp:Button ID="btnLoadScenario" runat="server"  Font-Names="Corbel" Text="Compare Saved Homes" Font-Size="Larger" BackColor="#336666" Font-Bold="True" ForeColor="White" Width="351px" />
+    <asp:Button ID="btnLoadScenario" runat="server"  Font-Names="Corbel" Text="Compare My Saved Homes" Font-Size="Larger" BackColor="#336666" Font-Bold="True" ForeColor="White" Width="351px" />
          
       
       <br />
                 <br />
-          <asp:Button ID="btnEditTemplate" runat="server"  Font-Names="Corbel" Text="Start From Template" Font-Size="Larger" BackColor="#336666" Font-Bold="True" ForeColor="White" Width="351px" />
+          <asp:Button ID="btnEditTemplate" runat="server"  Font-Names="Corbel" Text="Start From A Template" Font-Size="Larger" BackColor="#336666" Font-Bold="True" ForeColor="White" Width="351px" />
          
             <br />
        
