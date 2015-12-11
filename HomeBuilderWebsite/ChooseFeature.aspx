@@ -53,6 +53,22 @@
         </tr>
         <tr>
             <td class="auto-style1">
+                <h3>Landscaping</h3>
+            </td>
+            <td class="auto-style4">
+
+                <asp:DropDownList ID="ddlLandscaping" runat="server">
+                    <asp:ListItem Value="5">Essential</asp:ListItem>
+                    <asp:ListItem Value="4">High priority</asp:ListItem>
+                    <asp:ListItem Value="3" Selected="True">Medium priority</asp:ListItem>
+                    <asp:ListItem Value="2">Low priority</asp:ListItem>
+                    <asp:ListItem Value="1">Not a priority</asp:ListItem>
+                </asp:DropDownList>
+
+            </td>
+        </tr>
+        <tr>
+            <td class="auto-style1">
                 <h3>Floor</h3>
             </td>
             <td class="auto-style4">
@@ -99,6 +115,7 @@
 
             </td>
         </tr>
+
         <tr>
             <td class="auto-style1">
                 <h3>Countertops</h3>
@@ -106,6 +123,22 @@
             <td class="auto-style4">
 
                 <asp:DropDownList ID="ddlCountertops" runat="server">
+                    <asp:ListItem Value="5">Essential</asp:ListItem>
+                    <asp:ListItem Value="4">High priority</asp:ListItem>
+                    <asp:ListItem Value="3" Selected="True">Medium priority</asp:ListItem>
+                    <asp:ListItem Value="2">Low priority</asp:ListItem>
+                    <asp:ListItem Value="1">Not a priority</asp:ListItem>
+                </asp:DropDownList>
+
+            </td>
+        </tr>
+        <tr>
+            <td class="auto-style1">
+                <h3>Cabinets</h3>
+            </td>
+            <td class="auto-style4">
+
+                <asp:DropDownList ID="ddlCabinets" runat="server">
                     <asp:ListItem Value="5">Essential</asp:ListItem>
                     <asp:ListItem Value="4">High priority</asp:ListItem>
                     <asp:ListItem Value="3" Selected="True">Medium priority</asp:ListItem>

@@ -10,12 +10,16 @@ Partial Class OptimizationResultsPage
         btnSave.Visible = False
 
         If (ispostback) Then
-            btnSave.visible = True
+            btnSave.Visible = True
+
         End If
 
         If (IsPostBack And lblFeatureName.Visible = True) Then
             btnSave.visible = True
             updateFeatures()
+            chtFeatures.Visible = True
+            Dim cht As New OptPieChart(chtFeatures)
+            cht.Draw()
         End If
 
 
@@ -171,6 +175,10 @@ Partial Class OptimizationResultsPage
         Next
         gvwDetails.DataSource = displayList
         gvwDetails.DataBind()
+
+        chtFeatures.Visible = True
+        Dim cht As New OptPieChart(chtFeatures)
+        cht.Draw()
 
     End Sub
     'Protected Sub btnEdit_Click(sender As Object, e As EventArgs) Handles btnEdit.Click
@@ -329,7 +337,9 @@ Partial Class OptimizationResultsPage
         Next
         Session("whichOption") = myOption
 
-
+        chtFeatures.Visible = True
+        Dim cht As New OptPieChart(chtFeatures)
+        cht.Draw()
 
     End Sub
 

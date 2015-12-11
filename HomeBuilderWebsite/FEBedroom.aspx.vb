@@ -78,10 +78,12 @@ Partial Class FEBedroom
         Dim budgetvaluelist As New ArrayList
         budgetvaluelist.Add(Session("Roofavg"))
         budgetvaluelist.Add(Session("Garageavg"))
+        budgetvaluelist.Add(Session("Landscapeavg"))
         budgetvaluelist.Add(Session("Flooringavg"))
         budgetvaluelist.Add(Session("Fireplaceavg"))
         budgetvaluelist.Add(Session("Appliancesavg"))
         budgetvaluelist.Add(Session("Countertopsavg"))
+        budgetvaluelist.Add(Session("Cabinetsavg"))
         budgetvaluelist.Add(Session("Bathroomsavg"))
         budgetvaluelist.Add(Session("Closetsavg"))
         If Session("myRemainderBudget") > 0 Then
