@@ -20,6 +20,6 @@ Partial Class SeeHomeDetails
     End Sub
 
     Private Sub btnFeatureEvaluation_Click(sender As Object, e As EventArgs) Handles btnFeatureEvaluation.Click
-        Response.Redirect("~\FEOutdoor.aspx")
+        Response.Redirect("~\ChooseFeature.aspx")
     End Sub
 End Class

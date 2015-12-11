@@ -1,14 +1,15 @@
 ﻿Imports System.Web.UI.DataVisualization.Charting
-Imports System.data
+Imports System.Data
 
 Partial Class OptimizationResultsPage
     Inherits System.Web.UI.Page
 
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        DrawCharts(10000)
+        DrawCharts()
+        btnSave.Visible = False
 
-        If (IsPostBack And lblFeatureName.visible = True) Then
+        If (IsPostBack And lblFeatureName.Visible = True) Then
             updateFeatures()
         End If
 
@@ -62,7 +63,7 @@ Partial Class OptimizationResultsPage
         End If
 
         ChangeChoice(check)
-        Dim displayList As New datatable
+        Dim displayList As New DataTable
         displayList.Columns.Add("Feature")
         displayList.Columns.Add("Name")
         displayList.Columns.Add("Description")
@@ -91,17 +92,16 @@ Partial Class OptimizationResultsPage
     End Sub
 
 
-    Private Sub DrawCharts(ByVal index As Integer)
+    Private Sub DrawCharts()
         Dim myResults As New List(Of OptimizationResults)
         myResults = Session("Results")
-
-
-        Dim C As New ResultChart(chtCompareBudgets, index)
+        Dim C As New ResultChart(chtCompareBudgets)
         C.LoadData(myResults)
         C.DrawOptResults()
     End Sub
 
     Protected Sub chtCompareBudgets_Click(sender As Object, e As ImageMapEventArgs) Handles chtCompareBudgets.Click
+        btnSave.Visible = True
         lblFeatureName.Visible = False
         rdb1.Visible = False
         rdb2.Visible = False
@@ -119,7 +119,6 @@ Partial Class OptimizationResultsPage
         Next
 
         Session("Chart") = check
-        DrawCharts(check)
         gvwDetails.Visible = True
         Dim myResults As List(Of OptimizationResults) = Session("Results")
         Dim displayList As New DataTable
@@ -193,7 +192,7 @@ Partial Class OptimizationResultsPage
 
         Utility = Utility / Result.getMaxUtility * 100
 
-        Dim HouseName As String = myHome.name
+        Dim HouseName As String = myHome.Name
         Dim Budget As Integer = Session("Budget")
         Dim ScenarioName As String = "whaaaa"
         Dim TotalCost As Double = upgradeCost + myHome.Price
@@ -226,12 +225,12 @@ Partial Class OptimizationResultsPage
     End Sub
 
     Protected Sub gvwDetails_RowCommand(sender As Object, e As GridViewCommandEventArgs) Handles gvwDetails.RowCommand
-        lblFeatureName.visible = False
-        rdb1.visible = False
-        rdb2.visible = False
-        rdb3.visible = False
-        rdb4.visible = False
-        rdb5.visible = False
+        lblFeatureName.Visible = False
+        rdb1.Visible = False
+        rdb2.Visible = False
+        rdb3.Visible = False
+        rdb4.Visible = False
+        rdb5.Visible = False
 
         Dim rowIndex As Integer = e.CommandArgument    ' which row
         Session("whichFeature") = rowIndex + 1
@@ -253,7 +252,7 @@ Partial Class OptimizationResultsPage
         Dim panelCount As Integer = 0
         For Each aFeature In myFeatureSet
             If aFeature.getID = myFeature Then
-                lblFeatureName.visible = True
+                lblFeatureName.Visible = True
                 lblFeatureName.Text = aFeature.Name
             End If
         Next

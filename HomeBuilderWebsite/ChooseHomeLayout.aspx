@@ -4,9 +4,9 @@
     <br />
     <br />
       <div style="text-align:center">
-      <table border="1">
+      <table border="1" style="margin:0px auto; width: 1100px;">
             <tr>
-                <td style="width: 191px"> 
+                <td style="width: 250px"> 
                     <div style="text-align:center">
                           <h4> Customize Your Home</h4>
                     </div>
@@ -21,7 +21,7 @@
                 </td>
                
             <tr>
-                <td style="width: 191px">
+                <td style="width: 250px">
                       <div style="text-align:center">
                     <asp:Button ID="btnallhome" runat="server" Text="See All Homes" />
                           <br />

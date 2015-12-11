@@ -17,7 +17,7 @@
     </style>
 
 
-        <table>
+        <table style="margin:0px auto; width: 1100px;">
             <tr>
                 <td>
 

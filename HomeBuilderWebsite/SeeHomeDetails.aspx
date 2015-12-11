@@ -2,10 +2,18 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
   
+      <div style="text-align:center" >
      <table style="margin:0px auto; width: 891px;">
             <tr>
                 <td >
-                     <asp:Button ID="btnbacktochoosehome" runat="server" Text="See More Homes" />
+                    <br />
+                    <asp:Button ID="btnbacktochoosehome" runat="server"  Font-Names="Corbel" Text="See More Homes" Font-Size="Larger" BackColor="#336666" Font-Bold="True" ForeColor="White" Width="351px" />
+                    <br />
+                    <br />
+                                         <asp:Button ID="btnFeatureEvaluation" runat="server"  Font-Names="Corbel" Text="Select This Home" Font-Size="Larger" BackColor="#336666" Font-Bold="True" ForeColor="White" Width="351px" />
+
+                    <br />
+                          <br />
                     </td>
             </tr>
          <tr>
@@ -19,16 +27,11 @@
                     </td>
             </tr>
    
-         <tr>
-                <td >
-                     <asp:Button ID="btnFeatureEvaluation" runat="server"  Font-Names="Corbel" Text="Select This Home" Font-Size="Larger" BackColor="#336666" Font-Bold="True" ForeColor="White" Width="351px" />
-
-                    </td>
-            </tr>
+        
    
          </table>
    
-    
+    </div>
 
 </asp:Content>
 

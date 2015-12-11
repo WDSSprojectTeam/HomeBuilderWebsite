@@ -1,12 +1,12 @@
 ﻿<%@ Page Title="" Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false" MaintainScrollPositionOnPostback="true" CodeFile="Instructions_BuildNewHome.aspx.vb" Inherits="Instructions_BuildNewHome" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
-      <div style="text-align:center" >
+      <div style="text-align:center; font-size: large;" >
      <h2>Tell us a little bit about yourself so we can help you find the perfect home!</h2>
 
     <p>
     <h3>1) How much would you like to spend?</h3>
-    <asp:TextBox ID="tbxBudget" runat="server"></asp:TextBox>
+          $<asp:TextBox ID="tbxBudget" runat="server"></asp:TextBox>
 
             </p>
 
