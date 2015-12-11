@@ -31,7 +31,7 @@ Public Class Home
     '    End Sub
 
     Protected Sub btnBuildHome_Click(sender As Object, e As EventArgs) Handles btnBuildHome.Click
-        Response.Redirect("~\Instructions_BuildNewHome.aspx")
+        Response.Redirect("~\Directions.aspx")
     End Sub
 
 
@@ -126,7 +126,11 @@ Public Class Home
     '    Friend Function FeatureList() As List(Of Feature)
     '        Throw New NotImplementedException()
     '    End Function
+
     Protected Sub btnLoadScenario_Click(sender As Object, e As EventArgs) Handles btnLoadScenario.Click
         Response.Redirect("~\Comparison.aspx")
     End Sub
+
+
+
 End Class

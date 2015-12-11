@@ -6,10 +6,6 @@
             width: 200px;
             height: 35px;
         }
-        .auto-style3 {
-            width: 200px;
-            height: 35px;
-        }
         .auto-style4 {
             width: 159px;
             height: 35px;
@@ -24,7 +20,7 @@
         <h1>Feature Preferences</h1><br />
     <table>
         <tr>
-            <td class="auto-style3">
+            <td class="auto-style1">
                 <h3>Roof Type</h3>
             </td>
             <td class="auto-style4">
