@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false" CodeFile="Instructions_BuildNewHome.aspx.vb" Inherits="Instructions_BuildNewHome" %>
+﻿<%@ Page Title="" Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false" MaintainScrollPositionOnPostback="true" CodeFile="Instructions_BuildNewHome.aspx.vb" Inherits="Instructions_BuildNewHome" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
       <div style="text-align:center" >
@@ -69,7 +69,8 @@
     <br />
     <asp:Button ID="btnBegin" runat="server"  Font-Names="Corbel" Text="Start building your new home!" Font-Size="Larger" BackColor="#336666" Font-Bold="True" ForeColor="White" Width="351px" />
     <br />
-<asp:Label runat="server" Text="You must enter a budget first." ID="lblbudgetvalidation"></asp:Label>
+          <br />
+<asp:Label runat="server" Text="You must enter a budget first." ID="lblbudgetvalidation" Font-Bold="True" Font-Size="X-Large"></asp:Label>
 </div>
 </asp:Content>
 

@@ -14,17 +14,17 @@ Partial Class Instructions_BuildNewHome
 
     Protected Sub btnBegin_Click(sender As Object, e As EventArgs) Handles btnBegin.Click
 
+        If tbxBudget.Text = "" Then
 
-        Dim homestyle As String
+            lblbudgetvalidation.visible = True
+        Else
+
+            Dim homestyle As String
             homestyle = rdbhomestyle.SelectedValue
             Session("homestyleselected") = homestyle
 
-        Session("Budget") = tbxBudget.Text
+            Session("Budget") = tbxBudget.Text
 
-        If Session("Budget") Is Nothing Then
-            Session("Budget") = 0
-            lblbudgetvalidation.visible = True
-        Else
             Response.Redirect("~\ChooseHomeLayout.aspx")
 
         End If

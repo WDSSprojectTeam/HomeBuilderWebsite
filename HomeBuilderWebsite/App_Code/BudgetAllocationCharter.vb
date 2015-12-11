@@ -15,7 +15,8 @@ Public Class BudgetAllocationCharter
     Public Sub Draw()
 
         myChart.Titles.Clear()
-        myChart.Titles.Add("Budget Allocation by Option")
+        myChart.Titles.Add("Estimated Budget Allocation by Option")
+
         SetChartSize()
         SetBorderStyle()
         DefineChartArea()
@@ -54,7 +55,7 @@ Public Class BudgetAllocationCharter
     End Sub
 
     Public Sub SetChartSize()
-        myChart.Height = 300
+        myChart.Height = 250
         myChart.Width = 300
     End Sub
 
@@ -72,18 +73,18 @@ Public Class BudgetAllocationCharter
 
         myChart.ChartAreas.Add(charea)
 
-        'charea.AxisX.MajorGrid.LineDashStyle = ChartDashStyle.Dash
-        'charea.AxisX.LabelStyle.Font = New Drawing.Font("Cambria", 12)
-        'charea.AxisX.LabelStyle.Angle = -45
-        'charea.AxisX.TitleFont = New Drawing.Font("Cambria", 12)
-        'charea.AxisX.Title = "Options"
+        charea.AxisX.MajorGrid.LineDashStyle = ChartDashStyle.Dash
+        charea.AxisX.LabelStyle.Font = New Drawing.Font("Cambria", 12)
+        charea.AxisX.LabelStyle.Angle = -45
+        charea.AxisX.TitleFont = New Drawing.Font("Cambria", 12)
+        charea.AxisX.Title = "Options"
 
-        'charea.AxisY.MajorGrid.LineDashStyle = ChartDashStyle.Dash
-        'charea.AxisY.Interval = 1000
-        'charea.AxisY.Maximum = 500000
-        'charea.AxisY.Minimum = 0
-        'charea.AxisY.TitleFont = New Drawing.Font("Cambria", 12)
-        'charea.AxisY.Title = "Dollars Allocation"
+        charea.AxisY.MajorGrid.LineDashStyle = ChartDashStyle.Dash
+        charea.AxisY.Interval = 1000
+        charea.AxisY.Maximum = 500000
+        charea.AxisY.Minimum = 0
+        charea.AxisY.TitleFont = New Drawing.Font("Cambria", 12)
+        charea.AxisY.Title = "Dollars Allocation"
 
 
 

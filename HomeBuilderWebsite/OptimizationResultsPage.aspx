@@ -4,7 +4,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
 
-
+     <div style="text-align:center" >
     
      <table>
          <tr>
@@ -67,5 +67,6 @@
      
      <br />
      
+         </div>
 </asp:Content>
 

@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
     <br />
     <br />
-
+      <div style="text-align:center">
       <table border="1">
             <tr>
                 <td style="width: 191px"> 
@@ -140,6 +140,6 @@
          
                </tr>
         </table>
-
+           </div>
     </asp:Content>
 
