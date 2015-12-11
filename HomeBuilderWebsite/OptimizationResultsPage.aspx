@@ -47,6 +47,7 @@
                  <td style="width: 100px"></td>
 
              <td style="border-style: none; border-width: thin; width: 375px" >
+                 <div style="text-align:left">
                  <asp:Label ID="lblFeatureName" align="left" runat="server" Visible="False" Font-Bold="True" Font-Size="Large"></asp:Label>
                  <br /> 
     
@@ -72,11 +73,11 @@
                  <br />
         
         <asp:RadioButton ID="rdb5" runat="server" Autopostback=" true" GroupName="1" Visible="False" />
-   
+   </div>
          <tr>
              <td colspan="3"  >
                  <br />
-                 <div style="text-align:left"></div>
+                 
                  <asp:Button ID="btnSave" runat="server"  Font-Names="Corbel" Text="Save My Changes" Font-Size="Larger" BackColor="#336666" Font-Bold="True" ForeColor="White" Width="351px" />
                
              </td>
