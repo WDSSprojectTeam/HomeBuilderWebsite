@@ -112,6 +112,9 @@ Partial Class ChooseHomeLayout
         Dim myHome As New HomeLayouts
 
         If (e.CommandName = "btnDetails") Then
+            myHome = myDataLoader.GetHomeObject(homeid)
+
+            Session("SelectedHome") = myHome
             Response.Redirect("~\SeeHomeDetails.aspx")
         Else
             myHome = myDataLoader.GetHomeObject(homeid)

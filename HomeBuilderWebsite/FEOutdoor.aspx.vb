@@ -295,7 +295,8 @@ Partial Class FEOutdoor
     Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
         Dim remainderbudget As Double = Session("myRemainderBudget")
         Dim budget As Double = Session("Budget")
-        lblBudget.Text = "$ " & Convert.ToString(remainderbudget) & " left in your budget"
+
+        lblBudget.Text = "$ " & Convert.ToString(Math.Round(remainderbudget, 0)) & " left in your budget"
         Dim percentbudgetused As Double = (budget - remainderbudget) / budget
         Math.Round(percentbudgetused)
         If remainderbudget > 0 Then

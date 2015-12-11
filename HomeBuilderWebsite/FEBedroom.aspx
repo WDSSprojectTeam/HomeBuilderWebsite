@@ -78,7 +78,7 @@
         }
         </style>
 
-    <table>
+    <table style="margin:0px auto; width: 1100px;">
         <tr>
             <td class="auto-style70">
 
@@ -263,6 +263,8 @@
                  </td>
             </tr>
         </table> 
+                 <br />
+                            <br />
                 <asp:Panel ID="pnlydynamichart" runat="server">
                             </asp:Panel>
                         </td>
