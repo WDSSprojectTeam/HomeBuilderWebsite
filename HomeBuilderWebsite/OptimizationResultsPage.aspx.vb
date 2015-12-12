@@ -111,6 +111,7 @@ Partial Class OptimizationResultsPage
 
     Protected Sub chtCompareBudgets_Click(sender As Object, e As ImageMapEventArgs) Handles chtCompareBudgets.Click
         btnSave.Visible = True
+        Panel1.Visible = False
         lblFeatureEdit.Visible = False
         lblFeatureName.Visible = False
         rdb1.Visible = False
@@ -243,6 +244,7 @@ Partial Class OptimizationResultsPage
 
     Protected Sub gvwDetails_RowCommand(sender As Object, e As GridViewCommandEventArgs) Handles gvwDetails.RowCommand
         lblFeatureEdit.Visible = False
+        Panel1.Visible = False
         lblFeatureName.Visible = False
         rdb1.Visible = False
         rdb2.Visible = False
@@ -272,6 +274,7 @@ Partial Class OptimizationResultsPage
             If aFeature.getID = myFeature Then
                 lblFeatureEdit.Visible = True
                 lblFeatureName.Visible = True
+                Panel1.Visible = True
                 lblFeatureName.Text = aFeature.Name
             End If
         Next

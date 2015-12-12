@@ -15,7 +15,10 @@
         <span style="font-size: xx-large"><strong>Multiple Scenario Comparison</strong></span><br />
         <br />
     
-        <asp:Chart ID="Chart1" align="center" runat="server">
+        <table style="margin:0px auto; width: 800px;"">
+            <tr>
+                <td>
+                    <asp:Chart ID="Chart1" align="center" runat="server">
             <Series>
                 <asp:Series Name="Series1">
                 </asp:Series>
@@ -25,10 +28,32 @@
                 </asp:ChartArea>
             </ChartAreas>
         </asp:Chart>
+                </td>
+                <td style="vertical-align: top">
+                    Select a scenario:&nbsp;&nbsp;
+        <asp:DropDownList ID="DropDownList1" align="center" runat="server" AutoPostBack ="true" Font-Size="X-Large" style="font-size: large">
+        </asp:DropDownList>
         <br />
         <br />
-        Please select which style of graph you are interested in seeing.<br />
-&nbsp;&nbsp;&nbsp;&nbsp;
+        Scenario Details<br />
+        <asp:DetailsView ID="DetailsView1" runat="server" align="center" CellPadding="4" ForeColor="#333333" GridLines="None" Height="50px" Width="125px" Font-Size="Large">
+            <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+            <CommandRowStyle BackColor="#E2DED6" Font-Bold="True" />
+            <EditRowStyle BackColor="#999999" />
+            <FieldHeaderStyle BackColor="#E9ECF1" Font-Bold="True" />
+            <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+            <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+            <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
+            <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
+        </asp:DetailsView>
+                </td>
+            </tr>
+            </table>
+        <table style="margin:0px auto; width: 800px;"">
+            <tr>
+                <td>
+                    <br />
+&nbsp;&nbsp;&nbsp;&nbsp;Select a graph:
         <asp:DropDownList ID="DropDownList2" align="center" runat="server" AutoPostBack ="true" Font-Size="X-Large" style="font-size: large">
             <asp:ListItem Value="Utility">Utility vs Price Comparison</asp:ListItem>
             <asp:ListItem Value="House" Selected="True">House Type Price Comparison</asp:ListItem>
@@ -59,26 +84,17 @@
             <SortedDescendingHeaderStyle BackColor="#383838" />
         </asp:GridView>
         <br />
-        Please select which scenario you would like to see a few more details about.&nbsp;&nbsp;&nbsp;
-        <asp:DropDownList ID="DropDownList1" align="center" runat="server" AutoPostBack ="true" Font-Size="X-Large" style="font-size: large">
-        </asp:DropDownList>
-        <br />
-        <br />
-        Scenario Details<br />
-        <asp:DetailsView ID="DetailsView1" runat="server" align="center" CellPadding="4" ForeColor="#333333" GridLines="None" Height="50px" Width="125px" Font-Size="Large">
-            <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
-            <CommandRowStyle BackColor="#E2DED6" Font-Bold="True" />
-            <EditRowStyle BackColor="#999999" />
-            <FieldHeaderStyle BackColor="#E9ECF1" Font-Bold="True" />
-            <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-            <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-            <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
-            <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
-        </asp:DetailsView>
+        
     
         <br />
     
-    </div>
+
+                </td>
+            </tr>
+        </table>
+        
+        <br />
+            </div>
     <%--</form>
 </body>
 </html>--%>
