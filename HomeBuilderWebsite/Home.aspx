@@ -209,7 +209,7 @@
 <!--work start here-->
 <div class="work">
 	<div class="work-top" id="services">
-		<h3><asp:LinkButton ID="btnBuildHome" runat="server" ForeColor="White">Build New Home</asp:LinkButton></h3>
+		<h3><asp:LinkButton ID="btnBuildHome" runat="server" ForeColor="White">Build a New Home</asp:LinkButton></h3>
 	</div>
 	<div class="work-bottom">
 	<div class="col-md-6 work-left">
@@ -295,12 +295,12 @@
 	<div class="laying-bottom">
 		<div class="col-md-6 laying-left wow fadeInLeft" data-wow-delay="0.5s">
 			<h4><a>For Comparing</a></h4>
-			<h3>For a house to be successful, the objects in it must communicate with one another, respond and balance one another.</h3>
-			<p>For a house to be successful, the objects in it must communicate with one another, respond and balance one another.For a house to be successful, the objects in it must communicate with one another, respond and balance one another.</p>
+			<h3>Once you have a home that you like, you can save it for later. Do this for as many homes as you want, and then click the Compare Saved Homes button to see all of your potential homes.</h3>
+			<p>On the Comparisons page, select the homes you’d like to compare. For each home, you will see information about it.</p>
 		</div>
 		<div class="col-md-6 laying-right wow fadeInRight" data-wow-delay="0.5s">
 			<h3>For Template</h3>
-			<p>Measuring and laying out the room in advance can save you a lot of headaches.</p>
+			<p>choosing one of the pre-built templates as your starting point. Measuring and laying out the room in advance can save you a lot of headaches.</p>
 		</div>
 	  <div class="clearfix"> </div>
 	</div>

@@ -39,9 +39,11 @@ Public Class Home
     '                Dim featureID As Integer = myReader.Item("FeatureID")
     '                Dim featureName As String = myReader.Item("Feature")
     '                Dim roomID As Integer = myReader.Item("RoomID")
-    Protected Sub btnEditTemplate_Click(sender As Object, e As EventArgs) Handles btnEditTemplate.Click
-        Response.Redirect("~\ScenarioInfo.aspx")
-    End Sub
+
+
+    'Protected Sub btnEditTemplate_Click(sender As Object, e As EventArgs) Handles btnEditTemplate.Click
+    '    Response.Redirect("~\ScenarioInfo.aspx")
+    'End Sub
 
 
 
