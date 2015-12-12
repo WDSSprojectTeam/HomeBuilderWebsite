@@ -16,6 +16,8 @@ Partial Class ScenarioInfo
 
     Protected Sub btnBegin_Click(sender As Object, e As EventArgs) Handles btnBegin.Click
 
+        Session("numberofloads") = 0
+
         If tbxBudget.Text = "" Then
 
             lblbudgetvalidation.Visible = True
@@ -31,7 +33,7 @@ Partial Class ScenarioInfo
 
         End If
     End Sub
-    Protected Sub btnBack_Click(sender As Object, e As EventArgs) Handles btnBack.Click
-        Response.Redirect("Home.aspx")
-    End Sub
+    'Protected Sub btnBack_Click(sender As Object, e As EventArgs) Handles btnBack.Click
+    '    Response.Redirect("Home.aspx")
+    'End Sub
 End Class
