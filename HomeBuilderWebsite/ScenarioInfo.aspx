@@ -49,7 +49,7 @@
                 <td style="width: 634px"> 
                      Exterior:
                     <br />
-                                  <asp:Image ID="img1" runat="server" ImageUrl="~/Images/3.png" Width="200px" />
+                                  <asp:Image ID="inmg3" runat="server" ImageUrl="~/Images/genericexterior.jpg" Width="200px" Height="120px" />
                     <br />
                    Roof
                      <br />
@@ -60,7 +60,7 @@
                 <td style="width: 624px"> 
                     Interior:
                     <br />
-                     <asp:Image ID="img2" runat="server" ImageUrl="~/Images/7.png" Width="200px" />
+                     <asp:Image ID="img2" runat="server" ImageUrl="~/Images/genericinterior.jpg" Width="200px" Height="123px" />
                     <br />
                    Flooring
                      <br />
@@ -71,7 +71,7 @@
                  <td style="width: 624px"> 
                      Kitchen:
                     <br />
-                     <asp:Image ID="Image1" runat="server" ImageUrl="~/Images/7.png" Width="200px" />
+                     <asp:Image ID="Image1" runat="server" ImageUrl="~/Images/generickitchen.jpg" Width="200px" />
                     <br />
                    Cabinents
                      <br />
@@ -85,7 +85,7 @@
                 <td style="width: 678px"> 
                       Bedroom:
                     <br />
-                     <asp:Image ID="Image2" runat="server" ImageUrl="~/Images/7.png" Width="200px" />
+                     <asp:Image ID="Image2" runat="server" ImageUrl="~/Images/genericbedroom.jpg" Width="200px" Height="133px" />
                     <br />
                    Bathroom
                      <br />
