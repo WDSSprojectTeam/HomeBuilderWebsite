@@ -34,6 +34,9 @@ Public Class Home
         Response.Redirect("~\Directions.aspx")
     End Sub
 
+    Protected Sub btnNewEntry_Click(sender As Object, e As EventArgs) Handles btnHelp.Click
+        Page.ClientScript.RegisterStartupScript(Me.GetType(), "OpenWindow", "window.open('Help.aspx','_newtab');", True)
+    End Sub
 
 
     '    Public Function GetAllHomesTable() As Object
