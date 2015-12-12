@@ -26,7 +26,7 @@
                 <td style="width: 81px">
                      <asp:Image ID="img2" runat="server" ImageUrl="~/Images/num2.png" Width="50px" />
                 </td>
-                <td>Tell us what areas of&nbsp;the house are most important to you!</td>
+                <td>Tell us what areas of&nbsp;the house are most important to you! (get rid of this)</td>
                 
             </tr>
              <tr>
