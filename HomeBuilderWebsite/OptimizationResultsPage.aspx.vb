@@ -9,13 +9,13 @@ Partial Class OptimizationResultsPage
         DrawCharts(10000)
         btnSave.Visible = False
 
-        If (ispostback) Then
+        If (IsPostBack) Then
             btnSave.Visible = True
 
         End If
 
         If (IsPostBack And lblFeatureName.Visible = True) Then
-            btnSave.visible = True
+            btnSave.Visible = True
             updateFeatures()
             chtFeatures.Visible = True
             Dim cht As New OptPieChart(chtFeatures)
@@ -111,6 +111,7 @@ Partial Class OptimizationResultsPage
 
     Protected Sub chtCompareBudgets_Click(sender As Object, e As ImageMapEventArgs) Handles chtCompareBudgets.Click
         btnSave.Visible = True
+        lblFeatureEdit.Visible = False
         lblFeatureName.Visible = False
         rdb1.Visible = False
         rdb2.Visible = False
@@ -241,7 +242,7 @@ Partial Class OptimizationResultsPage
     End Sub
 
     Protected Sub gvwDetails_RowCommand(sender As Object, e As GridViewCommandEventArgs) Handles gvwDetails.RowCommand
-
+        lblFeatureEdit.Visible = False
         lblFeatureName.Visible = False
         rdb1.Visible = False
         rdb2.Visible = False
@@ -269,6 +270,7 @@ Partial Class OptimizationResultsPage
         Dim panelCount As Integer = 0
         For Each aFeature In myFeatureSet
             If aFeature.getID = myFeature Then
+                lblFeatureEdit.Visible = True
                 lblFeatureName.Visible = True
                 lblFeatureName.Text = aFeature.Name
             End If
@@ -344,4 +346,7 @@ Partial Class OptimizationResultsPage
     End Sub
 
 
+    Protected Sub btnBack_Click(sender As Object, e As System.EventArgs) Handles btnBack.Click
+        Response.Redirect("FEBedroom.aspx")
+    End Sub
 End Class

@@ -79,4 +79,8 @@ Partial Class ChooseFeature
 
         Response.Redirect("FEOutdoor.aspx")
     End Sub
+
+    Protected Sub btnBack_Click(sender As Object, e As System.EventArgs) Handles btnBack.Click
+        Response.Redirect("ChooseHomeLayout.aspx")
+    End Sub
 End Class

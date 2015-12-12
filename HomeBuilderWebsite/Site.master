@@ -44,7 +44,13 @@
              <asp:Image ID="imghome" runat="server" ImageUrl="~/Images/banner2.png" Height="159px" Width="100%" />
            <br />
            <asp:Label ID="Label1" runat="server" Text="Your dream home is only a few clicks away..." Font-Names="Bradley Hand ITC" Font-Size="X-Large" ForeColor="#000066"></asp:Label>
-     
+     <asp:Menu ID="Menu1" runat="server" Orientation="Horizontal">
+         <Items>
+             <asp:MenuItem NavigateUrl="~/Home.aspx" Text="Home" Value="Home"></asp:MenuItem>
+             <asp:MenuItem NavigateUrl="~/AboutUs.aspx" Text="About Us" Value="About Us"></asp:MenuItem>
+             <asp:MenuItem NavigateUrl="~/Help.aspx" Text="Help" Value="Help"></asp:MenuItem>
+         </Items>
+             </asp:Menu>
        </div>
        
 

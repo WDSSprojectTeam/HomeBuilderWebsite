@@ -221,4 +221,8 @@ Partial Class FEBedroom
         Dim mycharter As New BudgetAllocationCharter(chtBudget)
         mycharter.Draw()
     End Sub
+
+    Protected Sub btnBack_Click(sender As Object, e As System.EventArgs) Handles btnBack.Click
+        Response.Redirect("FEKitchen.aspx")
+    End Sub
 End Class

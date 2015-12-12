@@ -6,10 +6,10 @@
 
      <div style="text-align:center" >
     
-     <table style="margin:0px auto; width: 1000px;">
+     <table>
          <tr>
              <td >
- <asp:Chart ID="chtCompareBudgets" runat="server">
+ <asp:Chart ID="chtCompareBudgets" runat="server" Width="385px">
          <series>
              <asp:Series Name="Series1">
              </asp:Series>
@@ -19,7 +19,9 @@
              </asp:ChartArea>
          </chartareas>
      </asp:Chart>
-                 <asp:Chart ID="chtFeatures" runat="server" style="margin-left: 69px" Visible="False">
+                 </td>
+             <td>
+                 <asp:Chart ID="chtFeatures" runat="server" Visible="False" Width="385px">
                      <Series>
                          <asp:Series Name="Series1">
                          </asp:Series>
@@ -31,9 +33,11 @@
                  </asp:Chart>
              </td>
          </tr>
+         </table>
+         <table>
              <tr>
              <td style="width: 632px">
-                 <asp:GridView ID="gvwDetails" runat="server" Visible="False" AutoGenerateColumns="False" BackColor="White" BorderColor="#336666" BorderStyle="Double" BorderWidth="3px" CellPadding="4" GridLines="Horizontal" Width="700px">
+                 <asp:GridView ID="gvwDetails" runat="server" Visible="False" AutoGenerateColumns="False" BackColor="White" BorderColor="#336666" BorderStyle="Double" BorderWidth="3px" CellPadding="4" GridLines="Horizontal" Width="630px">
              <Columns>
                  <asp:CommandField SelectText="Edit" ShowSelectButton="True" />
                  <asp:BoundField DataField="Feature" HeaderText="Feature" />
@@ -54,11 +58,14 @@
                      <SortedDescendingHeaderStyle BackColor="#275353" />
          </asp:GridView>
              </td>
-                 <td style="width: 100px"></td>
 
              <td style="border-style: none; border-width: thin; width: 375px" >
                  <div style="text-align:left">
-                 <asp:Label ID="lblFeatureName" align="left" runat="server" Visible="False" Font-Bold="True" Font-Size="Large"></asp:Label>
+                 <asp:Panel ID="Panel1" runat="server" BorderColor="Black" BorderStyle="Solid" Width="140px">
+                     <asp:Label ID="lblFeatureEdit" runat="server" align="left" Font-Bold="True" Font-Size="Large" Visible="False">Edit Feature:</asp:Label>
+                     <br />
+                     <br />
+                     <asp:Label ID="lblFeatureName" align="left" runat="server" Visible="False" Font-Bold="True" Font-Size="Large"></asp:Label>
                  <br /> 
     
          
@@ -83,12 +90,14 @@
                  <br />
         
         <asp:RadioButton ID="rdb5" runat="server" Autopostback=" true" GroupName="1" Visible="False" />
+                 </asp:Panel>
    </div>
          <tr>
              <td colspan="3"  >
                  <br />
-                 
-                 <asp:Button ID="btnSave" runat="server"  Font-Names="Corbel" Text="Save My Changes" Font-Size="Larger" BackColor="#336666" Font-Bold="True" ForeColor="White" Width="351px" />
+                 <asp:Button ID="btnBack" runat="server"  Font-Names="Corbel" Text="Back" Font-Size="Larger" BackColor="#336666" Font-Bold="True" ForeColor="White" Width="200px" />
+                 &nbsp;
+                 <asp:Button ID="btnSave" runat="server"  Font-Names="Corbel" Text="Save My Changes" Font-Size="Larger" BackColor="#336666" Font-Bold="True" ForeColor="White" Width="200px" />
                
              </td>
          </tr>

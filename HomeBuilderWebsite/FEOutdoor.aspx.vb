@@ -413,4 +413,7 @@ Partial Class FEOutdoor
         mycharter.Draw()
     End Sub
 
+    Protected Sub btnBack_Click(sender As Object, e As System.EventArgs) Handles btnBack.Click
+        Response.Redirect("ChooseFeature.aspx")
+    End Sub
 End Class

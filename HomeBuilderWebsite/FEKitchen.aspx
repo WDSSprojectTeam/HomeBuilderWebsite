@@ -82,7 +82,7 @@
                                         <asp:CheckBox ID="cbxStandardBeige" runat="server" AutoPostBack="True" />
                                     </td>
                                     <td class="auto-style7">
-                                        <asp:RadioButtonList ID="rltStandardBeige" runat="server" AutoPostBack="True" ForeColor="White" Height="19px" RepeatDirection="Horizontal" style="margin-left: 0px" Width="420px">
+                                        <asp:RadioButtonList ID="rltStandardBeige" runat="server" AutoPostBack="True" ForeColor="#EBFAFA" Height="19px" RepeatDirection="Horizontal" style="margin-left: 0px" Width="420px">
                                             <asp:ListItem Value="3"></asp:ListItem>
                                             <asp:ListItem Value="2"></asp:ListItem>
                                             <asp:ListItem Selected="True" Value="1"></asp:ListItem>
@@ -102,7 +102,7 @@
                                         <asp:CheckBox ID="cbxBlack" runat="server" AutoPostBack="True" />
                                     </td>
                                     <td class="auto-style7">
-                                        <asp:RadioButtonList ID="rltBlack" runat="server" AutoPostBack="True" ForeColor="White" Height="19px" RepeatDirection="Horizontal" style="margin-left: 0px" Width="420px">
+                                        <asp:RadioButtonList ID="rltBlack" runat="server" AutoPostBack="True" ForeColor="#EBFAFA" Height="19px" RepeatDirection="Horizontal" style="margin-left: 0px" Width="420px">
                                             <asp:ListItem Value="3"></asp:ListItem>
                                             <asp:ListItem Value="2"></asp:ListItem>
                                             <asp:ListItem Selected="True" Value="1"></asp:ListItem>
@@ -122,7 +122,7 @@
                                         <asp:CheckBox ID="cbxStainlessSteel" runat="server" AutoPostBack="True" />
                                     </td>
                                     <td class="auto-style32">
-                                        <asp:RadioButtonList ID="rltStainlessSteel" runat="server" AutoPostBack="True" ForeColor="White" Height="19px" RepeatDirection="Horizontal" style="margin-left: 0px" Width="420px">
+                                        <asp:RadioButtonList ID="rltStainlessSteel" runat="server" AutoPostBack="True" ForeColor="#EBFAFA" Height="19px" RepeatDirection="Horizontal" style="margin-left: 0px" Width="420px">
                                             <asp:ListItem Value="3"></asp:ListItem>
                                             <asp:ListItem Value="2"></asp:ListItem>
                                             <asp:ListItem Selected="True" Value="1"></asp:ListItem>
@@ -142,7 +142,7 @@
                                         <asp:CheckBox ID="cbxProfessional" runat="server" AutoPostBack="True" />
                                     </td>
                                     <td class="auto-style87">
-                                        <asp:RadioButtonList ID="rltProfessional" runat="server" AutoPostBack="True" ForeColor="White" Height="19px" RepeatDirection="Horizontal" style="margin-left: 0px" Width="420px">
+                                        <asp:RadioButtonList ID="rltProfessional" runat="server" AutoPostBack="True" ForeColor="#EBFAFA" Height="19px" RepeatDirection="Horizontal" style="margin-left: 0px" Width="420px">
                                             <asp:ListItem Value="3"></asp:ListItem>
                                             <asp:ListItem Value="2"></asp:ListItem>
                                             <asp:ListItem Selected="True" Value="1"></asp:ListItem>
@@ -180,7 +180,7 @@
                                         <asp:CheckBox ID="cbxQuartz" runat="server" AutoPostBack="True" />
                                     </td>
                                     <td class="auto-style7">
-                                        <asp:RadioButtonList ID="rltQuartz" runat="server" AutoPostBack="True" ForeColor="White" Height="19px" RepeatDirection="Horizontal" style="margin-left: 0px" Width="420px">
+                                        <asp:RadioButtonList ID="rltQuartz" runat="server" AutoPostBack="True" ForeColor="#EBFAFA" Height="19px" RepeatDirection="Horizontal" style="margin-left: 0px" Width="420px">
                                             <asp:ListItem Value="3"></asp:ListItem>
                                             <asp:ListItem Value="2"></asp:ListItem>
                                             <asp:ListItem Selected="True" Value="1"></asp:ListItem>
@@ -200,7 +200,7 @@
                                         <asp:CheckBox ID="cbxGranite" runat="server" AutoPostBack="True" />
                                     </td>
                                     <td class="auto-style7">
-                                        <asp:RadioButtonList ID="rltGranite" runat="server" AutoPostBack="True" ForeColor="White" Height="19px" RepeatDirection="Horizontal" style="margin-left: 0px" Width="420px">
+                                        <asp:RadioButtonList ID="rltGranite" runat="server" AutoPostBack="True" ForeColor="#EBFAFA" Height="19px" RepeatDirection="Horizontal" style="margin-left: 0px" Width="420px">
                                             <asp:ListItem Value="3"></asp:ListItem>
                                             <asp:ListItem Value="2"></asp:ListItem>
                                             <asp:ListItem Selected="True" Value="1"></asp:ListItem>
@@ -220,7 +220,7 @@
                                         <asp:CheckBox ID="cbxLaminate" runat="server" AutoPostBack="True" />
                                     </td>
                                     <td class="auto-style7">
-                                        <asp:RadioButtonList ID="rltLaminate" runat="server" AutoPostBack="True" ForeColor="White" Height="19px" RepeatDirection="Horizontal" style="margin-left: 0px" Width="420px">
+                                        <asp:RadioButtonList ID="rltLaminate" runat="server" AutoPostBack="True" ForeColor="#EBFAFA" Height="19px" RepeatDirection="Horizontal" style="margin-left: 0px" Width="420px">
                                             <asp:ListItem Value="3"></asp:ListItem>
                                             <asp:ListItem Value="2"></asp:ListItem>
                                             <asp:ListItem Selected="True" Value="1"></asp:ListItem>
@@ -240,7 +240,7 @@
                                         <asp:CheckBox ID="cbxWood" runat="server" AutoPostBack="True" />
                                     </td>
                                     <td class="auto-style32">
-                                        <asp:RadioButtonList ID="rltWood" runat="server" AutoPostBack="True" ForeColor="White" Height="19px" RepeatDirection="Horizontal" style="margin-left: 0px" Width="420px">
+                                        <asp:RadioButtonList ID="rltWood" runat="server" AutoPostBack="True" ForeColor="#EBFAFA" Height="19px" RepeatDirection="Horizontal" style="margin-left: 0px" Width="420px">
                                             <asp:ListItem Value="3"></asp:ListItem>
                                             <asp:ListItem Value="2"></asp:ListItem>
                                             <asp:ListItem Selected="True" Value="1"></asp:ListItem>
@@ -260,7 +260,7 @@
                                         <asp:CheckBox ID="cbxMarble" runat="server" AutoPostBack="True" />
                                     </td>
                                     <td class="auto-style33">
-                                        <asp:RadioButtonList ID="rltMarble" runat="server" AutoPostBack="True" ForeColor="White" Height="19px" RepeatDirection="Horizontal" style="margin-left: 0px" Width="420px">
+                                        <asp:RadioButtonList ID="rltMarble" runat="server" AutoPostBack="True" ForeColor="#EBFAFA" Height="19px" RepeatDirection="Horizontal" style="margin-left: 0px" Width="420px">
                                             <asp:ListItem Value="3"></asp:ListItem>
                                             <asp:ListItem Value="2"></asp:ListItem>
                                             <asp:ListItem Selected="True" Value="1"></asp:ListItem>
@@ -298,7 +298,7 @@
                                         <asp:CheckBox ID="cbxFormica" runat="server" AutoPostBack="True" />
                                     </td>
                                     <td class="auto-style7">
-                                        <asp:RadioButtonList ID="rltFormica" runat="server" AutoPostBack="True" ForeColor="White" Height="19px" RepeatDirection="Horizontal" style="margin-left: 0px" Width="420px">
+                                        <asp:RadioButtonList ID="rltFormica" runat="server" AutoPostBack="True" ForeColor="#EBFAFA" Height="19px" RepeatDirection="Horizontal" style="margin-left: 0px" Width="420px">
                                             <asp:ListItem Value="3"></asp:ListItem>
                                             <asp:ListItem Value="2"></asp:ListItem>
                                             <asp:ListItem Selected="True" Value="1"></asp:ListItem>
@@ -318,7 +318,7 @@
                                         <asp:CheckBox ID="cbxMaple" runat="server" AutoPostBack="True" />
                                     </td>
                                     <td class="auto-style7">
-                                        <asp:RadioButtonList ID="rltMaple" runat="server" AutoPostBack="True" ForeColor="White" Height="19px" RepeatDirection="Horizontal" style="margin-left: 0px" Width="420px">
+                                        <asp:RadioButtonList ID="rltMaple" runat="server" AutoPostBack="True" ForeColor="#EBFAFA" Height="19px" RepeatDirection="Horizontal" style="margin-left: 0px" Width="420px">
                                             <asp:ListItem Value="3"></asp:ListItem>
                                             <asp:ListItem Value="2"></asp:ListItem>
                                             <asp:ListItem Selected="True" Value="1"></asp:ListItem>
@@ -338,7 +338,7 @@
                                         <asp:CheckBox ID="cbxMetal" runat="server" AutoPostBack="True" />
                                     </td>
                                     <td class="auto-style32">
-                                        <asp:RadioButtonList ID="rltMetal" runat="server" AutoPostBack="True" ForeColor="White" Height="19px" RepeatDirection="Horizontal" style="margin-left: 0px" Width="420px">
+                                        <asp:RadioButtonList ID="rltMetal" runat="server" AutoPostBack="True" ForeColor="#EBFAFA" Height="19px" RepeatDirection="Horizontal" style="margin-left: 0px" Width="420px">
                                             <asp:ListItem Value="3"></asp:ListItem>
                                             <asp:ListItem Value="2"></asp:ListItem>
                                             <asp:ListItem Selected="True" Value="1"></asp:ListItem>
@@ -350,8 +350,9 @@
                         </asp:Panel>
                         <div>
                             <br />
-                            <br />
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <asp:Button ID="btnBack" runat="server" Height="30px" Text="Back" Width="105px" />
+                            &nbsp;&nbsp;
                             <asp:Button ID="btnNext" runat="server" Height="30px" Text="Next" Width="105px" />
                         </div>
                     </div>
