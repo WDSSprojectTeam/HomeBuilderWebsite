@@ -51,9 +51,9 @@ Public Class Options
             myHome = Session("SelectedHome")
             'myHome = myDataLoader.GetHomeObject(Session("SelectedHome"))
 
-            'If (getoptionID >= 5 And getoptionID <= 9) Then
-            '    myPrice *= 50
-            If (getoptionID >= 10 And getoptionID <= 12) Then
+            If (getoptionID >= 5 And getoptionID <= 9) Then
+                myPrice *= myHome.SquareFeet * 0.1
+            ElseIf (getoptionID >= 10 And getoptionID <= 12)
                 myPrice *= myHome.SquareFeet
             ElseIf (getoptionID >= 16 And getoptionID <= 20)
                 myPrice *= (myHome.SquareFeet * 1.05)
@@ -61,6 +61,8 @@ Public Class Options
                 myPrice *= myHome.NumberOfBathrooms
             ElseIf (getoptionID >= 24 And getoptionID <= 25)
                 myPrice *= myHome.NumberOfBedrooms
+            ElseIf (getoptionID >= 29 And getoptionID <= 31)
+                myPrice *= myHome.SquareFeet * 0.1
             End If
             Return myPrice
         End Get
