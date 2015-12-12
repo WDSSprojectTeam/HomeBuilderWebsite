@@ -328,5 +328,19 @@ FROM tblHomeLayouts WHERE (((tblHomeLayouts.Style)=param1));", myConnection)
         Return myTable
     End Function
 
+    Public Function GetTemplateDetails(ByVal tempid As Integer) As DataTable
+        Dim myTable As New DataTable
+        myConnection = New OleDbConnection(myConnectionStr)
+        myCommand = New OleDbCommand("SELECT tblTemplates.Details FROM tblTemplates WHERE (((tblTemplates.TempID)=param));", myConnection)
+        myCommand.Parameters.AddWithValue("param", tempid)
+
+        myConnection.Open()
+        myReader = myCommand.ExecuteReader
+        myTable.Load(myReader)
+        myReader.Close()
+        myConnection.Close()
+        Return myTable
+    End Function
+
 
 End Class

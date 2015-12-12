@@ -16,8 +16,10 @@ Partial Class ScenarioGridview
             DAL.LoadOptions()
             DAL.LoadFeatures()
             Dim myTable As DataTable = DAL.GetTemplateDetails()
+            Session("myTable") = myTable
             Dim homeID As Integer = myTable.Rows(index).Item(1)
             Dim homeList As List(Of HomeLayouts) = Session("homeSet")
+            Session("myTemplate") = myTable
 
             Dim myOptionList As List(Of Options) = Session("OptionSet")
 
@@ -25,22 +27,11 @@ Partial Class ScenarioGridview
             displayList.Columns.Add("TempID")
             displayList.Columns.Add("TempName")
             displayList.Columns.Add("Picture")
-
             displayList.Columns.Add("KeyArea")
             displayList.Columns.Add("Bedrooms")
             displayList.Columns.Add("Bathrooms")
             displayList.Columns.Add("Price")
-            'displayList.Columns.Add("SquareFeet")
-            'displayList.Columns.Add("Roof_Type")
-            'displayList.Columns.Add("Appliances")
-            'displayList.Columns.Add("Garage")
-            'displayList.Columns.Add("Countertops")
-            'displayList.Columns.Add("Bath")
-            'displayList.Columns.Add("Closets")
-            'displayList.Columns.Add("Fireplace")
-            'displayList.Columns.Add("Landscaping")
-            'displayList.Columns.Add("Details")
-            'displayList.Columns.Add("HomeID")
+
 
             For index = 0 To myTable.Rows.Count - 1
 
@@ -66,24 +57,24 @@ Partial Class ScenarioGridview
             Next
             gvwalltypes.DataSource = displayList
             gvwalltypes.DataBind()
-
-
-            '    lblnoinitialoptions.Visible = False
-
-            '    firstload()
-
-            '    lblfamily.Visible = False
-            '    lblluxury.Visible = False
-            '    lblstarter.Visible = False
-
-            '    lbxhometype.SelectedValue = Session("temptype")
-            '    ddlbathroom.SelectedValue = Session("tempbath")
-            '    ddlbedroom.SelectedValue = Session("tempbed")
-
-            '    If Session("numberofloads") <> 1 Then
-            '        PopulateGridView()
-
         End If
+
+        '    lblnoinitialoptions.Visible = False
+
+        '    firstload()
+
+        '    lblfamily.Visible = False
+        '    lblluxury.Visible = False
+        '    lblstarter.Visible = False
+
+        '    lbxhometype.SelectedValue = Session("temptype")
+        '    ddlbathroom.SelectedValue = Session("tempbath")
+        '    ddlbedroom.SelectedValue = Session("tempbed")
+
+        '    If Session("numberofloads") <> 1 Then
+        '        PopulateGridView()
+
+
 
 
         '    lblnooptions.Visible = False
@@ -91,6 +82,8 @@ Partial Class ScenarioGridview
 
 
     End Sub
+
+
 
     'Protected Sub firstload()
 
@@ -119,9 +112,72 @@ Partial Class ScenarioGridview
     '    myDataLoader.LoadHomesLayouts()
     'End Sub
 
-    'Protected Sub btnSeeHomeOptions_Click(sender As Object, e As EventArgs) Handles btnSeeHomeOptions.Click
-    '    PopulateGridView()
-    'End Sub
+    Protected Sub btnallhome_Click(sender As Object, e As EventArgs) Handles btnallhome.Click
+        Session("numberofloads") = 0
+
+        Dim index As Integer = 0
+        Dim myTable As DataTable = myDataLoader.GetTemplateDetails()
+
+        Dim homeID As Integer = myTable.Rows(index).Item(1)
+        Dim keyfeature As String = myTable.Rows(index).Item(2)
+
+        Dim homeList As List(Of HomeLayouts) = Session("homeSet")
+
+        Dim myOptionList As List(Of Options) = Session("OptionSet")
+
+        Dim displayList As New DataTable
+        displayList.Columns.Add("TempID")
+        displayList.Columns.Add("TempName")
+        displayList.Columns.Add("Picture")
+        displayList.Columns.Add("KeyArea")
+        displayList.Columns.Add("Bedrooms")
+        displayList.Columns.Add("Bathrooms")
+        displayList.Columns.Add("Price")
+
+
+        For index = 0 To myTable.Rows.Count - 1
+            keyfeature = myTable.Rows(index).Item(2)
+            homeID = myTable.Rows(index).Item(1)
+            Dim myHome As HomeLayouts = homeList.Item(homeID - 1)
+            Session("SelectedHome") = myHome
+            Dim price As Double = 0
+            For i = 4 To 13
+                For Each aOption In myOptionList
+                    If aOption.getoptionID = myTable.Rows(index).Item(i) Then
+                        price += aOption.getoptionprice
+                    End If
+                Next
+            Next
+
+            Dim keyar As String = Session("keyareaselected")
+            Dim bud As Double = Session("Budget")
+
+
+            displayList.Rows.Add()
+                displayList.Rows(displayList.Rows.Count - 1)("TempID") = myTable.Rows(index).Item(0)
+                displayList.Rows(displayList.Rows.Count - 1)("TempName") = myTable.Rows(index).Item(3)
+                displayList.Rows(displayList.Rows.Count - 1)("Picture") = myTable.Rows(index).Item(14)
+                displayList.Rows(displayList.Rows.Count - 1)("KeyArea") = myTable.Rows(index).Item(2)
+                displayList.Rows(displayList.Rows.Count - 1)("Bedrooms") = myHome.NumberOfBedrooms
+                displayList.Rows(displayList.Rows.Count - 1)("Bathrooms") = myHome.NumberOfBathrooms
+                displayList.Rows(displayList.Rows.Count - 1)("Price") = price + myHome.Price
+
+
+
+        Next
+        gvwalltypes.DataSource = displayList
+        gvwalltypes.DataBind()
+
+
+
+
+
+        gvwalltypes.Visible = True
+
+        lbxhometype.SelectedValue = "Exterior"
+        lblnoinitialoptions.Visible = False
+        lblnooptions.Visible = False
+    End Sub
 
     'Protected Sub PopulateGridView()
     '    Dim type As String = lbxhometype.SelectedValue
@@ -162,93 +218,124 @@ Partial Class ScenarioGridview
 
     'End Sub
 
-    'Private Sub gvwalltypes_RowCommand(sender As Object, e As GridViewCommandEventArgs) Handles gvwalltypes.RowCommand
+    Private Sub gvwalltypes_RowCommand(sender As Object, e As GridViewCommandEventArgs) Handles gvwalltypes.RowCommand
 
-    '    Dim rowindex As Integer = e.CommandArgument
-    '    Dim homeid As Integer = gvwalltypes.Rows.Item(rowindex).Cells.Item(2).Text
-    '    'Dim aDataLoader As DataLoader
-    '    Session("homeid") = homeid
-    '    Dim myHome As New HomeLayouts
+        Dim rowindex As Integer = e.CommandArgument
+        Session("whichTemplate") = rowindex
+        Dim tempid As Integer = gvwalltypes.Rows.Item(rowindex).Cells.Item(2).Text
+        Session("tempid") = tempid
 
-    '    If (e.CommandName = "btnDetails") Then
-    '        myHome = myDataLoader.GetHomeObject(homeid)
+        If (e.CommandName = "btnDetails") Then
 
-    '        Session("SelectedHome") = myHome
-    '        Response.Redirect("~\SeeHomeDetails.aspx")
-    '    Else
-    '        myHome = myDataLoader.GetHomeObject(homeid)
+            Response.Redirect("~\Detialsoftemplate.aspx")
+        Else
 
-    '        Session("SelectedHome") = myHome
-
-
-    '        Response.Redirect("~\ChooseFeature.aspx")
-    '    End If
+            Response.Redirect("~\TemplateEdit.aspx")
+        End If
 
 
 
 
-    'End Sub
-
-    'Private Sub gvwfiltered_RowCommand(sender As Object, e As GridViewCommandEventArgs) Handles gvwfiltered.RowCommand
-    '    Dim rowindex As Integer = e.CommandArgument
-    '    Dim homeid As Integer = gvwalltypes.Rows.Item(rowindex).Cells.Item(2).Text
-    '    Session("homeid") = homeid
-
-    '    If (e.CommandName = "btnDetails") Then
-    '        Response.Redirect("~\SeeHomeDetails.aspx")
-    '    Else
-    '        Response.Redirect("~\ChooseFeature.aspx")
-    '    End If
+    End Sub
 
 
-    'End Sub
+    Private Sub lbxhometype_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lbxhometype.SelectedIndexChanged
 
-    'Private Sub lbxhometype_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lbxhometype.SelectedIndexChanged
+        If lbxhometype.SelectedValue = "Exterior" Then
+            lblexterior.Visible = True
+            lblinterior.Visible = False
+            lblkitchen.Visible = False
+            lblbedrooms.Visible = False
+        ElseIf lbxhometype.SelectedValue = "Interior"
+            lblexterior.Visible = False
+            lblinterior.Visible = True
+            lblkitchen.Visible = False
+            lblbedrooms.Visible = False
+        ElseIf lbxhometype.SelectedValue = "Bedroom"
+            lblexterior.Visible = False
+            lblinterior.Visible = False
+            lblkitchen.Visible = False
+            lblbedrooms.Visible = True
+        Else
+            lblexterior.Visible = False
+            lblinterior.Visible = False
+            lblkitchen.Visible = True
+            lblbedrooms.Visible = False
+        End If
 
-    '    If lbxhometype.SelectedValue = "Family" Then
-    '        lblfamily.Visible = True
-    '        lblluxury.Visible = False
-    '        lblstarter.Visible = False
-    '    ElseIf lbxhometype.SelectedValue = "Starter Home"
-    '        lblfamily.Visible = False
-    '        lblluxury.Visible = False
-    '        lblstarter.Visible = True
-    '    ElseIf lbxhometype.SelectedValue = "Luxury"
-    '        lblfamily.Visible = False
-    '        lblluxury.Visible = True
-    '        lblstarter.Visible = False
-    '    Else
-    '        lblfamily.Visible = False
-    '        lblluxury.Visible = False
-    '        lblstarter.Visible = False
-    '    End If
+        gvwalltypes.Visible = False
+        lblnooptions.Visible = False
+        lblnoinitialoptions.Visible = False
 
-    '    gvwalltypes.Visible = False
-    '    gvwfiltered.Visible = False
-    '    lblnooptions.Visible = False
-
-    'End Sub
-
-    'Private Sub ddlbathroom_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlbathroom.SelectedIndexChanged
-    '    gvwalltypes.Visible = False
-
-    'End Sub
-
-    'Private Sub ddlbedroom_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlbedroom.SelectedIndexChanged
-    '    gvwalltypes.Visible = False
-
-    'End Sub
+    End Sub
 
 
-    'Protected Sub btnallhome_Click(sender As Object, e As EventArgs) Handles btnallhome.Click
-    '    Session("numberofloads") = 0
-    '    gvwalltypes.DataSource = myDataLoader.GetHomeDetails()
-    '    gvwalltypes.DataBind()
-    '    gvwalltypes.Visible = True
+    Protected Sub btnSeeHomeOptions_Click(sender As Object, e As EventArgs) Handles btnSeeHomeOptions.Click
 
-    '    lbxhometype.SelectedValue = "Family"
-    '    ddlbathroom.SelectedValue = 1
-    '    ddlbedroom.SelectedValue = 1
+        Session("numberofloads") = 0
 
-    'End Sub
+        Dim index As Integer = 0
+        Dim myTable As DataTable = myDataLoader.GetTemplateDetails()
+
+        Dim homeID As Integer = myTable.Rows(index).Item(1)
+        Dim keyfeature As String = myTable.Rows(index).Item(2)
+
+        Dim homeList As List(Of HomeLayouts) = Session("homeSet")
+
+        Dim myOptionList As List(Of Options) = Session("OptionSet")
+
+        Dim displayList As New DataTable
+        displayList.Columns.Add("TempID")
+        displayList.Columns.Add("TempName")
+        displayList.Columns.Add("Picture")
+        displayList.Columns.Add("KeyArea")
+        displayList.Columns.Add("Bedrooms")
+        displayList.Columns.Add("Bathrooms")
+        displayList.Columns.Add("Price")
+
+
+        For index = 0 To myTable.Rows.Count - 1
+            keyfeature = myTable.Rows(index).Item(2)
+            homeID = myTable.Rows(index).Item(1)
+            Dim myHome As HomeLayouts = homeList.Item(homeID - 1)
+            Session("SelectedHome") = myHome
+            Dim price As Double = 0
+            For i = 4 To 13
+                For Each aOption In myOptionList
+                    If aOption.getoptionID = myTable.Rows(index).Item(i) Then
+                        price += aOption.getoptionprice
+                    End If
+                Next
+            Next
+
+            Dim keyar As String = Session("keyareaselected")
+            Dim bud As Double = Session("Budget")
+
+
+            If keyfeature = keyar Then
+                displayList.Rows.Add()
+                displayList.Rows(displayList.Rows.Count - 1)("TempID") = myTable.Rows(index).Item(0)
+                displayList.Rows(displayList.Rows.Count - 1)("TempName") = myTable.Rows(index).Item(3)
+                displayList.Rows(displayList.Rows.Count - 1)("Picture") = myTable.Rows(index).Item(14)
+                displayList.Rows(displayList.Rows.Count - 1)("KeyArea") = myTable.Rows(index).Item(2)
+                displayList.Rows(displayList.Rows.Count - 1)("Bedrooms") = myHome.NumberOfBedrooms
+                displayList.Rows(displayList.Rows.Count - 1)("Bathrooms") = myHome.NumberOfBathrooms
+                displayList.Rows(displayList.Rows.Count - 1)("Price") = price + myHome.Price
+            End If
+
+
+        Next
+        gvwalltypes.DataSource = displayList
+        gvwalltypes.DataBind()
+
+
+
+
+
+        gvwalltypes.Visible = True
+
+        lbxhometype.SelectedValue = Session("keyareaselected")
+        lblnoinitialoptions.Visible = False
+        lblnooptions.Visible = False
+    End Sub
 End Class

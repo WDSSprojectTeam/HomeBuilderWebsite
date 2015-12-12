@@ -99,9 +99,7 @@
 
 
     <br />
-    <asp:Button ID="btnBack" runat="server"  Font-Names="Corbel" Text="Back" Font-Size="Larger" BackColor="#336666" Font-Bold="True" ForeColor="White" Width="395px" />
-    &nbsp;
-    <asp:Button ID="btnBegin" runat="server"  Font-Names="Corbel" Text="See what scenarios we have to offer!" Font-Size="Larger" BackColor="#336666" Font-Bold="True" ForeColor="White" Width="395px" />
+    <asp:Button ID="btnBegin" runat="server"  Font-Names="Corbel" Text="See what templates we have to offer!" Font-Size="Larger" BackColor="#336666" Font-Bold="True" ForeColor="White" Width="395px" />
     <br />
           <br />
 <asp:Label runat="server" Text="You must enter a budget first." ID="lblbudgetvalidation" Font-Bold="True" Font-Size="X-Large"></asp:Label>
