@@ -27,7 +27,7 @@ Partial Class ScenarioInfo
 
             Session("Budget") = tbxBudget.Text
 
-            Response.Redirect("~\ChooseHomeLayout.aspx")
+            Response.Redirect("~\ScenarioGridview.aspx")
 
         End If
     End Sub
