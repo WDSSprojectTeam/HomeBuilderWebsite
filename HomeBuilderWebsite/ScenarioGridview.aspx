@@ -1,4 +1,4 @@
-﻿<%--<%@ Page Title="" Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false" CodeFile="ScenarioGridview.aspx.vb" Inherits="ScenarioGridview" %>
+﻿<%@ Page Title="" Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false" CodeFile="ScenarioGridview.aspx.vb" Inherits="ScenarioGridview" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
 
@@ -33,7 +33,7 @@
                     <br />
                     <asp:Label ID="Label1" runat="server" Text="Select a Key Home Area: "></asp:Label>
     <br />
-    <asp:ListBox ID="lbxhometype" runat="server" AutoPostBack="True" Height="56px">
+    <asp:ListBox ID="lbxhometype" runat="server" AutoPostBack="True" Height="72px" Width="95px">
      	<asp:ListItem>Exterior</asp:ListItem> 
         <asp:ListItem>Interior</asp:ListItem>
         <asp:ListItem>Kitchen</asp:ListItem>
@@ -73,7 +73,7 @@
                <asp:BoundField DataField="KeyArea" HeaderText="Key Home Area" />
                <asp:BoundField DataField="Bedrooms" HeaderText="Bedrooms" />
                <asp:BoundField DataField="Bathrooms" HeaderText="Bathrooms" />
-               <asp:BoundField DataField="Price" DataFormatString="{0:c}" HeaderText="Price" />
+               <asp:BoundField DataField="Price" DataFormatString="{0:c}"  HeaderText="Price" />
            </Columns>
                         <FooterStyle BackColor="White" ForeColor="#333333" />
                         <HeaderStyle BackColor="#336666" Font-Bold="True" ForeColor="White" />
@@ -101,4 +101,4 @@
 
 
 </asp:Content>
---%>
+

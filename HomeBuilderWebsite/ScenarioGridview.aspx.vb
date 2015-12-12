@@ -16,6 +16,7 @@ Partial Class ScenarioGridview
             DAL.LoadOptions()
             DAL.LoadFeatures()
             Dim myTable As DataTable = DAL.GetTemplateDetails()
+            Session("myTable") = myTable
             Dim homeID As Integer = myTable.Rows(index).Item(1)
             Dim homeList As List(Of HomeLayouts) = Session("homeSet")
 
@@ -162,32 +163,24 @@ Partial Class ScenarioGridview
 
     'End Sub
 
-    'Private Sub gvwalltypes_RowCommand(sender As Object, e As GridViewCommandEventArgs) Handles gvwalltypes.RowCommand
+    Private Sub gvwalltypes_RowCommand(sender As Object, e As GridViewCommandEventArgs) Handles gvwalltypes.RowCommand
 
-    '    Dim rowindex As Integer = e.CommandArgument
-    '    Dim homeid As Integer = gvwalltypes.Rows.Item(rowindex).Cells.Item(2).Text
-    '    'Dim aDataLoader As DataLoader
-    '    Session("homeid") = homeid
-    '    Dim myHome As New HomeLayouts
+        Dim rowindex As Integer = e.CommandArgument
+        Dim tempid As Integer = gvwalltypes.Rows.Item(rowindex).Cells.Item(2).Text
+        Session("tempid") = tempid
 
-    '    If (e.CommandName = "btnDetails") Then
-    '        myHome = myDataLoader.GetHomeObject(homeid)
+        If (e.CommandName = "btnDetails") Then
 
-    '        Session("SelectedHome") = myHome
-    '        Response.Redirect("~\SeeHomeDetails.aspx")
-    '    Else
-    '        myHome = myDataLoader.GetHomeObject(homeid)
+            Response.Redirect("~\Detialsoftemplate.aspx")
+        Else
 
-    '        Session("SelectedHome") = myHome
-
-
-    '        Response.Redirect("~\ChooseFeature.aspx")
-    '    End If
+            Response.Redirect("~\ChooseFeature.aspx")
+        End If
 
 
 
 
-    'End Sub
+    End Sub
 
     'Private Sub gvwfiltered_RowCommand(sender As Object, e As GridViewCommandEventArgs) Handles gvwfiltered.RowCommand
     '    Dim rowindex As Integer = e.CommandArgument
