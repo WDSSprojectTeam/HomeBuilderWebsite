@@ -16,6 +16,8 @@ Partial Class ScenarioInfo
 
     Protected Sub btnBegin_Click(sender As Object, e As EventArgs) Handles btnBegin.Click
 
+        Session("numberofloads") = 0
+
         If tbxBudget.Text = "" Then
 
             lblbudgetvalidation.Visible = True
