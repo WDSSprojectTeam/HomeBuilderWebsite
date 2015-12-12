@@ -16,6 +16,7 @@ Partial Class SeeHomeDetails
 
 
     Protected Sub btnbacktochoosehome_Click(sender As Object, e As EventArgs) Handles btnbacktochoosehome.Click
+        Session("numberofloads") = 2
         Response.Redirect("ChooseHomeLayout.aspx")
     End Sub
 
