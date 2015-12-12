@@ -4,39 +4,30 @@ Imports System.Data
 Partial Class OptimizationResultsPage
     Inherits System.Web.UI.Page
 
-
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        DrawCharts(10000)
-        btnSave.Visible = False
-        Panel1.Visible = False
-        If (IsPostBack) Then
-            btnSave.Visible = True
-
-        End If
-
-
         If (IsPostBack And Session("checkthings") = 1) Then
             btnSave.Visible = True
-            updateFeatures()
             chtFeatures.Visible = True
             Dim cht As New OptPieChart(chtFeatures)
             cht.Draw()
+            Dim check As Integer = Session("Chart")
+            DrawCharts(check)
+        Else
+            DrawCharts(10000)
         End If
-
-
 
     End Sub
 
-    'Private Sub chtCompareBudgets_GetToolTipText(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataVisualization.Charting.ToolTipEventArgs) Handles chtCompareBudgets.GetToolTipText
-    '    If e.HitTestResult.PointIndex >= 0 Then
-    '        If e.HitTestResult.ChartElementType = DataVisualization.Charting.ChartElementType.DataPoint Then
-    '            Dim Xvalue As Integer = e.X
-    '            Dim Yvalue As Integer = e.Y
-    '        End If
-    '    End If
-    'End Sub
+    Private Sub DrawCharts(ByVal i As Integer)
+        Dim myResults As New List(Of OptimizationResults)
+        myResults = Session("Results")
+        Dim C As New ResultChart(chtCompareBudgets, i)
+        C.LoadData(myResults)
+        C.DrawOptResults()
+    End Sub
 
     Private Sub updateFeatures()
+
         Dim myFeature As Integer = Session("whichFeature")
         Dim myOption As Options = Session("whichOption")
         Dim myFeatureSet As List(Of Feature) = Session("FeatureSet")
@@ -48,7 +39,6 @@ Partial Class OptimizationResultsPage
                 index = i
             End If
         Next
-
 
         Dim check As String
 
@@ -101,13 +91,117 @@ Partial Class OptimizationResultsPage
     End Sub
 
 
-    Private Sub DrawCharts(ByVal i As Integer)
-        Dim myResults As New List(Of OptimizationResults)
-        myResults = Session("Results")
-        Dim C As New ResultChart(chtCompareBudgets, i)
-        C.LoadData(myResults)
-        C.DrawOptResults()
+    Private Sub ChangeChoice(ByVal checkText As String)
+        Dim myOptionList As List(Of Options) = Session("OptionSet")
+        Dim myChosenOptions As List(Of Integer) = Session("chosenOptions")
+        Dim myFeature As Integer = Session("whichFeature")
+        Dim myOption As Options
+
+        For i = 0 To myOptionList.Count - 1
+            If myOptionList.Item(i).getoptionname = checkText Then
+                myChosenOptions.Item(myFeature - 1) = myOptionList.Item(i).getoptionID
+                myOption = myOptionList.Item(i)
+            End If
+        Next
+        Session("whichOption") = myOption
+
+        chtFeatures.Visible = True
+        Dim cht As New OptPieChart(chtFeatures)
+        cht.Draw()
+
     End Sub
+
+
+    'Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+    '    Dim C As New OptPieChart(chtFeatures)
+    '    DrawCharts(10000)
+    '    btnSave.Visible = False
+    '    Panel1.Visible = False
+    '    If (IsPostBack) Then
+    '        btnSave.Visible = True
+
+    '    End If
+
+
+    '    If (IsPostBack And Session("checkthings") = 1) Then
+    '        btnSave.Visible = True
+    '        updateFeatures()
+    '        chtFeatures.Visible = True
+    '        Dim cht As New OptPieChart(chtFeatures)
+    '        cht.Draw()
+    '    End If
+
+    '    'rdb1.Visible = False
+    '    'rdb2.Visible = False
+    '    'rdb3.Visible = False
+    '    'rdb4.Visible = False
+    '    'rdb5.Visible = False
+    '    'Panel1.Visible = False
+    '    'Dim myOptionList As List(Of Options) = Session("OptionSet")
+    '    ''Dim myChosenOptions As List(Of Integer) = Session("chosenTemplateFeatures")
+    '    ''Dim myTable As DataTable = Session("myTemplate")
+    '    ''Session("chosenTemplateFeatures") = myChosenOptions
+    '    'Dim index As Integer = Session("whichTemplate")
+    '    'Dim displayList As New DataTable
+    '    'displayList.Columns.Add("Feature")
+    '    'displayList.Columns.Add("Name")
+    '    'displayList.Columns.Add("Description")
+    '    'displayList.Columns.Add("Price")
+
+    '    'Dim myChosenOptions As New List(Of Integer)
+    '    'If Session("chosenTemplateFeatures") Is Nothing Then
+
+    '    '    For i = 4 To 13
+
+    '    '        myChosenOptions.Add(myTable.Rows(index).Item(i))
+
+    '    '    Next
+    '    '    Session("chosenTemplateFeatures") = myChosenOptions
+
+    '    'Else
+    '    '    myChosenOptions = Session("chosenTemplateFeatures")
+    '    'End If
+
+
+
+
+    '    'For i = 0 To myOptionList.Count - 1
+    '    '    For j = 0 To myChosenOptions.Count - 1
+    '    '        If myOptionList.Item(i).getoptionID = myChosenOptions.Item(j) Then
+    '    '            Dim list As New ArrayList
+    '    '            displayList.Rows.Add()
+    '    '            displayList.Rows(displayList.Rows.Count - 1)("Feature") = myOptionList.Item(i).getFeatureName
+    '    '            displayList.Rows(displayList.Rows.Count - 1)("Name") = myOptionList.Item(i).getoptionname
+    '    '            displayList.Rows(displayList.Rows.Count - 1)("Description") = myOptionList.Item(i).getoptiondescription
+    '    '            displayList.Rows(displayList.Rows.Count - 1)("Price") = myOptionList.Item(i).getoptionprice
+
+    '    '        End If
+    '    '    Next
+
+    '    'Next
+    '    'gvwEditTemplate.DataSource = displayList
+    '    'gvwEditTemplate.DataBind()
+
+
+    'End Sub
+
+
+
+    ''Private Sub chtCompareBudgets_GetToolTipText(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataVisualization.Charting.ToolTipEventArgs) Handles chtCompareBudgets.GetToolTipText
+    ''    If e.HitTestResult.PointIndex >= 0 Then
+    ''        If e.HitTestResult.ChartElementType = DataVisualization.Charting.ChartElementType.DataPoint Then
+    ''            Dim Xvalue As Integer = e.X
+    ''            Dim Yvalue As Integer = e.Y
+    ''        End If
+    ''    End If
+    ''End Sub
+
+
+
+
+
+
+
 
     Protected Sub chtCompareBudgets_Click(sender As Object, e As ImageMapEventArgs) Handles chtCompareBudgets.Click
         btnSave.Visible = True
@@ -133,7 +227,7 @@ Partial Class OptimizationResultsPage
         DrawCharts(check)
         gvwDetails.Visible = True
         Dim myResults As List(Of OptimizationResults) = Session("Results")
-        Dim displayList As New DataTable
+
         'gvwDetails.DataSource = myResults.Item(check).getSelectedOptions
         'gvwDetails.DataBind()
 
@@ -149,7 +243,12 @@ Partial Class OptimizationResultsPage
         '    End If
         'Next
         Session("chosenOptions") = myChosenOptions
+        populateGridview()
+    End Sub
+    Private Sub populateGridview()
+        Dim displayList As New DataTable
 
+        Dim myChosenOptions As List(Of Integer) = Session("chosenOptions")
         Dim myOptionList As List(Of Options) = Session("optionSet")
 
         displayList.Columns.Add("Feature")
@@ -181,11 +280,49 @@ Partial Class OptimizationResultsPage
         chtFeatures.Visible = True
         Dim cht As New OptPieChart(chtFeatures)
         cht.Draw()
-
     End Sub
-    'Protected Sub btnEdit_Click(sender As Object, e As EventArgs) Handles btnEdit.Click
-    '    Response.Redirect("EditOptResults.aspx")
-    'End Sub
+
+
+    Protected Sub btnEdit_Click(sender As Object, e As EventArgs) Handles btnEdit.Click
+        Dim myOptionList As List(Of Options) = Session("OptionSet")
+        Dim myFeatureList As List(Of Feature) = Session("FeatureSet")
+        Dim myChosenOptions As List(Of Integer) = Session("chosenOptions")
+
+        Dim whichRDB As RadioButton
+
+        If rdb1.Checked = True Then
+            whichRDB = rdb1
+
+        ElseIf rdb2.Checked
+            whichRDB = rdb2
+
+        ElseIf rdb3.Checked
+            whichRDB = rdb3
+
+        ElseIf rdb4.Checked
+            whichRDB = rdb4
+
+        ElseIf rdb5.Checked
+            whichRDB = rdb5
+
+        Else
+            whichRDB = rdb1
+        End If
+
+
+        For i = 0 To myOptionList.Count - 1
+            If myOptionList.Item(i).getoptionname = whichRDB.Text Then
+                For j = 0 To myFeatureList.Count - 1
+                    If myFeatureList.Item(j).getID = myOptionList.Item(i).getFeatureID Then
+                        myChosenOptions.Item(j) = myOptionList.Item(i).getoptionID
+                    End If
+                Next
+            End If
+        Next
+
+        Session("chosenOptions") = myChosenOptions
+        populateGridview()
+    End Sub
 
     Protected Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
         Dim myHome As HomeLayouts = Session("selectedHome")
@@ -343,29 +480,9 @@ Partial Class OptimizationResultsPage
             Session("checkthings") = 0
         End If
 
-
-
     End Sub
 
-    Private Sub ChangeChoice(ByVal checkText As String)
-        Dim myOptionList As List(Of Options) = Session("OptionSet")
-        Dim myChosenOptions As List(Of Integer) = Session("chosenOptions")
-        Dim myFeature As Integer = Session("whichFeature")
-        Dim myOption As Options
 
-        For i = 0 To myOptionList.Count - 1
-            If myOptionList.Item(i).getoptionname = checkText Then
-                myChosenOptions.Item(myFeature - 1) = myOptionList.Item(i).getoptionID
-                myOption = myOptionList.Item(i)
-            End If
-        Next
-        Session("whichOption") = myOption
-
-        chtFeatures.Visible = True
-        Dim cht As New OptPieChart(chtFeatures)
-        cht.Draw()
-
-    End Sub
 
 
     Protected Sub btnBack_Click(sender As Object, e As System.EventArgs) Handles btnBack.Click

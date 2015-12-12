@@ -6,6 +6,8 @@ Partial Class TemplateEdit
     Inherits System.Web.UI.Page
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        Dim C As New TempPieChart(chtPie)
+        C.Draw()
         rdb1.Visible = False
         rdb2.Visible = False
         rdb3.Visible = False
