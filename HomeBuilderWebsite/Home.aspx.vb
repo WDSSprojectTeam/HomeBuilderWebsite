@@ -21,4 +21,7 @@ Public Class Home
 
 
 
+    Protected Sub btnLoadScenario_Click(sender As Object, e As EventArgs) Handles btnLoadScenario.Click
+        Response.Redirect("~\Comparison.aspx")
+    End Sub
 End Class
