@@ -6,7 +6,7 @@
 
      <div style="text-align:center" >
     
-     <table>
+     <table style="margin:0px auto; width: 800px;"">
          <tr>
              <td >
  <asp:Chart ID="chtCompareBudgets" runat="server" Width="385px">
@@ -34,7 +34,7 @@
              </td>
          </tr>
          </table>
-         <table>
+         <table style="margin:0px auto; width: 800px;"">
              <tr>
              <td style="width: 632px">
                  <asp:GridView ID="gvwDetails" runat="server" Visible="False" AutoGenerateColumns="False" BackColor="White" BorderColor="#336666" BorderStyle="Double" BorderWidth="3px" CellPadding="4" GridLines="Horizontal" Width="630px">
@@ -59,7 +59,7 @@
          </asp:GridView>
              </td>
 
-             <td style="border-style: none; border-width: thin; width: 375px" >
+             <td style="vertical-align: top">
                  <div style="text-align:left">
                  <asp:Panel ID="Panel1" runat="server" BorderColor="Black" BorderStyle="Solid" Width="140px">
                      <asp:Label ID="lblFeatureEdit" runat="server" align="left" Font-Bold="True" Font-Size="Large" Visible="False">Edit Feature:</asp:Label>

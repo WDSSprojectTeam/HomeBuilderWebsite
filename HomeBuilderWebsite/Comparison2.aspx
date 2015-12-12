@@ -94,6 +94,18 @@
         </table>
         
         <br />
+    
+        <div style="text-align: center">
+    
+    
+        <asp:Button ID="btnBack" runat="server" Height="43px" Text="Back" align="center" Width="140px" Font-Size="X-Large" />
+            
+            <br />
+    
+            <br />
+        </div>
+    
+        <br />
             </div>
     <%--</form>
 </body>

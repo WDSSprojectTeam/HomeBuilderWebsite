@@ -228,16 +228,13 @@ FROM tblHomeLayouts;", myConnection)
 
     End Function
 
-    Public Sub InsertSavedScenario(ByVal HouseName As String, ByVal Budget As Integer, ByVal ScenarioName As String, ByVal TotalCost As Double, ByVal FloorCost As Double, ByVal RoofCost As Double, ByVal Floors As Integer, ByVal Roof_Type As Integer, ByVal Appliances As Integer, ByVal Garage As Integer, ByVal Countertops As Integer, ByVal Bath As Integer, ByVal Closets As Integer, ByVal Fireplace As Integer, ByVal Utility As Integer)
+    Public Sub InsertSavedScenario(ByVal HouseName As String, ByVal Budget As Integer, ByVal ScenarioName As String, ByVal TotalCost As Double, ByVal FloorCost As Double, ByVal RoofCost As Double, ByVal Floors As Integer, ByVal Roof_Type As Integer, ByVal Appliances As Integer, ByVal Garage As Integer, ByVal Countertops As Integer, ByVal Bath As Integer, ByVal Closets As Integer, ByVal Fireplace As Integer, ByVal Cabinet As Integer, ByVal Landscape As Integer, ByVal Utility As Integer)
         Dim numTable As DataTable = getAutoNumber()
         Dim num As Integer = numTable.Rows.Count + 1
-
-
-
         myConnection = New OleDbConnection(myConnectionStr)   ' no connection yet
-        Dim paramStr As String = "'" & num & "','" & HouseName & "','" & Budget & "','" & ScenarioName & "','" & TotalCost & "','" & FloorCost & "','" & RoofCost & "','" & Floors & "','" & Roof_Type & "','" & Appliances & "','" & Garage & "','" & Countertops & "','" & Bath & "','" & Closets & "','" & Fireplace & "','" & Utility & "'"
+        Dim paramStr As String = "'" & num & "','" & HouseName & "','" & Budget & "','" & ScenarioName & "','" & TotalCost & "','" & FloorCost & "','" & RoofCost & "','" & Floors & "','" & Roof_Type & "','" & Appliances & "','" & Garage & "','" & Countertops & "','" & Bath & "','" & Closets & "','" & Fireplace & "','" & Cabinet & "','" & Landscape & "','" & Utility & "'"
         myCommand = New OleDbCommand("INSERT INTO tblScenarios(ScenarioID, HouseName, Budget, ScenarioName, TotalCost, FloorCost, RoofCost, 
-    Floors, Roof_Type, Appliances, Garage, Countertops, Bath, Closets, Fireplace, Utility) VALUES (" & paramStr & ")", myConnection)
+    Floors, Roof_Type, Appliances, Garage, Countertops, Bath, Closets, Fireplace, Cabinets, Landscaping, Utility) VALUES (" & paramStr & ")", myConnection)
         myConnection.Open()
         myCommand.ExecuteNonQuery()
         myConnection.Close()

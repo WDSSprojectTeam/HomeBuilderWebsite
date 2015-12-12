@@ -64,17 +64,23 @@ Partial Class HomeBuilderWebsite_master_Comparison
                 i = Convert.ToInt32(gvr.Cells.Item(2).Text)
                 info.Add(i)
             End If
-            If info.count = 0 Then
-                msgbox("Please select at least one scenario.")
-                response.redirect("~\Comparison.aspx")
-            Else
-                Response.Redirect("~\Comparison2.aspx")
-            End If
+
         Next
-        Session("checkedscenarios") = info
+
+        If info.Count = 0 Then
+            MsgBox("Please select at least one scenario.")
+            Response.Redirect("~\Comparison.aspx")
+        Else
+            Session("checkedscenarios") = info
+            Response.Redirect("~\Comparison2.aspx")
+
+        End If
 
 
 
+    End Sub
 
+    Protected Sub btnBack_Click(sender As Object, e As EventArgs) Handles btnBack.Click
+        Response.Redirect("Home.aspx")
     End Sub
 End Class
