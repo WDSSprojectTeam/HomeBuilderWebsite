@@ -34,4 +34,7 @@ Partial Class Instructions_BuildNewHome
     End Sub
 
 
+    Protected Sub btnBack_Click(sender As Object, e As System.EventArgs) Handles btnBack.Click
+        Response.Redirect("Directions.aspx")
+    End Sub
 End Class
