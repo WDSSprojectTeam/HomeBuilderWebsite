@@ -42,6 +42,20 @@ Partial Class FEKitchen
             myOptionList.GetName("Marble").Preference = rltMarble.SelectedValue
         End If
 
+        'CABINETS
+
+        If cbxFormica.Checked = True Then
+            myOptionList.GetName("Formica").Need = True
+        ElseIf cbxMaple.Checked = True Then
+            myOptionList.GetName("Maple").Need = True
+        ElseIf cbxMetal.Checked = True Then
+            myOptionList.GetName("Metal").Need = True
+        Else
+            myOptionList.GetName("Formica").Preference = rltFormica.SelectedValue
+            myOptionList.GetName("Maple").Preference = rltMaple.SelectedValue
+            myOptionList.GetName("Metal").Preference = rltMetal.SelectedValue
+        End If
+
         'APPLIANCES
         Dim beigePrice As Double = myOptionList.GetName("Standard Beige").getoptionprice
         Dim blackPrice As Double = myOptionList.GetName("Black").getoptionprice
@@ -66,8 +80,18 @@ Partial Class FEKitchen
         Dim woodRating As Integer = myOptionList.GetName("Wood").Preference
         Dim marbleRating As Integer = myOptionList.GetName("Marble").Preference
 
+        'CABINETS
+        Dim formicaPrice As Double = myOptionList.GetName("Formica").getoptionprice
+        Dim maplePrice As Double = myOptionList.GetName("Maple").getoptionprice
+        Dim metalPrice As Double = myOptionList.GetName("Metal").getoptionprice
+
+        Dim formicaRating As Integer = myOptionList.GetName("Formica").Preference
+        Dim mapleRating As Integer = myOptionList.GetName("Maple").Preference
+        Dim metalRating As Integer = myOptionList.GetName("Metal").Preference
+
         Dim counteropsavg As Double = AvgPrice(beigePrice, blackPrice, stainPrice, profPrice, 0, beigeRating, blackRating, stainPrice, profRating, 0)
         Dim appliancesavg As Double = AvgPrice(quartzPrice, granitePrice, laminatePrice, woodPrice, marblePrice, quartzRating, graniteRating, laminateRating, woodRating, marbleRating)
+        Dim cabinetsavg As Double = AvgPrice(formicaPrice, maplePrice, metalPrice, 0, 0, formicaRating, mapleRating, metalPrice, 0, 0)
 
         'APPLIANCES
 
@@ -83,7 +107,9 @@ Partial Class FEKitchen
 
         'COUNTERTOPS
 
-        If cbxGranite.Checked = True Then
+        If cbxQuartz.Checked = True Then
+            counteropsavg = quartzPrice
+        ElseIf cbxGranite.Checked = True Then
             counteropsavg = granitePrice
         ElseIf cbxLaminate.Checked = True Then
             counteropsavg = laminatePrice
@@ -93,19 +119,32 @@ Partial Class FEKitchen
             counteropsavg = marblePrice
         End If
 
+        'CABINETS
+
+        If cbxFormica.Checked = True Then
+            cabinetsavg = formicaPrice
+        ElseIf cbxMaple.Checked = True Then
+            cabinetsavg = maplePrice
+        ElseIf cbxMetal.Checked = True Then
+            cabinetsavg = metalPrice
+        End If
+
         Dim remainderbudget As Double = Session("myRemainderBudget")
-        Session("myRemainderBudget") = remainderbudget - (counteropsavg + appliancesavg)
+        Session("myRemainderBudget") = remainderbudget - (counteropsavg + appliancesavg + cabinetsavg)
 
         Session("Appliancesavg") = appliancesavg
         Session("Countertopsavg") = counteropsavg
+        Session("Cabinetsavg") = cabinetsavg
 
         Dim budgetvaluelist As New ArrayList
         budgetvaluelist.Add(Session("Roofavg"))
         budgetvaluelist.Add(Session("Garageavg"))
+        budgetvaluelist.Add(Session("Landscapeavg"))
         budgetvaluelist.Add(Session("Flooringavg"))
         budgetvaluelist.Add(Session("Fireplaceavg"))
         budgetvaluelist.Add(Session("Appliancesavg"))
         budgetvaluelist.Add(Session("Countertopsavg"))
+        budgetvaluelist.Add(Session("Cabinetsavg"))
         budgetvaluelist.Add(Session("Bathroomsavg"))
         budgetvaluelist.Add(Session("Closetsavg"))
         If Session("myRemainderBudget") > 0 Then
@@ -315,6 +354,57 @@ Partial Class FEKitchen
             rltLaminate.ClearSelection()
             rltMarble.ClearSelection()
             rltWood.ClearSelection()
+        End If
+    End Sub
+
+    'GARAGE
+
+    Protected Sub cbxFormica_CheckedChanged(sender As Object, e As EventArgs) Handles cbxFormica.CheckedChanged, cbxMaple.CheckedChanged, cbxMetal.CheckedChanged
+        Page.MaintainScrollPositionOnPostBack = True
+        If cbxFormica.Checked = False Then
+            pnlFormica.Enabled = True
+            pnlMaple.Enabled = True
+            pnlMetal.Enabled = True
+            rltFormica.Enabled = True
+            rltMaple.Enabled = True
+            rltMetal.Enabled = True
+        ElseIf cbxMaple.Checked = False Then
+            pnlFormica.Enabled = True
+            pnlMaple.Enabled = True
+            pnlMetal.Enabled = True
+            rltFormica.Enabled = True
+            rltMaple.Enabled = True
+            rltMetal.Enabled = True
+        ElseIf cbxMetal.Checked = False Then
+            pnlFormica.Enabled = True
+            pnlMaple.Enabled = True
+            pnlMetal.Enabled = True
+            rltFormica.Enabled = True
+            rltMaple.Enabled = True
+            rltMetal.Enabled = True
+        End If
+
+        If cbxFormica.Checked = True Then
+            pnlMetal.Enabled = False
+            pnlMaple.Enabled = False
+            rltFormica.Enabled = False
+            rltFormica.ClearSelection()
+            rltMaple.ClearSelection()
+            rltMetal.ClearSelection()
+        ElseIf cbxMaple.Checked = True Then
+            pnlFormica.Enabled = False
+            pnlMetal.Enabled = False
+            rltMaple.Enabled = False
+            rltFormica.ClearSelection()
+            rltMaple.ClearSelection()
+            rltMetal.ClearSelection()
+        ElseIf cbxMetal.Checked = True Then
+            pnlFormica.Enabled = False
+            pnlMaple.Enabled = False
+            rltMetal.Enabled = False
+            rltFormica.ClearSelection()
+            rltMaple.ClearSelection()
+            rltMetal.ClearSelection()
         End If
     End Sub
 

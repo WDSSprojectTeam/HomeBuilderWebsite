@@ -3,8 +3,6 @@
 Partial Class FEOutdoor
     Inherits System.Web.UI.Page
 
-
-
     Protected Sub btnNext_Click(sender As Object, e As EventArgs) Handles btnNext.Click
         Dim myOptionList As New optionSet(Session("OptionSet"))
 
@@ -42,8 +40,19 @@ Partial Class FEOutdoor
             myOptionList.GetName("Three Car").Preference = rltThreeCar.SelectedValue
         End If
 
-        'Dim myHome As HomeLayouts = Session("SelectedHome")
-        'Dim footage As Double = myHome.SquareFeet
+        'LANDSCAPING
+
+        If cbxCurb.Checked = True Then
+            myOptionList.GetName("Basic Curb Appeal").Need = True
+        ElseIf cbxCurbPlus.Checked = True Then
+            myOptionList.GetName("Curb Appeal Plus").Need = True
+        ElseIf cbxPremium.Checked = True Then
+            myOptionList.GetName("Premium Landscaping").Need = True
+        Else
+            myOptionList.GetName("Basic Curb Appeal").Preference = rltCurb.SelectedValue
+            myOptionList.GetName("Curb Appeal Plus").Preference = rltCurbPlus.SelectedValue
+            myOptionList.GetName("Premium Landscaping").Preference = rltPremium.SelectedValue
+        End If
 
         'ROOF
         Dim asphaltshinglePrice As Double = myOptionList.GetName("Asphalt Shingle").getoptionprice
@@ -67,8 +76,18 @@ Partial Class FEOutdoor
         Dim twocarRating As Integer = myOptionList.GetName("Two Car").Preference
         Dim threecarRating As Integer = myOptionList.GetName("Three Car").Preference
 
+        'LANDSCAPING
+        Dim curbPrice As Double = myOptionList.GetName("Basic Curb Appeal").getoptionprice
+        Dim curbPlusPrice As Double = myOptionList.GetName("Curb Appeal Plus").getoptionprice
+        Dim PremiumPrice As Double = myOptionList.GetName("Premium Landscaping").getoptionprice
+
+        Dim curbRating As Integer = myOptionList.GetName("Basic Curb Appeal").Preference
+        Dim curbPlusRating As Integer = myOptionList.GetName("Curb Appeal Plus").Preference
+        Dim PremiumRating As Integer = myOptionList.GetName("Premium Landscaping").Preference
+
         Dim roofavg As Double = AvgPrice(asphaltshinglePrice, woodshinglePrice, metalshinglePrice, slateshinglePrice, tileshinglePrice, asphaltshingleRating, woodshingleRating, metalshingleRating, slateshingleRating, tileshingleRating)
         Dim garageavg As Double = AvgPrice(onecarPrice, twocarPrice, threecarPrice, 0, 0, onecarRating, twocarRating, threecarRating, 0, 0)
+        Dim landscapeavg As Double = AvgPrice(curbPrice, curbPlusPrice, PremiumPrice, 0, 0, curbRating, curbPlusRating, PremiumRating, 0, 0)
 
         'ROOF
 
@@ -94,19 +113,32 @@ Partial Class FEOutdoor
             garageavg = threecarPrice
         End If
 
+        'LANDSCAPING
+
+        If cbxCurb.Checked = True Then
+            landscapeavg = curbPrice
+        ElseIf cbxCurbPlus.Checked = True Then
+            landscapeavg = curbPlusPrice
+        ElseIf cbxPremium.Checked = True Then
+            landscapeavg = PremiumPrice
+        End If
+
         Dim remainderbudget As Double = Session("myRemainderBudget")
-        Session("myRemainderBudget") = remainderbudget - (roofavg + garageavg)
+        Session("myRemainderBudget") = remainderbudget - (roofavg + garageavg + landscapeavg)
 
         Session("Roofavg") = roofavg
         Session("Garageavg") = garageavg
+        Session("Landscapeavg") = landscapeavg
 
         Dim budgetvaluelist As New ArrayList
         budgetvaluelist.Add(Session("Roofavg"))
         budgetvaluelist.Add(Session("Garageavg"))
+        budgetvaluelist.Add(Session("Landscapeavg"))
         budgetvaluelist.Add(Session("Flooringavg"))
         budgetvaluelist.Add(Session("Fireplaceavg"))
         budgetvaluelist.Add(Session("Appliancesavg"))
         budgetvaluelist.Add(Session("Countertopsavg"))
+        budgetvaluelist.Add(Session("Cabinetsavg"))
         budgetvaluelist.Add(Session("Bathroomsavg"))
         budgetvaluelist.Add(Session("Closetsavg"))
         If Session("myRemainderBudget") > 0 Then
@@ -289,6 +321,57 @@ Partial Class FEOutdoor
             rltOneCar.ClearSelection()
             rltTwoCar.ClearSelection()
             rltThreeCar.ClearSelection()
+        End If
+    End Sub
+
+    'GARAGE
+
+    Protected Sub cbxCurb_CheckedChanged(sender As Object, e As EventArgs) Handles cbxCurb.CheckedChanged, cbxCurbPlus.CheckedChanged, cbxPremium.CheckedChanged
+        Page.MaintainScrollPositionOnPostBack = True
+        If cbxCurb.Checked = False Then
+            pnlCurb.Enabled = True
+            pnlCurbPlus.Enabled = True
+            pnlPremium.Enabled = True
+            rltCurb.Enabled = True
+            rltCurbPlus.Enabled = True
+            rltPremium.Enabled = True
+        ElseIf cbxCurbPlus.Checked = False Then
+            pnlCurb.Enabled = True
+            pnlCurbPlus.Enabled = True
+            pnlPremium.Enabled = True
+            rltCurb.Enabled = True
+            rltCurbPlus.Enabled = True
+            rltPremium.Enabled = True
+        ElseIf cbxPremium.Checked = False Then
+            pnlCurb.Enabled = True
+            pnlCurbPlus.Enabled = True
+            pnlPremium.Enabled = True
+            rltCurb.Enabled = True
+            rltCurbPlus.Enabled = True
+            rltPremium.Enabled = True
+        End If
+
+        If cbxCurb.Checked = True Then
+            pnlCurbPlus.Enabled = False
+            pnlPremium.Enabled = False
+            rltCurb.Enabled = False
+            rltCurb.ClearSelection()
+            rltCurbPlus.ClearSelection()
+            rltPremium.ClearSelection()
+        ElseIf cbxCurbPlus.Checked = True Then
+            pnlCurb.Enabled = False
+            pnlPremium.Enabled = False
+            rltCurbPlus.Enabled = False
+            rltCurb.ClearSelection()
+            rltCurbPlus.ClearSelection()
+            rltPremium.ClearSelection()
+        ElseIf cbxPremium.Checked = True Then
+            pnlCurb.Enabled = False
+            pnlCurbPlus.Enabled = False
+            rltPremium.Enabled = False
+            rltCurb.ClearSelection()
+            rltCurbPlus.ClearSelection()
+            rltPremium.ClearSelection()
         End If
     End Sub
 

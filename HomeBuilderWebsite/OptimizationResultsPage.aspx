@@ -19,6 +19,16 @@
              </asp:ChartArea>
          </chartareas>
      </asp:Chart>
+                 <asp:Chart ID="chtFeatures" runat="server" style="margin-left: 69px" Visible="False">
+                     <Series>
+                         <asp:Series Name="Series1">
+                         </asp:Series>
+                     </Series>
+                     <ChartAreas>
+                         <asp:ChartArea Name="ChartArea1">
+                         </asp:ChartArea>
+                     </ChartAreas>
+                 </asp:Chart>
              </td>
          </tr>
              <tr>

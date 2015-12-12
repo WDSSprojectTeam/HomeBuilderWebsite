@@ -8,24 +8,6 @@
         .auto-style24 {
             width: 529px;
         }
-        .auto-style65 {
-            width: 123px;
-        }
-        .auto-style66 {
-            width: 125px;
-        }
-        .auto-style67 {
-            width: 43px;
-        }
-        .auto-style68 {
-            width: 103px;
-        }
-        .auto-style69 {
-            width: 90px;
-        }
-        .auto-style70 {
-            width: 91px;
-        }
         .auto-style72 {
             width: 198px;
             height: 23px;
@@ -279,6 +261,84 @@
                                     </td>
                                     <td class="auto-style33">
                                         <asp:RadioButtonList ID="rltMarble" runat="server" AutoPostBack="True" ForeColor="White" Height="19px" RepeatDirection="Horizontal" style="margin-left: 0px" Width="420px">
+                                            <asp:ListItem Value="3"></asp:ListItem>
+                                            <asp:ListItem Value="2"></asp:ListItem>
+                                            <asp:ListItem Selected="True" Value="1"></asp:ListItem>
+                                            <asp:ListItem>0</asp:ListItem>
+                                        </asp:RadioButtonList>
+                                    </td>
+                                </tr>
+                            </table>
+                        </asp:Panel>
+                        <br />
+                        <table>
+                            <tr>
+                                <td class="auto-style24">
+                                    <h2>Cabinets</h2>
+                                </td>
+                            </tr>
+                        </table>
+                        <table>
+                            <tr>
+                                <td class="auto-style72"></td>
+                                <td class="auto-style77">Must Have</td>
+                                <td class="auto-style84">Love it</td>
+                                <td class="auto-style85">Like it</td>
+                                <td class="auto-style82">It&#39;s Okay</td>
+                                <td class="auto-style80">Dislike</td>
+                            </tr>
+                        </table>
+                        <asp:Panel ID="pnlFormica" runat="server">
+                            <table>
+                                <tr>
+                                    <td class="auto-style86">Formica</td>
+                                    <td class="auto-style88">$2,100</td>
+                                    <td class="auto-style89"></td>
+                                    <td class="auto-style90">
+                                        <asp:CheckBox ID="cbxFormica" runat="server" AutoPostBack="True" />
+                                    </td>
+                                    <td class="auto-style7">
+                                        <asp:RadioButtonList ID="rltFormica" runat="server" AutoPostBack="True" ForeColor="White" Height="19px" RepeatDirection="Horizontal" style="margin-left: 0px" Width="420px">
+                                            <asp:ListItem Value="3"></asp:ListItem>
+                                            <asp:ListItem Value="2"></asp:ListItem>
+                                            <asp:ListItem Selected="True" Value="1"></asp:ListItem>
+                                            <asp:ListItem>0</asp:ListItem>
+                                        </asp:RadioButtonList>
+                                    </td>
+                                </tr>
+                            </table>
+                        </asp:Panel>
+                        <asp:Panel ID="pnlMaple" runat="server">
+                            <table>
+                                <tr>
+                                    <td class="auto-style86">Maple</td>
+                                    <td class="auto-style88">$2,450</td>
+                                    <td class="auto-style89"></td>
+                                    <td class="auto-style90">
+                                        <asp:CheckBox ID="cbxMaple" runat="server" AutoPostBack="True" />
+                                    </td>
+                                    <td class="auto-style7">
+                                        <asp:RadioButtonList ID="rltMaple" runat="server" AutoPostBack="True" ForeColor="White" Height="19px" RepeatDirection="Horizontal" style="margin-left: 0px" Width="420px">
+                                            <asp:ListItem Value="3"></asp:ListItem>
+                                            <asp:ListItem Value="2"></asp:ListItem>
+                                            <asp:ListItem Selected="True" Value="1"></asp:ListItem>
+                                            <asp:ListItem>0</asp:ListItem>
+                                        </asp:RadioButtonList>
+                                    </td>
+                                </tr>
+                            </table>
+                        </asp:Panel>
+                        <asp:Panel ID="pnlMetal" runat="server">
+                            <table>
+                                <tr>
+                                    <td class="auto-style86">Metal</td>
+                                    <td class="auto-style88">$2,900</td>
+                                    <td class="auto-style89"></td>
+                                    <td class="auto-style90">
+                                        <asp:CheckBox ID="cbxMetal" runat="server" AutoPostBack="True" />
+                                    </td>
+                                    <td class="auto-style32">
+                                        <asp:RadioButtonList ID="rltMetal" runat="server" AutoPostBack="True" ForeColor="White" Height="19px" RepeatDirection="Horizontal" style="margin-left: 0px" Width="420px">
                                             <asp:ListItem Value="3"></asp:ListItem>
                                             <asp:ListItem Value="2"></asp:ListItem>
                                             <asp:ListItem Selected="True" Value="1"></asp:ListItem>

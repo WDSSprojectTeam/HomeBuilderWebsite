@@ -25,7 +25,7 @@ Public Class Optimization
         myFeatureList = Session("FeatureSet")
         myOptionList = Session("OptionSet")
 
-        MakeUpOptimizationData()
+        'MakeUpOptimizationData()
 
         For Each aFeature In myFeatureList
             featureUtility.Add(aFeature.Rating)
@@ -118,15 +118,28 @@ Public Class Optimization
         Dim j As Integer
         Dim XindexNow As Integer = 0  'Mark the Index we have scanned
 
+        For i = 0 To myOptionList.Count - 1
+            If myOptionList.Item(i).Need = True Then
+                Dim constraintName As String = "X" & i & "_is_a_need"
+                Dim myChoice As Decision = myDecisionList.Item(i)
+                myModel.AddConstraint(constraintName & obji, myChoice = 1)
+            End If
+        Next
+
+
+
+        i = 0
+        j = 0
+
         ' Sum(Xij) = 1 
         For i = 0 To myFeatureList.Count - 1
             Dim myChoice As Term = 0
             Dim constraintName As String = myFeatureList.Item(i).Name & "_has_options"
             For j = 0 To myOptionList.Count - 1
 
-                If j + XindexNow > 28 Then
-                    Exit For
-                End If
+                'If j + XindexNow > 28 Then
+                '    Exit For
+                'End If
                 If (myFeatureList.Item(i).getID = myOptionList.Item(j).getoptionfeature) Then
                     Dim optionInfeature As Decision = myDecisionList.Item(j + XindexNow)
 
@@ -262,6 +275,8 @@ Public Class Optimization
         myFeatureList.Item(5).Rating = 2
         myFeatureList.Item(6).Rating = 1
         myFeatureList.Item(7).Rating = 1
+        myFeatureList.Item(8).Rating = 2
+        myFeatureList.Item(9).Rating = 2
 
         myOptionList.Item(0).Preference = 1
         myOptionList.Item(1).Preference = 3
@@ -291,6 +306,13 @@ Public Class Optimization
         myOptionList.Item(25).Preference = 1
         myOptionList.Item(26).Preference = 2
         myOptionList.Item(27).Preference = 2
+        myOptionList.Item(28).Preference = 4
+        myOptionList.Item(29).Preference = 4
+        myOptionList.Item(30).Preference = 1
+        myOptionList.Item(31).Preference = 2
+        myOptionList.Item(32).Preference = 4
+        myOptionList.Item(33).Preference = 1
+
     End Sub
 
 
