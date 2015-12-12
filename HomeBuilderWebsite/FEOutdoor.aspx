@@ -194,7 +194,7 @@
                                 <td class="auto-style80">Dislike</td>
                             </tr>
                         </table>
-                    <asp:Panel ID="pnlTwoCar" runat="server">
+                    
                         <asp:Panel ID="pnlOneCar" runat="server">
                             <table>
                                 <tr>
@@ -215,6 +215,7 @@
                                 </tr>
                             </table>
                         </asp:Panel>
+                <asp:Panel ID="pnlTwoCar" runat="server">
                         <table>
                             <tr>
                                 <td class="auto-style69">Two Car</td>

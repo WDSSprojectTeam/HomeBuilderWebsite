@@ -36,10 +36,11 @@
             <br />
         <br />
                     </td>
+                    <td style="width: 15px">
+
+                    </td>
                     <td style="vertical-align: top; width: 441px;" align="left">
-                        <span style="font-size: x-large">Compare your saved scenarios.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br />
-                        <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Set Price Filter Limit:
+                        <span style="font-size: x-large">Filter Price Limit:
         <asp:DropDownList ID="DropDownList1" runat="server" autopostback ="true" align="center" Font-Size="X-Large" style="font-size: large">
             <asp:ListItem Value="100000">$100000</asp:ListItem>
             <asp:ListItem Value="200000">$200000</asp:ListItem>
@@ -63,8 +64,6 @@
                         down for feature each on the chart <br />
                         above.</span><br style="font-size: x-large" />
             <br />
-        <br />
-        </div>
         <asp:GridView ID="GridView1" align="center" runat="server" AutoGenerateSelectButton="True" BackColor="White" BorderColor="#336666" BorderStyle="Double" BorderWidth="3px" CellPadding="4" GridLines="Horizontal" SelectedIndex="0" Font-Size="Large">
             <Columns>
                 <asp:TemplateField>
@@ -97,7 +96,8 @@
         <br />
             
     
-            <br />
+        <asp:Button ID="btnBack" runat="server" Height="43px" Text="Back" align="center" Width="140px" Font-Size="X-Large" />
+            
             <br />
     
             <br />

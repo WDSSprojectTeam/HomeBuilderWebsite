@@ -118,14 +118,35 @@ Public Class Optimization
         Dim j As Integer
         Dim XindexNow As Integer = 0  'Mark the Index we have scanned
 
-        For i = 0 To myOptionList.Count - 1
-            If myOptionList.Item(i).Need = True Then
-                Dim constraintName As String = "X" & i & "_is_a_need"
-                Dim myChoice As Term = 0
-                myChoice += myDecisionList.Item(i)
-                myModel.AddConstraint(constraintName & obji, myChoice = 1)
-            End If
+        Dim g As Integer
+
+        For i = 0 To myFeatureList.Count - 1
+            For j = 0 To myOptionList.Count - 1
+                If (myFeatureList.Item(i).getID = myOptionList.Item(j).getoptionfeature) Then
+                    If myOptionList.Item(j).Need = True Then
+                        For Each aDecision In myDecisionList
+                            If "X" & i & j = aDecision.Name Then
+                                Dim constraintName As String = "X" & i & "_is_a_need"
+                                Dim myChoice As Term = 0
+                                myChoice = myDecisionList.Item(g)
+                                myModel.AddConstraint(constraintName & obji, myChoice = 1)
+                            End If
+                        Next
+
+
+                    End If
+                End If
+            Next
         Next
+
+        'For i = 0 To myOptionList.Count - 1
+        '    If myOptionList.Item(i).Need = True Then
+        '        Dim constraintName As String = "X" & i & "_is_a_need"
+        '        Dim myChoice As Term = 0
+        '        myChoice += myDecisionList.Item(i)
+        '        myModel.AddConstraint(constraintName & obji, myChoice = 1)
+        '    End If
+        'Next
 
 
 

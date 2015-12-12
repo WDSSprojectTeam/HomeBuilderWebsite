@@ -99,4 +99,7 @@ Partial Class HomeBuilderWebsite_master_Comparison2
 
 
 
+    Protected Sub btnBack_Click(sender As Object, e As EventArgs) Handles btnBack.Click
+        Response.Redirect("Comparison.aspx")
+    End Sub
 End Class
