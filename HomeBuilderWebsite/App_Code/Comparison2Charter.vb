@@ -19,7 +19,9 @@ Public Class Comparison2Charter
     Public Sub draw(ByVal scenarios As ArrayList, type As String)
         mychart.Titles.Clear()
         mychart.Series.Clear()
-        mychart.Titles.Add(type)
+        Dim FontColor As New Title(type, Docking.Top, New System.Drawing.Font("cambria", 24, System.Drawing.FontStyle.Bold), System.Drawing.Color.Black)
+        mychart.Titles.Add(FontColor)
+
         setchartsize()
         setborderstyle()
         definechartarea()
@@ -29,7 +31,7 @@ Public Class Comparison2Charter
     End Sub
 
     Private Sub setchartsize()
-        mychart.Height = 300
+        mychart.Height = 400
         mychart.Width = 500
     End Sub
 
@@ -47,14 +49,15 @@ Public Class Comparison2Charter
         'charea.AxisX.MajorGrid.LineDashStyle = ChartDashStyle.Dash
         ' charea.AxisX.LabelStyle.Font = New Drawing.Font("Cambria", 12)
         ' charea.AxisX.LabelStyle.Angle = -45
-        charea.AxisX.TitleFont = New Drawing.Font("cambria", 12)
+
+        charea.AxisX.TitleFont = New Drawing.Font("cambria", 18)
         charea.AxisX.Title = "Scenarios"
         '
         'charea.AxisY.MajorGrid.LineDashStyle = ChartDashStyle.Dash
         'charea.AxisY.Interval = 1000
         '  charea.AxisY.Maximum = 500000
         '  charea.AxisY.Minimum = 0
-        charea.AxisY.TitleFont = New Drawing.Font("cambria", 12)
+        charea.AxisY.TitleFont = New Drawing.Font("cambria", 18)
         charea.AxisY.Title = "Cost"
     End Sub
 

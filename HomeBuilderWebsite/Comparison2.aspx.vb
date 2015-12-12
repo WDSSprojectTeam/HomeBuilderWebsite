@@ -64,13 +64,16 @@ Partial Class HomeBuilderWebsite_master_Comparison2
 
     Private Sub dropdownlist1_selectedIndexChanged(sender As Object, e As EventArgs) Handles DropDownList1.SelectedIndexChanged
         populatedetailsview(DropDownList1.SelectedValue)
-
+        Dim stuff As String
+        stuff = DropDownList2.SelectedValue
+        Session("drop1") = stuff
+        dropdownliststuff(stuff)
     End Sub
 
     Private Sub dropdownlist2_selectedIndexChanged(sender As Object, e As EventArgs) Handles DropDownList2.SelectedIndexChanged
         Dim type As String = DropDownList2.SelectedValue
-
         dropdownliststuff(type)
+
     End Sub
 
 

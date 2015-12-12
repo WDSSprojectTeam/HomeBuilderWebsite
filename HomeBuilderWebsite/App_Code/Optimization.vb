@@ -118,13 +118,13 @@ Public Class Optimization
         Dim j As Integer
         Dim XindexNow As Integer = 0  'Mark the Index we have scanned
 
-        For i = 0 To myOptionList.Count - 1
-            If myOptionList.Item(i).Need = True Then
-                Dim constraintName As String = "X" & i & "_is_a_need"
-                Dim myChoice As Decision = myDecisionList.Item(i)
-                myModel.AddConstraint(constraintName & obji, myChoice = 1)
-            End If
-        Next
+        ''For i = 0 To myOptionList.Count - 1
+        ''    If myOptionList.Item(i).Need = True Then
+        ''        Dim constraintName As String = "X" & i & "_is_a_need"
+        ''        Dim myChoice As Decision = myDecisionList.Item(i)
+        ''        myModel.AddConstraint(constraintName & obji, myChoice = 1)
+        ''    End If
+        ''Next
 
 
 
