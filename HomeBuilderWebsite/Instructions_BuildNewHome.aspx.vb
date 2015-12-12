@@ -5,7 +5,7 @@ Partial Class Instructions_BuildNewHome
     Private Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
 
         If (Not IsPostBack) Then
-            lblbudgetvalidation.visible = False
+            lblbudgetvalidation.Visible = False
         End If
 
 
@@ -16,7 +16,7 @@ Partial Class Instructions_BuildNewHome
 
         If tbxBudget.Text = "" Then
 
-            lblbudgetvalidation.visible = True
+            lblbudgetvalidation.Visible = True
         Else
 
             Dim homestyle As String
