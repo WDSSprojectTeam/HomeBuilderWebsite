@@ -11,10 +11,11 @@ Partial Class TemplateEdit
         rdb3.Visible = False
         rdb4.Visible = False
         rdb5.Visible = False
+        Panel1.Visible = False
         Dim myOptionList As List(Of Options) = Session("OptionSet")
-        Dim myChosenOptions As List(Of Integer)
+        'Dim myChosenOptions As List(Of Integer) = Session("chosenTemplateFeatures")
         Dim myTable As DataTable = Session("myTemplate")
-        Session("chosenTemplateFeatures") = myChosenOptions
+        'Session("chosenTemplateFeatures") = myChosenOptions
         Dim index As Integer = Session("whichTemplate")
         Dim displayList As New DataTable
         displayList.Columns.Add("Feature")
@@ -22,12 +23,21 @@ Partial Class TemplateEdit
         displayList.Columns.Add("Description")
         displayList.Columns.Add("Price")
 
+        Dim myChosenOptions As New List(Of Integer)
+        If Session("chosenTemplateFeatures") Is Nothing Then
 
-        For i = 4 To 13
+            For i = 4 To 13
 
-            myChosenOptions.Add(myTable.Rows(index).Item(i))
+                myChosenOptions.Add(myTable.Rows(index).Item(i))
 
-        Next
+            Next
+            Session("chosenTemplateFeatures") = myChosenOptions
+
+        Else
+            myChosenOptions = Session("chosenTemplateFeatures")
+        End If
+
+
 
 
         For i = 0 To myOptionList.Count - 1
@@ -48,7 +58,7 @@ Partial Class TemplateEdit
         gvwEditTemplate.DataBind()
     End Sub
     Protected Sub gvwEditTemplate_RowCommand(sender As Object, e As GridViewCommandEventArgs) Handles gvwEditTemplate.RowCommand
-
+        Panel1.Visible = True
         Dim rowIndex As Integer = e.CommandArgument
         Dim myOptionList As List(Of Options) = Session("OptionSet")
         Dim myFeatureList As List(Of Feature) = Session("FeatureSet")
@@ -111,6 +121,45 @@ Partial Class TemplateEdit
     End Sub
 
     Protected Sub btnEdit_Click(sender As Object, e As EventArgs) Handles btnEdit.Click
+        Dim myOptionList As List(Of Options) = Session("OptionSet")
+        Dim myFeatureList As List(Of Feature) = Session("FeatureSet")
+        Dim myChosenOptions As List(Of Integer) = Session("chosenTemplateFeatures")
 
+        Dim whichRDB As RadioButton
+
+        If rdb1.Checked = True Then
+            whichRDB = rdb1
+
+        ElseIf rdb2.Checked
+            whichRDB = rdb2
+
+        ElseIf rdb3.Checked
+            whichRDB = rdb3
+
+        ElseIf rdb4.Checked
+            whichRDB = rdb4
+
+        ElseIf rdb5.Checked
+            whichRDB = rdb5
+
+        Else
+            whichRDB = rdb1
+        End If
+
+
+        For i = 0 To myOptionList.Count - 1
+            If myOptionList.Item(i).getoptionname = whichRDB.Text Then
+                For j = 0 To myFeatureList.Count - 1
+                    If myFeatureList.Item(j).getID = myOptionList.Item(i).getFeatureID Then
+                        myChosenOptions.Item(j) = myOptionList.Item(i).getoptionID
+                    End If
+                Next
+            End If
+        Next
+
+        Session("chosenTemplateFeatures") = myChosenOptions
+        Response.Redirect("TemplateEdit.aspx")
     End Sub
+
 End Class
+
