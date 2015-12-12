@@ -29,6 +29,9 @@
             </ChartAreas>
         </asp:Chart>
                 </td>
+                <td style="width: 22px">
+
+                </td>
                 <td style="vertical-align: top">
                     Select a scenario:&nbsp;&nbsp;
         <asp:DropDownList ID="DropDownList1" align="center" runat="server" AutoPostBack ="true" Font-Size="X-Large" style="font-size: large">
@@ -36,7 +39,7 @@
         <br />
         <br />
         Scenario Details<br />
-        <asp:DetailsView ID="DetailsView1" runat="server" align="center" CellPadding="4" ForeColor="#333333" GridLines="None" Height="50px" Width="125px" Font-Size="Large">
+        <asp:DetailsView ID="DetailsView1" runat="server" align="center" CellPadding="4" ForeColor="#333333" GridLines="None" Height="50px" Width="297px" Font-Size="Large">
             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
             <CommandRowStyle BackColor="#E2DED6" Font-Bold="True" />
             <EditRowStyle BackColor="#999999" />
@@ -46,6 +49,11 @@
             <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
             <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
         </asp:DetailsView>
+                    <br />
+    
+    
+        <asp:Button ID="btnSelect" runat="server" Height="43px" Text="Select Home" align="center" Width="145px" Font-Size="X-Large" />
+            
                 </td>
             </tr>
             </table>

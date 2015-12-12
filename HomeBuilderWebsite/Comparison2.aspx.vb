@@ -12,7 +12,7 @@ Partial Class HomeBuilderWebsite_master_Comparison2
 
 
     Private Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        If Not ispostback Then
+        If Not IsPostBack Then
             Dim infolist As New ArrayList
             Dim dt As New DataTable
             Dim dt2 As New DataTable
@@ -81,7 +81,7 @@ Partial Class HomeBuilderWebsite_master_Comparison2
         Dim infolist As New ArrayList
         Dim type As String = tip
         infolist = Session("checkedscenarios")
-        If Type = "Utility" Then
+        If type = "Utility" Then
             drawchart2(infolist)
         Else
 
@@ -89,17 +89,17 @@ Partial Class HomeBuilderWebsite_master_Comparison2
         End If
     End Sub
 
-
-
     Private Sub populatedetailsview(ByVal identity As Integer)
         DetailsView1.DataSource = mydataAccess.getscenariopartdetails(identity)
         DetailsView1.DataBind()
     End Sub
 
-
-
-
     Protected Sub btnBack_Click(sender As Object, e As EventArgs) Handles btnBack.Click
         Response.Redirect("Comparison.aspx")
+    End Sub
+
+    Protected Sub btnSelect_Click(sender As Object, e As EventArgs) Handles btnSelect.Click
+        Session("ScenarioID") = Convert.ToInt32(DropDownList1.SelectedValue)
+        Response.Redirect("Comparison3.aspx")
     End Sub
 End Class

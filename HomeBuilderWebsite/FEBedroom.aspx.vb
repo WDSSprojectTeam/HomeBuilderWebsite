@@ -9,28 +9,14 @@ Partial Class FEBedroom
 
         'BATH
 
-        If cbxBathShower.Checked = True Then
-            myOptionList.GetName("Bath/Shower Combination").Need = True
-        ElseIf cbxWalkinShower.Checked = True Then
-            myOptionList.GetName("Walk-in-shower").Need = True
-        ElseIf cbxRainfall.Checked = True Then
-            myOptionList.GetName("Luxury rainfall shower").Need = True
-        Else
-            myOptionList.GetName("Bath/Shower Combination").Preference = rltBathShower.SelectedValue
-            myOptionList.GetName("Walk-in-shower").Preference = rltWalkinShower.SelectedValue
-            myOptionList.GetName("Luxury rainfall shower").Preference = rltRainfall.SelectedValue
-        End If
+        myOptionList.GetName("Bath/Shower Combination").Preference = rltBathShower.SelectedValue
+        myOptionList.GetName("Walk-in-shower").Preference = rltWalkinShower.SelectedValue
+        myOptionList.GetName("Luxury rainfall shower").Preference = rltRainfall.SelectedValue
 
         'CLOSET
 
-        If cbxWardrobe.Checked = True Then
-            myOptionList.GetName("Wardrobe Closet").Need = True
-        ElseIf cbxWalkinCloset.Checked = True Then
-            myOptionList.GetName("Walk-in Closet").Need = True
-        Else
-            myOptionList.GetName("Wardrobe Closet").Preference = rltWardrobe.SelectedValue
-            myOptionList.GetName("Walk-in Closet").Preference = rltWalkinCloset.SelectedValue
-        End If
+        myOptionList.GetName("Wardrobe Closet").Preference = rltWardrobe.SelectedValue
+        myOptionList.GetName("Walk-in Closet").Preference = rltWalkinCloset.SelectedValue
 
         'BATH
         Dim bathPrice As Double = myOptionList.GetName("Bath/Shower Combination").getoptionprice
@@ -50,24 +36,6 @@ Partial Class FEBedroom
 
         Dim bathavg As Double = AvgPrice(bathPrice, showerPrice, luxryPrice, 0, 0, bathRating, showerRating, luxryRating, 0, 0)
         Dim closetavg As Double = AvgPrice(wardrobePrice, walkPrice, 0, 0, 0, wardrobeRating, walkRating, 0, 0, 0)
-
-        'BATH
-
-        If cbxBathShower.Checked = True Then
-            bathavg = bathPrice
-        ElseIf cbxWalkinShower.Checked = True Then
-            bathavg = showerPrice
-        ElseIf cbxRainfall.Checked = True Then
-            bathavg = luxryPrice
-        End If
-
-        'CLOSET
-
-        If cbxWardrobe.Checked = True Then
-            closetavg = wardrobePrice
-        ElseIf cbxWalkinCloset.Checked = True Then
-            closetavg = walkPrice
-        End If
 
         Dim remainderbudget As Double = Session("myRemainderBudget")
         Session("myRemainderBudget") = remainderbudget - (bathavg + closetavg)
@@ -105,84 +73,6 @@ Partial Class FEBedroom
         Next
 
         Response.Redirect("~\OptimizationResultsPage.aspx")
-    End Sub
-
-    'BATH
-
-    Protected Sub cbxBathShower_CheckedChanged(sender As Object, e As EventArgs) Handles cbxBathShower.CheckedChanged, cbxWalkinShower.CheckedChanged, cbxRainfall.CheckedChanged
-        If cbxBathShower.Checked = False Then
-            pnlBathShower.Enabled = True
-            pnlWalkinShower.Enabled = True
-            pnlRainfall.Enabled = True
-            rltBathShower.Enabled = True
-            rltWalkinShower.Enabled = True
-            rltRainfall.Enabled = True
-        ElseIf cbxWalkinShower.Checked = False Then
-            pnlBathShower.Enabled = True
-            pnlWalkinShower.Enabled = True
-            pnlRainfall.Enabled = True
-            rltBathShower.Enabled = True
-            rltWalkinShower.Enabled = True
-            rltRainfall.Enabled = True
-        ElseIf cbxRainfall.Checked = False Then
-            pnlBathShower.Enabled = True
-            pnlWalkinShower.Enabled = True
-            pnlRainfall.Enabled = True
-            rltBathShower.Enabled = True
-            rltWalkinShower.Enabled = True
-            rltRainfall.Enabled = True
-        End If
-
-        If cbxBathShower.Checked = True Then
-            pnlWalkinShower.Enabled = False
-            pnlRainfall.Enabled = False
-            rltBathShower.Enabled = False
-            rltBathShower.ClearSelection()
-            rltWalkinShower.ClearSelection()
-            rltRainfall.ClearSelection()
-        ElseIf cbxWalkinShower.Checked = True Then
-            pnlBathShower.Enabled = False
-            pnlRainfall.Enabled = False
-            rltWalkinShower.Enabled = False
-            rltBathShower.ClearSelection()
-            rltWalkinShower.ClearSelection()
-            rltRainfall.ClearSelection()
-        ElseIf cbxRainfall.Checked = True Then
-            pnlWalkinShower.Enabled = False
-            pnlBathShower.Enabled = False
-            rltRainfall.Enabled = False
-            rltBathShower.ClearSelection()
-            rltWalkinShower.ClearSelection()
-            rltRainfall.ClearSelection()
-        End If
-    End Sub
-
-    'CLOSETS
-
-    Protected Sub cbxWardrobe_CheckedChanged(sender As Object, e As EventArgs) Handles cbxWardrobe.CheckedChanged, cbxWalkinCloset.CheckedChanged
-        If cbxWardrobe.Checked = False Then
-            pnlWardrobe.Enabled = True
-            pnlWalkinCloset.Enabled = True
-            rltWardrobe.Enabled = True
-            rltWalkinCloset.Enabled = True
-        ElseIf cbxWalkinCloset.Checked = False Then
-            pnlWardrobe.Enabled = True
-            pnlWalkinCloset.Enabled = True
-            rltWardrobe.Enabled = True
-            rltWalkinCloset.Enabled = True
-        End If
-
-        If cbxWardrobe.Checked = True Then
-            pnlWalkinCloset.Enabled = False
-            rltWardrobe.Enabled = False
-            rltWardrobe.ClearSelection()
-            rltWalkinCloset.ClearSelection()
-        ElseIf cbxWalkinCloset.Checked = True Then
-            pnlWardrobe.Enabled = False
-            rltWalkinCloset.Enabled = False
-            rltWardrobe.ClearSelection()
-            rltWalkinCloset.ClearSelection()
-        End If
     End Sub
 
     Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load

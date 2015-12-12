@@ -8,53 +8,24 @@ Partial Class FEKitchen
 
         'APPLIANCES
 
-        If cbxStandardBeige.Checked = True Then
-            myOptionList.GetName("Standard Beige").Need = True
-        ElseIf cbxBlack.Checked = True Then
-            myOptionList.GetName("Black").Need = True
-        ElseIf cbxStainlessSteel.Checked = True Then
-            myOptionList.GetName("Stainless Steel").Need = True
-        ElseIf cbxProfessional.Checked = True Then
-            myOptionList.GetName("Professional Grade").Need = True
-        Else
             myOptionList.GetName("Standard Beige").Preference = rltStandardBeige.SelectedValue
             myOptionList.GetName("Black").Preference = rltBlack.SelectedValue
             myOptionList.GetName("Stainless Steel").Preference = rltStainlessSteel.SelectedValue
             myOptionList.GetName("Professional Grade").Preference = rltProfessional.SelectedValue
-        End If
 
         'COUNTERTOPS
 
-        If cbxQuartz.Checked = True Then
-            myOptionList.GetName("Quartz").Need = True
-        ElseIf cbxGranite.Checked = True Then
-            myOptionList.GetName("Granite").Need = True
-        ElseIf cbxLaminate.Checked = True Then
-            myOptionList.GetName("Laminate").Need = True
-        ElseIf cbxWood.Checked = True Then
-            myOptionList.GetName("Wood").Need = True
-        ElseIf cbxMarble.Checked = True Then
-            myOptionList.GetName("Marble").Need = True
-        Else
             myOptionList.GetName("Quartz").Preference = rltQuartz.SelectedValue
             myOptionList.GetName("Laminate").Preference = rltLaminate.SelectedValue
             myOptionList.GetName("Wood").Preference = rltWood.SelectedValue
             myOptionList.GetName("Marble").Preference = rltMarble.SelectedValue
-        End If
 
         'CABINETS
 
-        If cbxFormica.Checked = True Then
-            myOptionList.GetName("Formica").Need = True
-        ElseIf cbxMaple.Checked = True Then
-            myOptionList.GetName("Maple").Need = True
-        ElseIf cbxMetal.Checked = True Then
-            myOptionList.GetName("Metal").Need = True
-        Else
             myOptionList.GetName("Formica").Preference = rltFormica.SelectedValue
             myOptionList.GetName("Maple").Preference = rltMaple.SelectedValue
             myOptionList.GetName("Metal").Preference = rltMetal.SelectedValue
-        End If
+
 
         'APPLIANCES
         Dim beigePrice As Double = myOptionList.GetName("Standard Beige").getoptionprice
@@ -93,42 +64,6 @@ Partial Class FEKitchen
         Dim appliancesavg As Double = AvgPrice(quartzPrice, granitePrice, laminatePrice, woodPrice, marblePrice, quartzRating, graniteRating, laminateRating, woodRating, marbleRating)
         Dim cabinetsavg As Double = AvgPrice(formicaPrice, maplePrice, metalPrice, 0, 0, formicaRating, mapleRating, metalPrice, 0, 0)
 
-        'APPLIANCES
-
-        If cbxStandardBeige.Checked = True Then
-            appliancesavg = beigePrice
-        ElseIf cbxBlack.Checked = True Then
-            appliancesavg = blackPrice
-        ElseIf cbxStainlessSteel.Checked = True Then
-            appliancesavg = stainPrice
-        ElseIf cbxProfessional.Checked = True Then
-            appliancesavg = profPrice
-        End If
-
-        'COUNTERTOPS
-
-        If cbxQuartz.Checked = True Then
-            counteropsavg = quartzPrice
-        ElseIf cbxGranite.Checked = True Then
-            counteropsavg = granitePrice
-        ElseIf cbxLaminate.Checked = True Then
-            counteropsavg = laminatePrice
-        ElseIf cbxWood.Checked = True Then
-            counteropsavg = woodPrice
-        ElseIf cbxMarble.Checked = True Then
-            counteropsavg = marblePrice
-        End If
-
-        'CABINETS
-
-        If cbxFormica.Checked = True Then
-            cabinetsavg = formicaPrice
-        ElseIf cbxMaple.Checked = True Then
-            cabinetsavg = maplePrice
-        ElseIf cbxMetal.Checked = True Then
-            cabinetsavg = metalPrice
-        End If
-
         Dim remainderbudget As Double = Session("myRemainderBudget")
         Session("myRemainderBudget") = remainderbudget - (counteropsavg + appliancesavg + cabinetsavg)
 
@@ -155,257 +90,6 @@ Partial Class FEKitchen
         Session("yvaluespie") = budgetvaluelist
 
         Response.Redirect("FEBedroom.aspx")
-    End Sub
-
-    'APPLIANCES
-
-    Protected Sub cbxStandardBeige_CheckedChanged(sender As Object, e As EventArgs) Handles cbxStandardBeige.CheckedChanged, cbxBlack.CheckedChanged, cbxStainlessSteel.CheckedChanged, cbxProfessional.CheckedChanged
-        Page.MaintainScrollPositionOnPostBack = True
-        If cbxStandardBeige.Checked = False Then
-            pnlStandardBeige.Enabled = True
-            pnlBlack.Enabled = True
-            pnlStainlessSteel.Enabled = True
-            pnlProfessional.Enabled = True
-            rltStandardBeige.Enabled = True
-            rltBlack.Enabled = True
-            rltStainlessSteel.Enabled = True
-            rltProfessional.Enabled = True
-        ElseIf cbxBlack.Checked = False Then
-            pnlStandardBeige.Enabled = True
-            pnlBlack.Enabled = True
-            pnlStainlessSteel.Enabled = True
-            pnlProfessional.Enabled = True
-            rltStandardBeige.Enabled = True
-            rltBlack.Enabled = True
-            rltStainlessSteel.Enabled = True
-            rltProfessional.Enabled = True
-        ElseIf cbxStainlessSteel.Checked = False Then
-            pnlStandardBeige.Enabled = True
-            pnlBlack.Enabled = True
-            pnlStainlessSteel.Enabled = True
-            pnlProfessional.Enabled = True
-            rltStandardBeige.Enabled = True
-            rltBlack.Enabled = True
-            rltStainlessSteel.Enabled = True
-            rltProfessional.Enabled = True
-        ElseIf cbxProfessional.Checked = False Then
-            pnlStandardBeige.Enabled = True
-            pnlBlack.Enabled = True
-            pnlStainlessSteel.Enabled = True
-            pnlProfessional.Enabled = True
-            rltStandardBeige.Enabled = True
-            rltBlack.Enabled = True
-            rltStainlessSteel.Enabled = True
-            rltProfessional.Enabled = True
-        End If
-
-        If cbxStandardBeige.Checked = True Then
-            pnlProfessional.Enabled = False
-            pnlBlack.Enabled = False
-            pnlStainlessSteel.Enabled = False
-            rltStandardBeige.Enabled = False
-            rltStandardBeige.ClearSelection()
-            rltBlack.ClearSelection()
-            rltStainlessSteel.ClearSelection()
-            rltProfessional.ClearSelection()
-        ElseIf cbxBlack.Checked = True Then
-            pnlProfessional.Enabled = False
-            pnlStandardBeige.Enabled = False
-            pnlStainlessSteel.Enabled = False
-            rltBlack.Enabled = False
-            rltStandardBeige.ClearSelection()
-            rltBlack.ClearSelection()
-            rltStainlessSteel.ClearSelection()
-            rltProfessional.ClearSelection()
-        ElseIf cbxStainlessSteel.Checked = True Then
-            pnlProfessional.Enabled = False
-            pnlBlack.Enabled = False
-            pnlStandardBeige.Enabled = False
-            rltStainlessSteel.Enabled = False
-            rltStandardBeige.ClearSelection()
-            rltBlack.ClearSelection()
-            rltStainlessSteel.ClearSelection()
-            rltProfessional.ClearSelection()
-        ElseIf cbxProfessional.Checked = True Then
-            pnlStandardBeige.Enabled = False
-            pnlBlack.Enabled = False
-            pnlStainlessSteel.Enabled = False
-            rltProfessional.Enabled = False
-            rltStandardBeige.ClearSelection()
-            rltBlack.ClearSelection()
-            rltStainlessSteel.ClearSelection()
-            rltProfessional.ClearSelection()
-        End If
-    End Sub
-
-    'COUNTERTOPS
-
-    Protected Sub cbxGranite_CheckedChanged(sender As Object, e As EventArgs) Handles cbxGranite.CheckedChanged, cbxQuartz.CheckedChanged, cbxLaminate.CheckedChanged, cbxMarble.CheckedChanged, cbxWood.CheckedChanged
-        Page.MaintainScrollPositionOnPostBack = True
-        If cbxQuartz.Checked = False Then
-            pnlQuartz.Enabled = True
-            PanelGranite.Enabled = True
-            PanelLaminate.Enabled = True
-            PanelMarble.Enabled = True
-            PanelWood.Enabled = True
-            rltQuartz.Enabled = True
-            rltGranite.Enabled = True
-            rltLaminate.Enabled = True
-            rltMarble.Enabled = True
-            rltWood.Enabled = True
-        ElseIf cbxGranite.Checked = False Then
-            pnlQuartz.Enabled = True
-            PanelGranite.Enabled = True
-            PanelLaminate.Enabled = True
-            PanelMarble.Enabled = True
-            PanelWood.Enabled = True
-            rltQuartz.Enabled = True
-            rltGranite.Enabled = True
-            rltLaminate.Enabled = True
-            rltMarble.Enabled = True
-            rltWood.Enabled = True
-        ElseIf cbxLaminate.Checked = False Then
-            pnlQuartz.Enabled = True
-            PanelGranite.Enabled = True
-            PanelLaminate.Enabled = True
-            PanelMarble.Enabled = True
-            PanelWood.Enabled = True
-            rltQuartz.Enabled = True
-            rltGranite.Enabled = True
-            rltLaminate.Enabled = True
-            rltMarble.Enabled = True
-            rltWood.Enabled = True
-        ElseIf cbxMarble.Checked = False Then
-            pnlQuartz.Enabled = True
-            PanelGranite.Enabled = True
-            PanelLaminate.Enabled = True
-            PanelMarble.Enabled = True
-            PanelWood.Enabled = True
-            rltQuartz.Enabled = True
-            rltGranite.Enabled = True
-            rltLaminate.Enabled = True
-            rltMarble.Enabled = True
-            rltWood.Enabled = True
-        ElseIf cbxWood.Checked = False Then
-            pnlQuartz.Enabled = True
-            PanelGranite.Enabled = True
-            PanelLaminate.Enabled = True
-            PanelMarble.Enabled = True
-            PanelWood.Enabled = True
-            rltQuartz.Enabled = True
-            rltGranite.Enabled = True
-            rltLaminate.Enabled = True
-            rltMarble.Enabled = True
-            rltWood.Enabled = True
-        End If
-
-        If cbxQuartz.Checked = True Then
-            PanelGranite.Enabled = False
-            PanelLaminate.Enabled = False
-            PanelMarble.Enabled = False
-            PanelWood.Enabled = False
-            rltQuartz.Enabled = False
-            rltQuartz.ClearSelection()
-            rltGranite.ClearSelection()
-            rltLaminate.ClearSelection()
-            rltMarble.ClearSelection()
-            rltWood.ClearSelection()
-        ElseIf cbxGranite.Checked = True Then
-            pnlQuartz.Enabled = False
-            PanelLaminate.Enabled = False
-            PanelMarble.Enabled = False
-            PanelWood.Enabled = False
-            rltGranite.Enabled = False
-            rltQuartz.ClearSelection()
-            rltGranite.ClearSelection()
-            rltLaminate.ClearSelection()
-            rltMarble.ClearSelection()
-            rltWood.ClearSelection()
-        ElseIf cbxLaminate.Checked = True Then
-            pnlQuartz.Enabled = False
-            PanelGranite.Enabled = False
-            PanelMarble.Enabled = False
-            PanelWood.Enabled = False
-            rltLaminate.Enabled = False
-            rltQuartz.ClearSelection()
-            rltGranite.ClearSelection()
-            rltLaminate.ClearSelection()
-            rltMarble.ClearSelection()
-            rltWood.ClearSelection()
-        ElseIf cbxMarble.Checked = True Then
-            pnlQuartz.Enabled = False
-            PanelLaminate.Enabled = False
-            PanelGranite.Enabled = False
-            PanelWood.Enabled = False
-            rltMarble.Enabled = False
-            rltQuartz.ClearSelection()
-            rltGranite.ClearSelection()
-            rltLaminate.ClearSelection()
-            rltMarble.ClearSelection()
-            rltWood.ClearSelection()
-        ElseIf cbxWood.Checked = True Then
-            pnlQuartz.Enabled = False
-            PanelLaminate.Enabled = False
-            PanelMarble.Enabled = False
-            PanelGranite.Enabled = False
-            rltWood.Enabled = False
-            rltQuartz.ClearSelection()
-            rltGranite.ClearSelection()
-            rltLaminate.ClearSelection()
-            rltMarble.ClearSelection()
-            rltWood.ClearSelection()
-        End If
-    End Sub
-
-    'GARAGE
-
-    Protected Sub cbxFormica_CheckedChanged(sender As Object, e As EventArgs) Handles cbxFormica.CheckedChanged, cbxMaple.CheckedChanged, cbxMetal.CheckedChanged
-        Page.MaintainScrollPositionOnPostBack = True
-        If cbxFormica.Checked = False Then
-            pnlFormica.Enabled = True
-            pnlMaple.Enabled = True
-            pnlMetal.Enabled = True
-            rltFormica.Enabled = True
-            rltMaple.Enabled = True
-            rltMetal.Enabled = True
-        ElseIf cbxMaple.Checked = False Then
-            pnlFormica.Enabled = True
-            pnlMaple.Enabled = True
-            pnlMetal.Enabled = True
-            rltFormica.Enabled = True
-            rltMaple.Enabled = True
-            rltMetal.Enabled = True
-        ElseIf cbxMetal.Checked = False Then
-            pnlFormica.Enabled = True
-            pnlMaple.Enabled = True
-            pnlMetal.Enabled = True
-            rltFormica.Enabled = True
-            rltMaple.Enabled = True
-            rltMetal.Enabled = True
-        End If
-
-        If cbxFormica.Checked = True Then
-            pnlMetal.Enabled = False
-            pnlMaple.Enabled = False
-            rltFormica.Enabled = False
-            rltFormica.ClearSelection()
-            rltMaple.ClearSelection()
-            rltMetal.ClearSelection()
-        ElseIf cbxMaple.Checked = True Then
-            pnlFormica.Enabled = False
-            pnlMetal.Enabled = False
-            rltMaple.Enabled = False
-            rltFormica.ClearSelection()
-            rltMaple.ClearSelection()
-            rltMetal.ClearSelection()
-        ElseIf cbxMetal.Checked = True Then
-            pnlFormica.Enabled = False
-            pnlMaple.Enabled = False
-            rltMetal.Enabled = False
-            rltFormica.ClearSelection()
-            rltMaple.ClearSelection()
-            rltMetal.ClearSelection()
-        End If
     End Sub
 
     Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load

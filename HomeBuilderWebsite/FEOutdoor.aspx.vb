@@ -8,51 +8,23 @@ Partial Class FEOutdoor
 
         'ROOF TYPE
 
-        If cbxAsphaltShingle.Checked = True Then
-            myOptionList.GetName("Asphalt Shingle").Need = True
-        ElseIf cbxWoodShingle.Checked = True Then
-            myOptionList.GetName("Wood Shingle").Need = True
-        ElseIf cbxMetalShingle.Checked = True Then
-            myOptionList.GetName("Metal Shingle").Need = True
-        ElseIf cbxSlateShingle.Checked = True Then
-            myOptionList.GetName("Slate Shingle").Need = True
-        ElseIf cbxTileShingle.Checked = True Then
-            myOptionList.GetName("Tile Shingle").Need = True
-        Else
             myOptionList.GetName("Asphalt Shingle").Preference = rltAsphaltShingle.SelectedValue
             myOptionList.GetName("Wood Shingle").Preference = rltWoodShingle.SelectedValue
             myOptionList.GetName("Metal Shingle").Preference = rltMetalShingle.SelectedValue
             myOptionList.GetName("Slate Shingle").Preference = rltSlateShingle.SelectedValue
             myOptionList.GetName("Tile Shingle").Preference = rltTileShingle.SelectedValue
-        End If
 
         'GARAGE
 
-        If cbxOneCar.Checked = True Then
-            myOptionList.GetName("One Car").Need = True
-        ElseIf cbxTwoCar.Checked = True Then
-            myOptionList.GetName("Two Car").Need = True
-        ElseIf cbxThreeCar.Checked = True Then
-            myOptionList.GetName("Three Car").Need = True
-        Else
-            myOptionList.GetName("One Car").Preference = rltOneCar.SelectedValue
-            myOptionList.GetName("Two Car").Preference = rltTwoCar.SelectedValue
-            myOptionList.GetName("Three Car").Preference = rltThreeCar.SelectedValue
-        End If
+        myOptionList.GetName("One Car").Preference = rltOneCar.SelectedValue
+        myOptionList.GetName("Two Car").Preference = rltTwoCar.SelectedValue
+        myOptionList.GetName("Three Car").Preference = rltThreeCar.SelectedValue
 
         'LANDSCAPING
 
-        If cbxCurb.Checked = True Then
-            myOptionList.GetName("Basic Curb Appeal").Need = True
-        ElseIf cbxCurbPlus.Checked = True Then
-            myOptionList.GetName("Curb Appeal Plus").Need = True
-        ElseIf cbxPremium.Checked = True Then
-            myOptionList.GetName("Premium Landscaping").Need = True
-        Else
             myOptionList.GetName("Basic Curb Appeal").Preference = rltCurb.SelectedValue
             myOptionList.GetName("Curb Appeal Plus").Preference = rltCurbPlus.SelectedValue
             myOptionList.GetName("Premium Landscaping").Preference = rltPremium.SelectedValue
-        End If
 
         'ROOF
         Dim asphaltshinglePrice As Double = myOptionList.GetName("Asphalt Shingle").getoptionprice
@@ -89,40 +61,6 @@ Partial Class FEOutdoor
         Dim garageavg As Double = AvgPrice(onecarPrice, twocarPrice, threecarPrice, 0, 0, onecarRating, twocarRating, threecarRating, 0, 0)
         Dim landscapeavg As Double = AvgPrice(curbPrice, curbPlusPrice, PremiumPrice, 0, 0, curbRating, curbPlusRating, PremiumRating, 0, 0)
 
-        'ROOF
-
-        If cbxAsphaltShingle.Checked = True Then
-            roofavg = asphaltshinglePrice
-        ElseIf cbxWoodShingle.Checked = True Then
-            roofavg = woodshinglePrice
-        ElseIf cbxMetalShingle.Checked = True Then
-            roofavg = metalshinglePrice
-        ElseIf cbxSlateShingle.Checked = True Then
-            roofavg = slateshinglePrice
-        ElseIf cbxTileShingle.Checked = True Then
-            roofavg = tileshinglePrice
-        End If
-
-        'GARAGE
-
-        If cbxOneCar.Checked = True Then
-            garageavg = onecarPrice
-        ElseIf cbxTwoCar.Checked = True Then
-            garageavg = twocarPrice
-        ElseIf cbxThreeCar.Checked = True Then
-            garageavg = threecarPrice
-        End If
-
-        'LANDSCAPING
-
-        If cbxCurb.Checked = True Then
-            landscapeavg = curbPrice
-        ElseIf cbxCurbPlus.Checked = True Then
-            landscapeavg = curbPlusPrice
-        ElseIf cbxPremium.Checked = True Then
-            landscapeavg = PremiumPrice
-        End If
-
         Dim remainderbudget As Double = Session("myRemainderBudget")
         Session("myRemainderBudget") = remainderbudget - (roofavg + garageavg + landscapeavg)
 
@@ -151,228 +89,6 @@ Partial Class FEOutdoor
 
         Response.Redirect("FEInterior.aspx")
 
-    End Sub
-
-    'ROOF
-
-    Protected Sub cbxAsphaltShingle_CheckedChanged(sender As Object, e As EventArgs) Handles cbxAsphaltShingle.CheckedChanged, cbxWoodShingle.CheckedChanged, cbxMetalShingle.CheckedChanged, cbxSlateShingle.CheckedChanged, cbxTileShingle.CheckedChanged
-        Page.MaintainScrollPositionOnPostBack = True
-        If cbxAsphaltShingle.Checked = False Then
-            pnlAsphaltShingle.Enabled = True
-            pnlWoodShingle.Enabled = True
-            pnlMetalShingle.Enabled = True
-            pnlSlateShingle.Enabled = True
-            pnlTileShingle.Enabled = True
-            rltAsphaltShingle.Enabled = True
-            rltWoodShingle.Enabled = True
-            rltMetalShingle.Enabled = True
-            rltSlateShingle.Enabled = True
-            rltTileShingle.Enabled = True
-        ElseIf cbxWoodShingle.Checked = False Then
-            pnlAsphaltShingle.Enabled = True
-            pnlWoodShingle.Enabled = True
-            pnlMetalShingle.Enabled = True
-            pnlSlateShingle.Enabled = True
-            pnlTileShingle.Enabled = True
-            rltAsphaltShingle.Enabled = True
-            rltWoodShingle.Enabled = True
-            rltMetalShingle.Enabled = True
-            rltSlateShingle.Enabled = True
-            rltTileShingle.Enabled = True
-        ElseIf cbxMetalShingle.Checked = False Then
-            pnlAsphaltShingle.Enabled = True
-            pnlWoodShingle.Enabled = True
-            pnlMetalShingle.Enabled = True
-            pnlSlateShingle.Enabled = True
-            pnlTileShingle.Enabled = True
-            rltAsphaltShingle.Enabled = True
-            rltWoodShingle.Enabled = True
-            rltMetalShingle.Enabled = True
-            rltSlateShingle.Enabled = True
-            rltTileShingle.Enabled = True
-        ElseIf cbxSlateShingle.Checked = False Then
-            pnlAsphaltShingle.Enabled = True
-            pnlWoodShingle.Enabled = True
-            pnlMetalShingle.Enabled = True
-            pnlSlateShingle.Enabled = True
-            pnlTileShingle.Enabled = True
-            rltAsphaltShingle.Enabled = True
-            rltWoodShingle.Enabled = True
-            rltMetalShingle.Enabled = True
-            rltSlateShingle.Enabled = True
-            rltTileShingle.Enabled = True
-        ElseIf cbxTileShingle.Checked = False Then
-            pnlAsphaltShingle.Enabled = True
-            pnlWoodShingle.Enabled = True
-            pnlMetalShingle.Enabled = True
-            pnlSlateShingle.Enabled = True
-            pnlTileShingle.Enabled = True
-            rltAsphaltShingle.Enabled = True
-            rltWoodShingle.Enabled = True
-            rltMetalShingle.Enabled = True
-            rltSlateShingle.Enabled = True
-            rltTileShingle.Enabled = True
-        End If
-
-        If cbxAsphaltShingle.Checked = True Then
-            pnlWoodShingle.Enabled = False
-            pnlMetalShingle.Enabled = False
-            pnlSlateShingle.Enabled = False
-            pnlTileShingle.Enabled = False
-            rltAsphaltShingle.Enabled = False
-            rltAsphaltShingle.ClearSelection()
-            rltWoodShingle.ClearSelection()
-            rltMetalShingle.ClearSelection()
-            rltSlateShingle.ClearSelection()
-            rltTileShingle.ClearSelection()
-        ElseIf cbxWoodShingle.Checked = True Then
-            pnlAsphaltShingle.Enabled = False
-            pnlSlateShingle.Enabled = False
-            pnlMetalShingle.Enabled = False
-            pnlTileShingle.Enabled = False
-            rltWoodShingle.Enabled = False
-            rltAsphaltShingle.ClearSelection()
-            rltWoodShingle.ClearSelection()
-            rltMetalShingle.ClearSelection()
-            rltSlateShingle.ClearSelection()
-            rltTileShingle.ClearSelection()
-        ElseIf cbxMetalShingle.Checked = True Then
-            pnlAsphaltShingle.Enabled = False
-            pnlWoodShingle.Enabled = False
-            pnlSlateShingle.Enabled = False
-            pnlTileShingle.Enabled = False
-            rltMetalShingle.Enabled = False
-            rltAsphaltShingle.ClearSelection()
-            rltWoodShingle.ClearSelection()
-            rltMetalShingle.ClearSelection()
-            rltSlateShingle.ClearSelection()
-            rltTileShingle.ClearSelection()
-        ElseIf cbxSlateShingle.Checked = True Then
-            pnlAsphaltShingle.Enabled = False
-            pnlWoodShingle.Enabled = False
-            pnlMetalShingle.Enabled = False
-            pnlTileShingle.Enabled = False
-            rltSlateShingle.Enabled = False
-            rltAsphaltShingle.ClearSelection()
-            rltWoodShingle.ClearSelection()
-            rltMetalShingle.ClearSelection()
-            rltSlateShingle.ClearSelection()
-            rltTileShingle.ClearSelection()
-        ElseIf cbxTileShingle.Checked = True Then
-            pnlTileShingle.Enabled = True
-            pnlAsphaltShingle.Enabled = False
-            pnlWoodShingle.Enabled = False
-            pnlMetalShingle.Enabled = False
-            pnlSlateShingle.Enabled = False
-            rltTileShingle.Enabled = False
-            rltAsphaltShingle.ClearSelection()
-            rltWoodShingle.ClearSelection()
-            rltMetalShingle.ClearSelection()
-            rltSlateShingle.ClearSelection()
-            rltTileShingle.ClearSelection()
-        End If
-    End Sub
-
-    'GARAGE
-
-    Protected Sub cbxOneCar_CheckedChanged(sender As Object, e As EventArgs) Handles cbxOneCar.CheckedChanged, cbxTwoCar.CheckedChanged, cbxThreeCar.CheckedChanged
-        Page.MaintainScrollPositionOnPostBack = True
-        If cbxOneCar.Checked = False Then
-            pnlOneCar.Enabled = True
-            pnlTwoCar.Enabled = True
-            pnlThreeCar.Enabled = True
-            rltOneCar.Enabled = True
-            rltTwoCar.Enabled = True
-            rltThreeCar.Enabled = True
-        ElseIf cbxTwoCar.Checked = False Then
-            pnlOneCar.Enabled = True
-            pnlTwoCar.Enabled = True
-            pnlThreeCar.Enabled = True
-            rltOneCar.Enabled = True
-            rltTwoCar.Enabled = True
-            rltThreeCar.Enabled = True
-        ElseIf cbxThreeCar.Checked = False Then
-            pnlOneCar.Enabled = True
-            pnlTwoCar.Enabled = True
-            pnlThreeCar.Enabled = True
-            rltOneCar.Enabled = True
-            rltTwoCar.Enabled = True
-            rltThreeCar.Enabled = True
-        End If
-
-        If cbxOneCar.Checked = True Then
-            pnlTwoCar.Enabled = False
-            pnlThreeCar.Enabled = False
-            rltOneCar.Enabled = False
-            rltOneCar.ClearSelection()
-            rltTwoCar.ClearSelection()
-            rltThreeCar.ClearSelection()
-        ElseIf cbxTwoCar.Checked = True Then
-            pnlOneCar.Enabled = False
-            pnlThreeCar.Enabled = False
-            rltTwoCar.Enabled = False
-            rltOneCar.ClearSelection()
-            rltTwoCar.ClearSelection()
-            rltThreeCar.ClearSelection()
-        ElseIf cbxThreeCar.Checked = True Then
-            pnlTwoCar.Enabled = False
-            pnlOneCar.Enabled = False
-            rltThreeCar.Enabled = False
-            rltOneCar.ClearSelection()
-            rltTwoCar.ClearSelection()
-            rltThreeCar.ClearSelection()
-        End If
-    End Sub
-
-    'GARAGE
-
-    Protected Sub cbxCurb_CheckedChanged(sender As Object, e As EventArgs) Handles cbxCurb.CheckedChanged, cbxCurbPlus.CheckedChanged, cbxPremium.CheckedChanged
-        Page.MaintainScrollPositionOnPostBack = True
-        If cbxCurb.Checked = False Then
-            pnlCurb.Enabled = True
-            pnlCurbPlus.Enabled = True
-            pnlPremium.Enabled = True
-            rltCurb.Enabled = True
-            rltCurbPlus.Enabled = True
-            rltPremium.Enabled = True
-        ElseIf cbxCurbPlus.Checked = False Then
-            pnlCurb.Enabled = True
-            pnlCurbPlus.Enabled = True
-            pnlPremium.Enabled = True
-            rltCurb.Enabled = True
-            rltCurbPlus.Enabled = True
-            rltPremium.Enabled = True
-        ElseIf cbxPremium.Checked = False Then
-            pnlCurb.Enabled = True
-            pnlCurbPlus.Enabled = True
-            pnlPremium.Enabled = True
-            rltCurb.Enabled = True
-            rltCurbPlus.Enabled = True
-            rltPremium.Enabled = True
-        End If
-
-        If cbxCurb.Checked = True Then
-            pnlCurbPlus.Enabled = False
-            pnlPremium.Enabled = False
-            rltCurb.Enabled = False
-            rltCurb.ClearSelection()
-            rltCurbPlus.ClearSelection()
-            rltPremium.ClearSelection()
-        ElseIf cbxCurbPlus.Checked = True Then
-            pnlCurb.Enabled = False
-            pnlPremium.Enabled = False
-            rltCurbPlus.Enabled = False
-            rltCurb.ClearSelection()
-            rltCurbPlus.ClearSelection()
-            rltPremium.ClearSelection()
-        ElseIf cbxPremium.Checked = True Then
-            pnlCurb.Enabled = False
-            pnlCurbPlus.Enabled = False
-            rltPremium.Enabled = False
-            rltCurb.ClearSelection()
-            rltCurbPlus.ClearSelection()
-            rltPremium.ClearSelection()
-        End If
     End Sub
 
     Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load

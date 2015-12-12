@@ -8,14 +8,6 @@
         .auto-style24 {
             width: 529px;
         }
-        .auto-style72 {
-            width: 198px;
-            height: 23px;
-        }
-        .auto-style77 {
-            width: 96px;
-            height: 23px;
-        }
         .auto-style84 {
             width: 104px;
             height: 23px;
@@ -44,8 +36,13 @@
         .auto-style89 {
             width: 25px;
         }
-        .auto-style90 {
-            width: 81px;
+        .auto-style91 {
+            width: 217px;
+            height: 23px;
+        }
+        .auto-style92 {
+            width: 215px;
+            height: 23px;
         }
         </style>
     <table style="margin:0px auto; width: 1100px;">
@@ -64,8 +61,7 @@
                         </table>
                         <table>
                             <tr>
-                                <td class="auto-style72"></td>
-                                <td class="auto-style77">Must Have</td>
+                                <td class="auto-style91"></td>
                                 <td class="auto-style84">Love it</td>
                                 <td class="auto-style85">Like it</td>
                                 <td class="auto-style82">It&#39;s Okay</td>
@@ -78,9 +74,6 @@
                                     <td class="auto-style86">Standard Beige</td>
                                     <td class="auto-style88">$3,000</td>
                                     <td class="auto-style89"></td>
-                                    <td class="auto-style90">
-                                        <asp:CheckBox ID="cbxStandardBeige" runat="server" AutoPostBack="True" />
-                                    </td>
                                     <td class="auto-style7">
                                         <asp:RadioButtonList ID="rltStandardBeige" runat="server" AutoPostBack="True" ForeColor="#EBFAFA" Height="19px" RepeatDirection="Horizontal" style="margin-left: 0px" Width="420px">
                                             <asp:ListItem Value="3"></asp:ListItem>
@@ -98,9 +91,6 @@
                                     <td class="auto-style86">Black</td>
                                     <td class="auto-style88">$7,000</td>
                                     <td class="auto-style89"></td>
-                                    <td class="auto-style90">
-                                        <asp:CheckBox ID="cbxBlack" runat="server" AutoPostBack="True" />
-                                    </td>
                                     <td class="auto-style7">
                                         <asp:RadioButtonList ID="rltBlack" runat="server" AutoPostBack="True" ForeColor="#EBFAFA" Height="19px" RepeatDirection="Horizontal" style="margin-left: 0px" Width="420px">
                                             <asp:ListItem Value="3"></asp:ListItem>
@@ -118,9 +108,6 @@
                                     <td class="auto-style86">Stainless Steel</td>
                                     <td class="auto-style88">$8,200</td>
                                     <td class="auto-style89"></td>
-                                    <td class="auto-style90">
-                                        <asp:CheckBox ID="cbxStainlessSteel" runat="server" AutoPostBack="True" />
-                                    </td>
                                     <td class="auto-style32">
                                         <asp:RadioButtonList ID="rltStainlessSteel" runat="server" AutoPostBack="True" ForeColor="#EBFAFA" Height="19px" RepeatDirection="Horizontal" style="margin-left: 0px" Width="420px">
                                             <asp:ListItem Value="3"></asp:ListItem>
@@ -138,9 +125,6 @@
                                     <td class="auto-style86">Professional Grade</td>
                                     <td class="auto-style88">$24,000</td>
                                     <td class="auto-style89"></td>
-                                    <td class="auto-style90">
-                                        <asp:CheckBox ID="cbxProfessional" runat="server" AutoPostBack="True" />
-                                    </td>
                                     <td class="auto-style87">
                                         <asp:RadioButtonList ID="rltProfessional" runat="server" AutoPostBack="True" ForeColor="#EBFAFA" Height="19px" RepeatDirection="Horizontal" style="margin-left: 0px" Width="420px">
                                             <asp:ListItem Value="3"></asp:ListItem>
@@ -162,8 +146,7 @@
                         </table>
                         <table>
                             <tr>
-                                <td class="auto-style72"></td>
-                                <td class="auto-style77">Must Have</td>
+                                <td class="auto-style92"></td>
                                 <td class="auto-style84">Love it</td>
                                 <td class="auto-style85">Like it</td>
                                 <td class="auto-style82">It&#39;s Okay</td>
@@ -176,9 +159,6 @@
                                     <td class="auto-style86">Quartz</td>
                                     <td class="auto-style88">$10,500</td>
                                     <td class="auto-style89"></td>
-                                    <td class="auto-style90">
-                                        <asp:CheckBox ID="cbxQuartz" runat="server" AutoPostBack="True" />
-                                    </td>
                                     <td class="auto-style7">
                                         <asp:RadioButtonList ID="rltQuartz" runat="server" AutoPostBack="True" ForeColor="#EBFAFA" Height="19px" RepeatDirection="Horizontal" style="margin-left: 0px" Width="420px">
                                             <asp:ListItem Value="3"></asp:ListItem>
@@ -196,9 +176,6 @@
                                     <td class="auto-style86">Granite</td>
                                     <td class="auto-style88">$9,300</td>
                                     <td class="auto-style89"></td>
-                                    <td class="auto-style90">
-                                        <asp:CheckBox ID="cbxGranite" runat="server" AutoPostBack="True" />
-                                    </td>
                                     <td class="auto-style7">
                                         <asp:RadioButtonList ID="rltGranite" runat="server" AutoPostBack="True" ForeColor="#EBFAFA" Height="19px" RepeatDirection="Horizontal" style="margin-left: 0px" Width="420px">
                                             <asp:ListItem Value="3"></asp:ListItem>
@@ -216,9 +193,6 @@
                                     <td class="auto-style86">Laminate</td>
                                     <td class="auto-style88">$4,200</td>
                                     <td class="auto-style89"></td>
-                                    <td class="auto-style90">
-                                        <asp:CheckBox ID="cbxLaminate" runat="server" AutoPostBack="True" />
-                                    </td>
                                     <td class="auto-style7">
                                         <asp:RadioButtonList ID="rltLaminate" runat="server" AutoPostBack="True" ForeColor="#EBFAFA" Height="19px" RepeatDirection="Horizontal" style="margin-left: 0px" Width="420px">
                                             <asp:ListItem Value="3"></asp:ListItem>
@@ -236,9 +210,6 @@
                                     <td class="auto-style86">Wood</td>
                                     <td class="auto-style88">$7,800</td>
                                     <td class="auto-style89"></td>
-                                    <td class="auto-style90">
-                                        <asp:CheckBox ID="cbxWood" runat="server" AutoPostBack="True" />
-                                    </td>
                                     <td class="auto-style32">
                                         <asp:RadioButtonList ID="rltWood" runat="server" AutoPostBack="True" ForeColor="#EBFAFA" Height="19px" RepeatDirection="Horizontal" style="margin-left: 0px" Width="420px">
                                             <asp:ListItem Value="3"></asp:ListItem>
@@ -256,9 +227,6 @@
                                     <td class="auto-style86">Marble</td>
                                     <td class="auto-style88">$11,700</td>
                                     <td class="auto-style89"></td>
-                                    <td class="auto-style90">
-                                        <asp:CheckBox ID="cbxMarble" runat="server" AutoPostBack="True" />
-                                    </td>
                                     <td class="auto-style33">
                                         <asp:RadioButtonList ID="rltMarble" runat="server" AutoPostBack="True" ForeColor="#EBFAFA" Height="19px" RepeatDirection="Horizontal" style="margin-left: 0px" Width="420px">
                                             <asp:ListItem Value="3"></asp:ListItem>
@@ -280,8 +248,7 @@
                         </table>
                         <table>
                             <tr>
-                                <td class="auto-style72"></td>
-                                <td class="auto-style77">Must Have</td>
+                                <td class="auto-style92"></td>
                                 <td class="auto-style84">Love it</td>
                                 <td class="auto-style85">Like it</td>
                                 <td class="auto-style82">It&#39;s Okay</td>
@@ -294,9 +261,6 @@
                                     <td class="auto-style86">Formica</td>
                                     <td class="auto-style88">$2,100</td>
                                     <td class="auto-style89"></td>
-                                    <td class="auto-style90">
-                                        <asp:CheckBox ID="cbxFormica" runat="server" AutoPostBack="True" />
-                                    </td>
                                     <td class="auto-style7">
                                         <asp:RadioButtonList ID="rltFormica" runat="server" AutoPostBack="True" ForeColor="#EBFAFA" Height="19px" RepeatDirection="Horizontal" style="margin-left: 0px" Width="420px">
                                             <asp:ListItem Value="3"></asp:ListItem>
@@ -314,9 +278,6 @@
                                     <td class="auto-style86">Maple</td>
                                     <td class="auto-style88">$2,450</td>
                                     <td class="auto-style89"></td>
-                                    <td class="auto-style90">
-                                        <asp:CheckBox ID="cbxMaple" runat="server" AutoPostBack="True" />
-                                    </td>
                                     <td class="auto-style7">
                                         <asp:RadioButtonList ID="rltMaple" runat="server" AutoPostBack="True" ForeColor="#EBFAFA" Height="19px" RepeatDirection="Horizontal" style="margin-left: 0px" Width="420px">
                                             <asp:ListItem Value="3"></asp:ListItem>
@@ -334,9 +295,6 @@
                                     <td class="auto-style86">Metal</td>
                                     <td class="auto-style88">$2,900</td>
                                     <td class="auto-style89"></td>
-                                    <td class="auto-style90">
-                                        <asp:CheckBox ID="cbxMetal" runat="server" AutoPostBack="True" />
-                                    </td>
                                     <td class="auto-style32">
                                         <asp:RadioButtonList ID="rltMetal" runat="server" AutoPostBack="True" ForeColor="#EBFAFA" Height="19px" RepeatDirection="Horizontal" style="margin-left: 0px" Width="420px">
                                             <asp:ListItem Value="3"></asp:ListItem>
