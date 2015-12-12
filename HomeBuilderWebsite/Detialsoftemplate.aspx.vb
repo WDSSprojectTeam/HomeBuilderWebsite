@@ -19,6 +19,7 @@ Partial Class Detialsoftemplate
 
 
     Protected Sub btnbacktochoosehome_Click(sender As Object, e As EventArgs) Handles btnbacktochoosehome.Click
+        Session("numberofloads") = 2
         Response.Redirect("ScenarioGridview.aspx")
     End Sub
 
