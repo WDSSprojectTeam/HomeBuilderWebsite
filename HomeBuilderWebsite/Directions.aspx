@@ -14,7 +14,7 @@
                 <td style="width: 81px">
                      <asp:Image ID="Image3" runat="server" ImageUrl="~/Images/num1.png" Width="50px" />
                 </td>
-                <td>Choose a base home layout that fits your needs!</td>
+                <td><h2>Choose a base home layout that fits your needs!</h2></td>
                 
             </tr>
              <tr>
@@ -26,7 +26,7 @@
                 <td style="width: 81px">
                      <asp:Image ID="img2" runat="server" ImageUrl="~/Images/num2.png" Width="50px" />
                 </td>
-                <td>Tell us what areas of&nbsp;the house are most important to you! (get rid of this)</td>
+                <td><h2>Tell us what areas of&nbsp;the house are most important to you!</h2> </td>
                 
             </tr>
              <tr>
@@ -39,7 +39,7 @@
                 <td style="width: 81px; height: 23px;">
                      <asp:Image ID="Image1" runat="server" ImageUrl="~/Images/Num3.png" Width="50px" />
                 </td>
-                <td style="height: 23px"> Rate the upgrades we offer to let us know what you like!</td>
+                <td style="height: 23px"><h2> Rate the upgrades we offer to let us know what you like!</h2></td>
             </tr>
              <tr>
                 <td> </td>
@@ -48,7 +48,7 @@
             </tr>
              <tr>
                 <td style="width: 81px">  <asp:Image ID="Image2" runat="server" ImageUrl="~/Images/Num4.png" Width="50px" /></td>
-                <td> View our suggestions on how to best spend your money and edit details to make your perfect home!</td>
+                <td> <h2>View our suggestions on how to best spend your money and edit details to make your perfect home!</h2></td>
             </tr>
 </table>
          </div>
@@ -62,8 +62,10 @@
             </tr>
         </table>
          <br />
-    <asp:Button ID="btnback" runat="server"  Font-Names="Corbel" Text="Back" Font-Size="Larger" BackColor="#336666" Font-Bold="True" ForeColor="White" Width="351px" />
+         <asp:Button ID="btnBack" runat="server"  Font-Names="Corbel" Text="Back" Font-Size="Larger" BackColor="#336666" Font-Bold="True" ForeColor="White" Width="351px" />
+    &nbsp;
     <asp:Button ID="btnnext" runat="server"  Font-Names="Corbel" Text="Let's Get Started!" Font-Size="Larger" BackColor="#336666" Font-Bold="True" ForeColor="White" Width="351px" />
+    
 
          </div>
 

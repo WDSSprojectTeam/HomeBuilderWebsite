@@ -16,15 +16,13 @@
         <div style="text-align: center">
     
         <span style="font-size: xx-large"><strong>Welcome To The Comparison Page!</strong></span><br style="font-size: x-large" />
-        <br style="font-size: x-large" />
-        <span style="font-size: x-large">Below you will find saved scenarios that you have already completed that you can select to compare.</span><br style="font-size: x-large" />
-        <br style="font-size: x-large" />
-        <br style="font-size: x-large" />
-        <span style="font-size: x-large">Please choose what your price limit you would like to set for your scenarios.</span><br style="font-size: x-large" />
+            <br style="font-size: x-large" />
         <br />
-            <table>
+
+
+            <table style="margin:0px auto; width: 800px;"">
                 <tr>
-                    <td>
+                    <td style="width: 349px">
                         <asp:Chart ID="Chart1" runat="server" align="center" style="font-size: large">
             <series>
                 <asp:Series Name="Series1" ChartType="Pie">
@@ -38,9 +36,10 @@
             <br />
         <br />
                     </td>
-                    <td style="vertical-align: top">
-                        <span style="font-size: x-large">Set Price Filter Limit<br />
+                    <td style="vertical-align: top; width: 441px;" align="left">
+                        <span style="font-size: x-large">Compare your saved scenarios.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br />
                         <br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Set Price Filter Limit:
         <asp:DropDownList ID="DropDownList1" runat="server" autopostback ="true" align="center" Font-Size="X-Large" style="font-size: large">
             <asp:ListItem Value="100000">$100000</asp:ListItem>
             <asp:ListItem Value="200000">$200000</asp:ListItem>
@@ -57,12 +56,12 @@
         </asp:DropDownList>
                         <br />
                         <br />
-                        Saved Scenarios are below, please select which 
-                        <br />
+                        Saved Scenarios are below, please select which
                         ones you&#39;d like to compare on the next page.</span><br />
         <br style="font-size: x-large" />
-            <span style="font-size: x-large">You can also press &quot;Select&quot; to see a cost break <br />
-                        down for feature each on the chart above.</span><br style="font-size: x-large" />
+            <span style="font-size: x-large">You can also press &quot;Select&quot; to see a cost break 
+                        down for feature each on the chart <br />
+                        above.</span><br style="font-size: x-large" />
             <br />
         <br />
         </div>
@@ -89,6 +88,7 @@
             <br />
         <br />
         <asp:Button ID="Button1" runat="server" Height="43px" Text="Compare" align="center" Width="140px" Font-Size="X-Large" />
+            
                     </td>
                 </tr>
             </table>
