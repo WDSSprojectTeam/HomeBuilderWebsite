@@ -133,7 +133,6 @@ Public Class Optimization
                             End If
                         Next
 
-
                     End If
                 End If
             Next
