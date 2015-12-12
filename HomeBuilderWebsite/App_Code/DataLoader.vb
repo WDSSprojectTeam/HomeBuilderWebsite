@@ -318,4 +318,21 @@ FROM tblHomeLayouts WHERE (((tblHomeLayouts.Style)=param1));", myConnection)
         Return myTable
     End Function
 
+    '    Public Function GetTemplateDetails(ByVal budget As Double, ByVal keyarea As String) As DataTable
+    '        Dim myTable As New DataTable
+    '        myConnection = New OleDbConnection(myConnectionStr)
+    '        myCommand = New OleDbCommand("SELECT tblTemplates.TempID, tblTemplates.KeyArea, tblTemplates.TempName, tblTemplates.Bedrooms, tblTemplates.Bathrooms, tblTemplates.Price, tblTemplates.SquareFeet, tblTemplates.Picture
+    'FROM tblTemplatesWHERE (((tblTemplates.KeyArea)=[]) AND ((tblTemplates.Price)>[]));", myConnection)
+    '        myCommand.Parameters.AddWithValue("param1", budget)
+    '        myCommand.Parameters.AddWithValue("param2", keyarea)
+
+    '        myConnection.Open()
+    '        myReader = myCommand.ExecuteReader
+    '        myTable.Load(myReader)
+    '        myReader.Close()
+    '        myConnection.Close()
+    '        Return myTable
+    '    End Function
+
+
 End Class
