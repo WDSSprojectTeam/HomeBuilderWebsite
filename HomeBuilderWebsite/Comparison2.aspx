@@ -14,7 +14,6 @@
         <br />
         <span style="font-size: xx-large"><strong>Multiple Scenario Comparison</strong></span><br />
         <br />
-        <br />
     
         <asp:Chart ID="Chart1" align="center" runat="server">
             <Series>
@@ -28,10 +27,8 @@
         </asp:Chart>
         <br />
         <br />
-        <br />
-        Please select which style of graph you are interested in seeing, a price comparison or a utility vs price comparison.<br />
-        <br />
-        <br />
+        Please select which style of graph you are interested in seeing.<br />
+&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:DropDownList ID="DropDownList2" align="center" runat="server" AutoPostBack ="true" Font-Size="X-Large" style="font-size: large">
             <asp:ListItem Value="Utility">Utility vs Price Comparison</asp:ListItem>
             <asp:ListItem Value="House" Selected="True">House Type Price Comparison</asp:ListItem>
@@ -48,6 +45,7 @@
         </asp:DropDownList>
         <br />
         <br />
+        Scenarios
         <br />
         <asp:GridView ID="GridView1" runat="server" align="center" ShowHeader="false" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" CellPadding="3" ForeColor="Black" GridLines="Vertical" Font-Size="Large">
             <AlternatingRowStyle BackColor="#CCCCCC" />
@@ -61,15 +59,12 @@
             <SortedDescendingHeaderStyle BackColor="#383838" />
         </asp:GridView>
         <br />
-        <br />
-        Please select which scenario you would like to see a few more details about.<br />
-        <br />
-        <br />
+        Please select which scenario you would like to see a few more details about.&nbsp;&nbsp;&nbsp;
         <asp:DropDownList ID="DropDownList1" align="center" runat="server" AutoPostBack ="true" Font-Size="X-Large" style="font-size: large">
         </asp:DropDownList>
         <br />
         <br />
-        <br />
+        Scenario Details<br />
         <asp:DetailsView ID="DetailsView1" runat="server" align="center" CellPadding="4" ForeColor="#333333" GridLines="None" Height="50px" Width="125px" Font-Size="Large">
             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
             <CommandRowStyle BackColor="#E2DED6" Font-Bold="True" />
@@ -80,6 +75,8 @@
             <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
             <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
         </asp:DetailsView>
+    
+        <br />
     
     </div>
     <%--</form>

@@ -64,7 +64,7 @@ Public Class Comparison1Charter
         'charea.AxisY.Maximum = 500000
         'charea.AxisY.Minimum = 0
         charea.AxisY.TitleFont = New Drawing.Font("cambria", 18)
-        charea.AxisY.Title = "Cost"
+        charea.AxisY.Title = "Cost ($)"
     End Sub
 
     Private Sub loadseriesdata(ByVal identity As Integer)

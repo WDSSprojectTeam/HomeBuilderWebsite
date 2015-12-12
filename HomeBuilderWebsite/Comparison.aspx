@@ -21,9 +21,11 @@
         <br style="font-size: x-large" />
         <br style="font-size: x-large" />
         <span style="font-size: x-large">Please choose what your price limit you would like to set for your scenarios.</span><br style="font-size: x-large" />
-        <br style="font-size: large" />
         <br />
-        <asp:Chart ID="Chart1" runat="server" align="center" style="font-size: large">
+            <table>
+                <tr>
+                    <td>
+                        <asp:Chart ID="Chart1" runat="server" align="center" style="font-size: large">
             <series>
                 <asp:Series Name="Series1" ChartType="Pie">
                 </asp:Series>
@@ -35,32 +37,32 @@
         </asp:Chart>
             <br />
         <br />
-        <br />
-            <span style="font-size: x-large">Set Price Limit<br />
-            <br />
-            </span><br />
+                    </td>
+                    <td style="vertical-align: top">
+                        <span style="font-size: x-large">Set Price Filter Limit<br />
+                        <br />
         <asp:DropDownList ID="DropDownList1" runat="server" autopostback ="true" align="center" Font-Size="X-Large" style="font-size: large">
-            <asp:ListItem>100000</asp:ListItem>
-            <asp:ListItem>200000</asp:ListItem>
-            <asp:ListItem>300000</asp:ListItem>
-            <asp:ListItem>400000</asp:ListItem>
-            <asp:ListItem>500000</asp:ListItem>
-            <asp:ListItem Selected="True">600000</asp:ListItem>
-            <asp:ListItem>700000</asp:ListItem>
-            <asp:ListItem>800000</asp:ListItem>
-            <asp:ListItem>900000</asp:ListItem>
-            <asp:ListItem>1000000</asp:ListItem>
-            <asp:ListItem>1500000</asp:ListItem>
-            <asp:ListItem>2000000</asp:ListItem>
-            <asp:ListItem>1</asp:ListItem>
+            <asp:ListItem Value="100000">$100000</asp:ListItem>
+            <asp:ListItem Value="200000">$200000</asp:ListItem>
+            <asp:ListItem Value="300000">$300000</asp:ListItem>
+            <asp:ListItem Value="400000">$400000</asp:ListItem>
+            <asp:ListItem Value="500000">$500000</asp:ListItem>
+            <asp:ListItem Value="600000">$600000</asp:ListItem>
+            <asp:ListItem Value="700000">$700000</asp:ListItem>
+            <asp:ListItem Value="800000">$800000</asp:ListItem>
+            <asp:ListItem Value="900000">$900000</asp:ListItem>
+            <asp:ListItem Value="1000000">$1000000</asp:ListItem>
+            <asp:ListItem Value="1500000">$1500000</asp:ListItem>
+            <asp:ListItem Selected="True" Value="2000000">$2000000</asp:ListItem>
         </asp:DropDownList>
-            <br />
-        <br />
-        <br />
-            <span style="font-size: x-large">Saved Scenarios are below, please select which ones you&#39;d like to compare on the next page.
-        </span>
+                        <br />
+                        <br />
+                        Saved Scenarios are below, please select which 
+                        <br />
+                        ones you&#39;d like to compare on the next page.</span><br />
         <br style="font-size: x-large" />
-            <span style="font-size: x-large">You can also press &quot;Select&quot; to see a cost break down for each on the chart above.</span><br style="font-size: x-large" />
+            <span style="font-size: x-large">You can also press &quot;Select&quot; to see a cost break <br />
+                        down for feature each on the chart above.</span><br style="font-size: x-large" />
             <br />
         <br />
         </div>
@@ -87,6 +89,16 @@
             <br />
         <br />
         <asp:Button ID="Button1" runat="server" Height="43px" Text="Compare" align="center" Width="140px" Font-Size="X-Large" />
+                    </td>
+                </tr>
+            </table>
+        
+            <br />
+        <br />
+            
+    
+            <br />
+            <br />
     
             <br />
         </div>
