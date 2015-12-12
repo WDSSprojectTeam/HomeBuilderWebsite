@@ -24,7 +24,7 @@ Partial Class Detialsoftemplate
     End Sub
 
     Private Sub btnFeatureEvaluation_Click(sender As Object, e As EventArgs) Handles btnFeatureEvaluation.Click
-        Response.Redirect("~\EditTemplateFeatures.aspx")
+        Response.Redirect("~\TemplateEdit.aspx")
     End Sub
 
 End Class

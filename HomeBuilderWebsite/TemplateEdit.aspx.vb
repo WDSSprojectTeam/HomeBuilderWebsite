@@ -6,8 +6,9 @@ Partial Class TemplateEdit
     Inherits System.Web.UI.Page
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        Dim C As New TempPieChart(chtPie)
-        C.Draw()
+
+
+
         rdb1.Visible = False
         rdb2.Visible = False
         rdb3.Visible = False
@@ -17,8 +18,19 @@ Partial Class TemplateEdit
         Dim myOptionList As List(Of Options) = Session("OptionSet")
         'Dim myChosenOptions As List(Of Integer) = Session("chosenTemplateFeatures")
         Dim myTable As DataTable = Session("myTemplate")
+
         'Session("chosenTemplateFeatures") = myChosenOptions
-        Dim index As Integer = Session("whichTemplate")
+        Dim index As Integer = Session("tempid") - 1
+        Dim homeid As Integer = myTable.Rows(index).Item(1)
+        Dim homelist As List(Of HomeLayouts) = Session("HomeSet")
+        Dim myhome As New HomeLayouts
+
+        For Each home In homelist
+            If home.gethomeID = homeid Then
+                myhome = home
+            End If
+        Next
+
         Dim displayList As New DataTable
         displayList.Columns.Add("Feature")
         displayList.Columns.Add("Name")
@@ -40,7 +52,7 @@ Partial Class TemplateEdit
         End If
 
 
-
+        Dim sum As Integer = 0
 
         For i = 0 To myOptionList.Count - 1
             For j = 0 To myChosenOptions.Count - 1
@@ -51,13 +63,16 @@ Partial Class TemplateEdit
                     displayList.Rows(displayList.Rows.Count - 1)("Name") = myOptionList.Item(i).getoptionname
                     displayList.Rows(displayList.Rows.Count - 1)("Description") = myOptionList.Item(i).getoptiondescription
                     displayList.Rows(displayList.Rows.Count - 1)("Price") = myOptionList.Item(i).getoptionprice
-
+                    sum += myOptionList.Item(i).getoptionprice
                 End If
             Next
 
         Next
+        lblCost.Text = "Total Cost: $" & (sum + myHome.Price)
         gvwEditTemplate.DataSource = displayList
         gvwEditTemplate.DataBind()
+        Dim C As New TempPieChart(chtPie)
+        C.Draw()
     End Sub
     Protected Sub gvwEditTemplate_RowCommand(sender As Object, e As GridViewCommandEventArgs) Handles gvwEditTemplate.RowCommand
         Panel1.Visible = True
@@ -165,7 +180,7 @@ Partial Class TemplateEdit
 
     Protected Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
         Dim myTable As DataTable = Session("myTemplate")
-        Dim index As Integer = Session("whichTemplate")
+        Dim index As Integer = Session("tempid") - 1
         Dim homeName As Integer = myTable.Rows(index).Item(1)
         Dim myHomeList As List(Of HomeLayouts) = Session("HomeSet")
         Dim myHome As New HomeLayouts
@@ -197,6 +212,7 @@ Partial Class TemplateEdit
         Dim HouseName As String = myHome.Name
         Dim Budget As Integer = Session("Budget")
         Dim ScenarioName As String = InputBox("What would you like to save this scenario as?", "Save Scenario", "")
+
         Dim TotalCost As Double = upgradeCost + myHome.Price
 
         Dim FloorCost As Double = 1
@@ -237,6 +253,11 @@ Partial Class TemplateEdit
 
         Dim DAL As New DataLoader
         DAL.InsertSavedScenario(HouseName, Budget, ScenarioName, TotalCost, FloorCost, RoofCost, Floors, Roof_Type, Appliances, Garage, Countertops, Bath, Closets, Fireplace, Cabinet, Landscape, Utility)
+    End Sub
+
+
+    Protected Sub btnback_Click(sender As Object, e As EventArgs) Handles btnBack.Click
+        Response.Redirect("ScenarioGridview.aspx")
     End Sub
 End Class
 

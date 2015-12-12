@@ -19,4 +19,8 @@ Partial Class Comparison3
         DetailsView1.DataSource = mydataAccess.getscenariopartdetails(identity)
         DetailsView1.DataBind()
     End Sub
+
+    Protected Sub btnHome_Click(sender As Object, e As EventArgs) Handles btnHome.Click
+        Response.Redirect("Home.aspx")
+    End Sub
 End Class

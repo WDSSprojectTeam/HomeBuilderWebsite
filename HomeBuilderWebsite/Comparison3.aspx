@@ -16,6 +16,9 @@
             <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
             <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
         </asp:DetailsView>
+                    <br />
+                 <asp:Button ID="btnHome" runat="server"  Font-Names="Corbel" Text="Return to Home" Font-Size="Larger" BackColor="#336666" Font-Bold="True" ForeColor="White" Width="200px" />
+               
                     </strong></span><br />
         </div>
 </asp:Content>

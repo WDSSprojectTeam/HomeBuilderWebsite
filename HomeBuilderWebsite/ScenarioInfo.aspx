@@ -99,6 +99,8 @@
 
 
     <br />
+    <asp:Button ID="btnBack" runat="server"  Font-Names="Corbel" Text="Back" Font-Size="Larger" BackColor="#336666" Font-Bold="True" ForeColor="White" Width="395px" />
+    &nbsp;
     <asp:Button ID="btnBegin" runat="server"  Font-Names="Corbel" Text="See what templates we have to offer!" Font-Size="Larger" BackColor="#336666" Font-Bold="True" ForeColor="White" Width="395px" />
     <br />
           <br />

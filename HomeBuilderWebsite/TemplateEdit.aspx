@@ -28,6 +28,8 @@
                      <SortedDescendingCellStyle BackColor="#E5E5E5" />
                      <SortedDescendingHeaderStyle BackColor="#275353" />
          </asp:GridView>
+                 <asp:Label ID="lblCost" runat="server"></asp:Label>
+                 <br />
              </td>
 
              <td style="border-style: none; border-width: thin; width: 375px" >

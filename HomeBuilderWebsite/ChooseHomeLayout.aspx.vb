@@ -22,7 +22,7 @@ Partial Class ChooseHomeLayout
             ddlbedroom.SelectedValue = Session("tempbed")
 
             If Session("numberofloads") <> 1 Then
-                PopulateGridView()
+                SeeAllHomesAgain()
 
             End If
 
@@ -32,6 +32,19 @@ Partial Class ChooseHomeLayout
 
 
     End Sub
+
+    Protected Sub SeeAllHomesAgain()
+
+        gvwalltypes.DataSource = myDataLoader.GetHomeDetails()
+        gvwalltypes.DataBind()
+        gvwalltypes.Visible = True
+
+        lbxhometype.SelectedValue = "Family"
+        ddlbathroom.SelectedValue = 1
+        ddlbedroom.SelectedValue = 1
+
+    End Sub
+
 
     Protected Sub firstload()
 

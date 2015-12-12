@@ -7,8 +7,12 @@
     <p>
     <h3>1) How much would you like to spend?</h3>
           $<asp:TextBox ID="tbxBudget" runat="server"></asp:TextBox>
+        <br />
+            Dreamcather Custom Homes suggests you allocate between $50K to $150K for your features to produce meaningful results.
+        <br />
+        Our base homes range from $200K to $900K.
 
-            </p>
+    </p>
 
   
    

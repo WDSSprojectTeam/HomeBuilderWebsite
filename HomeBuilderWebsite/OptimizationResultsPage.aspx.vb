@@ -247,6 +247,8 @@ Partial Class OptimizationResultsPage
     End Sub
     Private Sub populateGridview()
         Dim displayList As New DataTable
+        Dim myHome As HomeLayouts = Session("selectedHome")
+
 
         Dim myChosenOptions As List(Of Integer) = Session("chosenOptions")
         Dim myOptionList As List(Of Options) = Session("optionSet")
@@ -255,7 +257,7 @@ Partial Class OptimizationResultsPage
         displayList.Columns.Add("Name")
         displayList.Columns.Add("Description")
         displayList.Columns.Add("Price")
-
+        Dim sum As Integer = 0
 
         For i = 0 To myOptionList.Count - 1
             For j = 0 To myChosenOptions.Count - 1
@@ -266,6 +268,8 @@ Partial Class OptimizationResultsPage
                     displayList.Rows(displayList.Rows.Count - 1)("Name") = myOptionList.Item(i).getoptionname
                     displayList.Rows(displayList.Rows.Count - 1)("Description") = myOptionList.Item(i).getoptiondescription
                     displayList.Rows(displayList.Rows.Count - 1)("Price") = myOptionList.Item(i).getoptionprice
+                    sum += myOptionList.Item(i).getoptionprice
+
                     'list.Add(myOptionList.Item(i).getoptionname)
                     'list.Add(myOptionList.Item(i).getoptiondescription)
                     'list.Add(myOptionList.Item(i).getoptionprice)
@@ -276,6 +280,7 @@ Partial Class OptimizationResultsPage
         Next
         gvwDetails.DataSource = displayList
         gvwDetails.DataBind()
+        lblCost.Text = "Total Cost: $" & (sum + myHome.Price)
 
         chtFeatures.Visible = True
         Dim cht As New OptPieChart(chtFeatures)
@@ -482,10 +487,11 @@ Partial Class OptimizationResultsPage
 
     End Sub
 
-
-
-
     Protected Sub btnBack_Click(sender As Object, e As System.EventArgs) Handles btnBack.Click
         Response.Redirect("FEBedroom.aspx")
+    End Sub
+
+    Protected Sub btnHome_Click(sender As Object, e As EventArgs) Handles btnHome.Click
+        Response.Redirect("Home.aspx")
     End Sub
 End Class

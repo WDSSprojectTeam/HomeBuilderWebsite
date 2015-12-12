@@ -5,7 +5,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
 
      <div style="text-align:center" >
-    
+    Click on the blue nodes to view our budget allocation suggestions.
      <table style="margin:0px auto; width: 800px;"">
          <tr>
              <td >
@@ -57,11 +57,12 @@
                      <SortedDescendingCellStyle BackColor="#E5E5E5" />
                      <SortedDescendingHeaderStyle BackColor="#275353" />
          </asp:GridView>
+                 <asp:Label ID="lblCost" runat="server" Text="Label"></asp:Label>
              </td>
 
              <td style="vertical-align: top">
                  <div style="text-align:left">
-                 <asp:Panel ID="Panel1" runat="server" BorderColor="Black" BorderStyle="Solid" Width="140px">
+                 <asp:Panel ID="Panel1" runat="server" BorderColor="Black" BorderStyle="Solid" Width="140px" Visible="False">
                      <asp:Label ID="lblFeatureEdit" runat="server" align="left" Font-Bold="True" Font-Size="Large" Visible="False">Edit Feature:</asp:Label>
                      <br />
                      <br />
@@ -100,6 +101,9 @@
                  <asp:Button ID="btnBack" runat="server"  Font-Names="Corbel" Text="Back" Font-Size="Larger" BackColor="#336666" Font-Bold="True" ForeColor="White" Width="200px" />
                  &nbsp;
                  <asp:Button ID="btnSave" runat="server"  Font-Names="Corbel" Text="Save My Changes" Font-Size="Larger" BackColor="#336666" Font-Bold="True" ForeColor="White" Width="200px" />
+               
+             &nbsp;
+                 <asp:Button ID="btnHome" runat="server"  Font-Names="Corbel" Text="Return to Home" Font-Size="Larger" BackColor="#336666" Font-Bold="True" ForeColor="White" Width="200px" />
                
              </td>
          </tr>
