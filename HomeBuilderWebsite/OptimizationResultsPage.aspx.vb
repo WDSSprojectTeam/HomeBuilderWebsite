@@ -218,6 +218,18 @@ Partial Class OptimizationResultsPage
         Dim FloorCost As Double = 1
         Dim RoofCost As Double = 1
 
+        For i = 0 To myOptionsList.Count - 1
+            If myOptionsList.Item(i).getoptionID = myChosenOptions.Item(0) Then
+                FloorCost = myOptionsList.Item(i).getoptionprice
+            End If
+
+            If myOptionsList.Item(i).getoptionID = myChosenOptions.Item(1) Then
+                RoofCost = myOptionsList.Item(i).getoptionprice
+            End If
+
+        Next
+
+
         For Each aOption In myOptionsList
             If aOption.getoptionID = myChosenOptions.Item(0) Then
                 FloorCost = aOption.getoptionprice

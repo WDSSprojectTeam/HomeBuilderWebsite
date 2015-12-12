@@ -77,6 +77,7 @@ Partial Class ScenarioGridview
 
             Dim index As Integer = 0
             Dim myTable As DataTable = myDataLoader.GetTemplateDetails()
+            Session("myTemplate") = myTable
 
             Dim homeID As Integer = myTable.Rows(index).Item(1)
             Dim keyfeature As String = myTable.Rows(index).Item(2)
@@ -420,6 +421,7 @@ Partial Class ScenarioGridview
 
         Dim index As Integer = 0
         Dim myTable As DataTable = myDataLoader.GetTemplateDetails()
+
 
         Dim homeID As Integer = myTable.Rows(index).Item(1)
         Dim keyfeature As String = myTable.Rows(index).Item(2)

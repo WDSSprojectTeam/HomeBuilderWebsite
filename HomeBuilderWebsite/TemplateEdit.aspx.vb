@@ -161,5 +161,80 @@ Partial Class TemplateEdit
         Response.Redirect("TemplateEdit.aspx")
     End Sub
 
+    Protected Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
+        Dim myTable As DataTable = Session("myTemplate")
+        Dim index As Integer = Session("whichTemplate")
+        Dim homeName As Integer = myTable.Rows(index).Item(1)
+        Dim myHomeList As List(Of HomeLayouts) = Session("HomeSet")
+        Dim myHome As New HomeLayouts
+
+        For Each aHome In myHomeList
+            If aHome.gethomeID = homeName Then
+                myHome = aHome
+            End If
+        Next
+
+        Dim myChosenOptions As List(Of Integer) = Session("chosenTemplateFeatures")
+        Dim myOptionsList As List(Of Options) = Session("OptionSet")
+        Dim upgradeCost As Double = 0
+        Dim Utility As Integer = 93
+
+
+
+        For Each aOption In myOptionsList
+            For i = 0 To myChosenOptions.Count - 1
+                If aOption.getoptionID = myChosenOptions.Item(i) Then
+                    upgradeCost += aOption.getoptionprice
+
+                End If
+            Next
+        Next
+
+
+
+        Dim HouseName As String = myHome.Name
+        Dim Budget As Integer = Session("Budget")
+        Dim ScenarioName As String = InputBox("What would you like to save this scenario as?", "Save Scenario", "")
+        Dim TotalCost As Double = upgradeCost + myHome.Price
+
+        Dim FloorCost As Double = 1
+        Dim RoofCost As Double = 1
+
+        For i = 0 To myOptionsList.Count - 1
+            If myOptionsList.Item(i).getoptionID = myChosenOptions.Item(0) Then
+                FloorCost = myOptionsList.Item(i).getoptionprice
+            End If
+
+            If myOptionsList.Item(i).getoptionID = myChosenOptions.Item(1) Then
+                RoofCost = myOptionsList.Item(i).getoptionprice
+            End If
+
+        Next
+
+        For Each aOption In myOptionsList
+            If aOption.getoptionID = myChosenOptions.Item(0) Then
+                FloorCost = aOption.getoptionprice
+            End If
+
+            If aOption.getoptionID = myChosenOptions.Item(1) Then
+                RoofCost = aOption.getoptionprice
+            End If
+        Next
+
+        Dim Floors As Integer = myChosenOptions.Item(0)
+        Dim Roof_Type As Integer = myChosenOptions.Item(1)
+        Dim Appliances As Integer = myChosenOptions.Item(2)
+        Dim Garage As Integer = myChosenOptions.Item(3)
+        Dim Countertops As Integer = myChosenOptions.Item(4)
+        Dim Bath As Integer = myChosenOptions.Item(5)
+        Dim Closets As Integer = myChosenOptions.Item(6)
+        Dim Fireplace As Integer = myChosenOptions.Item(7)
+        Dim Landscape As Integer = myChosenOptions.Item(8)
+        Dim Cabinet As Integer = myChosenOptions.Item(9)
+
+
+        Dim DAL As New DataLoader
+        DAL.InsertSavedScenario(HouseName, Budget, ScenarioName, TotalCost, FloorCost, RoofCost, Floors, Roof_Type, Appliances, Garage, Countertops, Bath, Closets, Fireplace, Cabinet, Landscape, Utility)
+    End Sub
 End Class
 
