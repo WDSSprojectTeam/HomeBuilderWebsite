@@ -61,16 +61,30 @@
                  <br />
         
         <asp:RadioButton ID="rdb5" runat="server" Autopostback=" false" GroupName="1" Visible="False" />
+                     <br />
+                     <asp:Button ID="btnEdit" runat="server" Text="Edit" />
                  </asp:Panel>
    </div>
          <tr>
              <td colspan="3"  >
                  <br />
+                 <br />
+                 <asp:Chart ID="chtPie" runat="server">
+                     <Series>
+                         <asp:Series Name="Series1">
+                         </asp:Series>
+                     </Series>
+                     <ChartAreas>
+                         <asp:ChartArea Name="ChartArea1">
+                         </asp:ChartArea>
+                     </ChartAreas>
+                 </asp:Chart>
+                 <br />
+                 <br />
+                 <br />
                  <asp:Button ID="btnBack" runat="server"  Font-Names="Corbel" Text="Back" Font-Size="Larger" BackColor="#336666" Font-Bold="True" ForeColor="White" Width="200px" />
                  &nbsp;
                  <asp:Button ID="btnSave" runat="server"  Font-Names="Corbel" Text="Save My Changes" Font-Size="Larger" BackColor="#336666" Font-Bold="True" ForeColor="White" Width="200px" />
-               
-                 <asp:Button ID="btnEdit" runat="server" Text="Edit" />
                
              </td>
          </tr>

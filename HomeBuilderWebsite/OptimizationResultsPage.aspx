@@ -69,27 +69,29 @@
                  <br /> 
     
          
-         <asp:RadioButton ID="rdb1" alight="left" runat="server" Autopostback =" true" GroupName="1" Visible="False" />
+         <asp:RadioButton ID="rdb1" alight="left" runat="server" Autopostback =" false" GroupName="1" Visible="False" />
               
       
                  <br />
               
       
-        <asp:RadioButton ID="rdb2" runat="server" Autopostback=" true" GroupName="1" Visible="False" />
+        <asp:RadioButton ID="rdb2" runat="server" Autopostback=" false" GroupName="1" Visible="False" />
                      
      
                  <br />
                      
      
-        <asp:RadioButton ID="rdb3" runat="server" Autopostback=" true" GroupName="1" Visible="False" />
+        <asp:RadioButton ID="rdb3" runat="server" Autopostback=" false" GroupName="1" Visible="False" />
         
                  <br />
         
-        <asp:RadioButton ID="rdb4" runat="server" Autopostback=" true" GroupName="1" Visible="False" />
+        <asp:RadioButton ID="rdb4" runat="server" Autopostback=" false" GroupName="1" Visible="False" />
         
                  <br />
         
-        <asp:RadioButton ID="rdb5" runat="server" Autopostback=" true" GroupName="1" Visible="False" />
+        <asp:RadioButton ID="rdb5" runat="server" Autopostback=" false" GroupName="1" Visible="False" />
+                     <br />
+                     <asp:Button ID="btnEdit" runat="server" Text="edit" />
                  </asp:Panel>
    </div>
          <tr>
