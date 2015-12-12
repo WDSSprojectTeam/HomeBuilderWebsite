@@ -18,6 +18,13 @@
         .auto-style71 {
             width: 65px;
         }
+        .auto-style72 {
+            width: 198px;
+            height: 23px;
+        }
+        .auto-style74 {
+            width: 81px;
+        }
         .auto-style75 {
             width: 25px;
         }
@@ -35,14 +42,6 @@
         }
         .auto-style85 {
             width: 95px;
-            height: 23px;
-        }
-        .auto-style90 {
-            width: 214px;
-            height: 23px;
-        }
-        .auto-style91 {
-            width: 218px;
             height: 23px;
         }
         </style>
@@ -64,7 +63,7 @@
                         </table>
                         <table>
                             <tr>
-                                <td class="auto-style90"></td>
+                                <td class="auto-style72"></td>
                                 <td class="auto-style84">Love it</td>
                                 <td class="auto-style85">Like it</td>
                                 <td class="auto-style82">It&#39;s Okay</td>
@@ -167,7 +166,7 @@
                     </table>
                         <table>
                             <tr>
-                                <td class="auto-style90"></td>
+                                <td class="auto-style72"></td>
                                 <td class="auto-style84">Love it</td>
                                 <td class="auto-style85">Like it</td>
                                 <td class="auto-style82">It&#39;s Okay</td>
@@ -238,7 +237,7 @@
                     </table>
                         <table>
                             <tr>
-                                <td class="auto-style91"></td>
+                                <td class="auto-style72"></td>
                                 <td class="auto-style84">Love it</td>
                                 <td class="auto-style85">Like it</td>
                                 <td class="auto-style82">It&#39;s Okay</td>
