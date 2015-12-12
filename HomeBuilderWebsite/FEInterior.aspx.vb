@@ -8,33 +8,16 @@ Partial Class FEInterior
 
         'FLOORING
 
-        If cbxCarpet.Checked = True Then
-            myOptionList.GetName("Carpet").Need = True
-        ElseIf cbxTile.Checked = True Then
-            myOptionList.GetName("Tile").Need = True
-        ElseIf cbxHardwood.Checked = True Then
-            myOptionList.GetName("Hardwood").Need = True
-        Else
             myOptionList.GetName("Carpet").Preference = rltCarpet.SelectedValue
             myOptionList.GetName("Tile").Preference = rltTile.SelectedValue
             myOptionList.GetName("Hardwood").Preference = rltHardwood.SelectedValue
-        End If
+
 
         'FIREPLACE
 
-        If cbxBrick.Checked = True Then
-            myOptionList.GetName("Brick Fireplace").Need = True
-        ElseIf cbxManufactured.Checked = True Then
-            myOptionList.GetName("Manufactured Stone Fireplace").Need = True
-        ElseIf cbxNatural.Checked = True Then
-            myOptionList.GetName("Natural Stone Fireplace").Need = True
-        Else
             myOptionList.GetName("Brick Fireplace").Preference = rltBrick.SelectedValue
             myOptionList.GetName("Manufactured Stone Fireplace").Preference = rltManufactured.SelectedValue
             myOptionList.GetName("Natural Stone Fireplace").Preference = rltNatural.SelectedValue
-        End If
-
-        'Dim myHome As HomeLayouts = Session("SelectedHome")
 
         'FLOOR
         Dim carpetPrice As Double = myOptionList.GetName("Carpet").getoptionprice
@@ -56,26 +39,6 @@ Partial Class FEInterior
 
         Dim flooravg As Double = AvgPrice(carpetPrice, tilePrice, hardwoodPrice, 0, 0, carpetRating, tileRating, hardwoodRating, 0, 0)
         Dim fireplaceavg As Double = AvgPrice(brickPrice, manPrice, natPrice, 0, 0, brickRating, manRating, natRating, 0, 0)
-
-        'FLOORS
-
-        If cbxCarpet.Checked = True Then
-            flooravg = carpetPrice
-        ElseIf cbxTile.Checked = True Then
-            flooravg = tilePrice
-        ElseIf cbxHardwood.Checked = True Then
-            flooravg = hardwoodPrice
-        End If
-
-        'FIREPLACE
-
-        If cbxBrick.Checked = True Then
-            fireplaceavg = brickPrice
-        ElseIf cbxManufactured.Checked = True Then
-            fireplaceavg = manPrice
-        ElseIf cbxNatural.Checked = True Then
-            fireplaceavg = natPrice
-        End If
 
         Dim remainderbudget As Double = Session("myRemainderBudget")
         Session("myRemainderBudget") = remainderbudget - (flooravg + fireplaceavg)
@@ -102,106 +65,6 @@ Partial Class FEInterior
         Session("yvaluespie") = budgetvaluelist
 
         Response.Redirect("FEKitchen.aspx")
-    End Sub
-
-    'FLOORS
-
-    Protected Sub cbxCarpet_CheckedChanged(sender As Object, e As EventArgs) Handles cbxCarpet.CheckedChanged, cbxTile.CheckedChanged, cbxHardwood.CheckedChanged
-        If cbxCarpet.Checked = False Then
-            pnlCarpet.Enabled = True
-            pnlTile.Enabled = True
-            pnlHardwood.Enabled = True
-            rltCarpet.Enabled = True
-            rltTile.Enabled = True
-            rltHardwood.Enabled = True
-        ElseIf cbxTile.Checked = False Then
-            pnlCarpet.Enabled = True
-            pnlTile.Enabled = True
-            pnlHardwood.Enabled = True
-            rltCarpet.Enabled = True
-            rltTile.Enabled = True
-            rltHardwood.Enabled = True
-        ElseIf cbxHardwood.Checked = False Then
-            pnlCarpet.Enabled = True
-            pnlTile.Enabled = True
-            pnlHardwood.Enabled = True
-            rltCarpet.Enabled = True
-            rltTile.Enabled = True
-            rltHardwood.Enabled = True
-        End If
-
-        If cbxCarpet.Checked = True Then
-            pnlTile.Enabled = False
-            pnlHardwood.Enabled = False
-            rltCarpet.Enabled = False
-            rltCarpet.ClearSelection()
-            rltTile.ClearSelection()
-            rltHardwood.ClearSelection()
-        ElseIf cbxTile.Checked = True Then
-            pnlCarpet.Enabled = False
-            pnlHardwood.Enabled = False
-            rltTile.Enabled = False
-            rltCarpet.ClearSelection()
-            rltTile.ClearSelection()
-            rltHardwood.ClearSelection()
-        ElseIf cbxHardwood.Checked = True Then
-            pnlCarpet.Enabled = False
-            pnlTile.Enabled = False
-            rltHardwood.Enabled = False
-            rltCarpet.ClearSelection()
-            rltTile.ClearSelection()
-            rltHardwood.ClearSelection()
-        End If
-    End Sub
-
-    'FIREPLACE
-
-    Protected Sub cbxBrick_CheckedChanged(sender As Object, e As EventArgs) Handles cbxBrick.CheckedChanged, cbxManufactured.CheckedChanged, cbxNatural.CheckedChanged
-        If cbxBrick.Checked = False Then
-            pnlBrick.Enabled = True
-            pnlManufactured.Enabled = True
-            pnlNatural.Enabled = True
-            rltBrick.Enabled = True
-            rltManufactured.Enabled = True
-            rltNatural.Enabled = True
-        ElseIf cbxManufactured.Checked = False Then
-            pnlBrick.Enabled = True
-            pnlManufactured.Enabled = True
-            pnlNatural.Enabled = True
-            rltBrick.Enabled = True
-            rltManufactured.Enabled = True
-            rltNatural.Enabled = True
-        ElseIf cbxNatural.Checked = False Then
-            pnlBrick.Enabled = True
-            pnlManufactured.Enabled = True
-            pnlNatural.Enabled = True
-            rltBrick.Enabled = True
-            rltManufactured.Enabled = True
-            rltNatural.Enabled = True
-        End If
-
-        If cbxBrick.Checked = True Then
-            pnlManufactured.Enabled = False
-            pnlNatural.Enabled = False
-            rltBrick.Enabled = False
-            rltBrick.ClearSelection()
-            rltManufactured.ClearSelection()
-            rltNatural.ClearSelection()
-        ElseIf cbxManufactured.Checked = True Then
-            pnlBrick.Enabled = False
-            pnlNatural.Enabled = False
-            rltManufactured.Enabled = False
-            rltBrick.ClearSelection()
-            rltManufactured.ClearSelection()
-            rltNatural.ClearSelection()
-        ElseIf cbxNatural.Checked = True Then
-            pnlManufactured.Enabled = False
-            pnlBrick.Enabled = False
-            rltNatural.Enabled = False
-            rltBrick.ClearSelection()
-            rltManufactured.ClearSelection()
-            rltNatural.ClearSelection()
-        End If
     End Sub
 
     Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
@@ -239,5 +102,9 @@ Partial Class FEInterior
         pnlydynamichart.Controls.Add(chtBudget)
         Dim mycharter As New BudgetAllocationCharter(chtBudget)
         mycharter.Draw()
+    End Sub
+
+    Protected Sub btnBack_Click(sender As Object, e As System.EventArgs) Handles btnBack.Click
+        Response.Redirect("FEOutdoor.aspx")
     End Sub
 End Class

@@ -12,10 +12,13 @@
     <div style="font-size: x-large; text-align: center;">
     
         <br />
-        Multiple Scenario Comparison<br />
+        <span style="font-size: xx-large"><strong>Multiple Scenario Comparison</strong></span><br />
         <br />
     
-        <asp:Chart ID="Chart1" align="center" runat="server">
+        <table style="margin:0px auto; width: 800px;"">
+            <tr>
+                <td>
+                    <asp:Chart ID="Chart1" align="center" runat="server">
             <Series>
                 <asp:Series Name="Series1">
                 </asp:Series>
@@ -25,11 +28,41 @@
                 </asp:ChartArea>
             </ChartAreas>
         </asp:Chart>
+                </td>
+                <td style="width: 22px">
+
+                </td>
+                <td style="vertical-align: top">
+                    Select a scenario:&nbsp;&nbsp;
+        <asp:DropDownList ID="DropDownList1" align="center" runat="server" AutoPostBack ="true" Font-Size="X-Large" style="font-size: large">
+        </asp:DropDownList>
         <br />
         <br />
-        Please select which style of graph you are interested in seeing, a price comparison or a utility vs price comparison.<br />
-        <br />
-        <asp:DropDownList ID="DropDownList2" align="center" runat="server" AutoPostBack ="true">
+        Scenario Details<br />
+        <asp:DetailsView ID="DetailsView1" runat="server" align="center" CellPadding="4" ForeColor="#333333" GridLines="None" Height="50px" Width="297px" Font-Size="Large">
+            <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+            <CommandRowStyle BackColor="#E2DED6" Font-Bold="True" />
+            <EditRowStyle BackColor="#999999" />
+            <FieldHeaderStyle BackColor="#E9ECF1" Font-Bold="True" />
+            <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+            <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+            <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
+            <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
+        </asp:DetailsView>
+                    <br />
+    
+    
+        <asp:Button ID="btnSelect" runat="server" Height="43px" Text="Select Home" align="center" Width="145px" Font-Size="X-Large" />
+            
+                </td>
+            </tr>
+            </table>
+        <table style="margin:0px auto; width: 800px;"">
+            <tr>
+                <td>
+                    <br />
+&nbsp;&nbsp;&nbsp;&nbsp;Select a graph:
+        <asp:DropDownList ID="DropDownList2" align="center" runat="server" AutoPostBack ="true" Font-Size="X-Large" style="font-size: large">
             <asp:ListItem Value="Utility">Utility vs Price Comparison</asp:ListItem>
             <asp:ListItem Value="House" Selected="True">House Type Price Comparison</asp:ListItem>
             <asp:ListItem Value="FloorCost">Floor Price Comparison</asp:ListItem>
@@ -40,11 +73,14 @@
             <asp:ListItem Value="Bath">Bath Price Comparison</asp:ListItem>
             <asp:ListItem Value="Closets">Closet Price Comparison</asp:ListItem>
             <asp:ListItem Value="Fireplace">Fireplace Price Comparison</asp:ListItem>
+            <asp:ListItem Value="Cabinets">Cabinets Price Comparison</asp:ListItem>
+            <asp:ListItem Value="Landscaping">Landscaping Price Comparison</asp:ListItem>
         </asp:DropDownList>
         <br />
         <br />
+        Scenarios
         <br />
-        <asp:GridView ID="GridView1" runat="server" align="center" ShowHeader="false" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" CellPadding="3" ForeColor="Black" GridLines="Vertical">
+        <asp:GridView ID="GridView1" runat="server" align="center" ShowHeader="false" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" CellPadding="3" ForeColor="Black" GridLines="Vertical" Font-Size="Large">
             <AlternatingRowStyle BackColor="#CCCCCC" />
             <FooterStyle BackColor="#CCCCCC" />
             <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
@@ -56,24 +92,29 @@
             <SortedDescendingHeaderStyle BackColor="#383838" />
         </asp:GridView>
         <br />
-        Please select which scenario you would like to see a few more details about.<br />
-        <br />
-        <asp:DropDownList ID="DropDownList1" align="center" runat="server" AutoPostBack ="true">
-        </asp:DropDownList>
-        <br />
-        <br />
-        <asp:DetailsView ID="DetailsView1" runat="server" align="center" CellPadding="4" ForeColor="#333333" GridLines="None" Height="50px" Width="125px">
-            <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
-            <CommandRowStyle BackColor="#E2DED6" Font-Bold="True" />
-            <EditRowStyle BackColor="#999999" />
-            <FieldHeaderStyle BackColor="#E9ECF1" Font-Bold="True" />
-            <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-            <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-            <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
-            <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
-        </asp:DetailsView>
+        
     
-    </div>
+        <br />
+    
+
+                </td>
+            </tr>
+        </table>
+        
+        <br />
+    
+        <div style="text-align: center">
+    
+    
+        <asp:Button ID="btnBack" runat="server" Height="43px" Text="Back" align="center" Width="140px" Font-Size="X-Large" />
+            
+            <br />
+    
+            <br />
+        </div>
+    
+        <br />
+            </div>
     <%--</form>
 </body>
 </html>--%>

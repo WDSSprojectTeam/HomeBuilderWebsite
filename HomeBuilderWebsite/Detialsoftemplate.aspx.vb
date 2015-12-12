@@ -1,14 +1,17 @@
 ﻿
-Partial Class SeeHomeDetails
+Imports System.Data
+
+Partial Class Detialsoftemplate
     Inherits System.Web.UI.Page
+
 
     Private mydataloader As New DataLoader
 
     Private Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
 
-        Dim homeid As Integer = Session("homeid")
+        Dim homeid As Integer = Session("tempid")
 
-        dvwHomeDetails.DataSource = mydataloader.GetHomePicture(homeid)
+        dvwHomeDetails.DataSource = mydataloader.GetTemplateDetails(homeid)
         dvwHomeDetails.DataBind()
 
     End Sub
@@ -17,10 +20,11 @@ Partial Class SeeHomeDetails
 
     Protected Sub btnbacktochoosehome_Click(sender As Object, e As EventArgs) Handles btnbacktochoosehome.Click
         Session("numberofloads") = 2
-        Response.Redirect("ChooseHomeLayout.aspx")
+        Response.Redirect("ScenarioGridview.aspx")
     End Sub
 
     Private Sub btnFeatureEvaluation_Click(sender As Object, e As EventArgs) Handles btnFeatureEvaluation.Click
-        Response.Redirect("~\ChooseFeature.aspx")
+        Response.Redirect("~\EditTemplateFeatures.aspx")
     End Sub
+
 End Class

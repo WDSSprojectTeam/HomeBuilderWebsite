@@ -55,10 +55,12 @@ Public Class COMPDAL
         Dim bath As Integer
         Dim closets As Integer
         Dim fireplace As Integer
+        Dim cabinets As Integer
+        Dim landscaping As Integer
         Dim holdingcost As Double = 0
         myConnection = New OleDbConnection(myConnectionStr)
         'I will add more select topics once the tblscenarios table is completed
-        myCommand = New OleDbCommand("SELECT tblscenarios.HouseName, tblscenarios.Floorcost, tblscenarios.RoofCost, tblscenarios.Appliances, tblscenarios.Garage, tblscenarios.Countertops, tblscenarios.Bath, tblscenarios.Closets, tblscenarios.Fireplace " &
+        myCommand = New OleDbCommand("SELECT tblscenarios.HouseName, tblscenarios.Floorcost, tblscenarios.RoofCost, tblscenarios.Appliances, tblscenarios.Garage, tblscenarios.Countertops, tblscenarios.Bath, tblscenarios.Closets, tblscenarios.Fireplace, tblscenarios.Cabinets, tblscenarios.Landscaping " &
             "FROM tblScenarios WHERE ((tblScenarios.ScenarioID)=@param)", myConnection)
         myCommand.Parameters.AddWithValue("param", scenID)
         myConnection.Open()
@@ -74,22 +76,26 @@ Public Class COMPDAL
             bath = myReader.Item("Bath")
             closets = myReader.Item("Closets")
             fireplace = myReader.Item("Fireplace")
+            cabinets = myReader.Item("Cabinets")
+            landscaping = myReader.Item("Landscaping")
         Loop
         myReader.Close()
         myConnection.Close()
 
-        mylist.Add(gethousenamecost(housename))
+
         mylist.Add(floors)
         mylist.Add(rooftype)
         mylist.Add(getoptioncost(appliances))
         mylist.Add(getoptioncost(garage))
-        holdingcost = 50 * getoptioncost(countertops)
+        holdingcost = getoptioncost(countertops)
         mylist.Add(holdingcost)
         holdingcost = getoptioncost(bath) * gethousenamebathrooms(housename)
         mylist.Add(holdingcost)
         holdingcost = getoptioncost(closets) * gethousenamebedrooms(housename)
         mylist.Add(holdingcost)
         mylist.Add(getoptioncost(fireplace))
+        mylist.Add(getoptioncost(cabinets))
+        mylist.Add(getoptioncost(landscaping))
 
         Return mylist
     End Function
@@ -121,9 +127,11 @@ Public Class COMPDAL
         Dim bath As Integer
         Dim closets As Integer
         Dim fireplace As Integer
+        Dim cabinets As Integer
+        Dim landscaping As Integer
         myConnection = New OleDbConnection(myConnectionStr)
         'I will add more select topics once the tblscenarios table is completed
-        myCommand = New OleDbCommand("SELECT tblscenarios.HouseName, tblscenarios.Floors, tblscenarios.Roof_Type, tblscenarios.Appliances, tblscenarios.Garage, tblscenarios.Countertops, tblscenarios.Bath, tblscenarios.Closets, tblscenarios.Fireplace " &
+        myCommand = New OleDbCommand("SELECT tblscenarios.HouseName, tblscenarios.Floors, tblscenarios.Roof_Type, tblscenarios.Appliances, tblscenarios.Garage, tblscenarios.Countertops, tblscenarios.Bath, tblscenarios.Closets, tblscenarios.Fireplace, tblscenarios.Cabinets, tblscenarios.Landscaping " &
             "FROM tblScenarios WHERE ((tblScenarios.ScenarioID)=@param)", myConnection)
         myCommand.Parameters.AddWithValue("param", scenID)
         myConnection.Open()
@@ -139,11 +147,14 @@ Public Class COMPDAL
             bath = myReader.Item("Bath")
             closets = myReader.Item("Closets")
             fireplace = myReader.Item("Fireplace")
+            cabinets = myReader.Item("Cabinets")
+            landscaping = myReader.Item("landscaping")
+
         Loop
         myReader.Close()
         myConnection.Close()
 
-        mylist.Add(housename)
+
         mylist.Add(getoptionname(floors))
         mylist.Add(getoptionname(rooftype))
         mylist.Add(getoptionname(appliances))
@@ -152,7 +163,8 @@ Public Class COMPDAL
         mylist.Add(getoptionname(bath))
         mylist.Add(getoptionname(closets))
         mylist.Add(getoptionname(fireplace))
-
+        mylist.Add(getoptionname(cabinets))
+        mylist.Add(getoptionname(landscaping))
         Return mylist
     End Function
 
@@ -167,6 +179,8 @@ Public Class COMPDAL
         Dim bath As Integer
         Dim closets As Integer
         Dim fireplace As Integer
+        Dim cabinets As Integer
+        Dim landscaping As Integer
 
         mytable.Columns.Add(New DataColumn("House Name"))
         mytable.Columns.Add(New DataColumn("Floor Type"))
@@ -177,11 +191,12 @@ Public Class COMPDAL
         mytable.Columns.Add(New DataColumn("Bath Type"))
         mytable.Columns.Add(New DataColumn("Closet Type"))
         mytable.Columns.Add(New DataColumn("Fireplace"))
-
+        mytable.Columns.Add(New DataColumn("Cabinets"))
+        mytable.Columns.Add(New DataColumn("Landscaping"))
 
         myConnection = New OleDbConnection(myConnectionStr)
         'I will add more select topics once the tblscenarios table is completed
-        myCommand = New OleDbCommand("SELECT tblscenarios.HouseName, tblscenarios.Floors, tblscenarios.Roof_Type, tblscenarios.Appliances, tblscenarios.Garage, tblscenarios.Countertops, tblscenarios.Bath, tblscenarios.Closets, tblscenarios.Fireplace " &
+        myCommand = New OleDbCommand("SELECT tblscenarios.HouseName, tblscenarios.Floors, tblscenarios.Roof_Type, tblscenarios.Appliances, tblscenarios.Garage, tblscenarios.Countertops, tblscenarios.Bath, tblscenarios.Closets, tblscenarios.Fireplace, tblscenarios.Cabinets, tblscenarios.Landscaping  " &
             "FROM tblScenarios WHERE ((tblScenarios.ScenarioID)=@param)", myConnection)
         myCommand.Parameters.AddWithValue("param", scenID)
         myConnection.Open()
@@ -197,6 +212,8 @@ Public Class COMPDAL
             bath = myReader.Item("Bath")
             closets = myReader.Item("Closets")
             fireplace = myReader.Item("Fireplace")
+            cabinets = myReader.Item("Cabinets")
+            landscaping = myReader.Item("Landscaping")
         Loop
         myReader.Close()
         myConnection.Close()
@@ -213,6 +230,8 @@ Public Class COMPDAL
         myrow(6) = (getoptionname(bath))
         myrow(7) = (getoptionname(closets))
         myrow(8) = (getoptionname(fireplace))
+        myrow(9) = (getoptionname(cabinets))
+        myrow(10) = (getoptionname(landscaping))
         mytable.Rows.Add(myrow)
         Return mytable
     End Function
@@ -335,7 +354,7 @@ Public Class COMPDAL
     Public Function getoptionstuff(ByVal name As String, ByVal id As Integer) As Double
         Dim cost As Double
         myConnection = New OleDbConnection(myConnectionStr)
-        myCommand = New OleDbCommand("SELECT tblScenarios.Appliances, tblScenarios.Garage, tblScenarios.Countertops, tblScenarios.Bath, tblScenarios.Closets, tblScenarios.Fireplace " &
+        myCommand = New OleDbCommand("SELECT tblScenarios.HouseName, tblScenarios.Appliances, tblScenarios.Garage, tblScenarios.Countertops, tblScenarios.Bath, tblScenarios.Closets, tblScenarios.Fireplace, tblscenarios.Cabinets, tblscenarios.Landscaping " &
                                      "FROM tblScenarios WHERE ((tblScenarios.ScenarioID)=@param)", myConnection)
         myCommand.Parameters.AddWithValue("param", id)
         If name = "Appliances" Then
@@ -363,21 +382,37 @@ Public Class COMPDAL
             myConnection.Open()
             myReader = myCommand.ExecuteReader
             Do While (myReader.Read)
+                Dim hname As String = myReader.Item("HouseName")
                 Dim opt As Integer = myReader.Item("Bath")
-                cost = getoptioncost(opt)
+                cost = getoptioncost(opt) * gethousenamebedrooms(hname)
             Loop
         ElseIf name = "Closets"
             myConnection.Open()
             myReader = myCommand.ExecuteReader
             Do While (myReader.Read)
+                Dim hname As String = myReader.Item("HouseName")
                 Dim opt As Integer = myReader.Item("Closets")
-                cost = getoptioncost(opt)
+                cost = getoptioncost(opt) * gethousenamebedrooms(hname)
             Loop
         ElseIf name = "Fireplace"
             myConnection.Open()
             myReader = myCommand.ExecuteReader
             Do While (myReader.Read)
                 Dim opt As Integer = myReader.Item("Fireplace")
+                cost = getoptioncost(opt)
+            Loop
+        ElseIf name = "Cabinets"
+            myConnection.Open()
+            myReader = myCommand.ExecuteReader
+            Do While (myReader.Read)
+                Dim opt As Integer = myReader.Item("Cabinets")
+                cost = getoptioncost(opt)
+            Loop
+        ElseIf name = "Landscaping"
+            myConnection.Open()
+            myReader = myCommand.ExecuteReader
+            Do While (myReader.Read)
+                Dim opt As Integer = myReader.Item("Landscaping")
                 cost = getoptioncost(opt)
             Loop
         End If

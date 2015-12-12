@@ -183,10 +183,15 @@
         </table>
         <br />
         <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Button ID="btnNext" runat="server" Height="30px" Text="Next" Width="105px" />
-
-                </td>
+                   
+                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                   
+                     <asp:Button ID="btnBack" runat="server" Height="28px" Text="Back" Width="105px" />
+                
+&nbsp;&nbsp;
+                <%--  --%>
+<asp:Button ID="btnNext" runat="server" Height="28px" Text="Next" Width="105px" />
+           
                 <td style="vertical-align: top">
 
                     <br />

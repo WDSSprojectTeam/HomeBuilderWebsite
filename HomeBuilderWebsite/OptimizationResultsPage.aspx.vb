@@ -8,14 +8,15 @@ Partial Class OptimizationResultsPage
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         DrawCharts(10000)
         btnSave.Visible = False
-
-        If (ispostback) Then
+        Panel1.Visible = False
+        If (IsPostBack) Then
             btnSave.Visible = True
 
         End If
 
-        If (IsPostBack And lblFeatureName.Visible = True) Then
-            btnSave.visible = True
+
+        If (IsPostBack And Session("checkthings") = 1) Then
+            btnSave.Visible = True
             updateFeatures()
             chtFeatures.Visible = True
             Dim cht As New OptPieChart(chtFeatures)
@@ -56,7 +57,6 @@ Partial Class OptimizationResultsPage
 
         ElseIf rdb2.Checked = True And rdb2.Text IsNot myOptionList.Item(index).getoptionname
             check = rdb2.Text
-
 
         ElseIf rdb3.Checked = True And rdb3.Text IsNot myOptionList.Item(index).getoptionname
             check = rdb3.Text
@@ -111,7 +111,9 @@ Partial Class OptimizationResultsPage
 
     Protected Sub chtCompareBudgets_Click(sender As Object, e As ImageMapEventArgs) Handles chtCompareBudgets.Click
         btnSave.Visible = True
-        lblFeatureName.Visible = False
+        Panel1.Visible = False
+        lblFeatureEdit.Visible = False
+        lblFeatureName.Visible = True
         rdb1.Visible = False
         rdb2.Visible = False
         rdb3.Visible = False
@@ -234,14 +236,18 @@ Partial Class OptimizationResultsPage
         Dim Bath As Integer = myChosenOptions.Item(5)
         Dim Closets As Integer = myChosenOptions.Item(6)
         Dim Fireplace As Integer = myChosenOptions.Item(7)
+        Dim Landscape As Integer = myChosenOptions.Item(8)
+        Dim Cabinet As Integer = myChosenOptions.Item(9)
 
 
         Dim DAL As New DataLoader
-        DAL.InsertSavedScenario(HouseName, Budget, ScenarioName, TotalCost, FloorCost, RoofCost, Floors, Roof_Type, Appliances, Garage, Countertops, Bath, Closets, Fireplace, Utility)
+        DAL.InsertSavedScenario(HouseName, Budget, ScenarioName, TotalCost, FloorCost, RoofCost, Floors, Roof_Type, Appliances, Garage, Countertops, Bath, Closets, Fireplace, Cabinet, Landscape, Utility)
     End Sub
 
     Protected Sub gvwDetails_RowCommand(sender As Object, e As GridViewCommandEventArgs) Handles gvwDetails.RowCommand
 
+        lblFeatureEdit.Visible = False
+        Panel1.Visible = False
         lblFeatureName.Visible = False
         rdb1.Visible = False
         rdb2.Visible = False
@@ -254,9 +260,9 @@ Partial Class OptimizationResultsPage
         Dim myResults As List(Of OptimizationResults) = Session("Results")
         Dim myChosenOptions As List(Of Integer) = Session("chosenOptions")
         Dim optID As Integer = myChosenOptions.Item(rowIndex)
-        Dim myOptionSet As List(Of Options) = Session("OptionSet")
+        Dim myOptionList As List(Of Options) = Session("OptionSet")
 
-        For Each aOption In myOptionSet
+        For Each aOption In myOptionList
             If aOption.getoptionID = optID Then
                 Session("whichOption") = aOption
             End If
@@ -265,11 +271,13 @@ Partial Class OptimizationResultsPage
         Dim myFeature As Integer = Session("whichFeature")
         Dim myOption As Options = Session("whichOption")
         Dim myFeatureSet As List(Of Feature) = Session("FeatureSet")
-        Dim myOptionList As List(Of Options) = Session("OptionSet")
+
         Dim panelCount As Integer = 0
         For Each aFeature In myFeatureSet
             If aFeature.getID = myFeature Then
+                lblFeatureEdit.Visible = True
                 lblFeatureName.Visible = True
+                Panel1.Visible = True
                 lblFeatureName.Text = aFeature.Name
             End If
         Next
@@ -317,7 +325,11 @@ Partial Class OptimizationResultsPage
             End If
         Next
 
-
+        If lblFeatureName.Visible = True Then
+            Session("checkthings") = 1
+        Else
+            Session("checkthings") = 0
+        End If
 
 
 
@@ -344,4 +356,7 @@ Partial Class OptimizationResultsPage
     End Sub
 
 
+    Protected Sub btnBack_Click(sender As Object, e As System.EventArgs) Handles btnBack.Click
+        Response.Redirect("FEBedroom.aspx")
+    End Sub
 End Class

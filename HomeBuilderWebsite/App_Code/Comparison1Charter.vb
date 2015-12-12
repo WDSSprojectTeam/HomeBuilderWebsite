@@ -17,11 +17,15 @@ Public Class Comparison1Charter
 
     Public Sub draw(ByVal iden As Integer)
         mychart.Titles.Clear()
-        mychart.Titles.Add("Scenario Cost Breakdown")
+        Dim FontColor As New Title("Scenario Cost Breakdown", Docking.Top, New System.Drawing.Font("cambria", 24, System.Drawing.FontStyle.Bold), System.Drawing.Color.Black)
+        mychart.Titles.Add(FontColor)
         setchartsize()
         setborderstyle()
         definechartarea()
+
         loadseriesdata(iden)
+        AddLegend()
+        mychart.Series(0)("PieLabelStyle") = "Disabled"
     End Sub
 
     Private Sub setchartsize()
@@ -37,21 +41,30 @@ Public Class Comparison1Charter
 
     End Sub
 
+    Public Sub AddLegend()
+        mychart.Legends.Clear()
+        Dim mylegend As New Legend("Elements Legend")
+        mychart.Legends.Add(mylegend)
+
+        mylegend.Title = "Elements"
+        mylegend.Docking = Docking.Right
+    End Sub
+
     Private Sub definechartarea()
         Dim charea As New ChartArea
-        mychart.ChartAreas.Add(charea)
-        charea.AxisX.MajorGrid.LineDashStyle = ChartDashStyle.Dash
+        charea = mychart.ChartAreas.Item(0)
+        'charea.AxisX.MajorGrid.LineDashStyle = ChartDashStyle.Dash
         charea.AxisX.LabelStyle.Font = New Drawing.Font("Cambria", 12)
-        charea.AxisX.LabelStyle.Angle = -45
-        charea.AxisX.TitleFont = New Drawing.Font("cambria", 12)
+        ' charea.AxisX.LabelStyle.Angle = -45
+        charea.AxisX.TitleFont = New Drawing.Font("cambria", 18)
         charea.AxisX.Title = "Elements"
 
-        charea.AxisY.MajorGrid.LineDashStyle = ChartDashStyle.Dash
-        charea.AxisY.Interval = 1000
-        charea.AxisY.Maximum = 500000
-        charea.AxisY.Minimum = 0
-        charea.AxisY.TitleFont = New Drawing.Font("cambria", 12)
-        charea.AxisY.Title = "Cost"
+        ' charea.AxisY.MajorGrid.LineDashStyle = ChartDashStyle.Dash
+        ' charea.AxisY.Interval = 1000
+        'charea.AxisY.Maximum = 500000
+        'charea.AxisY.Minimum = 0
+        charea.AxisY.TitleFont = New Drawing.Font("cambria", 18)
+        charea.AxisY.Title = "Cost ($)"
     End Sub
 
     Private Sub loadseriesdata(ByVal identity As Integer)

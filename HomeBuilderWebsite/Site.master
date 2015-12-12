@@ -296,7 +296,7 @@
 	   	   	<h3><a href="mailto:infoexample@email.com">@example.com</a></h3>
 	   	   </div>
 	   	   <div class="mail">
-	   	   	
+
 	   	   </div>
 	   	   <div class="clearfix"> </div>
 	   </div>
@@ -305,7 +305,7 @@
 	   	   	     <h3><a href="https://github.com/WDSSprojectTeam">WDSSprojectTeam</a></h3>
 	   	   </div>
 	   	   <div class="moniter">
-	   	   	
+
 	   	   </div>
 	   	   <div class="clearfix"> </div>
 	   </div>
@@ -314,7 +314,7 @@
 	<div class="contact-bottom">
 		<div class="col-md-6 contact-left">
 			
-		</div>
+       </div>
 		<div class="col-md-6 contact-right">
             <iframe src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJU6ApXXij6IgRSMoUzsYuhWk&key=AIzaSyCHpnYDNSGGI40aLiw8zIdtqkJktzDHIa0" frameborder="0" style="border:0"> </iframe>
             <!--<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387144.007583421!2d-73.97800349999999!3d40.7056308!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew+York%2C+NY%2C+USA!5e0!3m2!1sen!2sin!4v1415253431785"  frameborder="0" style="border:0"> </iframe>-->
@@ -337,7 +337,7 @@
 
         
        
-                 
+                    
 
 
             

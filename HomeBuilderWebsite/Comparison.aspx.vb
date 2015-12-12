@@ -13,7 +13,7 @@ Partial Class HomeBuilderWebsite_master_Comparison
 
     Private Sub homebuilderwebsite_master_Comparison_load(sender As Object, e As EventArgs) Handles Me.Load
         If Not IsPostBack Then
-            DropDownList1.SelectedIndex = 0
+
             Dim totcost As Double = DropDownList1.SelectedValue
             fillgridview(totcost)
             GridView1.SelectedIndex = 0
@@ -64,11 +64,23 @@ Partial Class HomeBuilderWebsite_master_Comparison
                 i = Convert.ToInt32(gvr.Cells.Item(2).Text)
                 info.Add(i)
             End If
+
         Next
-        Session("checkedscenarios") = info
+
+        If info.Count = 0 Then
+            MsgBox("Please select at least one scenario.")
+            Response.Redirect("~\Comparison.aspx")
+        Else
+            Session("checkedscenarios") = info
+            Response.Redirect("~\Comparison2.aspx")
+
+        End If
 
 
 
-        Response.Redirect("~\Comparison2.aspx")
+    End Sub
+
+    Protected Sub btnBack_Click(sender As Object, e As EventArgs) Handles btnBack.Click
+        Response.Redirect("Home.aspx")
     End Sub
 End Class

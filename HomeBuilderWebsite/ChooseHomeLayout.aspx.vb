@@ -216,4 +216,8 @@ Partial Class ChooseHomeLayout
 
     '    Response.Redirect("~\ChooseFeature.aspx")
     'End Sub
+
+    Protected Sub btnBack_Click(sender As Object, e As System.EventArgs) Handles btnBack.Click
+        Response.Redirect("Instructions_BuildNewHome.aspx")
+    End Sub
 End Class
