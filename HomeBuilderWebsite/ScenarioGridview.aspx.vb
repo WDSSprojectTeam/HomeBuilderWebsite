@@ -1,8 +1,9 @@
-﻿Imports System.Data
+﻿
+Imports System.Data
 
-
-Partial Class ChooseHomeLayout
+Partial Class ScenarioGridview
     Inherits System.Web.UI.Page
+
 
     Private myDataLoader As New DataLoader
 
@@ -192,8 +193,4 @@ Partial Class ChooseHomeLayout
         ddlbedroom.SelectedValue = 1
 
     End Sub
-
-
-
-
 End Class
